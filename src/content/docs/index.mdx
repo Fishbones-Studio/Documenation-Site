@@ -1,92 +1,120 @@
 ---
-title: Fishbones Studio
-description: Game dev Minor at the Hague University of Applied Sciences
+title: Studio Fishbones
+description: Game Development Minor at The Hague University of Applied Sciences
 template: splash
 hero:
-  tagline: Explore our Docs and Meet the Team!
+  tagline: Where Code Meets Creativity - Building Next-Level Gaming Experiences
   image:
-    file: ../../assets/houston.webp
+    file: ../../assets/Fishbones_Logo_Temp.jpg
+    alt: Fishbone Studios Team Logo
   actions:
     - text: Guide to Getting Started
       link: /guides/example/
       icon: right-arrow
-    - text: Starlight Documentation
-      link: https://starlight.astro.build
+    - text: GitHub
+      link: https://github.com/Fishbones-Studio
       icon: external
       variant: minimal
 ---
 
-import { Card, CardGrid } from "@astrojs/starlight/components";
+import { Card, CardGrid, Details } from "@astrojs/starlight/components";
+import ResourceGrid from "../../components/ResourceGrid.astro";
+import ResourceLink from "../../components/ResourceLink.astro";
 
-## Meet the Team
+## About Our Studio
+
+Welcome to Studio Fishbones! We're a team of students from The Hague University of Applied Sciences, creating a game.
+
+## Development Team
 
 <table>
   <tr>
     <td>
       <strong>Name</strong>
-    </td>
-    <td>
+    </td> 
+	<td>
       <strong>Student number</strong>
-    </td>
-    <td>
+    </td> 
+	<td>
       <strong>Main Role</strong>
     </td>
-  </tr>
+  </tr> <tr>
+    <td>Tjorn Brederoo</td> 
+	<td>22092420</td> 
+	<td>Programmer</td>
+  </tr> 
   <tr>
-    <td>Tjorn Brederoo</td>
-    <td>22092420</td>
-    <td>Programmer</td>
-  </tr>
-  <tr>
-    <td>Nick Frietman</td>
-    <td>21055378</td>
-    <td>Programmer</td>
-  </tr>
+    <td>Nick Frietman</td> 
+	<td>21055378</td> 
+	<td>Programmer</td>
+  </tr> 
   <tr>
     <td>Jun Yi Xie</td>
     <td>22012524</td>
     <td>Programmer</td>
-  </tr>
+  </tr> 
   <tr>
-    <td>Sly Moertanom</td>
-    <td>22003908</td>
-    <td>Programmer</td>
-  </tr>
+    <td>Sly Moertanom</td> 
+	<td>22003908</td> 
+	<td>Programmer</td>
+  </tr> 
   <tr>
-    <td>Finn Korf</td>
-    <td>24168025</td>
-    <td>Artist</td>
-  </tr>
+    <td>Finn Korf</td> 
+	<td>24168025</td> 
+	<td>Artist</td>
+  </tr> 
   <tr>
-    <td>Joyce Stoop</td>
-    <td>24168556</td>
-    <td>Artist</td>
-  </tr>
+
+    <td>Joyce Stoop</td> <td>24168556</td> <td>Artist</td>
+
+  </tr> 
   <tr>
-    <td>Cenker Aydin</td>
-    <td>22107177</td>
-    <td>Programmer</td>
-  </tr>
+
+    <td>Cenker Aydin</td> <td>22107177</td> <td>Programmer</td>
+
+  </tr> 
   <tr>
-    <td>Bastiaan Smeets</td>
-    <td>22068228</td>
-    <td>Programmer</td>
+
+    <td>Bastiaan Smeets</td> <td>22068228</td> <td>Programmer</td>
+
   </tr>
 </table>
 
-## Documentation
+## Core Documentation
 
-<CardGrid stagger>
-  <Card title="Update content" icon="pencil">
-    Edit `src/content/docs/index.mdx` to see this page change.
-  </Card>
-  <Card title="Add new content" icon="add-document">
-    Add Markdown or MDX files to `src/content/docs` to create new pages.
-  </Card>
-  <Card title="Configure your site" icon="setting">
-    Edit your `sidebar` and other config in `astro.config.mjs`.
-  </Card>
-  <Card title="Read the docs" icon="open-book">
-    Learn more in [the Starlight Docs](https://starlight.astro.build/).
-  </Card>
+<CardGrid stagger>   
+    <Card title="👾 Coding Standards" icon="code">
+        GDscript style guide and architecture patterns.
+    </Card>
+
+    <Card title="🎮 Game Design Docs" icon="game-controller">
+        Core gameplay loops and mechanic specifications
+    </Card>
+
+    <Card title="🖌️ Art Pipeline" icon="palette">
+        3D asset workflow from Blender to Godot.
+    </Card>
+
+    <Card title="🤖 AI Framework" icon="chip">
+        Behavior tree implementation and NPC AI patterns
+    </Card>
+
+    <Card title="📊 Production Timeline" icon="calendar">
+        Sprint schedules and milestone deadlines
+    </Card>
+
 </CardGrid>
+
+## Quick Links
+
+<ResourceGrid>
+  <ResourceLink href="/docs/version-control" icon="git-branch">
+    Version Control Protocol
+  </ResourceLink>
+  <ResourceLink href="/docs/bug-reporting" icon="bug">
+    Bug Reporting Guidelines
+  </ResourceLink>
+  <ResourceLink href="/docs/art-styleguide" icon="brush">
+    Visual Style Guide
+  </ResourceLink>
+</ResourceGrid>

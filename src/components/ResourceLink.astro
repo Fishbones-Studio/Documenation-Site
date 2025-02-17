@@ -1,0 +1,46 @@
+---
+const { href, icon } = Astro.props;
+---
+<a href={href} class="resource-link">
+  <span class:list={['icon', icon && `icon-${icon}`]}></span>
+  <span class="text">
+    <slot />
+  </span>
+</a>
+
+<style>
+  .resource-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .resource-link:hover {
+    background-color: var(--sl-color-gray-2);
+    transform: translateY(-2px);
+  }
+
+  .icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+  }
+
+  .icon-git-branch {
+    background-image: url('../../assets/icons/git-branch.svg');
+  }
+
+  .icon-bug {
+    background-image: url('../../assets/icons/bug.svg');
+  }
+
+  .icon-brush {
+    background-image: url('../../assets/icons/brush.svg');
+  }
+</style>

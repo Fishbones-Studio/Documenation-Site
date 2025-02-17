@@ -1,8 +1,12 @@
 ---
 const { href, icon } = Astro.props;
+const BOOTSTRAP_ICONS_URL = 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons';
 ---
 <a href={href} class="resource-link">
-  <span class:list={['icon', icon && `icon-${icon}`]}></span>
+  <span
+    class="icon"
+    style={icon ? `background-image: url('${BOOTSTRAP_ICONS_URL}/${icon}.svg')` : undefined}
+  /> <!-- Todo: switch icon colour based on light/dark mode -->
   <span class="text">
     <slot />
   </span>
@@ -30,17 +34,5 @@ const { href, icon } = Astro.props;
     width: 24px;
     height: 24px;
     background-size: contain;
-  }
-
-  .icon-git-branch {
-    background-image: url('../../assets/icons/git-branch.svg');
-  }
-
-  .icon-bug {
-    background-image: url('../../assets/icons/bug.svg');
-  }
-
-  .icon-brush {
-    background-image: url('../../assets/icons/brush.svg');
   }
 </style>

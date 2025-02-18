@@ -8,7 +8,7 @@ We're operating as a small startup company for our school project.
 
 ## 🚀 Project Structure
 
-Inside of your Astro + Starlight project, you'll see the following folders and files:
+Inside of this Astro + Starlight project, you'll see the following folders and files:
 
 ```
 .

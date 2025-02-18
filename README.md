@@ -1,6 +1,6 @@
 # Game Dev Minor Documentation
 
-This is the documentation site for Studio Fishbones
+This is the documentation site for Studio Fishbones.
 
 ## About Our Startup
 

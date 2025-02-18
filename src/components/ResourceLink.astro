@@ -1,6 +1,13 @@
 ---
+/**
+ * @typedef {object} Props
+ * @property {string} href - The URL for the link.
+ * @property {string} [icon] - The name of the Bootstrap icon to display (optional).
+ */
+
 const { href, icon } = Astro.props;
 const BOOTSTRAP_ICONS_URL = 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/icons';
+
 ---
 <a href={href} class="resource-link">
   <span

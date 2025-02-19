@@ -163,7 +163,7 @@ Currently, the player and enemy only move around the arena. In the future, we pl
 - **Enemy Attacks**: The enemy will also have attacks that can damage the player, requiring the player to dodge or block.
 - **Health System**: Both the player and enemy will have health bars that decrease when they are hit by attacks.
 - **Hit Detection**: The combat system will involve collision detection to ensure that attacks land and cause damage properly.
-- **Cooldowns/Timers**: Attacks will have cooldowns to prevent spamming, making combat more strategic.
+
 
 This feature will create a more dynamic gameplay experience where players can engage in intense battles with enemies.
 

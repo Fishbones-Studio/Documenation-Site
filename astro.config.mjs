@@ -36,8 +36,8 @@ export default defineConfig({
         },
         {
           label: "Prototype",
-          autogenerate: { directory: "prototype"}
-        },
+          autogenerate: { directory: "prototype"},
+        },        
       ],
     }),
     sitemap(),

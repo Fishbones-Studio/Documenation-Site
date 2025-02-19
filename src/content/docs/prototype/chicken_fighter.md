@@ -9,7 +9,7 @@ author: All
 
 Fishbones Studio presents **Prototype Chicken Fighter**, a low-poly 3D arena fighting game developed as part of a minor at **De Haagse Hogeschool in Zoetermeer**.
 
-In this prototype, we are focusing on building the core **battle system** for the game, where your chicken will fight it out with a 3D combat. The game is being developed in **Godot Engine 4.3** with a **low-poly aesthetic**, aiming for a fun and chaotic brawler experience.
+In this prototype, we are focusing on building the core **battle system** for the game, where your chicken will fight it out with 3D combat. The game is being developed in **Godot Engine 4.3** with a **low-poly aesthetic**, aiming for a fun and chaotic brawler experience.
 
 This prototype serves as the foundation for future gameplay features, where we plan to add more depth to the chicken fighters and their abilities.
 

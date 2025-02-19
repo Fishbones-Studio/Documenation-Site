@@ -34,6 +34,10 @@ export default defineConfig({
           label: "Game Ideas",
           autogenerate: { directory: "ideas" },
         },
+        {
+          label: "Prototype",
+          autogenerate: { directory: "prototype"}
+        },
       ],
     }),
     sitemap(),

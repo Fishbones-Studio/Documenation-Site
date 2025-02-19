@@ -21,6 +21,9 @@ export default defineConfig({
       title: "Fishbones Studio",
       social: {
         github: "https://github.com/Fishbones-Studio",
+        "x.com": "https://x.com/StudioFishbones",
+        blueSky: "https://bsky.app/profile/studiofishbones.com",
+        youtube: "https://www.youtube.com/@studiofishbones",
       },
       sidebar: [
         {
@@ -33,6 +36,10 @@ export default defineConfig({
         {
           label: "Game Ideas",
           autogenerate: { directory: "ideas" },
+        },
+        {
+          label: "Marketing",
+          autogenerate: { directory: "marketing" },
         },
       ],
     }),

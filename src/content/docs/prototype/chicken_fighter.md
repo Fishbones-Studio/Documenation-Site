@@ -202,5 +202,5 @@ These features will enhance the game's complexity and provide a more engaging ex
 
 ## Conclusion
 
-This is just the beginning of **Prototype Chicken Fighter**. Our focus was on getting the basic combat movement and enemy behavior working. There’s still a lot we want to add, like upgrades/mutations,a economy, and a egg hatching system where you can get different kinds of chickens. we also would like to add a fun interactive UI where the player manage can manage his fleet of mighty chickens. This prototype gave us a good start, and we are excited to keep working on it and make the game even better.
+This is just the beginning of our **Prototype Chicken Fighter**. Our focus was on getting the basic combat, movement, and enemy behavior working. There’s still a lot we would like to add, like upgrades/mutations, an economy, and an egg-hatching system where you can get different kinds of chickens. We also would like to add a fun, interactive UI where the player can manage their fleet of mighty chickens. This prototype gave us a good start, and we are excited to keep working on it and make the game even better.
 

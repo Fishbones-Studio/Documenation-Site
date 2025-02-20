@@ -1,15 +1,15 @@
 ---
 title: Prototype Chicken Fighter
 description: Our prototype for our chicken fighting game
-lastUpdated: 2025-02-19
-author: All
+lastUpdated: 2025-02-20
+author: Cenker
 ---
 
 ## Introduction
 
-Fishbones Studio presents **Prototype Chicken Fighter**, a low-poly 3D arena fighting game developed as part of a minor at **De Haagse Hogeschool in Zoetermeer**.
+Studio Fishbones presents: **Prototype Chicken Fighter**, a low-poly 3D arena fighting game developed as part of a minor at **The Hague University of Applied Sciences in Zoetermeer**.
 
-In this prototype, we are focusing on building the core **battle system** for the game, where your chicken will fight it out with a 3D combat. The game is being developed in **Godot Engine 4.3** with a **low-poly aesthetic**, aiming for a fun and chaotic brawler experience.
+In this prototype, we are focusing on building the core **battle system** for the game, where your chicken will fight it out with 3D combat. The game is being developed in **Godot Engine 4.3** with a **low-poly aesthetic**, aiming for a fun and chaotic brawler experience.
 
 This prototype serves as the foundation for future gameplay features, where we plan to add more depth to the chicken fighters and their abilities.
 
@@ -45,7 +45,7 @@ You can now run the prototype from within Godot by clicking the `Play` button (o
 
 ### Main Enemy
 ![Main Enemy](../../../assets/prototype/Enemy.png)
-*The current main enemy for the chickens to fight against.*
+*The current main enemy for our mighty chicken to fight against.*
 
 ## Code for Our Game
 
@@ -55,7 +55,7 @@ The **Player Script** controls the player's movement, jumping, sprinting, and st
 
 #### Key Functionalities:
 
-##### 1. **Movement**
+##### 1. Movement
 The player's movement is handled using the `transform.basis` of the character, which corresponds to the directions (forward, backward, left, right) relative to the character's rotation. The player's direction is updated based on input, and movement is applied accordingly.
 
 ```gd
@@ -83,7 +83,7 @@ func move_right():
 
 the node goes right
 
-##### 2. **Stamina**
+##### 2. Stamina
 The stamina system is designed to add a layer of strategy to gameplay by limiting the player's ability to sprint and forcing them to manage their stamina during fights.
 
 ```gd
@@ -112,7 +112,7 @@ else:
 ```
 When the player is not sprinting, stamina recovers. The code increases stamina over time until it reaches the maximum value, ensuring the player can't exceed their stamina limit.
 
-##### 2. **Jump**
+##### 3. Jump
 
 ```gd
 func handle_jump():
@@ -154,7 +154,7 @@ This basic enemy AI allows the enemy to chase the player in the game world, crea
 
 ## Future Features to Be Added
 
-### 1. **Combat System for the Player and Enemy**
+### 1. *Combat System for the Player and Enemy*
 
 Currently, the player and enemy only move around the arena. In the future, we plan to implement a **combat system** where both the player and the enemy can perform attacks, block, and interact with each other in combat.
 
@@ -169,7 +169,7 @@ This feature will create a more dynamic gameplay experience where players can en
 
 ---
 
-### 2. **Lock-On System**
+### 2. *Lock-On System*
 
 To enhance combat and provide better targeting during battles, we plan to implement a **lock-on system**. This will allow the player to focus on a specific enemy, keeping them in view even as they move around the arena.
 
@@ -183,13 +183,13 @@ The lock-on system will improve combat precision and make it easier for the play
 
 ---
 
-### 3. **Random Objects Around the Arena**
+### 3. *Random Objects Around the Arena*
 
 To make the arena more dynamic and challenging, we plan to introduce **random objects** that can appear during combat. These objects will hinder the player's movement or provide new strategic opportunities for both the player and enemies.
 
 #### Key Features to Add:
-- **Obstacles**: Random objects, such as rocks, boxes, or barrels, will spawn in the arena. These can block the player’s movement or act as cover.
-- **Hazards**: Certain objects could deal damage to the player or enemy if they are hit or interacted with (e.g., explosive barrels or spikes).
+- **Obstacles**: Random objects, such as rocks, boxes, or barrels, will spawn in the arena. These can block the player’s movement.
+- **Hazards**: Certain objects could deal damage to the player or enemy if they are hit or interacted with (e.g., spikes or a bear trap).
 - **Interactive Objects**: Some objects may be moved or interacted with by the player, such as pushing a crate to block an enemy's path.
 - **Dynamic Arena**: The placement of these objects will be random, ensuring that each battle in the arena feels unique.
 
@@ -202,10 +202,5 @@ These features will enhance the game's complexity and provide a more engaging ex
 
 ## Conclusion
 
-**Prototype Chicken Fighter** is just the beginning of an exciting project, focusing on building the core gameplay mechanics for an engaging, chaotic, and fun chicken-themed fighting game. In this prototype, we've focused on the basic movement system, stamina management, and setting the stage for future features such as combat, AI enhancements, and interactive environments.
+This is just the beginning of **Prototype Chicken Fighter**. Our focus was on getting the basic combat movement and enemy behavior working. There’s still a lot we want to add, like upgrades/mutations,a economy, and a egg hatching system where you can get different kinds of chickens. we also would like to add a fun interactive UI where the player manage can manage his fleet of mighty chickens. This prototype gave us a good start, and we are excited to keep working on it and make the game even better.
 
-While the current prototype is limited, it serves as a foundation for expanding the game's depth and providing a more dynamic and thrilling experience. As we continue development, we plan to implement various features like a combat system, lock-on mechanics, and environmental objects that can influence gameplay, with the ultimate goal of creating a fully immersive, fast-paced fighter.
-
-We welcome feedback, suggestions, and contributions as we work to refine and expand **Prototype Chicken Fighter** into a more complete and polished game.
-
-Thank you for taking the time to explore the prototype! Stay tuned for updates as we continue to develop and improve the game.

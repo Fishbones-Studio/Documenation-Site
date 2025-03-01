@@ -49,8 +49,13 @@ _Your mighty chicken fighter, ready for battle._
 
 ### Main Enemy
 
+The current main enemy is just an upside down chicken, using the same model as the player.
 ![Main Enemy](../../../assets/prototype/Enemy.png)
 _The current main enemy for our mighty chicken to fight against._
+
+### Prototype video
+
+![Prototype Video](/prototype/prototype_complete_video.gif)
 
 ## Code for Our Game
 

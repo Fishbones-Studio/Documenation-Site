@@ -257,7 +257,7 @@ The lock-on system will improve combat precision and make it easier for the play
 
 ---
 
-### 4. _Random Objects Around the Arena_
+### 3. _Random Objects Around the Arena_
 
 To make the arena more dynamic and challenging, we plan to introduce multiple **random objects** that can appear during combat. These objects will hinder the player's movement or provide new strategic opportunities for both the player and enemies.
 

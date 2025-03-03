@@ -18,7 +18,7 @@ const { SITE_URL, BASE_PATH } = loadEnv(
 export default defineConfig({
   integrations: [
     starlight({
-      title: "Fishbones Studio",
+      title: "Studio Fishbones",
       social: {
         github: "https://github.com/Fishbones-Studio",
         "x.com": "https://x.com/StudioFishbones",

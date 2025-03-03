@@ -1,7 +1,7 @@
 ---
 title: Prototype Chicken Fighter
 description: Our prototype for our chicken fighting game
-lastUpdated: 2025-02-20
+lastUpdated: 2025-03-01
 author: Cenker, Tjorn
 ---
 

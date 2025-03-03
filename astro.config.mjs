@@ -39,9 +39,13 @@ export default defineConfig({
         },
         {
           label: "Prototype",
-          autogenerate: { directory: "prototype"},
+          autogenerate: { directory: "prototype" },
         },
-        {        
+        {
+          label: "Pitches",
+          autogenerate: { directory: "pitches" },
+        },
+        {
           label: "Marketing",
           autogenerate: { directory: "marketing" },
         },

@@ -1,21 +1,22 @@
 ---
 title: Godot Setup
 description: A guide to the Godot setup
-lastUpdated: 2025-02-18
+lastUpdated: 2025-03-04
 author: Tjorn
 ---
 
 ## Godot
 
-Using Godot 4.3 and GDScript.
+Using Godot 4.4 and GDScript.
 
 ### Additional Setup Notes
 
-You can download and install Godot 4.3 from the [official website](https://godotengine.org/download/). Make sure to enable the necessary plugins in your project settings once Godot is installed.
-
-## Required plugins
-
-- [Godot Jolt](https://github.com/godot-jolt/godot-jolt)
+You can download and install Godot 4.4 from the [official website](https://godotengine.org/download/). Make sure to enable the necessary plugins in your project settings once Godot is installed.
+Make sure to also fetch the required submodules:
+```bash
+git submodule init  # Initializes the submodules (configures them)
+git submodule update # Fetches the content of the submodules and checks out the specified commits
+```
 
 ### Plugin Usage
 

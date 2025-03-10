@@ -6,7 +6,7 @@
 	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {}
-	}
+	},
 
 	// Features to add to the dev container. More info: https://containers.dev/fecatures.
 	// "features": {},
@@ -15,7 +15,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "yarn install",
+	"postCreateCommand": "pnpm install"
 
 	// Configure tool-specific properties.
 	// "customizations": {},

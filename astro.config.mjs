@@ -42,12 +42,8 @@ export default defineConfig({
           autogenerate: { directory: "prototype" },
         },
         {
-          label: "Pitches",
-          autogenerate: { directory: "pitches" },
-        },
-        {
-          label: "Marketing",
-          autogenerate: { directory: "marketing" },
+          label: "Fowl Play",
+          autogenerate: { directory: "fowl_play" },
         },
       ],
     }),

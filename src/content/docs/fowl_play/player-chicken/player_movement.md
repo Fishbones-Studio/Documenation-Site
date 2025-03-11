@@ -5,7 +5,7 @@ lastUpdated: 2025-03-11
 author: Tjorn
 ---
 ## Movement
-When playing as the chicken, the player is in the 3rd person. Movement is camera-relative, meaning the chicken will move in the direction the camera is facing. The speed and behavior of the chicken changes based on its current state.
+When playing as the chicken, the player experiences the game in third person. Movement is camera-relative, meaning the chicken will move in the direction the camera is facing. The speed and behavior of the chicken changes based on its current state.
 
 ### Controls
 #### Keyboard
@@ -276,19 +276,19 @@ func _on_dash_cooldown_timer_timeout():
 The `enter` method in the dash state demonstrates how state parameters are used to manage game mechanics:
 
 ###### Parameters Usage
-- `_previous_state`: Tracks which state the player was in before dashing, essential for returning to the appropriate state after the dash completes
-- `information` dictionary: Used to pass data between states and prevent infinite dash loops
+- `_previous_state`: Tracks which state the player was in before dashing, essential for returning to the appropriate state after the dash completes.
+- `information` dictionary: Used to pass data between states and prevent infinite dash loops.
 
 ###### Information Dictionary
 The `information` dictionary allows states to communicate. In the dash state it specifically:
 
-1. **Checks for repeated dashes**: When `information.get("dashed", false)` is true, the player has already performed a dash in this movement sequence
-2. **Communicates dash history**: Sets `information.set("dashed", true)` when transitioning back to prevent dash chaining
+1. **Checks for repeated dashes**: When `information.get("dashed", false)` is true, the player has already performed a dash in this movement sequence.
+2. **Communicates dash history**: Sets `information.set("dashed", true)` when transitioning back to prevent dash chaining.
 
 ###### Preventing Infinite Dashing
 The dash state is designed to prevent infinite or chain dashing for several important reasons:
 
-1. **Game Balance**: The dash allows players to strategically evade attacks and hazards. Infinite dashing would allow the player to bypass all challenge, breaking the core gameplay loop and difficulty balance.
+1. **Game Balance**: The dash allows players to strategically evade attacks and hazards. Infinite dashing would allow the player to bypass all challenges, breaking the core gameplay loop and difficulty balance.
 
 2. **Resource Management**: The stamina cost creates decisions about when to use the dash ability. Without limitations, this strategic element would be lost.
 
@@ -303,14 +303,14 @@ The three main constraints implemented to prevent infinite dashing are:
 
 ### Movement Calculation
 Movement is calculated based on player input and camera orientation:
-1. Input direction is captured using `get_player_input_dir()`
-2. This direction is transformed to world space using `get_player_direction()`
-3. The resulting vector is applied to player velocity, scaled by the state's movement speed
+1. Input direction is captured using `get_player_input_dir()`.
+2. This direction is transformed to world space using `get_player_direction()`.
+3. The resulting vector is applied to player velocity, scaled by the state's movement speed.
 
 ### State Transitions
 State transitions are triggered by the `SignalManager.player_transition_state` signal. When a state determines a transition should occur (e.g., player presses jump), it emits this signal with the target state and optional information.
 
 ## Implementation Notes
-- Each state should set an appropriate `movement_speed` value
-- Override `physics_process()` in derived states for custom movement behavior
-- Use `enter()` and `exit()` to handle state-specific setup and cleanup
+- Each state should set an appropriate `movement_speed` value.
+- Override `physics_process()` in derived states for custom movement behavior.
+- Use `enter()` and `exit()` to handle state-specific setup and cleanup.

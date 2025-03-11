@@ -9,20 +9,20 @@ When playing as the chicken, the player is in the 3rd person. Movement is camera
 
 ### Controls
 #### Keyboard
-- **WASD**: Basic movement (forward, backward, strafe left, strafe right)
+- **WASD**: Basic movement (forward, backward, left, right)
 - **Mouse**: Controlling the camera, and in turn player movement direction
 - **Space**: Jump/Glide
 - **Shift**: Sprint
-- **CTRL**: Dash/Special movement
+- **CTRL**: Dash
 #### Controller (Xbox buttons for reference)
-- **Left Joystick**: Basic movement (forward, backward, strafe left, strafe right)
+- **Left Joystick**: Basic movement (forward, backward, left, right)
 - **Right Joystick**: Controlling the camera, and in turn player movement direction
 - **A**: Jump/Glide
 - **L3/Left Click**: Sprint
-- **B**: Dash/Special movement
+- **B**: Dash
 
 ## States Overview
-The chicken player implements a state machine to manage different movement behaviors. Each state has its own logic for handling input, physics, and animations, with basic movement logic implemented in the parent state `
+The chicken player implements a state machine to manage different movement behaviors. Each state has its own logic for handling input, physics, and animations, with basic movement logic implemented in the parent state [`base_player_state.gd`](#base-player-state).
 
 ### Available States
 - **IDLE_STATE**: Default state when no movement input is detected
@@ -34,7 +34,24 @@ The chicken player implements a state machine to manage different movement behav
 - **HURT_STATE**: Temporary state when the player takes damage
 - **FALL_STATE**: When the player is falling without gliding
 
-### Player State Machine
+### State Decision
+Fowl Play is a 3D roguelike arena fighter where players control a chicken in underground fight rings. The movement states were chosen to support the core gameplay loop of arena combat, environmental hazard navigation, and strategic resource management:
+
+- **IDLE_STATE**: Serves as a clean transition point between other movement states. Allows the player to stand still for a moment, potentially hiding behind cover within the arena.
+
+- **WALK_STATE**: Offers predictable, controlled navigation needed for exploring the fight arena, approaching enemies carefully, and avoiding environmental hazards as mentioned in the [pitch document](/fowl_play/pitches/pitch_document/).
+
+- **SPRINT_STATE**: Implements the risk-reward philosophy central to the game's design. By draining stamina, sprinting creates decisions about when to use limited resources for quicker repositioning or escaping threats.
+
+- **JUMP_STATE** & **GLIDE_STATE**: Support vertical exploration and combat strategy in the multi-level arena environment. These states allow players to gain tactical advantages over the various enemy types and navigate over the hazards.
+
+- **DASH_STATE**: Provides critical evasive capabilities needed for the fast-paced combat encounters against progressively stronger enemies. The dash's stamina cost aligns with the game's resource management mechanics, forcing players to make quick strategic decisions during combat.
+
+- **HURT_STATE**: Reflects the punishing nature of underground fighting rings by interrupting player movement flow when taking damage, creating consequences for poor positioning or timing.
+
+- **FALL_STATE**: Ensures precise air control mechanics, and serves as a clean transition point between arial and grounded movement states.
+
+## Player State Machine
 ```gdscript
 ## State machine for the player movement system.
 ##
@@ -108,12 +125,12 @@ func _get_initial_state() -> BasePlayerState:
 	return starting_state if starting_state != null else get_child(0)
 ```
 
-## State Machine Implementation
+### State Machine Implementation
 
-### The State Pattern
+#### The State Pattern
 The player movement system uses the State pattern to organize different movement behaviors. This allows each state to handle its own physics, input, and transitions independently.
 
-### Base Player State
+#### Base Player State
 `base_player_state.gd` provides common functionality shared by all the player states. It extends from [`base_state.gd`](/fowl_play/important-code/important_code/#base-state), and provides additional typed `setup` and `enter` methods. The `setup` method passes in a reference to the player, so the states can apply movement to the player. The `enter` method passes in the previous state, and some optional additional information.
 
 ```gdscript
@@ -168,7 +185,7 @@ func get_player_direction(input_dir: Vector2) -> Vector3:
 	return (player_basis.x * input_dir.x + player_basis.z * input_dir.y).normalized()
 ```
 
-### Example Dash State
+#### Example Dash State
 `dash_state.gd` provides a quick burst of movement in a specific direction, consuming stamina. The dash duration and cooldown are set on a timer, so the player cannot infinitely dash.
 After the initial burst, dash movement is added in the `physics_process` method until the dash timer runs out. 
 
@@ -255,25 +272,25 @@ func _on_dash_cooldown_timer_timeout():
 
 ```
 
-#### Dash State Enter Method
+##### Dash State Enter Method
 The `enter` method in the dash state demonstrates how state parameters are used to manage game mechanics:
 
-##### Parameters Usage
+###### Parameters Usage
 - `_previous_state`: Tracks which state the player was in before dashing, essential for returning to the appropriate state after the dash completes
 - `information` dictionary: Used to pass data between states and prevent infinite dash loops
 
-##### Information Dictionary
+###### Information Dictionary
 The `information` dictionary allows states to communicate. In the dash state it specifically:
 
 1. **Checks for repeated dashes**: When `information.get("dashed", false)` is true, the player has already performed a dash in this movement sequence
 2. **Communicates dash history**: Sets `information.set("dashed", true)` when transitioning back to prevent dash chaining
 
-##### Preventing Infinite Dashing
+###### Preventing Infinite Dashing
 The dash state is designed to prevent infinite or chain dashing for several important reasons:
 
 1. **Game Balance**: The dash allows players to strategically evade attacks and hazards. Infinite dashing would allow the player to bypass all challenge, breaking the core gameplay loop and difficulty balance.
 
-2. **Resource Management**: The stamina cost creates meaningful decisions about when to use the dash ability. Without limitations, this strategic element would be lost.
+2. **Resource Management**: The stamina cost creates decisions about when to use the dash ability. Without limitations, this strategic element would be lost.
 
 3. **Skill Expression**: The cooldown system encourages players to time their dashes effectively rather than spamming the ability, creating a higher skill ceiling for players.
 

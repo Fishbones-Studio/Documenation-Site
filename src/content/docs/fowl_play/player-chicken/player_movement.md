@@ -1,7 +1,7 @@
 ---
-title: Chicken movement
+title: Chicken Movement
 description: Basic chicken player movement.
-lastUpdated: 2025-03-11
+lastUpdated: 2025-03-13
 author: Tjorn
 ---
 ## Movement

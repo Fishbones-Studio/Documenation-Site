@@ -1,7 +1,7 @@
 ---
-title: Important code
+title: Important Code
 description: Important code used in multiple places
-lastUpdated: 2025-03-11
+lastUpdated: 2025-03-13
 author: Tjorn
 ---
 

@@ -129,9 +129,14 @@ func _on_buy_item_pressed() -> void:
 	else:
 		print("Not enhough proseperity eggs.")
 		purchase_in_progress = false
-	```
+```
 
 ### ConfirmationPopup
+
+The confirmationpopup will be shown whenever an item-type is bought that already exists in the inventory. The player will normaly get the choice to either replace the excisting item in the inventory or cancel the transaction if they want to keep their item. When the player tries to buy a third ability they get to chose between the two existing abilities in the inventory on which on they want to replace.
+
+
+![ConfirmationPopup](../../../../assets/shop/confirmationpopup.png)
 
 
 
@@ -206,7 +211,6 @@ func get_random_item():
 ```
 In this script, early on I made the choice to use a Dictionairy to store all items in so that i could start testing the shop. This system to store all items will later on in the project ne replaced by resources. In this script I made a function ```func get_random_item()``` to return a random item keeping in mind what the rarity chances are.
 
-Combining these three aspects will generate a different shop everytime you enter it.
 
 
 

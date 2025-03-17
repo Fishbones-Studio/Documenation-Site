@@ -41,7 +41,7 @@ func refresh_shop():
 ```
 ### Item Template
 
-slot.set_item(random_item) refers to code inside of the Item_Template scene. In this function I assign the item data to the actual label inside of my item placeholder
+`slot.set_item(random_item)` refers to code inside of the Item_Template scene. In this function I assign the item data to the actual label inside of my item placeholder
 
 ```gdscript
 extends Control
@@ -56,6 +56,84 @@ func set_item(item):
 	item_cost.text = str(item.cost)
 
 ```
+The biggeste and most important script in the shop is the ```_on_buy_item_pressed()``` function in the item_template.gd script. This function will handle the buying an item and putting it in your inventory logic. Some of the decisions we made about inventory rules had big concequences on this method. We decided on capping all items on only one item per slot in the inventory. This means we have to check if an item of a certain type already exists in the inventory and if that is the case we give the user the choice to replace the existing item with the item you are trying to buy (More about the inventory under the Inventoy section). Another big decision that had concequences for this method is if there is a difference between abilities since the player is allowed to have 2 abilities. If there is no difference we have an exception for item type ability wich needs to be implemented in a way where the user can then proceed to chose to swap out a certain ability for another to maximise the ability to build your own kit. 
+
+In the function I start by checking if there is already a purchase in progress to make sure the player cannot place multiple orders at the same time causing bugs. Then I check if  the player has enough prosperity eggs to purchase the item. If the user has enough prosperity eggs I save the data of the item the player is trying to purchase in a variable. I then call upon the inventory to check if the item type I am trying to purchase already exists. I made an exception for the ability to check if there are already two abilities in the inventory. When the item already excists in the inventory I call upon the ConfirmationPopup scene to show a screen where the player gets to decide on if they want to keep their already purchased item or if they want to replace it for the new item they are trying to buy. When replacing an item or buying an item type that is not yet in your inventory the cost of the item will be substracted from the prosperity eggs amount and the item will be added to the inventory.
+
+```Gdscript
+func _on_buy_item_pressed() -> void:
+	
+	if purchase_in_progress:
+		return
+		
+	#Prevent the purchase from happening multiple times
+	purchase_in_progress = true
+	
+	if Gamemanager.prosperity_eggs >= int(item_cost.text):
+		var new_item = {
+			"name": item_name.text,
+			"type": item_type.text,
+			"cost": int(item_cost.text)
+		}
+		
+		var existing_item = Inventory.get_item_by_type(new_item.type)
+		
+		#Special case for ability type
+		if new_item.type == "Ability":
+			#check if ability already exists in inventory
+			var existing_ability = Inventory.get_item_by_name(new_item.name)
+			if existing_ability != null:
+				print("Cannot buy the same ability twice!")
+				purchase_in_progress = false
+				return
+				
+			if existing_item == null:
+				existing_item = []
+			elif existing_item is Dictionary:
+				existing_item = [existing_item]
+				
+			if existing_item.size() < 2:
+				Inventory.add_item(new_item)
+				Gamemanager.update_prosperity_eggs(-int(item_cost.text))	
+				print("item bought")
+				purchase_in_progress = false
+				return
+			else:
+				#Disconnect any previous signal
+				_disconnect_confirmation_signals()
+				
+				ConfirmationPopup.confirmed.connect(_on_confirmation_accepted)
+				ConfirmationPopup.canceled.connect(_on_confirmation_canceled)
+				
+				ConfirmationPopup.show_confirmation(existing_item, new_item)
+			
+		#for non-ability types and type ability that has 2 in inventory		
+		elif existing_item:
+			if ConfirmationPopup:
+				_disconnect_confirmation_signals()
+				
+				ConfirmationPopup.confirmed.connect(_on_confirmation_accepted)
+				ConfirmationPopup.canceled.connect(_on_confirmation_canceled)
+				
+				ConfirmationPopup.show_confirmation(existing_item, new_item)
+			
+			else:
+				print("Error: Confirmation popup not found!")
+		
+		else:
+			Inventory.add_item(new_item)
+			Gamemanager.update_prosperity_eggs(-int(item_cost.text))
+			print("Item Bought!")
+			purchase_in_progress = false
+		
+	else:
+		print("Not enhough proseperity eggs.")
+		purchase_in_progress = false
+	```
+
+### ConfirmationPopup
+
+
 
 ### Item Database
 
@@ -126,6 +204,10 @@ func get_random_item():
 		
 			
 ```
+In this script, early on I made the choice to use a Dictionairy to store all items in so that i could start testing the shop. This system to store all items will later on in the project ne replaced by resources. In this script I made a function ```func get_random_item()``` to return a random item keeping in mind what the rarity chances are.
+
+Combining these three aspects will generate a different shop everytime you enter it.
+
 
 
 

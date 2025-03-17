@@ -53,6 +53,10 @@ export default defineConfig({
               autogenerate: { directory: "fowl_play/project-plan" },
             },
             {
+              label: "Marketing",
+              autogenerate: { directory: "fowl_play/marketing" },
+            },
+            {
               label: "Important Code",
               autogenerate: { directory: "fowl_play/important-code" },
             },

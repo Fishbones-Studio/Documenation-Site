@@ -59,6 +59,10 @@ export default defineConfig({
             {
               label: "Player Chicken",
               autogenerate: { directory: "fowl_play/player-chicken" },
+            },
+            {
+              label: "Camera System",
+              autogenerate: { directory: "fowl_play/camera" },
             }
             // Future sections to add as content is developed:
             // - Combat System

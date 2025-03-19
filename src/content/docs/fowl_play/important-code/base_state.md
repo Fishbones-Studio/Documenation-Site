@@ -1,7 +1,7 @@
 ---
-title: Important Code
-description: Important code used in multiple places
-lastUpdated: 2025-03-13
+title: Base State
+description: This document provides an overview of the `base_state.gd` script, which is used for all state machine states.
+lastUpdated: 2025-03-17
 author: Tjorn
 ---
 

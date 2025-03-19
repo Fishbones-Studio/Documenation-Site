@@ -1,5 +1,5 @@
 ---
-title: Shop implementation FowlPlay
+title: Shop implementation Fowl Play
 description: Our implementation of the shop
 lastUpdated: 2025-03-13
 author: Nick Frietman

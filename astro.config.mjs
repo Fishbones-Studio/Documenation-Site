@@ -67,6 +67,10 @@ export default defineConfig({
             {
               label: "Camera System",
               autogenerate: { directory: "fowl_play/camera" },
+            },
+            {
+              label: "Game Progression",
+              autogenerate: { directory: "fowl_play/game-progression" },
             }
             // Future sections to add as content is developed:
             // - Combat System

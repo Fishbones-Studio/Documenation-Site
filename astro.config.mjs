@@ -93,7 +93,7 @@ export default defineConfig({
                   ],
                 },
                 {
-                  label: "Camera System",
+                  label: "Camera",
                   autogenerate: { directory: "fowl_play/gameplay/camera" },
                 },
                 {

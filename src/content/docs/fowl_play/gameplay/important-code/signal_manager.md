@@ -40,21 +40,21 @@ signal add_game_scene(scene_path: String) ## This signal is used to add an (addi
 
 ### Player Signals
 
-| Signal | Parameters | Purpose |
-|--------|------------|---------|
-| `player_transition_state` | `target_state: PlayerEnums.PlayerStates, information: Dictionary` | Triggers player state changes |
-| `init_health` | `max_health: int, health: int` | Initializes player health values |
-| `hurt_player` | `damage: int` | Applies damage to the player |
-| `init_stamina` | `max_stamina: float, stamina: float` | Initializes player stamina values |
+| Signal                    | Parameters                                                        | Purpose                           |
+| ------------------------- | ----------------------------------------------------------------- | --------------------------------- |
+| `player_transition_state` | `target_state: PlayerEnums.PlayerStates, information: Dictionary` | Triggers player state changes     |
+| `init_health`             | `max_health: int, health: int`                                    | Initializes player health values  |
+| `hurt_player`             | `damage: int`                                                     | Applies damage to the player      |
+| `init_stamina`            | `max_stamina: float, stamina: float`                              | Initializes player stamina values |
 
 ### Scene Management Signals
 
-| Signal | Parameters | Purpose |
-|--------|------------|---------|
-| `switch_ui_scene` | `scene_path: String` | Replaces all current UI elements with a new UI scene |
-| `add_ui_scene` | `scene_path: String` | Adds an additional UI scene without removing existing ones |
-| `switch_game_scene` | `scene_path: String` | Replaces the current game scene with a new one |
-| `add_game_scene` | `scene_path: String` | Adds an additional game scene (unused in current implementation) |
+| Signal              | Parameters           | Purpose                                                          |
+| ------------------- | -------------------- | ---------------------------------------------------------------- |
+| `switch_ui_scene`   | `scene_path: String` | Replaces all current UI elements with a new UI scene             |
+| `add_ui_scene`      | `scene_path: String` | Adds an additional UI scene without removing existing ones       |
+| `switch_game_scene` | `scene_path: String` | Replaces the current game scene with a new one                   |
+| `add_game_scene`    | `scene_path: String` | Adds an additional game scene (unused in current implementation) |
 
 ## Usage Examples
 
@@ -80,7 +80,7 @@ To listen for signals, connect a function to the relevant signal:
 ```gdscript
 func _ready():
     SignalManager.hurt_player.connect(_on_player_hurt)
-    
+
 func _on_player_hurt(damage: int):
     print("Player took %d damage" % damage)
     # Process damage logic
@@ -95,4 +95,4 @@ func _on_player_hurt(damage: int):
 
 ## Related Documentation
 
-For specific information about how the Scene Manager and UI Manager use these signals, see the [Scene Management documentation](/fowl_play/important-code/scene_manager/).
+For specific information about how the Scene Manager and UI Manager use these signals, see the [Scene Management documentation](/fowl_play/gameplay/important-code/scene_manager/).

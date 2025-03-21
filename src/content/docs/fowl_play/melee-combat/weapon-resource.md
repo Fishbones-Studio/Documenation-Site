@@ -67,7 +67,7 @@ func _init() -> void:
 #### 1. Create a new Weapon Resource
 - In the FileSystem, right-click and select New Resource.
 - Choose WeaponResource as the resource type.
-- Save it as a .tres file (for example, sword.tres).
+- Save it as a `.tres` file (for example, sword.tres).
 
 #### 2. Edit the weapon properties
 - Open the newly created resource.

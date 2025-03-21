@@ -70,6 +70,7 @@ func _ready() -> void:
 ### Scene Switching
 
 When the signal to switch scenes is received, the manager:
+
 1. Removes all existing child nodes
 2. Loads and adds the new scene
 
@@ -85,6 +86,7 @@ func _on_switch_game_scene(scene_path: String) -> void:
 ### Scene Loading
 
 The Scene Manager loads new scenes from a provided path:
+
 1. Loads the scene resource
 2. Verifies it's a valid PackedScene
 3. Instantiates the scene
@@ -162,9 +164,10 @@ func _on_add_ui_scene(new_ui_scene_path: String) -> void:
 ### Initialization
 
 On ready, the UI Manager:
+
 1. Connects to the relevant signals from the SignalManager
 2. Loads the initial UI scene if one is specified
-    - Currently, the initial UI scene is the Main Menu
+   - Currently, the initial UI scene is the Main Menu
 
 ```gdscript
 func _ready():
@@ -177,6 +180,7 @@ func _ready():
 ### UI Scene Switching
 
 Similar to the Scene Manager, when the signal to switch UI scenes is received, the manager:
+
 1. Removes all existing UI elements
 2. Loads and adds the new UI scene
 
@@ -187,11 +191,13 @@ The UI Manager can also add UI scenes without removing existing ones, allowing f
 ## Usage
 
 To switch to a new UI scene:
+
 ```gdscript
 SignalManager.switch_to_ui_scene.emit("uid://your_ui_scene.tscn")
 ```
 
 To add a UI scene without removing existing ones:
+
 ```gdscript
 SignalManager.add_ui_scene.emit("uid://your_ui_scene.tscn")
 ```
@@ -200,14 +206,14 @@ SignalManager.add_ui_scene.emit("uid://your_ui_scene.tscn")
 
 The Scene and UI Managers rely on signals defined in the Signal Manager to function. Here are the key signals related to scene management:
 
-| Signal | Purpose |
-|--------|---------|
-| `switch_ui_scene` | Replaces all current UI elements with a new UI scene |
-| `add_ui_scene` | Adds an additional UI scene without removing existing ones |
-| `switch_game_scene` | Replaces the current game scene with a new one |
-| `add_game_scene` | Adds an additional game scene (not currently used in Scene Manager) |
+| Signal              | Purpose                                                             |
+| ------------------- | ------------------------------------------------------------------- |
+| `switch_ui_scene`   | Replaces all current UI elements with a new UI scene                |
+| `add_ui_scene`      | Adds an additional UI scene without removing existing ones          |
+| `switch_game_scene` | Replaces the current game scene with a new one                      |
+| `add_game_scene`    | Adds an additional game scene (not currently used in Scene Manager) |
 
-For more information about other signals and the Signal Manager system, see the [Signal Manager documentation](/fowl_play/important-code/signal_manager/).
+For more information about other signals and the Signal Manager system, see the [Signal Manager documentation](/fowl_play/gameplay/important-code/signal_manager/).
 
 # Architecture Overview
 
@@ -218,6 +224,7 @@ The game's scene management architecture consists of three main components:
 3. **Signal Manager** - An autoload that facilitates communication between components
 
 This separation of concerns allows for:
+
 - Clear distinction between gameplay and UI elements
 - Independent switching of gameplay scenes without affecting the UI
 - Dynamic layering of UI elements when needed

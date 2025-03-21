@@ -29,7 +29,7 @@ For easy linking, we created a [**Linktree**](https://linktr.ee/studiofishbones)
 #### Poll
 
 The choice for the social media platforms was decided within the group, using a poll.
-![Social media creation poll](../../../../assets/social_media/social_media_creation_poll.png)
+![Social media creation poll](../../../../../assets/social_media/social_media_creation_poll.png)
 
 ### Video-Centric Platforms
 

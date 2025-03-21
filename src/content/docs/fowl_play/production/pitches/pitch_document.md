@@ -156,7 +156,7 @@ The main hub area, where the Poultry Man manages the chicken, is designed as a d
 
 ### Mood board
 
-![Mood board Fowl Play](../../../../assets/pitches/moodboard.png)
+![Mood board Fowl Play](../../../../../assets/pitches/moodboard.png)
 
 #### Aesthetic
 
@@ -164,7 +164,7 @@ For the aesthetic, we want to create a dirty looking, underground hub where the 
 
 #### The Chicken
 
-![Aesthetic references](../../../../assets/pitches/aesthetic.png)
+![Aesthetic references](../../../../../assets/pitches/aesthetic.png)
 
 \
 The entire game will be made using low poly models. Since the concept of the game is grim, we want to make it a bit more lighthearted by designing the chickens as goofy looking with big offset eyes. The texturing of the chickens itself will be cartoonish, mainly because of the low poly style we’re going with, but we also want to add stains/blood to help with visual storytelling.
@@ -179,7 +179,7 @@ Around the fight area, there will be chain fences to amplify the feeling of bein
 
 For the main hub we really want a simple grim, easy to interact with design. To envision this concept, we made quick concept art using PhotoShop and existing images.
 
-![References Chicken Model](../../../../assets/pitches/chicken.png)
+![References Chicken Model](../../../../../assets/pitches/chicken.png)
 
 The Poultry Man will stay as a mysterious figure, only showing their arms and hands in the menu. We try to keep the menu simple, yet effective, and keep it within the whole aesthetic of the game.
 

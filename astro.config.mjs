@@ -45,40 +45,76 @@ export default defineConfig({
           label: "Fowl Play",
           items: [
             {
-              label: "Pitches",
-              autogenerate: { directory: "fowl_play/pitches" },
+              label: "Production",
+              items: [
+                {
+                  label: "Pitches",
+                  autogenerate: { directory: "fowl_play/production/pitches" },
+                },
+                {
+                  label: "Project Plan",
+                  autogenerate: {
+                    directory: "fowl_play/production/project-plan",
+                  },
+                },
+                {
+                  label: "Marketing",
+                  autogenerate: { directory: "fowl_play/production/marketing" },
+                },
+              ],
             },
             {
-              label: "Project Plan",
-              autogenerate: { directory: "fowl_play/project-plan" },
+              label: "Design",
+              autogenerate: { directory: "fowl_play/design" }, // Currently empty
             },
             {
-              label: "Marketing",
-              autogenerate: { directory: "fowl_play/marketing" },
+              label: "Art",
+              autogenerate: { directory: "fowl_play/art" }, // Currently empty
             },
             {
-              label: "Important Code",
-              autogenerate: { directory: "fowl_play/important-code" },
+              label: "Gameplay",
+              items: [
+                {
+                  label: "Important Code",
+                  autogenerate: {
+                    directory: "fowl_play/gameplay/important-code",
+                  },
+                },
+                {
+                  label: "Player",
+                  items: [
+                    {
+                      label: "Chicken Player",
+                      autogenerate: {
+                        directory: "fowl_play/gameplay/player/player-chicken",
+                      },
+                    },
+                    // Poultry man here
+                  ],
+                },
+                {
+                  label: "Camera",
+                  autogenerate: { directory: "fowl_play/gameplay/camera" },
+                },
+                {
+                  label: "Game Progression",
+                  autogenerate: {
+                    directory: "fowl_play/gameplay/game-progression",
+                  },
+                },
+                {
+                  label: "Combat",
+                  items: [
+                    {
+                      label: "Melee",
+                      autogenerate: {
+                        directory: "fowl_play/gameplay/combat/melee-combat",
+                      },
+                    },
+                  ],
+                },
+              ],
             },
-            {
-              label: "Player Chicken",
-              autogenerate: { directory: "fowl_play/player-chicken" },
-            },
-            {
-              label: "Camera System",
-              autogenerate: { directory: "fowl_play/camera" },
-            },
-            {
-              label: "Game Progression",
-              autogenerate: { directory: "fowl_play/game-progression" },
-            }
-            // Future sections to add as content is developed:
-            // - Combat System
-            // - Enemies
-            // - Arena
-            // - Mutations & Upgrades
-            // - Poultry Man & UI
-            
           ],
         },
       ],

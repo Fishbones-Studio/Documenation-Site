@@ -1,7 +1,7 @@
 ---
 title: Melee Weapon Resource
 description: Manages weapon stats and its model.
-lastUpdated: 2025-03-16
+lastUpdated: 2025-03-21
 author: Cenker
 ---
 

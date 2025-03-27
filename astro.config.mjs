@@ -52,9 +52,9 @@ export default defineConfig({
                   autogenerate: { directory: "fowl_play/production/pitches" },
                 },
                 {
-                  label: "Project Plan",
+                  label: "Planning",
                   autogenerate: {
-                    directory: "fowl_play/production/project-plan",
+                    directory: "fowl_play/production/planning",
                   },
                 },
                 {

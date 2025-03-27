@@ -79,7 +79,7 @@ Each sprint lasts two weeks, to make sure meetings are regular but not overwhelm
   <tr>
    <td>Sprint 2</td>
    <td>14 April 2025</td>
-   <td>15 April 2025</td>
+   <td>25 April 2025</td>
   </tr>
   <tr>
    <td>Sprint 3</td>
@@ -1009,14 +1009,27 @@ Acceptance Criteria
 1. Visual effects for when the player’s character has died.
 2. Custom visual effects for different attacks (e.g., melee and ranged weapons) and weapon types.
 
-As a player, I want the player to be able to interact with enemies, so …. [either masking, or grouping, or both]
+### Combat crosshair
 
-As a player, I want the player to be able to interact with the environment, so … [either masking, or grouping, or both | scope too big, specify environment]
+As a player, I want to have a visible crosshair, so that I know where my attacks are aimed at.
 
-As a player, I want the player to be able to interact with projectiles, so .. [either masking, or grouping, or both | scope too big, specify which projectiles: enemy, player, sth else]
+Acceptance Criteria 
 
-As a player, I want attacks to have cooldown, so … [scope too big, define attacks, and cooldown duration] [Weapons epic?]
+1. The crosshair should be positioned at the center of the screen and move along the camera.
 
-As a player, I want attacks to have a windup, so … [scope too big, define attacks, and windup duration] [Weapons epic?]
+### Weapon windup
 
-Crosshair
+As a player, I want weapons to have a windup, so that there is enough time to play the animations for the weapon.
+
+Acceptance Criteria 
+
+1. Each weapon should have a windup property.
+2. While in the windup state, the startup animation for the weapon should be played.
+
+### Weapon cooldown
+
+As a player, I want weapons to have a cooldown, so that the player can’t spam their attacks and the gameplay is more balanced.
+
+Acceptance Criteria 
+
+1. Each weapon should have a cooldown property.

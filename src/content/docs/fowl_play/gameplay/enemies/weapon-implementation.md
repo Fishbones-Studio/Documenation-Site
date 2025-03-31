@@ -1,3 +1,10 @@
+---
+title: Enemy melee weapon implementation
+description: First implementation of the enemy weapon
+lastUpdated: 2025-03-31
+author: Bastiaan
+---
+
 ## Description
 Added weapon instance to the enemy so the enemy has a weapon it holds. It uses the stats given in the weapon scene. This allows the enemy to deal damage. Current implementation is somewhat limited as seen in the enemy attack script.
 

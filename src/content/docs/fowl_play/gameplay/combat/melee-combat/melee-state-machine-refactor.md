@@ -1,5 +1,5 @@
 ---
-title: Melee Weapon State Machine
+title: Melee Weapon State Machine Refactored
 description: Handles the melee weapon's combat states and transitions.
 lastUpdated: 2025-03-31
 author: Bastiaan

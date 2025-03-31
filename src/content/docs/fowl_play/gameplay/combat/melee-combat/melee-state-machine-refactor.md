@@ -97,11 +97,10 @@ func _attack() -> void:
 			enemy.take_damage(weapon.current_weapon.damage)
 ```
 **Cooldown state:**
-## CooldownState: The weapon is cooling down after an attack.
 ```gdscript
 class_name CooldownState
 extends BaseCombatState
-
+## CooldownState: The weapon is cooling down after an attack.
 # Constants
 const STATE_TYPE: int = WeaponEnums.MeleeState.COOLDOWN  # Defines this state as COOLDOWN
 # Variables

@@ -1,5 +1,5 @@
 ---
-title: enemy ai State Machine
+title: Enemy AI State Machine
 description: Handles the actions of the enemies and transitions between behaviours.
 lastUpdated: 2025-03-31
 author: Bastiaan

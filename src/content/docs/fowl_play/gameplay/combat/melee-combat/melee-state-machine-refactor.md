@@ -1,16 +1,17 @@
 ---
-title: Melee Weapon State Machine
+title: Melee Weapon State Machine Refactor
 description: Handles the melee weapon's combat states and transitions.
 lastUpdated: 2025-03-31
 author: Bastiaan
 ---
 
-## Overview
+## Description
 We refactored the code of the states within the melee state machine. This was done to simplify and optimise the code as some flaws were found in the code.
 For this we made some timer objects coupled to the required states in instead of remaking new timers each time we enter the function.
 
 ## Code implementation
 **Base attack state:**
+Sets the base functions for the other states as well as some important variables used in other classes.
 ```gdscript
 class_name BaseCombatState
 extends BaseState
@@ -29,6 +30,7 @@ func enter(_previous_state, _information: Dictionary[String, float] = {}) -> voi
 	pass
 ```
 **Idle state:**
+This state is used to reset the weapon and wait on the trigger to attack.
 ```gdscript
 ## IdleState: The weapon is idle and waiting for input.
 class_name IdleState
@@ -44,7 +46,41 @@ func input(event: InputEvent) -> void:
 		# Switch to the WINDUP state when attacking
 		SignalManager.combat_transition_state.emit(WeaponEnums.MeleeState.WINDUP)
 ```
+**Windup state:**
+Uses a timer to give a windup time before the attack takes place. Can be used with heavier weapons to give a feeling of more impact. Could add extra animation later. After the timer runs out transition to the attack state.
+```gdscript
+## WindupState: The weapon is preparing to attack.
+class_name WindupState
+extends BaseCombatState
+
+# Constants
+const STATE_TYPE: int = WeaponEnums.MeleeState.WINDUP
+# Variables
+@onready var windup_timer: Timer = %WindupTimer
+
+
+# When entering this state, start the windup timer
+func enter(_previous_state, _information: Dictionary[String, float] = {}) -> void:
+	if weapon.current_weapon.windup_time <= 0:
+		SignalManager.combat_transition_state.emit(WeaponEnums.MeleeState.ATTACKING)
+		return
+	elif weapon.current_weapon.windup_time > 0:
+		windup_timer.wait_time = weapon.current_weapon.windup_time
+		windup_timer.start()
+
+
+# When exiting this state, stop the windup timer
+func exit() -> void:
+	if windup_timer:
+		windup_timer.stop()
+
+
+# When the windup timer runs out, switch to the ATTACKING state
+func _on_windup_timer_timeout() -> void:
+	SignalManager.combat_transition_state.emit(WeaponEnums.MeleeState.ATTACKING)
+```
 **Attack state:**
+Uses a timer to give time for the attack animation to take place. Also checks for collision with objects to deal damage. When the timer runs out transitions to the cooldown state.
 ```gdscript
 ## AttackingState: The weapon is actively attacking.
 class_name AttackingState
@@ -97,6 +133,7 @@ func _attack() -> void:
 			enemy.take_damage(weapon.current_weapon.damage)
 ```
 **Cooldown state:**
+Uses timer for end delay after the attack. This gives some recovery time to attacks. After the timer finishes transition to the idle state.
 ```gdscript
 class_name CooldownState
 extends BaseCombatState
@@ -122,36 +159,4 @@ func exit() -> void:
 # When the cooldown timer runs out, switch back to the IDLE state
 func _on_cooldown_timer_timeout() -> void:
 	SignalManager.combat_transition_state.emit(WeaponEnums.MeleeState.IDLE)
-```
-**Windup state:**
-```gdscript
-## WindupState: The weapon is preparing to attack.
-class_name WindupState
-extends BaseCombatState
-
-# Constants
-const STATE_TYPE: int = WeaponEnums.MeleeState.WINDUP
-# Variables
-@onready var windup_timer: Timer = %WindupTimer
-
-
-# When entering this state, start the windup timer
-func enter(_previous_state, _information: Dictionary[String, float] = {}) -> void:
-	if weapon.current_weapon.windup_time <= 0:
-		SignalManager.combat_transition_state.emit(WeaponEnums.MeleeState.ATTACKING)
-		return
-	elif weapon.current_weapon.windup_time > 0:
-		windup_timer.wait_time = weapon.current_weapon.windup_time
-		windup_timer.start()
-
-
-# When exiting this state, stop the windup timer
-func exit() -> void:
-	if windup_timer:
-		windup_timer.stop()
-
-
-# When the windup timer runs out, switch to the ATTACKING state
-func _on_windup_timer_timeout() -> void:
-	SignalManager.combat_transition_state.emit(WeaponEnums.MeleeState.ATTACKING)
 ```

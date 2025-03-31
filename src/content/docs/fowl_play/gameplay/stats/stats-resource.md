@@ -4,12 +4,12 @@ description: Defines statistics used on enemies and player alike.
 lastUpdated: 2025-03-31
 author: Bastiaan
 ---
-|
+
 ## Description
 This resource defines the base statistics for players and enemies. It also adds functions for healing and draining health and stamina. This resource allows quicker implementation of new enemies and editing statistics for the player. Displaying these statistics is for future implementation.
 
 ## Implementation
-```gdcsript
+```gdscript
 class_name LivingEntityStats
 extends Resource
 

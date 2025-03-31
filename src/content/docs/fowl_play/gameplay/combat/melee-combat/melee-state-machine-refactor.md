@@ -9,7 +9,7 @@ author: Bastiaan
 We refactored the code of the states within the melee state machine. This was done to simplify and optimise the code as some flaws were found in the code.
 For this we made some timer objects coupled to the required states in instead of remaking new timers each time we enter the function.
 
-## Code impllementation
+## Code implementation
 **Base attack state:**
 ```gdscript
 class_name BaseCombatState

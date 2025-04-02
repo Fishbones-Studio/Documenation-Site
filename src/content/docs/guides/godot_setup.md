@@ -1,7 +1,7 @@
 ---
 title: Godot Setup
 description: A guide to the Godot setup
-lastUpdated: 2025-04-01
+lastUpdated: 2025-04-02
 author: Tjorn
 ---
 

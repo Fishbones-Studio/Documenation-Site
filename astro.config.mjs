@@ -84,18 +84,6 @@ export default defineConfig({
                   },
                 },
                 {
-                  label: "Player",
-                  items: [
-                    {
-                      label: "Chicken Player",
-                      autogenerate: {
-                        directory: "fowl_play/gameplay/player/player-chicken",
-                      },
-                    },
-                    // Poultry man here
-                  ],
-                },
-                {
                   label: "Camera",
                   autogenerate: { directory: "fowl_play/gameplay/camera" },
                 },
@@ -112,6 +100,29 @@ export default defineConfig({
                       label: "Melee",
                       autogenerate: {
                         directory: "fowl_play/gameplay/combat/melee-combat",
+                      },
+                    },
+                  ],
+                },
+                {
+                  label: "Entities",
+                  items: [
+                    {
+                      label: "Enemies",
+                      autogenerate: {
+                        directory: "fowl_play/gameplay/entities/enemies",
+                      },
+                    },
+                    {
+                      label: "Player Chicken",
+                      autogenerate: {
+                        directory: "fowl_play/gameplay/entities/player/player-chicken",
+                      },
+                    },
+                    {
+                      label: "Stats",
+                      autogenerate: {
+                        directory: "fowl_play/gameplay/entities/stats",
                       },
                     },
                   ],

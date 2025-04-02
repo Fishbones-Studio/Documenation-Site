@@ -29,8 +29,11 @@ export default defineConfig({
         {
           label: "Guides",
           items: [
-            // Each item here is one entry in the navigation menu.
             { label: "Godot Setup", slug: "guides/godot_setup" },
+            {
+              label: "Creating melee weapons",
+              slug: "guides/create_melee_weapon",
+            },
           ],
         },
         {
@@ -69,7 +72,12 @@ export default defineConfig({
             },
             {
               label: "Art",
-              autogenerate: { directory: "fowl_play/art" }, // Currently empty
+              items: [
+                {
+                  label: "Music",
+                  autogenerate: { directory: "fowl_play/art/music" },
+                },
+              ],
             },
             {
               label: "Gameplay",
@@ -119,7 +127,8 @@ export default defineConfig({
                     {
                       label: "Player Chicken",
                       autogenerate: {
-                        directory: "fowl_play/gameplay/entities/player/player-chicken",
+                        directory:
+                          "fowl_play/gameplay/entities/player/player-chicken",
                       },
                     },
                     {

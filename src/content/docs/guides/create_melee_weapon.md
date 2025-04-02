@@ -50,8 +50,7 @@ Within the `entities/weapons/melee_weapons/melee_weapon_models` folder, there is
    - Assign the `AnimationPlayer` to the appropriate property
    - Create a new `MeleeWeaponResource` under the "Current Weapon" property
      - Fill in the fields.
-       - **Model Uid**: It is important to copy over the UID of the weapon scene, for save/load functionality
-
+       - **Model UID**: It is important to copy over the UID of the weapon scene, for save/load functionality
 4. **Save the resource file (Recommended)**
 
    - Save the `MeleeWeaponResource` as a `.tres` file in the same folder

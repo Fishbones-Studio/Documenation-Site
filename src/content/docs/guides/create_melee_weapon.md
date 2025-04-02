@@ -1,7 +1,7 @@
 ---
 title: Create Melee Weapon
 description: A guide to creating melee weapons
-lastUpdated: 2025-04-01
+lastUpdated: 2025-04-02
 author: Tjorn
 ---
 

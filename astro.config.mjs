@@ -29,8 +29,11 @@ export default defineConfig({
         {
           label: "Guides",
           items: [
-            // Each item here is one entry in the navigation menu.
             { label: "Godot Setup", slug: "guides/godot_setup" },
+            {
+              label: "Creating melee weapons",
+              slug: "guides/create_melee_weapon",
+            },
           ],
         },
         {

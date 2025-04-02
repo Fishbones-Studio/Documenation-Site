@@ -23,7 +23,7 @@ git submodule update # Fetches the content of the submodules and checks out the 
 
 To configure the plugins:
 
-1. Install the plugin via the asset browser.
-   > You can also manually install the plugins by adding them to the 'addons' folder.
-2. Restart Godot to finalize the changes.
-   > Certain plugins might require additional setup. Read their documentation to be sure.
+1. Install the plugin via the asset browser:
+   a. Alternatively, manually install the plugins by adding them to the `addons` folder.
+2. Restart Godot to finalize the changes:
+   a. Note that certain plugins might require additional setup. Refer to their documentation for details.

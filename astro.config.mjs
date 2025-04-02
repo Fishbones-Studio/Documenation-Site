@@ -98,6 +98,12 @@ export default defineConfig({
                     directory: "fowl_play/gameplay/game-progression",
                   },
                 },
+                  {
+                    label: "User Interface",
+                    autogenerate: {
+                      directory: "fowl_play/gameplay/user-interface",
+                    },
+                  },
                 {
                   label: "Combat",
                   items: [

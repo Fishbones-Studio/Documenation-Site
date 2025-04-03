@@ -24,6 +24,8 @@ Handles game pausing/unpausing and features an animated 3D chicken characters, d
 
 
 ### UI Elements
+**GIF:**
+![pause menu](/ui/pause-menu.gif)
 
 | Node      | Type      | Description   |
 |-----------|-----------|---------------|

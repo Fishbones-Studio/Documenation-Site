@@ -5,7 +5,7 @@ lastUpdated: 2025-04-03
 author: Sly
 ---
 
-Handles game pausing/unpausing and features an animated 3D chicken characters, dynamic button visibility, smooth transitions, and focus handling.
+Handles game pausing/unpausing and features an animated 3D chicken character, dynamic button visibility, smooth transitions, and focus handling.
 
 **Key Components:**
 - `PauseMenu.gd`: Main controller script
@@ -15,7 +15,7 @@ Handles game pausing/unpausing and features an animated 3D chicken characters, d
 
 | Property	            | Type	            | Description   |
 |-----------------------|-------------------|---------------|
-| chicken	            | Node3D	        | The 3D chicken character to animate during pause |
+| chicken	            | Node3D	        | The 3D chicken character to animate during paused state |
 | camera	            | Camera3D	        | Game camera to adjust during pause animations |
 | footer	            | PanelContainer	| Bottom menu panel that slides in (not used)|
 | game_logo_container   | MarginContainer	| Logo container with hover effects |
@@ -69,7 +69,7 @@ func _input(event: InputEvent) -> void:
 
 **Key Features:**
 - Toggles pause on `pause` action in the input mappings. (default key is ESC)
-- Preservers the previous mouse mode before entering this node.
+- Preserves the previous mouse mode before entering this node.
 - Auto-focuses on the resume button.
 - Triggers the 3d chicken animation when entering this node.
 

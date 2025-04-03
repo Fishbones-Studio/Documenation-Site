@@ -2,7 +2,7 @@
 title: Pause Menu
 description: A menu when the game is paused.
 lastUpdated: 2025-04-03
-author: Sly Moertanom
+author: Sly
 ---
 
 Handles game pausing/unpausing and features an animated 3D chicken characters, dynamic button visibility, smooth transitions, and focus handling.

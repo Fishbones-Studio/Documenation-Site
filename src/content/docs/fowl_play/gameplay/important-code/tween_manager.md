@@ -2,7 +2,7 @@
 title: Tween Manager
 description: Global tween management system.
 lastUpdated: 2025-04-03
-author: Sly Moertanom
+author: Sly
 ---
 `TweenManager` is an autoload (singleton) utility class that provides a standardized way for creating and managing tweens. It simplifies tween creation with sensible defaults while maintaining flexibility for custom animations.
 

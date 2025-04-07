@@ -7,13 +7,13 @@ author: Tjorn
 
 ## Technical Specifications
 
-| Specification | Details          |
-| ------------- | ---------------- |
-| Software      | FL Studio 24     |
-| Plugins       | Stock plugins    |
-| BPM           | 100              |
-| Length        | 5:49 minutes     |
-| Purpose       | Ambience, lonely |
+| Specification | Details                                      |
+| ------------- | -------------------------------------------- |
+| Software      | FL Studio 24                                 |
+| Plugins       | Stock plugins, UVI Workstation               |
+| BPM           | 100                                          |
+| Length        | 5:49 minutes                                 |
+| Purpose       | Ambience, sense of loneliness and desolation |
 
 ## Philosophy
 
@@ -31,13 +31,24 @@ The music’s sparse and minimal design fits with its area:
 
 ## Musical Parts
 
-The Poultry Man Menu Theme is structured around a simple yet effective layering system:
+The Poultry Man Menu Theme is structured around a layering system:
 
-1. **Base Layer**: A continuous wind sound forms the backdrop. Subtle variation in notes ensure the wind sound varies and doesn't become too tiring.
+1. **Base Layer**: A continuous wind sound forms the backdrop. Subtle variation in notes ensures the wind sound varies and doesn't become too tiring.
 2. **Ambient Tracks**: Currently, three distinct tracks are randomly triggered over the base layer. While they share similar instrumentation, each features unique chord progressions and arrangements to add variety and depth. The ambient tracks are designed to complement the base layer, enhancing the overall atmosphere and emotional impact of the theme.
 
----
+## Instruments and Sound Design
 
-This evolving, layered soundscape is designed to immerse players in the lonely, mysterious world of the Poultry Man, enhancing the overall atmosphere of the game.
+### Key Instruments
 
-# TODO: the other parts, arrangement and mixing and mastering
+- **Wind Sound**: A synthesized wind sound, combining `Wind` and `Wind 2` from the Flex General Midi Library. Wind plays a continuous note, while Wind 2 is a more dynamic sound that changes slowly throughout the track.
+- **Chord Synth**: A combination of Kepler Expo, for a warm sound, and UVI Workstation for a more high-pitched ethereal sound.
+
+## Mixing and Mastering
+
+### Mixer Effects
+
+- **Master**
+- **Wind Sound**:
+  - Fruity Stereo Shaper is used to create a slight offset in the stereo field, particularly making the right channel a bit delayed. This makes the sound more dynamic and interesting.
+  - Fruity Delay 3, to add additional delay with echoes.
+  - Parametric EQ 2, to remove the high frequencies and make the sound more muffled.

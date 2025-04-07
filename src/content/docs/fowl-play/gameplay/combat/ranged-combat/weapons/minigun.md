@@ -7,65 +7,45 @@ author: Tjorn
 
 ## Weapon Description
 
-The minigun is a powerful ranged weapon that fires a high volume of bullets in quick succession. Each bullet deals a small amount of damage, but the sheer number of rounds fired can quickly deplete their health. The minigun has a relatively long cooldown time to make up for it's range and damage output.
+The minigun is a powerful ranged weapon that fires a high volume of bullets in quick succession. Each bullet deals minimal damage, but the rapid fire rate makes it very effective against enemies. The weapon has a long cooldown time to balance its power.
 
 ## Attack State Mechanics
 
-The attack state is the core mechanic of the minigun weapon system, handling both the visual representation and damage dealing functionality. When activated, the minigun enters this state and begins rapidly firing projectiles in a controlled spiral pattern, simulating the characteristic "spray" of a multi-barreled machine gun. The state manages bullet generation, trajectory visualization, collision detection, and timing control to ensure the weapon feels powerful while maintaining game balance. Unlike simpler weapons, the minigun's attack state employs sophisticated mathematics to create its distinctive firing pattern while efficiently handling the high volume of projectiles.
+The attack state manages both visual representation and damage functionality. When activated, it rapidly fires projectiles in a controlled spiral pattern, simulating the "spray" of a multi-barreled machine gun.
 
 ### Spiral Firing Pattern
 
-The minigun doesn't fire every bullet from the same location. Instead, it uses a spiral pattern that:
+The minigun fires bullets in a spiral pattern that:
 
-- Creates a more chaotic and unpredictable firing pattern
-  - This balances the weapon's high fire rate with a degree of unpredictability
+- Creates an unpredictable firing pattern
+- Balances high fire rate with controlled spread
 - Visually communicates the weapon's power
 
-The spiral pattern is achieved by calculating bullet origins based on a rotating offset around a central point (`barrel_radius`). This simulates the multiple rotating barrels of a real minigun, where each barrel fires at a different position in the rotation cycle.
+The pattern uses a rotating offset around a central point (`barrel_radius`), simulating the multiple rotating barrels.
 
 ### Bullet Visualization
 
-The weapon creates real-time tracer effects for each bullet using:
+The weapon creates tracer effects using:
 
-- `ImmediateMesh` for efficient, programmatic mesh generation
-- Cylindrical geometry to represent bullet trajectories
-- Timed self-destruction of these visual elements to prevent memory leaks
-  - Also makes sure the visual effects don't linger indefinitely in the scene, obscuring gameplay
-- Raycasts to check for collisions with enemies and the environment
-  - Collision masks to filter out unwanted collisions
+- `ImmediateMesh` for efficient rendering
+- Cylindrical geometry for bullet trajectories
+- Timed self-destruction to prevent memory leaks
+- Raycasts with collision masks for hit detection
 
-These visualizations serve multiple purposes:
+### Processing Separation
 
-- Provide immediate visual feedback to players
-- Help players understand the weapon's effective range and firing pattern
-- Enhance the game feel through visual effects
+The minigun separates:
 
-### Splitting visual and physics processing
+1. **Visual Phase**: Creates immediate feedback when firing
+2. **Physics Phase**: Handles collision detection at fixed intervals. In order for raycasts to accurately detect collisions, they need to be updated in the physics process
 
-The minigun's firing system splits the visual and technical processing into two distinct phases:
-
-1. **Visual Phase (immediate)**: Creates immediate visual feedback when firing
-
-   - Happens in the main process loop for responsive player feedback
-   - Generates trajectory visualizations instantly
-   - Uses a queue system to synchronize visuals and physics
-
-2. **Physics Phase (fixed interval)**: Handles actual collision detection
-   - In order for raycasts to accurately detect collisions, they need to be updated in the physics process
-     - The raycasts are created in the main process loop, but the actual collision checks are done in the physics process
-
-This separation ensures that:
-
-- Players experience no visual lag when firing. This improves the game's feel.
-- Physics calculations remain accurate and consistent, by using Godot's built-in physics processing.
+This ensures responsive visuals without sacrificing physics accuracy.
 
 ### Automatic Timing Control
 
-The minigun uses a timer system to enforce attack duration limits. This is done to prevent infinite firing and balance the weapon's power within the gameplay. When the attack duration expires, the weapon automatically transitions to a cooldown state. This cooldown state is relatively long, to ensure players don't just hide in a corner and spam the minigun.
+The minigun uses timers to enforce attack duration limits and transitions to a cooldown state when expired. This cooldown balances the weapon's power.
 
-## Attack state code
-
-The idle, windup and cooldown states are not shown here, since they are not that interesting and relatively simple.
+## Attack State Code
 
 ```gdscript
 extends BaseRangedCombatState
@@ -245,30 +225,26 @@ func _update_spiral_angle() -> void:
 
 func _on_attack_duration_timer_timeout() -> void:
 	transition_signal.emit(WeaponEnums.WeaponState.COOLDOWN, {})
-
 ```
 
 ### Code Features
 
 #### State Management
 
-- Built on top of a base ranged combat class to reuse common weapon features
-- Uses timers to control how long the attack lasts
-- Properly sets up when entering the state and cleans up when exiting
+- Built on a base ranged combat class for reusing common weapon features
+- Uses timers to control attack duration
+- Handles state transitions
 
 #### Performance Optimization
 
-- Uses a queue system to separate visual effects from hit detection
-- Creates bullet trails directly in code instead of loading pre-made models
-- Automatically removes visual effects after they're no longer needed
-- Generates bullet geometry on the fly to save memory
+- Separates visual effects from hit detection
+- Auto-removes visual effects when not needed
+- Generates geometry on demand
 
 #### Mathematics
 
-- Creates spiral bullet patterns using circular math
-- Uses vector math to properly position and orient bullet trails
-- Builds 3D bullet trail shapes dynamically
-- Uses angle limits and direction changes to create a back-and-forth spray pattern
+- Creates spiral patterns with circular calculations
+- Uses angle limits to create spray pattern
 
 #### Godot Engine Features
 

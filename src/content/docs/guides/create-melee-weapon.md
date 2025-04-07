@@ -51,10 +51,11 @@ Within the `entities/weapons/melee_weapons/melee_weapon_models` folder, there is
    - Create a new `MeleeWeaponResource` under the "Current Weapon" property
      - Fill in the fields.
        - **Model UID**: It is important to copy over the UID of the weapon scene, for save/load functionality
+
 4. **Save the resource file (Recommended)**
 
    - Save the `MeleeWeaponResource` as a `.tres` file in the same folder
-   - This improves shop loading performance, since loading a `.tres` file is faster than instantiating the weapon scene to get the required properties
+     - This improves shop loading performance, since loading a `.tres` file is faster than instantiating the weapon scene to get the required properties
 
 5. **Test your weapon**
    - Verify animations play correctly and hit detection works as expected

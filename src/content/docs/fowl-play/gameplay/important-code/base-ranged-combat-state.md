@@ -7,21 +7,19 @@ author: Tjorn
 
 ## Base Ranged Combat State
 
-`base_ranged_combat_state.gd` is the base class for all ranged combat states. It contains common functions that all ranged combat states require. It extends from `BaseState` LINK TO BASESTATE PAGE HERE. The `BaseRangedCombatState` class is designed to be inherited by specific ranged combat states, such as `MinigunAttackState`, `BowAttackState`, etc. This allows for a modular and reusable design, where each specific state can implement its own unique behavior while still sharing common functionality.
+`base_ranged_combat_state.gd` is the base class for all ranged combat states. It contains common functions that all ranged combat states require. It extends from [`BaseState`](/fowl-play/gameplay/important-code/base-state/). The `BaseRangedCombatState` class is designed to be inherited by specific ranged combat states, such as `MinigunAttackState`, `BowWindupState`, etc. This allows for a modular and reusable design, where each specific state can implement its own behavior while still sharing common functionality.
 
 ### Design Philosophy
 
-The ranged weapon system is built on a state machine architecture to provide flexibility, modularity, and maintainability. This design choice offers several advantages:
+The ranged weapon system is built on a state machine architecture. This design choice offers several advantages:
 
-1. **Separation of Concerns**: Each weapon state is responsible for a specific aspect of the weapon's behavior, making the code easier to understand and modify.
+1. **Separation of Concerns**: Each weapon state is responsible for a specific aspect of the weapon's behavior, making the code easier to understand and modify. It also makes it clear where to look for specific functionality, such as attack logic or cooldown management.
 
-2. **Extensibility**: New weapon types can be added by simply creating new state classes that inherit from `BaseRangedCombatState`. This allows for rapid prototyping and iteration.
+   - For example, the `MinigunAttackState` handles the logic for firing the minigun, while the `BowWindupState` manages the bow's charging behavior.
 
-3. **Predictable Behavior**: The state machine ensures that weapons follow a logical flow of operations (idle → windup → attacking → cooldown), preventing unexpected behaviors.
-
-4. **Reusability**: Common functionality is implemented in the base class, reducing code duplication and ensuring consistent behavior across different weapons.
-
-5. **Fine-tuned Control**: The state-based approach allows for precise control over animation timing, effects, sound, and other aspects of weapon behavior.
+2. **Reusability**: Common functionality is implemented in the base class, reducing code duplication and ensuring consistent behavior across different weapons.
+   - For instance, the `process_hit` function is defined in the base class and can be reused by all ranged combat states, ensuring that hit detection is the same for each hitscan weapon.
+3. **Control**: The state-based approach allows for precise control over animation timing, effects, sound, and other aspects of weapon behavior.
 
 ### Class Definition
 
@@ -76,27 +74,23 @@ func process_hit(raycast: RayCast3D) -> void:
 
 - **Animation Name**: The name of the animation to be played during the attack.
 - **State Type**: The type of state, defined in `WeaponEnums.WeaponState`.
-- **Weapon**: The weapon instance associated with this state.
+- **Weapon**: The weapon instance associated with this state, passed on from the state machine.
 - **Transition Signal**: A signal used to transition between states.
+  - This signal is emitted when the state needs to change, allowing for smooth transitions between different weapon states.
 - **Origin Entity**: The entity that is using the weapon.
 - **Setup Function**: Initializes the weapon and transition signal.
 - **Enter Function**: Called when entering this state. Can be overridden in child classes.
 - **Process Hit Function**: Processes the hit from the raycast, checking for collisions and emitting signals as necessary.
-- Only used by hitscan weapons
+  - Only used by hitscan weapons
 
 ### Implementation Benefits
 
-This state-based design offers several technical advantages:
+By moving state management to the weapon itself, the system allows for more complex weapon mechanics and behaviors.
 
-1. **Decoupled Weapon Logic**: The weapon's behavior is decoupled from the entity using it, allowing the same weapon to be used by different entities (players, NPCs) with minimal code changes.
+- **Decoupled Weapon Logic**: The weapon's behavior is decoupled from the entity using it, allowing the same weapon to be used by different entities (players, enemies) with minimal code changes.
 
-2. **Performance Optimization**: Each state manages only the necessary resources and computations for its specific phase, reducing overhead.
-
-3. **Easy Debugging**: When issues arise, they can be isolated to specific states, making debugging more straightforward.
-
-4. **Networked Gameplay Ready**: The state machine design makes it easier to synchronize weapon states across a network for multiplayer gameplay.
-
-5. **Designer-Friendly**: New weapons can be configured largely through data rather than code changes, allowing designers to create and balance weapons without deep programming knowledge.
+  - This allows for more complex weapon mechanics, such as different firing modes or special abilities, without needing to modify the entity's code.
+    - For example, a player can use a bow and arrow, while an enemy can use the same bow with different attack patterns set in their AI.
 
 ## Usage
 
@@ -155,6 +149,8 @@ func weapon_supports_early_release() -> bool:
 
 ### Example Usage
 
+The following script is how the player entity would call the `RangedWeaponHandler`. The enemy would call the same functions, but based on AI instead of input actions.
+
 ```gdscript
 extends Node
 
@@ -191,10 +187,9 @@ When creating a new ranged weapon, you should consider:
    - The attack state handles the weapon's firing logic.
    - The cooldown state manages the time between attacks.
    - The windup state is optional but can be used for weapons that require a delay before firing, like the minigun.
-2. **Optional Windup**: Add a windup state for weapons that need preparatory animations or effects.
+2. **Optional Windup**: Add a windup state for weapons that should not immediately fire after pressing the attack button.
+   - This state can be used for weapons that require a charge-up time, like bows or crossbows.
+   - The windup state can also be used for an aiming state, where the player can aim before firing.
 3. **Projectile vs. Hitscan**: Decide if your weapon uses instant hit detection (hitscan) or spawns physical projectiles.
-4. **Configuration Properties**: Define properties like damage, fire rate, recoil pattern, etc. in a resource file.
-5. **Sound and VFX**: Each state can trigger appropriate sounds and visual effects tied to the weapon's behavior.
-6. **Cooldown Management**: States can manage cooldowns effectively, ensuring that weapons are not overused and maintain balance in gameplay.
-
-By following this architecture, new weapons can be added to the game with minimal effort while maintaining consistent, predictable behavior.
+4. **Configuration Properties**: Define properties like damage, etc. in a resource file.
+5. **Sound and VFX**: Each state can trigger sounds and visual effects to enhance player feedback.

@@ -111,6 +111,18 @@ export default defineConfig({
                         directory: "fowl-play/gameplay/combat/melee-combat",
                       },
                     },
+                    {
+                      label: "Ranged",
+                      items: [
+                        {
+                          label: "Weapons",
+                          autogenerate: {
+                            directory:
+                              "fowl-play/gameplay/combat/ranged-combat/weapons",
+                          },
+                        },
+                      ],
+                    },
                   ],
                 },
                 {

@@ -213,7 +213,7 @@ The Scene and UI Managers rely on signals defined in the Signal Manager to funct
 | `switch_game_scene` | Replaces the current game scene with a new one                      |
 | `add_game_scene`    | Adds an additional game scene (not currently used in Scene Manager) |
 
-For more information about other signals and the Signal Manager system, see the [Signal Manager documentation](/fowl_play/gameplay/important-code/signal_manager/).
+For more information about other signals and the Signal Manager system, see the [Signal Manager documentation](/fowl-play/gameplay/important-code/signal-manager/).
 
 # Architecture Overview
 

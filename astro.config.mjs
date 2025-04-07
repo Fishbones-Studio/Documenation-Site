@@ -28,13 +28,7 @@ export default defineConfig({
       sidebar: [
         {
           label: "Guides",
-          items: [
-            { label: "Godot Setup", slug: "guides/godot_setup" },
-            {
-              label: "Creating melee weapons",
-              slug: "guides/create_melee_weapon",
-            },
-          ],
+          autogenerate: { directory: "guides" },
         },
         {
           label: "Game Ideas",
@@ -52,34 +46,34 @@ export default defineConfig({
               items: [
                 {
                   label: "Pitches",
-                  autogenerate: { directory: "fowl_play/production/pitches" },
+                  autogenerate: { directory: "fowl-play/production/pitches" },
                 },
                 {
                   label: "Planning",
                   autogenerate: {
-                    directory: "fowl_play/production/planning",
+                    directory: "fowl-play/production/planning",
                   },
                 },
                 {
                   label: "Marketing",
-                  autogenerate: { directory: "fowl_play/production/marketing" },
+                  autogenerate: { directory: "fowl-play/production/marketing" },
                 },
               ],
             },
             {
               label: "Design",
-              autogenerate: { directory: "fowl_play/design" }, // Currently empty
+              autogenerate: { directory: "fowl-play/design" }, // Currently empty
             },
             {
               label: "Art",
               items: [
                 {
                   label: "3D",
-                  autogenerate: { directory: "fowl_play/art/3d" },
+                  autogenerate: { directory: "fowl-play/art/3d" },
                 },
                 {
                   label: "Music",
-                  autogenerate: { directory: "fowl_play/art/music" },
+                  autogenerate: { directory: "fowl-play/art/music" },
                 },
               ],
             },
@@ -89,33 +83,45 @@ export default defineConfig({
                 {
                   label: "Important Code",
                   autogenerate: {
-                    directory: "fowl_play/gameplay/important-code",
+                    directory: "fowl-play/gameplay/important-code",
                   },
                 },
                 {
                   label: "Camera",
-                  autogenerate: { directory: "fowl_play/gameplay/camera" },
+                  autogenerate: { directory: "fowl-play/gameplay/camera" },
                 },
                 {
                   label: "Game Progression",
                   autogenerate: {
-                    directory: "fowl_play/gameplay/game-progression",
+                    directory: "fowl-play/gameplay/game-progression",
                   },
                 },
-                  {
-                    label: "User Interface",
-                    autogenerate: {
-                      directory: "fowl_play/gameplay/user-interface",
-                    },
+                {
+                  label: "User Interface",
+                  autogenerate: {
+                    directory: "fowl-play/gameplay/user-interface",
                   },
+                },
                 {
                   label: "Combat",
                   items: [
                     {
                       label: "Melee",
                       autogenerate: {
-                        directory: "fowl_play/gameplay/combat/melee-combat",
+                        directory: "fowl-play/gameplay/combat/melee-combat",
                       },
+                    },
+                    {
+                      label: "Ranged",
+                      items: [
+                        {
+                          label: "Weapons",
+                          autogenerate: {
+                            directory:
+                              "fowl-play/gameplay/combat/ranged-combat/weapons",
+                          },
+                        },
+                      ],
                     },
                   ],
                 },
@@ -125,20 +131,20 @@ export default defineConfig({
                     {
                       label: "Enemies",
                       autogenerate: {
-                        directory: "fowl_play/gameplay/entities/enemies",
+                        directory: "fowl-play/gameplay/entities/enemies",
                       },
                     },
                     {
                       label: "Player Chicken",
                       autogenerate: {
                         directory:
-                          "fowl_play/gameplay/entities/player/player-chicken",
+                          "fowl-play/gameplay/entities/player/player-chicken",
                       },
                     },
                     {
                       label: "Stats",
                       autogenerate: {
-                        directory: "fowl_play/gameplay/entities/stats",
+                        directory: "fowl-play/gameplay/entities/stats",
                       },
                     },
                   ],

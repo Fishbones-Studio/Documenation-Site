@@ -75,6 +75,10 @@ export default defineConfig({
                   label: "Music",
                   autogenerate: { directory: "fowl-play/art/music" },
                 },
+                {
+                  label: "Sound Effects",
+                  autogenerate: { directory: "fowl-play/art/sound" },
+                },
               ],
             },
             {
@@ -148,6 +152,12 @@ export default defineConfig({
                       },
                     },
                   ],
+                },
+                {
+                  label: "Audio",
+                  autogenerate: {
+                    directory: "fowl-play/gameplay/audio",
+                  },
                 },
               ],
             },

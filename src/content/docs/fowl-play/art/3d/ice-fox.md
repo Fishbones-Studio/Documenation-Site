@@ -93,7 +93,7 @@ During the rigging process, when I was testing how the rig behaved, I ran into a
 
 To further refine the rig, I added a Pole Target, which acts as a guide to control the rotation of the limbs, ensuring they remained properly oriented as the character moved.
 
-
+![Example of Inverse Kinematics applied with Pole Target](../../../../../assets/3d/ice-fox/inverse_kinematics.png)
 
 ## Animations
 

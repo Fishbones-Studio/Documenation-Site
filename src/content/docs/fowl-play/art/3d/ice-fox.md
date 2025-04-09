@@ -97,19 +97,27 @@ To further refine the rig, I added a Pole Target, which acts as a guide to contr
 
 ## Animations
 
-The animations are set to run at 60 FPS.
+All animations are set to run at 30 FPS, with the exception of Walk and Sprint, which run at 24 FPS.
 
 ### Idle
 
-### Walk
-
-### Sprint
-
-### Dash
+![Ice Fox idle animation](/ice-fox/idle-animation.gif)
 
 ### Jump
 
-### Attack
+![Ice Fox jump animation](/ice-fox/jump-animation.gif)
+
+### Fall
+
+![Ice Fox fall animation](/ice-fox/fall-animation.gif)
+
+### Walk
+
+![Ice Fox walk animation](/ice-fox/walk-animation.gif)
+
+### Sprint
+
+![Ice Fox sprint animation](/ice-fox/sprint-animation.gif)
 
 
 [1]: https://extensions.blender.org/add-ons/easyweight/

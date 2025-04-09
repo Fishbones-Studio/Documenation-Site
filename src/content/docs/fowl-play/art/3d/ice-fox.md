@@ -56,17 +56,60 @@ Since the shaders were only visible inside Blender, I had to bake them onto a ne
 
 ## Rigging
 
+The rigging for the Ice Fox was done manually. Since the model isn’t a humanoid character, automatic rigging tools like Mixamo weren’t suitable. I added the armature bones individually, aligning them with the reference image.
+
+### Bone Hierachy
+
+| Level | Parent Bone               | Child Bones                                       |
+|-------|----------------------     |--------------------------------------             |
+| 0     | **Pelvis** (Root)         | Spine_1, Tail_1, Back_Hip_Left, Back_Hip_Right    |
+| 1     | **Spine_1**               | Spine_2                                           |
+| 2     | **Spine_2**               | Neck, Front_Shoulder_Left, Front_Shoulder_Right   |
+| 3     | **Neck**                  | Head                                              |
+| 3     | **Front_Shoulder_Left**   | Front_UpperArm_Left                               |
+| 4     | **Front_UpperArm_Left**   | Front_Forearm_Left                                |
+| 5     | **Front_Forearm_Left**    | Front_Wrist_Left                                  |
+| 6     | **Front_Wrist_Left**      | Front_Paw_Left                                    |
+| 3     | **Front_Shoulder_Right**  | Front_UpperArm_Right                              |
+| 4     | **Front_UpperArm_Right**  | Front_Forearm_Right                               |
+| 5     | **Front_Forearm_Right**   | Front_Wrist_Right                                 |
+| 6     | **Front_Wrist_Right**     | Front_Paw_Right                                   |
+| 1     | **Tail_1**                | Tail_2                                            |
+| 2     | **Tail_2**                | Tail_3                                            |
+| 1     | **Back_Hip_Left**         | Back_Thigh_Left                                   |
+| 2     | **Back_Thigh_Left**       | Back_Shank_Left                                   |
+| 3     | **Back_Shank_Left**       | Back_Paw_Left                                     |
+| 1     | **Back_Hip_Right**        | Back_Thigh_Right                                  |
+| 2     | **Back_Thigh_Right**      | Back_Shank_Right                                  |
+| 3     | **Back_Shank_Right**      | Back_Paw_Right                                    |
 
 ### Anatomy
 
+Since the Ice Fox is a fast-moving enemy in Fowl Play, I needed to ensure its rig matched the anatomy of a real fox. This was important for creating smooth, natural animations — especially since the character would be extremely agile, with fluid running and attacking motions.
 
 ### Inverse Kinematics
 
+During the rigging process, when I was testing how the rig behaved, I ran into a problem with the limbs not aligning properly. To fix this, I used Inverse Kinematics, as it allowed me to control the position and rotation of the bones more efficiently. This technique was essential for the particular model I was creating, as it ensures smooth and natural movement.
+
+To further refine the rig, I added a Pole Target, which acts as a guide to control the rotation of the limbs, ensuring they remained properly oriented as the character moved.
 
 
 
 ## Animations
 
+The animations are set to run at 60 FPS.
+
+### Idle
+
+### Walk
+
+### Sprint
+
+### Dash
+
+### Jump
+
+### Attack
 
 
 [1]: https://extensions.blender.org/add-ons/easyweight/

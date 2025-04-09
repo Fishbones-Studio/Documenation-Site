@@ -111,6 +111,10 @@ All animations are set to run at 30 FPS, with the exception of Walk and Sprint, 
 
 ![Ice Fox fall animation](/ice-fox/fall-animation.gif)
 
+### Dash
+
+![Ice Fox dash animation](/ice-fox/dash-animation.gif)
+
 ### Walk
 
 ![Ice Fox walk animation](/ice-fox/walk-animation.gif)

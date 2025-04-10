@@ -16,7 +16,7 @@ To maintain efficiency and preserve the ability to make non-destructive adjustme
 1. **Mirror Modifier:** Ensures perfect symmetrical construction of the woodpecker and significantly reduced modeling time by only requiring one side to be sculpted
 2. **Subdivision Surface Modifier:** Helped in creating smoother contours and higher detail while maintaing a low-poly base mesh.
 
-![Woodpecker in Blender](../../../../../assets/3d/woodpecker.png)
+![Woodpecker in Blender](../../../../../assets/3d/woodpecker/woodpecker.png)
 
 ### Texturing
 

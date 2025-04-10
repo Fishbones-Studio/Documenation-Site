@@ -16,20 +16,18 @@ The enemy state machine handles the response of the enemies to player behaviour.
 **State machine** Handles which state is being used and swapping between states.
 ```gdscript
 extends Node
+
 @export var starting_state: BaseEnemyState
 @export var enemy: Enemy
 @export var player: ChickenPlayer
 
-
 var states: Dictionary[EnemyEnums.EnemyStates, BaseEnemyState] = {}
 
 @onready var current_state: BaseEnemyState = _get_initial_state()
-@onready var weapon: MeleeWeapon = $"../CurrentWeapon".current_weapon
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print(current_state)
 	if enemy == null:
 		push_error(owner.name + ": No enemy reference set")
 
@@ -45,10 +43,8 @@ func _ready() -> void:
 	# Get all states in the scene tree
 	for state_node: BaseEnemyState in get_children():
 		states[state_node.STATE_TYPE] = state_node
-		state_node.setup(enemy, weapon, player)
-
-	print(states)
-
+		state_node.setup(enemy, player)
+		
 	if current_state:
 		current_state.enter(current_state.STATE_TYPE)
 
@@ -80,12 +76,6 @@ func _transition_to_next_state(target_state: EnemyEnums.EnemyStates, information
 	if current_state == null:
 		push_error(owner.name + ": Trying to transition to state " + str(target_state) + " but it does not exist. Falling back to: " + str(previous_state))
 		current_state = previous_state
-
-	# TODO: start animation of the state
-	if(current_state.ANIMATION_NAME != null && !current_state.ANIMATION_NAME.is_empty() && weapon):
-		# Play the animation for the new state
-		weapon.animation_player.play(current_state.ANIMATION_NAME)
-
 	current_state.enter(previous_state.STATE_TYPE, information)
 
 
@@ -94,48 +84,33 @@ func _get_initial_state() -> BaseEnemyState:
 ```
 **Base state:** Sets a bunch of widely used variables and basis for certain functions.
 ```gdscript
-## Base class for all state implementations in a state machine pattern.
-##
-## **Note:** This class should not be used directly. Always create child classes.
-class_name BaseState
-extends Node
+class_name BaseEnemyState
+extends BaseState
 
-## Handles input events for state-specific behavior.
-##
-## **Must be overridden** in child classes that need input handling.
-##
-## Parameters:
-##  _event: Input event to process.
-func input(_event: InputEvent) -> void:
-	pass
+#Instantiate globally used variables around the enemy states
+@export var DELTA_MODIFIER: float = 100
+@export var enemy: Enemy
+@export var chase_distance: float = 20
+@export var STATE_TYPE: EnemyEnums.EnemyStates
+@export var ANIMATION_NAME: String
 
-
-## Called every frame with delta time.
-##
-## **Must be overridden** in child classes that need frame-based updates.
-##
-## Parameters:
-##  _delta: Time elapsed since previous frame in seconds.
-func process(_delta: float) -> void:
-	pass
+var player: ChickenPlayer
+var previous_state: EnemyEnums.EnemyStates
+var weapon: MeleeWeapon
 
 
-## Called every physics frame with delta time.
-##
-## **Must be overridden** in child classes that need physics updates.
-##
-## Parameters:
-##  _delta: Time elapsed since previous physics frame in seconds.
-func physics_process(_delta: float) -> void:
-	pass
+func setup(_enemy: Enemy, _player: ChickenPlayer) -> void:
+	if _enemy == null:
+		push_error(owner.name + ": No enemy reference set" + str(STATE_TYPE))
+	enemy = _enemy
+	if _player == null:
+		push_error(owner.name + ": No player reference set" + str(STATE_TYPE))
+	player = _player
 
 
-## Called when leaving this state.
-##
-## Use this to clean up any state-specific resources or reset temporary state.
-## **Must be overridden** in child classes if needed.
-func exit() -> void:
-	pass
+func enter(_previous_state: EnemyEnums.EnemyStates, _information: Dictionary = {}) -> void:
+	previous_state = _previous_state
+
 ```
 **Idle:** This state makes the enemy wander around in random directions and checks to see if the player is near to transition to the chase state. 
 ```gdscript
@@ -197,69 +172,40 @@ func _rotate_toward_direction(direction: Vector3, delta: float) -> void:
 	var current_angle: float = enemy.rotation.y # Get the current angle of the enemy
 
 	# Lerp the angle to smoothly rotate towards the target direction
-	var new_angle := lerp_angle(current_angle, target_angle, rotation_speed * delta)
+	var new_angle : float = lerp_angle(current_angle, target_angle, rotation_speed * delta)
 	enemy.rotation.y = new_angle
+
 
 ```
 **Chase:** Follows the player around until a certain threshold is reached. If that is close to the player, enter attack state. If that is far away from the player, enter idle state.
 ```gdscript
 extends BaseEnemyState
 @export var speed: int = 10
-
+@export var rotation_speed: float = 5.0   ## How quickly enemy turns toward target
 var target_position: Vector3
-
-
-func enter(_previous_state: EnemyEnums.EnemyStates, _information: Dictionary = {}) -> void:
-	# Connect body entered signal
-	SignalManager.weapon_hit_area_body_entered.connect(_on_attack_area_body_entered)
-
-
-func exit() -> void:
-	# Disconnect body entered signal
-	SignalManager.weapon_hit_area_body_entered.disconnect(_on_attack_area_body_entered)
 
 
 #Check what conditions are fulfilled to shift the enemy in state to certain behaviour patterns.
 #This would be the place to change behaviour, for example a ranged attack.
-func physics_process(_delta: float) -> void:
+func physics_process(delta: float) -> void:
 	target_position = (player.position - enemy.position).normalized()
 	if enemy.position.distance_to(player.position) < chase_distance:
-		enemy.look_at(player.position)
+		if target_position.length() > 0:
+			_rotate_toward_direction(target_position, delta)
 		enemy.velocity.x = target_position.x * speed
 		enemy.velocity.z = target_position.z * speed
 	else:
 		SignalManager.enemy_transition_state.emit(EnemyEnums.EnemyStates.IDLE_STATE, {})
 
 
-func _on_attack_area_body_entered(body: PhysicsBody3D) -> void:
-	# TODO this only triggers once, if you stay in the body, the enemy will stop atacking after 1 time
-	if body == player:
-		SignalManager.enemy_transition_state.emit(EnemyEnums.EnemyStates.ATTACK_STATE, {})
-```
-**Attack:** Attacks the player, deals damage and returns to the idle state.
-```gdscript
-extends BaseEnemyState
+func _rotate_toward_direction(direction: Vector3, delta: float) -> void:
+	var target_angle: float = atan2(-direction.x, -direction.z) # Calculate the angle to the target direction
+	var current_angle: float = enemy.rotation.y # Get the current angle of the enemy
 
-@export var damage : int
+	# Lerp the angle to smoothly rotate towards the target direction
+	var new_angle : float = lerp_angle(current_angle, target_angle, rotation_speed * delta)
+	enemy.rotation.y = new_angle
 
-func enter(_previous_state: EnemyEnums.EnemyStates, _information: Dictionary = {}) -> void:
-	attack_player()
-	# Connect body exited signal
-	SignalManager.weapon_hit_area_body_exited.connect(_on_attack_area_body_exited)
-	
-func exit() -> void:
-	# Disconnect body exited signal
-	SignalManager.weapon_hit_area_body_exited.disconnect(_on_attack_area_body_exited)
-
-#Deal damage to the player when they enter the attack_area of the enemy
-func attack_player():
-	SignalManager.hurt_player.emit(damage)
-	SignalManager.player_transition_state.emit(PlayerEnums.PlayerStates.HURT_STATE, {})
-
-#Reset enemy after the player leaves the attack area of the enemy
-func _on_attack_area_body_exited(body: PhysicsBody3D) -> void:
-	if body == player:
-		SignalManager.enemy_transition_state.emit(EnemyEnums.EnemyStates.IDLE_STATE)
 ```
 
 ### Signal-Based Transitioning

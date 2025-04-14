@@ -25,7 +25,7 @@ importers:
         version: 0.33.5
       starlight-links-validator:
         specifier: ^0.16.0
-        version: 0.16.0(@astrojs/starlight@0.32.5(astro@5.5.5(rollup@4.39.0)(typescript@5.7.3)))
+        version: 0.16.0(@astrojs/starlight@0.33.2(astro@5.6.2(rollup@4.40.0)(typescript@5.7.3)))
       vite:
         specifier: ^6.2.6
         version: 6.2.6
@@ -1228,8 +1228,8 @@ packages:
   ofetch@1.4.1:
     resolution: {integrity: sha512-QZj2DfGplQAr2oj9KzceK9Hwz6Whxazmn85yYeVuS3u9XTMOGMRx0kO95MQ+vLsj/S/NwBDMMLU5hpxvI6Tklw==}
 
-  oniguruma-parser@0.11.0:
-    resolution: {integrity: sha512-9M+tFRnJWtRxsgh4XFlkw+AVFtzEtI8UfTifx6sDbtt47SpEl/K65PunQyp/jvfp0xwLGjtbE5aKQcL8j6AXYw==}
+  oniguruma-parser@0.11.1:
+    resolution: {integrity: sha512-fX6SirDOsTUNqSUOnL3fDtD3R7PCXNWGA3WWPvv9egEfTWkNXzRLO/9CC1WkDusP6HyWRZig06kHeYPcw3mlqQ==}
 
   oniguruma-to-es@4.2.0:
     resolution: {integrity: sha512-MDPs6KSOLS0tKQ7joqg44dRIRZUyotfTy0r+7oEEs6VwWWP0+E2PPDYWMFN0aqOjRyWHBYq7RfKw9GQk2S2z5g==}
@@ -3335,12 +3335,12 @@ snapshots:
       node-fetch-native: 1.6.6
       ufo: 1.6.1
 
-  oniguruma-parser@0.11.0: {}
+  oniguruma-parser@0.11.1: {}
 
   oniguruma-to-es@4.2.0:
     dependencies:
       emoji-regex-xs: 1.0.0
-      oniguruma-parser: 0.11.0
+      oniguruma-parser: 0.11.1
       regex: 6.0.1
       regex-recursion: 6.0.2
 
@@ -3679,9 +3679,9 @@ snapshots:
 
   space-separated-tokens@2.0.2: {}
 
-  starlight-links-validator@0.16.0(@astrojs/starlight@0.32.5(astro@5.5.5(rollup@4.39.0)(typescript@5.7.3))):
+  starlight-links-validator@0.16.0(@astrojs/starlight@0.33.2(astro@5.6.2(rollup@4.40.0)(typescript@5.7.3))):
     dependencies:
-      '@astrojs/starlight': 0.32.5(astro@5.5.5(rollup@4.39.0)(typescript@5.7.3))
+      '@astrojs/starlight': 0.33.2(astro@5.6.2(rollup@4.40.0)(typescript@5.7.3))
       '@types/picomatch': 3.0.2
       github-slugger: 2.0.0
       hast-util-from-html: 2.0.3

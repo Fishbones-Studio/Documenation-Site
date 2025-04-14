@@ -3,8 +3,8 @@ import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 
 import sitemap from "@astrojs/sitemap";
-
 import mdx from "@astrojs/mdx";
+import starlightLinksValidator from "starlight-links-validator";
 
 import { loadEnv } from "vite";
 
@@ -18,6 +18,7 @@ const { SITE_URL, BASE_PATH } = loadEnv(
 export default defineConfig({
   integrations: [
     starlight({
+      plugins: [starlightLinksValidator()],
       title: "Studio Fishbones",
       social: {
         github: "https://github.com/Fishbones-Studio",

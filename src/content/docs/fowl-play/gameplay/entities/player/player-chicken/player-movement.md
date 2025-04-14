@@ -1,7 +1,7 @@
 ---
 title: Chicken Movement
 description: Basic chicken player movement.
-lastUpdated: 2025-03-13
+lastUpdated: 2025-04-14
 author: Tjorn
 ---
 
@@ -18,6 +18,7 @@ When playing as the chicken, the player experiences the game in third person. Mo
 - **Space**: Jump/Glide
 - **Shift**: Sprint
 - **CTRL**: Dash
+- **F**: Switch Weapons
 
 #### Controller (Xbox buttons for reference)
 
@@ -26,6 +27,7 @@ When playing as the chicken, the player experiences the game in third person. Mo
 - **A**: Jump/Glide
 - **L3/Left Click**: Sprint
 - **B**: Dash
+- **X**: Switch Weapons
 
 ## States Overview
 
@@ -41,6 +43,7 @@ The chicken player implements a state machine to manage different movement behav
 - **DASH_STATE**: Quick burst of speed in a specific direction
 - **HURT_STATE**: Temporary state when the player takes damage
 - **FALL_STATE**: When the player is falling without gliding
+- **DEATH_STATE**: When the player is dead, shows the death screen
 
 ### State Decision
 
@@ -48,7 +51,7 @@ Fowl Play is a 3D roguelike arena fighter where players control a chicken in und
 
 - **IDLE_STATE**: Serves as a clean transition point between other movement states. Allows the player to stand still for a moment, potentially hiding behind cover within the arena.
 
-- **WALK_STATE**: Offers predictable, controlled navigation needed for exploring the fight arena, approaching enemies carefully, and avoiding environmental hazards as mentioned in the [pitch document](/fowl_play/production/pitches/pitch_document/).
+- **WALK_STATE**: Offers predictable, controlled navigation needed for exploring the fight arena, approaching enemies carefully, and avoiding environmental hazards as mentioned in the [pitch document](/fowl-play/production/pitches/pitch-document/).
 
 - **SPRINT_STATE**: Implements the risk-reward philosophy central to the game's design. By draining stamina, sprinting creates decisions about when to use limited resources for quicker repositioning or escaping threats.
 
@@ -143,7 +146,7 @@ The player movement system uses the State pattern to organize different movement
 
 #### Base Player State
 
-`base_player_state.gd` provides common functionality shared by all the player states. It extends from [`base_state.gd`](/fowl_play/gameplay/important-code/important_code/#base-state), and provides additional typed `setup` and `enter` methods. The `setup` method passes in a reference to the player, so the states can apply movement to the player. The `enter` method passes in the previous state, and some optional additional information.
+`base_player_state.gd` provides common functionality shared by all the player states. It extends from [`base_state.gd`](/fowl-play/gameplay/important-code/base-state/#base-state), and provides additional typed `setup` and `enter` methods. The `setup` method passes in a reference to the player, so the states can apply movement to the player. The `enter` method passes in the previous state, and some optional additional information.
 
 ```gdscript
 class_name BasePlayerState
@@ -203,86 +206,86 @@ func get_player_direction(input_dir: Vector2) -> Vector3:
 After the initial burst, dash movement is added in the `physics_process` method until the dash timer runs out.
 
 ```gdscript
-## State handling player dash movement
+################################################################################
+## State handling player dash movement.
 ##
-## Applies instant burst movement in facing direction with stamina cost
-extends BasePlayerState
+## Applies instant burst movement in facing direction with stamina cost.
+################################################################################
+extends BasePlayerMovementState
 
-@export_range(10, 100) var stamina_cost: int = 30
-
-@export_range(1.0, 20.0) var dash_distance: float = 30.0
-
-var _dash_available: bool = true
+var _stamina_cost: int
+var _is_dashing: bool = false
 var _dash_direction: Vector3
 
 @onready var dash_duration_timer: Timer = $DashDurationTimer
 @onready var dash_cooldown_timer: Timer = $DashCooldownTimer
 
 
-func enter(_previous_state: PlayerEnums.PlayerStates, information: Dictionary = {}) -> void:
-	# check if already dashed
-	if information.get("dashed", false):
-		print("already dashed")
-		SignalManager.player_transition_state.emit(PlayerEnums.PlayerStates.IDLE_STATE, information)
+func enter(prev_state: BasePlayerMovementState, information: Dictionary = {}) -> void:
+	super(prev_state)
+
+	_stamina_cost = movement_component.dash_stamina_cost
+
+	# Handle state transitions
+	if not movement_component.dash_available or player.stats.current_stamina < _stamina_cost:
+		print("Dash available: ", movement_component.dash_available)
+		SignalManager.player_transition_state.emit(previous_state.state_type, information)
 		return
 
-	super.enter(_previous_state)
+	player.stats.drain_stamina(_stamina_cost)
 
-	if not _dash_available or player.stamina < stamina_cost:
-		print("dash not available")
-		if previous_state == PlayerEnums.PlayerStates.JUMP_STATE:
-			SignalManager.player_transition_state.emit(PlayerEnums.PlayerStates.FALL_STATE, information)
-		else:
-			# adding dashed true to the information dictionary
-			information.set("dashed", true)
-			SignalManager.player_transition_state.emit(previous_state, information)
-		return
+	movement_component.dash_available = false
+	_is_dashing = true
 
-	# Consume stamina
-	player.stamina -= stamina_cost
+	_dash_direction = get_player_direction()
 
-	# Get dash direction (player-relative input or player forward)
-	var input_dir: Vector2 = get_player_input_dir()
+	if _dash_direction == Vector3.ZERO:
+		_dash_direction = -player.global_basis.z # Default forward direction
 
-	if input_dir != Vector2.ZERO:
-		# Use movement direction from input (matches player-relative movement)
-		_dash_direction = get_player_direction(input_dir)
-	else:
-		# Fallback to player's forward direction
-		_dash_direction = -player.global_basis.z.normalized()
-
-	# Ensure vertical component is flat
-	_dash_direction.y = 0
-
-	# Initial velocity burst
-	player.velocity = _dash_direction * dash_distance
+	animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
 	dash_duration_timer.start()
-
-
-func physics_process(_delta: float) -> void:
-	player.velocity = _dash_direction * dash_distance
-
-
-func exit() -> void:
-	_dash_available = false
-	dash_duration_timer.stop()
 	dash_cooldown_timer.start()
 
 
-func _on_dash_timer_timeout():
-	# Transition back to the previous state
-	var information: Dictionary = {"dashed": true}
-	if previous_state == PlayerEnums.PlayerStates.JUMP_STATE:
-		SignalManager.player_transition_state.emit(PlayerEnums.PlayerStates.FALL_STATE, information)
-	else:
-		SignalManager.player_transition_state.emit(previous_state, information)
+func physics_process(delta: float) -> void:
+	apply_gravity(delta)
+
+	if _is_dashing:
+		player.velocity = _dash_direction * player.stats.calculate_speed(movement_component.dash_speed_factor)
+		player.move_and_slide()
+		return
+
+	# Handle state transitions
+	if get_jump_velocity() > 0 and movement_component.jump_available:
+		SignalManager.player_transition_state.emit(PlayerEnums.PlayerStates.JUMP_STATE, {})
+
+	if not player.is_on_floor():
+		SignalManager.player_transition_state.emit(PlayerEnums.PlayerStates.FALL_STATE, {})
+		return
+
+	var direction: Vector3 = get_player_direction()
+
+	if direction == Vector3.ZERO:
+		SignalManager.player_transition_state.emit(PlayerEnums.PlayerStates.IDLE_STATE, {})
+		return
+
+	if is_sprinting() and player.stats.current_stamina > 0:
+		SignalManager.player_transition_state.emit(PlayerEnums.PlayerStates.SPRINT_STATE, {})
+		return
+
+	SignalManager.player_transition_state.emit(PlayerEnums.PlayerStates.WALK_STATE, {})
+
+	player.move_and_slide()
+
+
+func _on_dash_duration_timer_timeout():
+	_is_dashing = false
 
 
 func _on_dash_cooldown_timer_timeout():
-	print("dash available again")
-	_dash_available = true
-
+	print("Dash available: ", movement_component.dash_available)
+	movement_component.dash_available = true
 ```
 
 ##### Dash State Enter Method

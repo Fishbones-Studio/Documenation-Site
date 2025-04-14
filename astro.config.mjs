@@ -20,12 +20,28 @@ export default defineConfig({
     starlight({
       plugins: [starlightLinksValidator()],
       title: "Studio Fishbones",
-      social: {
-        github: "https://github.com/Fishbones-Studio",
-        "x.com": "https://x.com/StudioFishbones",
-        blueSky: "https://bsky.app/profile/studiofishbones.com",
-        youtube: "https://www.youtube.com/@studiofishbones",
-      },
+      social: [
+        {
+          icon: "github",
+          label: "GitHub",
+          href: "https://github.com/Fishbones-Studio",
+        },
+        {
+          icon: "twitter",
+          label: "X(Twitter)",
+          href: "https://x.com/StudioFishbones",
+        },
+        {
+          icon: "blueSky",
+          label: "BlueSky",
+          href: "https://bsky.app/profile/studiofishbones.com",
+        },
+        {
+          icon: "youtube",
+          label: "YouTube",
+          href: "https://www.youtube.com/@studiofishbones",
+        },
+      ],
       sidebar: [
         {
           label: "Guides",

@@ -5,7 +5,30 @@ lastUpdated: 2025-04-14
 author: Tjorn
 ---
 
-Script for setting the `Visual Layer` on compatible 3D nodes. The game draws on the visual layer, thus it can be used to isolate elements. This script adds the specified layer on top of the existing visual layers.
+This script is used to add a specified Visual Layer to all compatible 3D child nodes of a parent node in Godot. Visual Layers are used to control which objects are visible to specific cameras or effects, allowing for selective rendering and isolation of scene elements.
+
+### Features
+
+- **Layer Selection:** Choose which visual layer (1–20) to add to child nodes.
+- **Recursive Application:** Optionally apply the layer to all descendants, not just direct children.
+- **Compatibility:** Only nodes inheriting from `VisualInstance3D` are affected.
+- **Non-destructive:** The specified layer is added on top of any existing layers, preserving previous settings.
+- **Debug Output:** Prints the result for each affected node for easy verification.
+
+### Parameters
+
+- `layer_to_add` (`int`, 1–20): The visual layer number to add to each applicable child node.
+- `recursive` (`bool`): If `true`, applies the layer to all descendants; if `false`, only direct children are affected.
+
+### How It Works
+
+1. On ready, the script validates the chosen layer number.
+2. It calculates the bitmask for the selected layer.
+3. It iterates through the children (or all descendants if recursive), adding the layer to each compatible node.
+
+### Code
+
+Use this script as a child of any `Node3D` to automatically set visual layers for its children, such as isolating a player model for a subviewport camera.
 
 ```gdscript
 ## Script to add Visual Layer to all applicable child nodes,
@@ -68,4 +91,15 @@ func _apply_layer_recursively(node: Node, layer_bitmask: int) -> void:
 
 ## Example Usage
 
-Used on the chicken player model in `chicken_player.tscn`, for the subviewport camera in the [player hud](/fowl-play/gameplay/user-interface/player-hud).
+This script is used in the chicken player model scene (`chicken_player.tscn`) to ensure the player model is only visible to a specific camera in the HUD.  
+In the [player hud](/fowl-play/gameplay/user-interface/player-hud), a subviewport camera is set up to render only objects on visual layer 2.  
+By attaching this script to the player model and setting `layer_to_add` to `2`, the player model is isolated from the main scene and rendered exclusively in the HUD's subviewport.  
+This allows for effects such as animated player icons, damage/heal feedback, and custom shaders, without affecting the main game view.
+
+**Typical setup:**
+- Attach this script to the root node of the player model.
+- Set `layer_to_add` to `2`.
+- Enable `recursive` if the model has nested meshes.
+- The subviewport camera in the HUD is configured to only render layer 2.
+
+See the [Player Hud documentation](/fowl-play/gameplay/user-interface/player-hud) for more details on the subviewport and camera configuration.

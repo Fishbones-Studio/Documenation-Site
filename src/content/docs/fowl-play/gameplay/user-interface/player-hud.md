@@ -7,6 +7,8 @@ author: Tjorn
 
 The Player HUD (Heads-Up Display) provides essential information and feedback to the player during gameplay. It is composed of several UI elements that display the player's health, stamina, inventory items and visual feedback for events such as taking damage or healing.
 
+![Player HUD](../../../../../assets/fowl-play/gameplay/user-interface/player-hud.png)
+
 ## Components
 
 - **Health and Stamina Bar**: Shows the player's current health and stamina values, updating in real-time as the player's stats change.

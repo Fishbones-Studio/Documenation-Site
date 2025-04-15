@@ -39,7 +39,7 @@ Spikes are a very straightforward hazard in the game and their purpose is to mak
 
 With this in mind, while modeling the spikes, we deliberately chose to keep them slightly detached from the base, allowing for an animation where they retract and extend at fixed intervals.
 
-![Regular spike model](../../../../../assets/3d/hazards/regular_spike.png)
+![Regular spike model](../../../../../assets//fowl-play/art/3d/hazards/regular_spike.png)
 
 ### Array Modifier
 
@@ -50,7 +50,7 @@ To maintain a non-destructive workflow, two **Array Modifiers** were used to dup
 
 The ground saw is an environmental hazard that continuously rotates in the game and applies damage over time. For this reason, the idea was to add textures that resemble some sort of blood or poisoning to the saw itself, indicating that it is a hazard that can deal gradual damage over a set duration.
 
-![Ground saw model](../../../../../assets/3d/hazards/ground_saw.png)
+![Ground saw model](../../../../../assets/fowl-play/art/3d/hazards/ground_saw.png)
 
 ### Mirror Modifier
 
@@ -66,7 +66,7 @@ We wanted to introduce another environmental hazard with a different impact on t
 
 For the design of the spike ball, we chose to create very sharp spikes attached to a ball held by chains. Typically, this environmental hazard is suspended from the ceiling, forcing the player to move carefully to avoid it. Getting hit by the spike ball's knockback can also reposition the player, adding an additional challenge to navigation.
 
-![Spike ball model](../../../../../assets/3d/hazards/spike_ball.png)
+![Spike ball model](../../../../../assets/fowl-play/art/3d/hazards/spike_ball.png)
 
 
 ### Subdivision Surface Modifier
@@ -83,4 +83,4 @@ To make the spikes pop out of the Icosphere, we used **Geometry Nodes**. This al
 
 Geometry Nodes also made it easy to adjust the number, angle, and spacing of the spikes, allowing for quick changes during the design process.
 
-![Geometry for the spike ball](../../../../../assets/3d/hazards/geometry_spike_ball.png)
+![Geometry for the spike ball](../../../../../assets/fowl-play/art/3d/hazards/geometry_spike_ball.png)

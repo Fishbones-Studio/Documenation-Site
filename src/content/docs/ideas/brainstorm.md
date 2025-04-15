@@ -7,8 +7,8 @@ author: All
 
 ## Brainstorm board 1
 
-![Brainstorm board 1](../../../assets/brainstorm/brainstorm1.jpg)
+![Brainstorm board 1](../../../assets/ideas/brainstorm/brainstorm1.jpg)
 
 ## Brainstorm board 2
 
-![Brainstorm board 2](../../../assets/brainstorm/brainstorm2.jpg)
+![Brainstorm board 2](../../../assets/ideas/brainstorm/brainstorm2.jpg)

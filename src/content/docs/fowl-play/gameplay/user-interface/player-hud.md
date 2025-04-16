@@ -15,7 +15,6 @@ The Player HUD (Heads-Up Display) provides essential information and feedback to
 - **Player Icon**: A visual representation of the player, rendered using a subviewport. It provides feedback with shader effects when the player is hurt or healed. Since it uses a subviewport, chicken player animations are also displayed here.
 - **Item Slots**: Displays the player's inventory items, highlighting the currently active item(s).
 
----
 
 ## Health and Stamina Bar
 

@@ -79,7 +79,7 @@ export default defineConfig({
             },
             {
               label: "Design",
-              autogenerate: { directory: "fowl-play/design" }, // Currently empty
+              autogenerate: { directory: "fowl-play/design" },
             },
             {
               label: "Art",

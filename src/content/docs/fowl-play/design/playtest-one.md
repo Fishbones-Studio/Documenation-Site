@@ -1,11 +1,11 @@
 ---
 title: Changes till Playtest One
 description: Ideas which have changed in the period of the pitch, till playtest one
-lastUpdated: 2025-03-01
+lastUpdated: 2025-04-16
 author: All
 ---
 
-Since the [first pitch](/fowl-play/production/pitches/pitch-document) and the [week 6 update](/fowl-play/production/pitches/week-6-progress-presentation) we have made some changes to the design of the game. This document will outline the changes we have made and the reasons behind them.
+Since the [First Pitch](/fowl-play/production/pitches/pitch-document) and the [week 6 progression update](/fowl-play/production/pitches/week-6-progress-presentation) we have made some changes to the design of the game. This document will outline the changes we have made and the reasons behind them.
 
 ## Mutations
 
@@ -77,3 +77,15 @@ In the original pitch, we envisioned a round-based system where players would fa
 - **Forfeit Option:** After each round, players can choose to forfeit and end their run, sacrificing potential rewards for safety. _Note: currently, the player can always forfeit, but this will be changed in the future._
 - **Progression:** Difficulty and rewards scale with each round, encouraging risk-reward decision-making.
 - **Special Events:** Between rounds, players may encounter shops, healing opportunities, or story events.
+
+## Enemy models
+
+Our initial goal was to design multiple detailed enemies for the following three types: normal, elite, and boss. This way, the player could experience fighting against a wide variety of enemies.
+
+### Quantity over quality
+
+Due to a lack of time and manpower, the majority of the models were created using an easier but usable approach. This allowed us to implement a few enemy models before our first playtesting. While they are not very detailed, they are still functional within our game.
+
+### Types of enemies
+
+This part is somewhat tied to the round system. We wanted to have more than just regular and boss enemies. The third option was to include an elite type enemy, which would act as a 'mini-boss' before the actual boss fight. However, since the rounds were reduced from the initial 5 to just 3, there was no room to include an elite enemy. 

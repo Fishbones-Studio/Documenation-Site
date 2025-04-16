@@ -13,7 +13,7 @@ The Poultry Man menu serves as an in-game interface where players can interact w
 
 The older version of the Poultry Man menu was set in a world-like scene with an open sky, which felt out of place for the dark and unsettling theme we wanted to achieve. Instead of creating an immersive and fitting environment, it felt too bright and unstructured, failing to capture the eerie, scientific horror aesthetic. The lighting was flat, and the setting did not contribute to the intended vibe.
 
-![Old Poultry Man Menu](../../../../../assets/menu/poultryman_old.png)
+![Old Poultry Man Menu](../../../../../assets/fowl-play/gameplay/user-interface/poultry-man-menu/poultryman_old.png)
 
 ### New Version & Changes
 
@@ -26,7 +26,7 @@ To improve the menu and align it with the game's dark and griddy theme, several 
 - **Hover Effects**: When players hover over an item, the label changes color and the node increases in size, making it more visually distinct and responsive.
 - **Keyboard & Controller Navigation**: Players can now navigate the menu using both a keyboard and a controller, improving accessibility and ease of use.
 
-![New Poultry Man Menu](../../../../../assets/menu/poultryman_new.png)
+![New Poultry Man Menu](../../../../../assets/fowl-play/gameplay/user-interface/poultry-man-menu/poultryman_new.png)
 
 ### Future Improvements
 

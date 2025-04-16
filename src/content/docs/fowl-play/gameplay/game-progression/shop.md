@@ -13,7 +13,7 @@ Our idea of the shop we wanted to make is an RNG shop that will display 5 differ
 
 To make this I started by making a layout for the UI of the shop. I started by making individual elements to place the items in, however I soon noticed that I would need a single item_template scene and clone it however many item slots we wanted. I needed this because I wanted to add a script to the items to randomly fill in the slots. The following image is how the shop-layout looks when running.
 
-![Player shop layout](../../../../../assets/shop/shop_layout.png)
+![Player shop layout](../../../../../assets/fowl-play/gameplay/game-progression/shop/shop_layout.png)
 
 As you can see there are 5 different slots where the name, item buff, type, and cost are displayed with a button to buy the item. This UI is randomly changed every time you open the shop. Later on in the project, we want the shop to be locked and only changed after every arena fight.
 
@@ -137,7 +137,7 @@ func _on_buy_item_pressed() -> void:
 
 The confirmation popup will be shown whenever an item-type is bought that already exists in the inventory. The player will normally get the choice to either replace the existing item in the inventory or cancel the transaction if they want to keep their item. When the player tries to buy a third ability they get to choose between the two existing abilities in the inventory on which one they want to replace.
 
-![ConfirmationPopup](../../../../../assets/shop/confirmationpopup.png)
+![ConfirmationPopup](../../../../../assets/fowl-play/gameplay/game-progression/shop/confirmationpopup.png)
 
 ### Item Database
 

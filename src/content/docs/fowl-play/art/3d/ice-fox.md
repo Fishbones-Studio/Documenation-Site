@@ -31,14 +31,14 @@ The model of the Ice Fox can be divided into the following sections:
 
 The reason for this seperation during modeling was to allow for more precision later on while texturing the model. Since each part was a seperate mesh, it became easier to assign and manage materials individually. It also allowed me to apply differnt UV maps to a specific part without interfering with another, giving me more control over the final structure layout of the Ice Fox.
 
-![Ice Fox Model](../../../../../assets/3d/ice-fox/model.png)
+![Ice Fox Model](../../../../../assets/fowl-play/art/3d/ice-fox/model.png)
 
 
 ## Texturing
 
 My overall vision for the Ice Fox was to give it a snow-like, icy appereance with a mix of white and azure to create that frosty aestethic. To achieve this, I created a custom color palette as a reference, which helped during the texturing process.
 
-![Color palette of the Ice Fox Model](../../../../../assets/3d/ice-fox/color_palette.png)
+![Color palette of the Ice Fox Model](../../../../../assets/fowl-play/art/3d/ice-fox/color_palette.png)
 
 ### UVs
 
@@ -48,7 +48,7 @@ For each individual mesh, I created a UV map. This gave me more control while te
 
 Instead of manually texture painting the look of the model, I used shaders to generate the base colors and visual details. This method allowed for a more procedural approach, giving me flexibility to adjust the look of each part of the model quickly and non-destructively.
 
-![Example of the shaders used for the eyes](../../../../../assets/3d/ice-fox/eyes_shaders_example.png)
+![Example of the shaders used for the eyes](../../../../../assets/fowl-play/art/3d/ice-fox/eyes_shaders_example.png)
 
 ### Baking
 
@@ -93,7 +93,7 @@ During the rigging process, when I was testing how the rig behaved, I ran into a
 
 To further refine the rig, I added a Pole Target, which acts as a guide to control the rotation of the limbs, ensuring they remained properly oriented as the character moved.
 
-![Example of Inverse Kinematics applied with Pole Target](../../../../../assets/3d/ice-fox/inverse_kinematics.png)
+![Example of Inverse Kinematics applied with Pole Target](../../../../../assets/fowl-play/art/3d/ice-fox/inverse_kinematics.png)
 
 ## Animations
 

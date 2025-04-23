@@ -1,0 +1,39 @@
+---
+import { Image } from "astro:assets";
+
+type ImageItem = {
+  src: ImageMetadata; // Astro image asset type
+  alt: string;
+  title: string;
+};
+
+interface Props {
+  images: ImageItem[];
+}
+
+const { images } = Astro.props as Props;
+---
+
+<div class="image-grid">
+  {images.map(({ src, alt, title }) => (
+    <Image
+      src={src}
+      alt={alt}
+      title={title}
+      class="image-grid__item"
+    />
+  ))}
+</div>
+
+<style>
+.image-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+}
+.image-grid__item {
+  flex: 1 1 calc(50% - 10px);
+  max-width: 48%;
+}
+</style>

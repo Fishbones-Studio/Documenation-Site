@@ -1,0 +1,94 @@
+---
+import { Image } from "astro:assets";
+
+type ImageItem = {
+  src: ImageMetadata; // Astro image asset type
+  alt: string;
+  title: string;
+  width?: number; // Optional width for each image
+  height?: number; // Optional height for each image
+};
+
+interface Props {
+  images: ImageItem[];
+  columns?: number; // Number of columns to display, defaults to 3
+  imageWidth?: number; // Default width for all images if not specified individually
+  imageHeight?: number; // Default height for all images if not specified individually
+  maintainAspectRatio?: boolean; // Whether to maintain original aspect ratio, defaults to true
+}
+
+const { 
+  images, 
+  columns = 3, 
+  imageWidth = 400, 
+  imageHeight = 300, 
+  maintainAspectRatio = true
+} = Astro.props as Props;
+---
+
+<div class="image-grid" style={`--columns: ${columns};`}>
+  {images.map(({ src, alt, title, width = imageWidth, height = imageHeight }) => (
+    <div class="image-grid__item">
+      <figure class="image-grid__figure">
+        <Image
+          src={src}
+          alt={alt}
+          title={title}
+          width={width}
+          height={maintainAspectRatio ? undefined : height}
+          class="image-grid__img"
+        />
+        {title && <figcaption class="image-grid__caption">{title}</figcaption>}
+      </figure>
+    </div>
+  ))}
+</div>
+
+<style>
+.image-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.image-grid__item {
+  flex: 0 0 calc((100% - ((var(--columns) - 1) * 1.5rem)) / var(--columns));
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.image-grid__figure {
+  margin: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.image-grid__img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  flex: 1;
+}
+
+.image-grid__caption {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .image-grid__item {
+    flex: 0 0 calc((100% - 1.5rem) / 2);
+  }
+}
+
+@media (max-width: 480px) {
+  .image-grid__item {
+    flex: 0 0 100%;
+  }
+}
+</style>

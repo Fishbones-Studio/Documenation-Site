@@ -85,6 +85,10 @@ export default defineConfig({
               label: "Art",
               items: [
                 {
+                  label: "Concept Art",
+                  autogenerate: { directory: "fowl-play/art/concept-art" },
+                },
+                {
                   label: "3D",
                   autogenerate: { directory: "fowl-play/art/3d" },
                 },

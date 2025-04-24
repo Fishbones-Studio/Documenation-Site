@@ -1,12 +1,54 @@
 ---
 title: Header Art
 description: Concept art for the header of Fowl Play
-lastUpdated: 2025-04-23
+lastUpdated: 2025-04-22
 author: Finn and Joyce
 ---
+
+import ImageGrid from "../../../../../components/ImageGrid.astro";
+import { Image } from "astro:assets";
+import headerArtOneImage from "../../../../../assets/fowl-play/art/concept-art/header-art/header_art_1.png";
+import headerArtTwoImage from "../../../../../assets/fowl-play/art/concept-art/header-art/header_art_2.png";
+import headerArtThreeImage from "../../../../../assets/fowl-play/art/concept-art/header-art/header_art_3.png";
+import headerArtFourImage from "../../../../../assets/fowl-play/art/concept-art/header-art/header_art_4.png";
+import headerArtFiveImage from "../../../../../assets/fowl-play/art/concept-art/header-art/header_art_5.png";
+
+<ImageGrid
+  images={[
+    {
+      src: headerArtFiveImage,
+      alt: "Colored sketch concept art for header showing chicken with minigun facing centipede enemy with Fowl Play title.",
+      title: "Header Concept 1 - Chicken with Minigun",
+    },
+    {
+      src: headerArtThreeImage,
+      alt: "Line art concept for header showing chicken facing centipede enemy with spike enemy in top left and Fowl Play title.",
+      title: "Header Concept 2 - Chicken vs Centipede & Spike",
+    },
+    {
+      src: headerArtTwoImage,
+      alt: "Sketch concept art for header showing screaming chicken running from spike enemies with Fowl Play title.",
+      title: "Header Concept 3 - Screaming Chicken",
+    },
+    {
+      src: headerArtFourImage,
+      alt: "Line art concept for header showing Fowl Play title with chicken on right and spike enemy in bottom left.",
+      title: "Header Concept 4 - Title Focus",
+    },
+  ]}
+  imageWidth={500}
+  columns={2}
+/>
 
 For the header art of our game, we’ve come up with a few different compositions, which are still a work in progress. We want the title of our game ‘’FOWL PLAY’’ to be shown boldly in the header art since the title is a wordplay on the gameplay. We also want the basic chicken model the player can choose to be the main chicken shown off in our art. If we stick to one main character, the game will feel more cohesive.
 
 For the compositions, we want the main chicken and 1 or 2 of the big enemies showcased to make it feel action-packed. In one of the first drafts, you see the chicken fighter holding a minigun, one of the weapons in our game. We definitely want to implement one of our weapons in the header art just to give a sneak peek into the weapons that are obtainable from the shop.
+
+<Image
+  src={headerArtOneImage}
+  title="Header Concept 5 - Blue Sketch Running"
+  alt="Blue sketch concept art for header showing chicken running from spike enemy, centipede enemy, freggy, and Fowl Play title."
+  width={600}
+/>
 
 In our game, you’re supposed to feel small and weak, which in turn, makes the enemies feel that more intimidating. We try to translate this to our art. Like here, where the chicken (main character) is running away from the enemies, looking scared and helpless.

@@ -16,6 +16,12 @@ import chickenOverviewImage from "../../../../../assets/fowl-play/art/concept-ar
 import characterSheetImage from "../../../../../assets/fowl-play/art/concept-art/chicken-concepts/character_sheet.png";
 import textureVariantsImage from "../../../../../assets/fowl-play/art/concept-art/chicken-concepts/texture_variants.png";
 import cluckNorisImage from "../../../../../assets/fowl-play/art/concept-art/chicken-concepts/cluck_norris.png";
+import chickenEarlyImage from "../../../../../assets/fowl-play/art/concept-art/chicken-concepts/chicken_early.png";
+import leftOneImage from "../../../../../assets/fowl-play/art/concept-art/chicken-concepts/left_1.png";
+import leftTwoImage from "../../../../../assets/fowl-play/art/concept-art/chicken-concepts/left_2.png";
+import frontImage from "../../../../../assets/fowl-play/art/concept-art/chicken-concepts/front.png";
+import sideImage from "../../../../../assets/fowl-play/art/concept-art/chicken-concepts/side.png";
+import henniferImage from "../../../../../assets/fowl-play/art/concept-art/chicken-concepts/hennifer.png";
 
 ## Concept Art
 
@@ -67,13 +73,62 @@ We decided pretty quickly on a clunky, low poly game which would fit the theme o
   maintainAspectRatio={true}
 />
 
-TODO: add missing images here
-
 More variants of our chicken model, we wanted to implement different chicken models for the player to pick. so we came up with a basic chicken model which would have 4 different color variants. then there would be a silkie model which is a fluffier type of chicken and lastly a rooster model.
 
-Early version of our chicken model. Here we were really just exploring different shapes and experimenting on how our chicken could/would look.
+<Image
+  src={chickenEarlyImage}
+  alt="Early version of chicken model"
+  width={400}
+  title={"Early Chicken Model"}
+/>
+
+Early version of our chicken model. Here we were really just exploring different shapes and experimenting on how our chicken could/would look. It was used in the [chicken fighter prototype](/prototype/chicken-fighter)
+
+<ImageGrid
+  images={[
+    {
+      src: leftOneImage,
+      alt: "Left side of chicken model",
+      title: "Left Side",
+    },
+    {
+      src: leftTwoImage,
+      alt: "Left side of chicken model",
+      title: "Left Side",
+    },
+    {
+      src: frontImage,
+      alt: "Front view of chicken model",
+      title: "Front View",
+    },
+    {
+      src: sideImage,
+      alt: "Side view of chicken model",
+      title: "Side View",
+    },
+  ]}
+  imageWidth={400}
+  columns={3}
+/>
 
 This is the current main chicken model. We tried making it feel a little sickly, by muting most colors and giving him an overall morbid vibe. As we said, we’re planning on implementing multiple chicken designs as we think having some sort of character customization/randomization will intrigue our audience more.
+
+<Image
+  src={henniferImage}
+  alt="Hennifer chicken variant"
+  width={400}
+  title={"Hennifer"}
+/>
+‘Hennifer’ chicken variant.{" "}
+
+<Image
+  src={cluckNorisImage}
+  alt="Cluck Norris"
+  width={400}
+  title={"Cluck Norris"}
+/>
+
+Some concept art of a potential previous victorious chicken that has fought in the arena. Inspired by Chuck Norris of course.
 
 <ImageGrid
   images={[
@@ -92,12 +147,3 @@ This is the current main chicken model. We tried making it feel a little sickly,
   columns={1}
   maintainAspectRatio={true}
 />
-
-<Image
-  src={cluckNorisImage}
-  alt="Cluck Norris"
-  width={400}
-  title={"Cluck Norris"}
-/>
-
-Some concept art of a potential previous victorious chicken that has fought in the arena. Inspired by Chuck Norris of course.

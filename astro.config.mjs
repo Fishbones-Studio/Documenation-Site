@@ -75,6 +75,10 @@ export default defineConfig({
                   label: "Marketing",
                   autogenerate: { directory: "fowl-play/production/marketing" },
                 },
+                {
+                  label: "Playtesting",
+                  autogenerate: { directory: "fowl-play/production/playtests" },
+                },
               ],
             },
             {

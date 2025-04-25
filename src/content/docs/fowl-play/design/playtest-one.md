@@ -5,7 +5,7 @@ lastUpdated: 2025-04-16
 author: All
 ---
 
-Since the [First Pitch](/fowl-play/production/pitches/pitch-document) and the [week 6 progression update](/fowl-play/production/pitches/week-6-progress-presentation) we have made some changes to the design of the game. This document will outline the changes we have made and the reasons behind them.
+Since the [First Pitch](/fowl-play/production/pitches/pitch-document) and the [week 6 progression update](/fowl-play/production/pitches/week-6-progress-update) we have made some changes to the design of the game. This document will outline the changes we have made and the reasons behind them.
 
 ## Mutations
 
@@ -88,4 +88,4 @@ Due to a lack of time and manpower, the majority of the models were created usin
 
 ### Types of enemies
 
-This part is somewhat tied to the round system. We wanted to have more than just regular and boss enemies. The third option was to include an elite type enemy, which would act as a 'mini-boss' before the actual boss fight. However, since the rounds were reduced from the initial 5 to just 3, there was no room to include an elite enemy. 
+This part is somewhat tied to the round system. We wanted to have more than just regular and boss enemies. The third option was to include an elite type enemy, which would act as a 'mini-boss' before the actual boss fight. However, since the rounds were reduced from the initial 5 to just 3, there was no room to include an elite enemy.

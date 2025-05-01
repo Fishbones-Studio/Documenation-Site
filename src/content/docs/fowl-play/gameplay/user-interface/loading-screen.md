@@ -5,15 +5,11 @@ lastUpdated: 2025-05-01
 author: Cenker
 ---
 
-# Loading Screen 
-
-## Overview
-
 We observed a noticeable freeze when entering the arena. This occurred because the game was loading a large scene all at once, without any indication to the player that something was happening. The result was a jarring pause that gave the impression the game was unresponsive.
 
 To resolve this and improve the user experience, we introduced a loading screen. This screen masks the loading time and adds personality by displaying concept art, a progress-bar, and random chicken facts to keep the player engaged.
 
-## Why We Added a Loading Screen
+## Reasoning
 
 Before implementing the loading screen, clicking on the arena would immediately initiate the scene load. Since this is a resource-heavy operation, it caused the game to hang briefly without feedback. This felt like a crash to players.
 
@@ -59,5 +55,3 @@ func load_game_with_loading_screen(game_scene_path: String, hud_ui: UIEnums.UI =
 	SignalManager.emit_throttled("switch_game_scene", [game_scene_path])
 	SignalManager.emit_throttled("switch_ui_scene", [hud_ui])
 ```
-
-

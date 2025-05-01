@@ -2,12 +2,19 @@
 title: Enemy AI Refactor
 description: Handles the actions of the enemies and transitions between behaviours.
 lastUpdated: 2025-05-01
-author: Sly
+author: Sly and Jun Yi
 ---
 
 The Enemy AI uses behavior trees implemented with Limbo AI to control enemy decision-making. Behavior trees were chosen over traditional finite state machines because they allow for more modular, reusable, and debuggable logic. This structure enables enemies to perform complex actions like dynamic chasing, combat tactics, and environmental awareness.
 
 After evaluating alternatives like Beehave, we chose Limbo AI due to its performance efficiency, and a more intuitive editor interface. Unlike Beehave, which had slower updates and fewer advanced features, Limbo AI provided the flexibility and stability needed for our project.
+
+## Impact on existing enemy AI
+
+We previously had already implemented a working enemy AI. This was done with a very basic finite state machine, which did the job, altough it wasn't that intelligent and it was hard to perform more complex tasks.
+
+Since we wanted to make use of LimboAI's behaviour, it meant we had to completely overhaul the enemy AI. Unfortunately, this meant removing all the code from our old enemy AI, as it wasn't compatible to use with the behaviour trees of Limbo AI.
+
 
 ## Design
 ### Behavior Trees
@@ -27,9 +34,11 @@ We enhance these composites with decorator nodes that modify behavior without re
 The leaf nodes consist of focused task components. Condition tasks perform targeted checks like verifying if the player is standing on the enemy. Action tasks handle concrete behaviors such as executing teleport moves, triggering abilities, or using weapon attacks.
 
 ## Tasks
-`charge.gd` makes the enemy charge in a straight line with optional wall bouncing behavior.
-When bouncing is enabled, the enemy will reflect off walls with configurable angle variation
-and trigger camera shake effects.
+
+### Charge
+
+`charge.gd` makes the enemy charge in a straight line with optional wall bouncing behavior. When bouncing is enabled, the enemy will reflect off walls with configurable angle variation and trigger camera shake effects.
+
 ```gdscript
 @tool
 extends BTAction
@@ -129,11 +138,10 @@ func _bounce_camera_shake() -> void:
 	camera.apply_shake(bounce_camera_shake)
 
 ```
-<br>
 
-`dash.gd` makes the enemy perform a quick dash in their current forward direction. 
-The dash has fixed duration and minimum travel distance, with speed automatically
-calculated to meet these requirements.
+### Dash
+
+`dash.gd` makes the enemy perform a quick dash in their current forward direction. The dash has fixed duration and minimum travel distance, with speed automatically calculated to meet these requirements.
 
 ```gdscript
 @tool
@@ -175,9 +183,11 @@ func _tick(delta: float) -> Status:
 
 	return RUNNING
 ```
-<br>
+
+### Face
 
 `face.gd` rotates the enemy to face a target within specified parameters. The action succeeds when either the enemy is facing within the angle threshold of the target or the maximum duration elapses.
+
 ```gdscript
 @tool
 extends BTAction
@@ -226,10 +236,11 @@ func _rotate_toward_direction(direction: Vector3, delta: float) -> void:
 	# Lerp the angle to smoothly rotate towards the target direction
 	agent.rotation.y = lerp_angle(agent.rotation.y, target_angle, rotation_speed * delta)
 ```
-<br>
 
-`flank.gd` teleports the enemy behind or to the side of the target player at a specified distance,
-with intelligent position validation to ensure safe spawning.
+### Flank
+
+`flank.gd` teleports the enemy behind or to the side of the target player at a specified distance, with intelligent position validation to ensure safe spawning.
+
 ```gdscript
 @tool
 extends BTAction
@@ -310,10 +321,12 @@ func _is_position_clear(position: Vector3) -> bool:
 	var results: Array[Dictionary] = space_state.intersect_shape(params, 1)
 	return results.is_empty()
 ```
-<br>
+
+### Get Target
 
 `get_target.gd` fetches the active ChickenPlayer reference from the GameManager and stores it 
 in the specified blackboard variable for use by subsequent nodes.
+
 ```gdscript
 @tool
 extends BTAction
@@ -336,10 +349,11 @@ func _tick(_delta: float) -> Status:
 	return FAILURE
 
 ``` 
-<br>
 
-`in_range.gd` checks if the agent is within a specified distance range of a target,
-using squared distance comparison for optimized performance.
+### In Range
+
+`in_range.gd` checks if the agent is within a specified distance range of a target, using squared distance comparison for optimized performance.
+
 ```gdscript
 @tool
 extends BTCondition
@@ -382,10 +396,11 @@ func _tick(_delta: float) -> Status:
 	else:
 		return FAILURE
 ```
-<br>
 
-`jump.gd` Makes the enemy perform a vertical jump with configurable parameters. The action can be 
-customized with variable jump height and completion conditions.
+### Jump
+
+`jump.gd` makes the enemy perform a vertical jump with configurable parameters. The action can be customized with variable jump height and completion conditions.
+
 ```gdscript
 @tool
 extends BTAction
@@ -440,10 +455,11 @@ func _tick(delta: float) -> Status:
 
 	return RUNNING
 ```
-<br>
 
-`player_on_top.gd` checks if the player is directly above the enemy using a vertical raycast. 
-This is typically used to detect when the player is standing on the enemy's head.
+### Player on Top
+
+`player_on_top.gd` checks if the player is directly above the enemy using a vertical raycast.  This is typically used to detect when the player is standing on the enemy's head.
+
 ```gdscript
 @tool
 extends BTCondition
@@ -473,10 +489,11 @@ func _is_player_on_top() -> bool:
 	var hit: Dictionary = space_state.intersect_ray(params)
 	return hit and hit["collider"] is ChickenPlayer
 ```
-<br>
 
-`pounce.gd` makes the enemy perform a targeted jumping attack toward the player, combining
-both horizontal movement and vertical arc for a dramatic pounce effect.
+### Pounce
+
+`pounce.gd` makes the enemy perform a targeted jumping attack toward the player, combining both horizontal movement and vertical arc for a dramatic pounce effect.
+
 ```gdscript
 @tool
 extends BTAction
@@ -540,10 +557,11 @@ func _tick(delta: float) -> Status:
 
 	return RUNNING
 ```
-<br>
 
-`pursue.gd` makes the enemy chase a target while maintaining a specified engagement distance. 
-The action continues until either reaching the target proximity or timing out.
+### Pursue
+
+`pursue.gd` makes the enemy chase a target while maintaining a specified engagement distance. The action continues until either reaching the target proximity or timing out.
+
 ```gdscript
 @tool
 extends BTAction
@@ -595,10 +613,11 @@ func _move_towards_position(position: Vector3, delta: float) -> void:
 	agent.velocity.z = desired_velocity.z
 
 ```
-<br>
 
-`retreat.gd` makes the enemy move away from a target while maintaining facing toward it,
-creating a tactical withdrawal behavior that keeps the target in view.
+### Retreat
+
+`retreat.gd` makes the enemy move away from a target while maintaining facing toward it, creating a tactical withdrawal behavior that keeps the target in view.
+
 ```gdscript
 @tool
 extends BTAction
@@ -661,9 +680,11 @@ func _retreat(direction: Vector3, delta: float) -> void:
 	agent.velocity.x = direction.x * speed
 	agent.velocity.z = direction.z * speed
 ```
-<br>
+
+### Stop Movement
 
 `stop_movement.gd` immediately halts all enemy movement by setting velocity to zero.
+
 ```gdscript
 extends BTAction
 
@@ -674,11 +695,11 @@ func _tick(delta: float) -> Status:
 		return SUCCESS
 	return RUNNING
 ```
-<br>
 
-`use_ability.gd` Triggers a specific enemy ability from the enemy's ability controller. The action
-immediately attempts to activate the ability in the specified slot and always
-returns SUCCESS, regardless of whether the ability activation was successful.
+### Use Ability
+
+`use_ability.gd` triggers a specific enemy ability from the enemy's ability controller. The action immediately attempts to activate the ability in the specified slot and always returns SUCCESS, regardless of whether the ability activation was successful.
+
 ```gdscript
 @tool
 extends BTAction
@@ -699,10 +720,11 @@ func _tick(delta: float) -> Status:
 
 	return SUCCESS
 ```
-<br>
 
-`weapon_attack.gd` triggers the enemy's weapon attack through its weapon controller. 
-This is a simple fire-and-forget attack action that always returns SUCCESS.
+### Weapon Attack
+
+`weapon_attack.gd` triggers the enemy's weapon attack through its weapon controller. This is a simple fire-and-forget attack action that always returns SUCCESS.
+
 ```gdscript
 @tool
 extends BTAction

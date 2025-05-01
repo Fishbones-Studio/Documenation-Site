@@ -456,6 +456,93 @@ func _tick(delta: float) -> Status:
 	return RUNNING
 ```
 
+### Patrol
+`patrol.gd` makes the enemy move towards a random position within the specific radius. The action allows the enemy to either walk normally or chaotically.
+
+```gdscript
+@tool
+extends BTAction
+
+## Radius in which the enemy patrols.
+@export var patrol_radius: float = 8.0
+## Time between destination changes.
+@export var patrol_interval: float = 2.0
+## The minimun distance which we consider target reached to return SUCCESS.
+@export var min_distance: float = 0.5
+## If we want to have chaotic movement patterns.
+@export var chaotic: bool = false
+## The frequency of the enemy changing direction during chaotic movement.
+@export var wave_frequency: float = 2.0
+## The intensity of how far the enemy deviates during chaotic movement.
+@export var wave_amplitude: float = 15.0
+
+var speed: float:
+	get:
+		return agent.stats.calculate_speed(agent.movement_component.walk_speed_factor)
+
+var _target_position: Vector3
+var _origin_position: Vector3
+var _current_timer: float = 0.0
+var _wave_timer: float = 0.0
+
+
+func _generate_name() -> String:
+	return "Patrol ➜ %.1fm %s" % [patrol_radius, "(Chaotic)" if chaotic else ""]
+
+
+func _enter() -> void:
+	_origin_position = agent.global_position
+	_current_timer = 0.0
+	_wave_timer = 0.0
+	_choose_new_patrol_target()
+
+
+func _tick(delta: float) -> Status:
+	_current_timer += delta
+	_wave_timer += delta
+
+	if agent.global_position.distance_to(_target_position) < min_distance:
+		return SUCCESS
+
+	if _current_timer >= patrol_interval:
+		_choose_new_patrol_target()
+		_current_timer = 0.0
+
+	_update_rotation(delta)
+	_move_to_position(delta)
+
+	return RUNNING
+
+
+func _choose_new_patrol_target() -> void:
+	var random_angle: float = randf_range(0, TAU)
+	var random_distance: float= randf_range(0.5 * patrol_radius, patrol_radius)
+
+	_target_position = _origin_position + Vector3(
+		cos(random_angle) * random_distance,
+		0,
+		sin(random_angle) * random_distance
+	)
+
+
+func _move_to_position(delta: float) -> void:
+	var base_direction: Vector3 = agent.global_position.direction_to(_target_position)
+	var movement: Vector3 = base_direction * speed
+
+	if chaotic:
+		var perpendicular: Vector3 = Vector3(base_direction.z, 0, -base_direction.x)
+		movement += perpendicular * sin(_wave_timer * wave_frequency * TAU) * wave_amplitude
+
+	agent.velocity = movement
+
+
+func _update_rotation(delta: float) -> void:
+	var direction: Vector3 = (_target_position - agent.global_position).normalized()
+	var target_angle: float = atan2(-direction.x, -direction.z)
+
+	agent.rotation.y = lerp_angle(agent.rotation.y, target_angle, min(speed * delta, 1.0))
+```
+
 ### Player on Top
 
 `player_on_top.gd` checks if the player is directly above the enemy using a vertical raycast.  This is typically used to detect when the player is standing on the enemy's head.
@@ -505,7 +592,7 @@ extends BTAction
 ## Movement speed during the pound sequence.
 @export var horizontal_speed: float = 40.0
 ## Minimum distance to target before returning SUCCESS.
-@export var min_distance: float = 5.0
+@export var min_distance: float = 10.0
 
 var _is_jumping: bool = false
 var _target_position: Vector3
@@ -545,8 +632,8 @@ func _tick(delta: float) -> Status:
 	var to_target: Vector3 = (_target_position - agent.global_position)
 	var horizontal_dir: Vector3 = Vector3(to_target.x, 0, to_target.z).normalized()
 
-	agent.velocity.x += horizontal_dir.x * horizontal_speed - agent.velocity.x
-	agent.velocity.z += horizontal_dir.z * horizontal_speed - agent.velocity.z
+	agent.velocity.x += (horizontal_dir.x * horizontal_speed - agent.velocity.x) * delta
+	agent.velocity.z += (horizontal_dir.z * horizontal_speed - agent.velocity.z) * delta
 
 	if agent.is_on_floor() and agent.velocity.y < 0:
 		_is_jumping = false
@@ -576,17 +663,30 @@ extends BTAction
 @export var speed_factor: float = 0.0
 ## Duration the enemy will pursue the target.
 @export var duration: float
+## Time interval to check if enemy is stuck.
+@export var stuck_interval: float = 1.0
+## Minimum distance considered not stuck between last check.
+@export var stuck_threshold: float = 2.5
+
+var _last_position: Vector3
+var _last_check_time: float = 0.0
 
 
 func _generate_name() -> String:
 	return "Pursue ➜ %s" % [LimboUtility.decorate_var(target_var)]
 
 
-# TODO: Implement if stuck
+func _enter() -> void:
+	_last_position = agent.global_position
+	_last_check_time = 0.0
+
+
 func _tick(delta: float) -> Status:
 	var target: ChickenPlayer = blackboard.get_var(target_var, null)
 	if not is_instance_valid(target):
 		return FAILURE
+
+	_last_check_time += delta
 
 	var desired_pos: Vector3 = target.global_position
 
@@ -595,6 +695,9 @@ func _tick(delta: float) -> Status:
 
 	if bool(duration) and elapsed_time > duration:
 		return SUCCESS
+
+	if _is_stuck():
+		return FAILURE
 
 	_move_towards_position(desired_pos, delta)
 	return RUNNING
@@ -606,12 +709,23 @@ func _is_at_position(position: Vector3) -> bool:
 
 func _move_towards_position(position: Vector3, delta: float) -> void:
 	var speed: float = speed_factor if speed_factor > 0.0 else agent.stats.calculate_speed(agent.movement_component.sprint_speed_factor)
-
 	var desired_velocity: Vector3 = agent.global_position.direction_to(position) * speed
 
 	agent.velocity.x = desired_velocity.x
 	agent.velocity.z = desired_velocity.z
 
+
+func _is_stuck() -> bool:
+	if _last_check_time < stuck_interval:
+		return false
+
+	var current_position: Vector3 = agent.global_position
+	var moved_distance: float = current_position.distance_to(_last_position)
+
+	_last_position = current_position
+	_last_check_time = 0.0
+
+	return moved_distance < stuck_threshold
 ```
 
 ### Retreat

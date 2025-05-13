@@ -6,7 +6,7 @@ author: Tjorn
 ---
 
 ![Sword Icon](../../../../../../../assets/fowl-play/gameplay/combat/melee-combat/weapons/sword/sword.png)
-The Sword is a powerful melee weapon with high base damage and a broad attack arc. It is designed for players who want to deal significant damage in a single swing.
+The Sword is a powerful melee weapon with high base damage and an attack arc. It is designed for players who want to deal significant damage in a single swing.
 
 ## Resource
 
@@ -23,7 +23,7 @@ purchasable = true
 drop_chance = 50
 cost = 150
 currency_type = 0
-description = "Deals %s Base Damage with a broad slash. The attack lasts %s, then enters a cooldown state for %s."
+description = "Deals %s Base Damage with a slash. The attack lasts %s, then enters a cooldown state for %s."
 icon = ExtResource("1_djghw")
 model_uid = "uid://co3ix5krmh3qr"
 ```
@@ -36,6 +36,6 @@ model_uid = "uid://co3ix5krmh3qr"
 
 ## Animations
 
-- **Attack**: The sword moves forward and rotates in an arc, simulating a broad slash.
+- **Attack**: The sword moves forward and rotates in an arc, simulating a slash.
 - **Cooldown**: The sword spins back to its original position, readying for the next attack.
 - **Idle**: The sword wiggles and rotates slightly, notifying the player that it is ready.

@@ -7,7 +7,7 @@ author: Tjorn
 
 ![Dagger Icon](../../../../../../../assets/fowl-play/gameplay/combat/melee-combat/weapons/dagger/dagger.png)
 
-The Dagger is a high-range melee weapon with a slower attack cycle. Its unique feature is the ability to deal damage twice per attack, rewarding precise timing and positioning.
+The Dagger is a high-range melee weapon with a slower attack cycle. Its unique feature is the ability to deal damage multiple times per attack, rewarding precise timing and positioning.
 
 ## Resource
 

@@ -9,6 +9,8 @@ The `AudioSettingsPanel` is a Control node that provides an interface for adjust
 <!-- and provides a button to reset all audio settings to their default values. -->
 It includes sliders for each audio bus, allowing players to adjust the volume levels according to their preferences. The settings are saved and loaded using the `SettingsManager`, ensuring that the user's preferences persist between game sessions.
 
+![Audio Menu](../../../../../assets/fowl-play/gameplay/user-interface/settings-menu/settings-menu-audio.png)
+
 ## Properties
 ### Configuration
 

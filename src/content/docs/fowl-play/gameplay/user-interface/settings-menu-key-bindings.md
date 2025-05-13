@@ -9,6 +9,8 @@ The `KeyBindingsPanel` is a Control node that provides an interface for managing
 
 It allows users to view and modify the input mappings for various actions, including keyboard, mouse, and controller inputs. The panel is designed to be user-friendly, with clear labels and visual feedback for the current bindings.
 
+![Key Bindings Menu](../../../../../assets/fowl-play/gameplay/user-interface/settings-menu/settings-menu-key-bindings.png)
+
 ## Properties
 ### Configuration
 

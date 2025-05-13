@@ -9,6 +9,8 @@ The `ControlsSettingsPanel` is a Control node that provides an interface for adj
 
 It allows users to modify various control settings, such as sensitivity, camera inversion and tilting, and provides a button to reset all control settings to their default values. The settings are saved and loaded using the `SettingsManager`, ensuring that the user's preferences persist between game sessions.
 
+![Controls Menu](../../../../../assets/fowl-play/gameplay/user-interface/settings-menu/settings-menu-controls.png)
+
 ## Properties
 ### Configuration
 

@@ -9,6 +9,8 @@ The `GraphicsSettingsPanel` is a Control node that provides an interface for adj
 
 It allows users to modify various graphics options such as resolution, display mode, V-Sync, anti-aliasing methods, and render scale. The settings are saved and loaded using the `SettingsManager`, ensuring that the user's preferences persist between game sessions.
 
+![Graphics Menu](../../../../../assets/fowl-play/gameplay/user-interface/settings-menu/settings-menu-graphics.png)
+
 ## Properties
 ### Constants
 | Name | Type | Description |

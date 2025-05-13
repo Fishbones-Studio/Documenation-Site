@@ -36,7 +36,7 @@ model_uid = "uid://dldj0suybdnhl"
 - **Strengths**: High base damage and long range. Can hit twice per attack cycle.
 - **Weaknesses**: Long windup and cooldown, requiring careful timing.
 - **Best Used**: For players who can anticipate enemy movement and maximize the multiple-hit potential.
-- **Notable Mechanics**: The dagger's multiple-hit mechanic allows for two hits per attack, which can be a strategic advantage.
+- **Notable Mechanics**: The dagger's multi-hit mechanic allows for multiple hits per attack, which can be a strategic advantage.
 
 ## Animations
 

@@ -5,8 +5,9 @@ description: The peck is the default melee weapon in Fowl Play, used by the play
 author: Tjorn
 ---
 
-Peck is the default melee weapon in Fowl Play, used by the player. It is a simple yet effective weapon that allows players to deal damage to enemies in close combat.
-The peck is a quick attack that can be executed with a short windup time, making it ideal for fast-paced combat scenarios. The weapon's design is inspired by the natural pecking behavior of birds, and it is represented in the game with a unique animation.
+![Peck Icon](../../../../../../../assets/fowl-play/gameplay/combat/melee-combat/weapons/peck/peck.png)
+
+The Peck is inspired by the natural pecking of birds. It is quick and always available to the player unless replaced by another weapon. It serves as the default melee weapon, allowing players to engage in close combat without needing to purchase another weapon.
 
 ## Resource Overview
 
@@ -31,12 +32,14 @@ metadata/_custom_type_script = "uid://bflt4m3fx7gmv"
 
 ## Gameplay considerations
 
-The peck is the default melee weapon in Fowl Play, and is thus not purchasable. Once the player has acquired a different melee weapon, the peck will be dropped, and only returns on player death. The peck is not a very powerful weapon, but it is fast and can be used to deal damage quickly in close combat situations.
-Since Peck is the default melee weapon, the stats are not as high as other melee weapons. The peck is a good starting weapon for players to learn the combat mechanics of Fowl Play, and it can be used effectively in the early stages of the game.
+- **Strengths**: Always available, quick to use, and ideal for learning combat mechanics.
+- **Weaknesses**: Lower damage and range compared to other weapons.
+- **Best Used**: As a fallback weapon or for new players.
+- **Note**: Once another melee weapon is purchased, the peck will be replaced and unavailable until the player dies. The peck is not purchasable.
 
-## Custom Script
+## Animations
 
-Peck uses a custom script, to trigger the anations on the chicken player (and hendere):
+- **Attack**: The player character jumps slightly and pecks with its beak while airborne. Uses a custom script to trigger the animation on the player or compatible enemy:
 
 ```gdscript
 class_name Peck

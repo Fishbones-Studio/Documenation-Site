@@ -1,7 +1,7 @@
 ---
 title: Butter Knife
 lastUpdated: 2025-05-13
-description: The peck is a fast paced melee weapon, with a short windup time and a quick cooldown.
+description: Butter Knife is a fast, spammable melee weapon with low damage
 author: Tjorn
 ---
 

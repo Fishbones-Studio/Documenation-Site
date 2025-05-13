@@ -121,8 +121,8 @@ Formats the text by adding spaces before capital letters that are not at the sta
 This structure represents the sidebar navigation and the content area where the settings panels will be displayed. Each SiderBarItem corresponds to a specific settings category, and the content area will dynamically load the appropriate panel based on user selection.
 
 ## Dependencies
-- UIManager: The SettingsMenu relies on the UIManager to handle the opening and closing of the menu, as well as managing the UI stack.
-- SiderBarItem: Each sidebar item is an instance of the SiderBarItem class, which handles the visual representation and interaction logic for the sidebar navigation.
+- `UIManager`: The SettingsMenu relies on the UIManager to handle the opening and closing of the menu, as well as managing the UI stack.
+- `SidebarItem`: Each sidebar item is an instance of the SidebarItem class, which handles the visual representation and interaction logic for the sidebar navigation.
 
 ## Usage
 To use the SettingsMenu, you need to add it to your scene using the UIManager. The sidebar items should be set up as SiderBarItem nodes, and the corresponding settings panels should be preloaded as PackedScene resources. The menu can be opened from the pause menu or any other UI element that requires access to the game settings.

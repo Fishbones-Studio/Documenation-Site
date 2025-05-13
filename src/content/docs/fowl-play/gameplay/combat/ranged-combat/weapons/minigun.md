@@ -1,13 +1,40 @@
 ---
 title: Minigun
 description: Detailing the minigun mechanics
-lastUpdated: 2025-04-07
+lastUpdated: 2025-05-13
 author: Tjorn
 ---
 
-## Weapon Description
-
+![Minigun Icon](../../../../../../../assets/fowl-play/gameplay/combat/ranged-combat/weapons/minigun/minigun.png)
 The minigun is a powerful ranged weapon that fires a high volume of bullets in quick succession. Each bullet deals minimal damage, but the rapid fire rate makes it very effective against enemies. The weapon has a long cooldown time to balance its power.
+
+---
+
+## Weapon Resource
+
+```gdscript
+[resource]
+script = ExtResource("1_dlpss")
+damage = 5
+windup_time = 1.0
+attack_duration = 5.0
+cooldown_time = 2.5
+allow_continuous_fire = true
+allow_early_release = true
+fire_rate_per_second = 0.2
+max_range = 30.0
+loop_animation = true
+name = "Minigun"
+purchasable = true
+drop_chance = 25
+cost = 150
+currency_type = 0
+description = "Deals %s Base Damage per bullet, with a fire rate of %s after a windup of %s. The attack lasts %s, with a max range of %s, then enters a cooldown state for %s.
+
+This weapon %s and %s."
+icon = ExtResource("1_f0db6")
+model_uid = "uid://8owdwg4pu4ht"
+```
 
 ## Attack State Mechanics
 
@@ -64,6 +91,8 @@ var _ray_queue: Array[RayRequest] = []
 
 
 func enter(_previous_state, _info: Dictionary = {}) -> void:
+	if weapon.entity_stats.is_player:
+		SignalManager.cooldown_item_slot.emit(weapon.current_weapon, weapon.current_weapon.attack_duration, false)
 	_fire_timer = 0.0
 	_current_angle = 0.0
 	_angle_direction = 1
@@ -89,7 +118,7 @@ func physics_process(_delta: float) -> void:
 
 		var raycast: RayCast3D = _create_raycast(origin, direction, max_range)
 		raycast.force_raycast_update()
-		process_hit(raycast)
+		process_raycast_hit(raycast)
 	_ray_queue.clear()
 
 
@@ -130,7 +159,7 @@ func _create_raycast(origin: Vector3, direction: Vector3, max_range: float) -> R
 	var raycast := RayCast3D.new()
 	raycast.enabled = true
 	raycast.target_position = direction * max_range
-	raycast.collision_mask = 0b0110 # check for collisions on layer 2 (player) and layer 3 (enemy)
+	raycast.collision_mask = 0b0111 # check for collisions on layer 1 (world), layer 2 (player) and layer 3 (enemy)
 
 	# Add to physics space first
 	get_tree().root.add_child(raycast)
@@ -226,6 +255,8 @@ func _update_spiral_angle() -> void:
 func _on_attack_duration_timer_timeout() -> void:
 	transition_signal.emit(WeaponEnums.WeaponState.COOLDOWN, {})
 ```
+
+---
 
 ### Code Features
 

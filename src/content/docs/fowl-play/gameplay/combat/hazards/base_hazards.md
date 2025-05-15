@@ -1,15 +1,15 @@
 ---
-title: Environmental Hazards
+title: Base Hazards
 description: Creation of environmental hazards
 lastUpdated: 2025-05-15
 author: Tjorn
 ---
 
-Environmental hazards in Fowl Play are designed to add dynamic challenges and strategic depth to combat encounters. Hazards are placed throughout the arena to force both players and enemies to carefully consider their movement, positioning, and timing during fights. Each hazard type has a unique gameplay effect, encouraging players to adapt their tactics and stay alert. Currently, there are four main types of hazards: Base Hazard, Bleed Hazard, Hold Hazard, and Knock Hazard.
+Environmental hazards in Fowl Play are designed to add dynamic challenges and strategic depth to combat encounters. Hazards are placed throughout the arena to force both players and enemies to carefully consider their movement, positioning, and timing during fights. Each hazard type has a unique gameplay effect, encouraging players to adapt their tactics and stay alert. Currently, there are four main types of hazards: [`Base Hazard`](#base-hazard), [`Bleed Hazard`](#bleed-hazard), [`Hold Hazard`](#hold-hazard), and [`Knock Hazard`](#knock-hazard).
 
 ## Base Hazard
 
-Base Hazard, as the name implies, serves as the foundation for all other hazards in the game. It provides basic functionality for detecting when a body enters the hazard area and applying damage to the player or enemy. Child classes can extend this functionality to create more complex hazards, but the base hazard can be used on its own as well, although this is not done in Fowl Play.
+[`Base Hazard`](#base-hazard), as the name implies, serves as the foundation for all other hazards in the game. It provides basic functionality for detecting when a body enters the hazard area and applying damage to the player or enemy. Child classes can extend this functionality to create more complex hazards, but the base hazard can be used on its own as well, although this is not done in Fowl Play.
 
 ### Code
 
@@ -51,16 +51,16 @@ func erase_invalid_bodies() -> void:
 	bodies_to_remove.clear()
 ```
 
-**Explanation:**
-The Base Hazard uses a dictionary of body IDs instead of direct references to avoid errors if a body is deleted, ensuring robust tracking. The logic is kept minimal and generic so that all other hazards can inherit and extend it, promoting code reuse and consistency. Damage is applied immediately on entry to make the hazard's effect clear and predictable for players.
+The [`Base Hazard`](#base-hazard) uses a dictionary of body IDs instead of direct references to avoid errors if a body is deleted, ensuring correct tracking. The logic is kept minimal and generic so that all other hazards can inherit and extend it, promoting code reuse and consistency. Damage is applied immediately on entry to make the hazard's effect clear and predictable for players.
 
 ## Bleed Hazard
 
-The `Bleed Hazards` apply damage at tick-based intervals after an entity enters the hazard area. The damage continues for a set duration, even if the entity leaves the hazard area. This creates a lingering threat that punishes careless movement.
+The [`Bleed Hazard`](#bleed-hazard) applies damage at tick-based intervals after an entity enters the hazard area. The damage continues for a set duration, even if the entity leaves the hazard area. This creates a lingering threat that punishes careless movement.
 
 ### Code
 
-```gdscript## This hazard applies damage at tick based intervals
+```gdscript
+## This hazard applies damage at tick based intervals
 ## The damage applies after the entity touches the hazard area, and then damages the player for a set duration
 class_name BleedHazard
 extends BaseHazard
@@ -100,12 +100,11 @@ func _apply_continuous_damage() -> void:
 			super._on_hazard_area_body_entered(body)
 ```
 
-**Explanation:**
-Bleed Hazard tracks entry time for each body and applies damage at intervals, even after leaving the area. This is implemented to create a lingering threat and to encourage players to avoid hazards entirely, not just quickly pass through. The use of timers and periodic checks allows for flexible tuning of how punishing the hazard is.
+[`Bleed Hazard`](#bleed-hazard) tracks entry time for each body and applies damage at intervals, even after leaving the area. This is implemented to create a lingering threat and to encourage players to avoid hazards entirely, not just quickly pass through. The use of timers and periodic checks allows for tuning of how punishing the hazard is.
 
 ## Hold Hazard
 
-The `Hold Hazard` applies damage at regular intervals while an entity remains in the hazard area. Unlike Bleed Hazards, the damage stops immediately when the entity exits the hazard area, giving the player an easy out.
+The [`Hold Hazard`](#hold-hazard) applies damage at regular intervals while an entity remains in the hazard area. Unlike [`Bleed Hazards`](#bleed-hazard), the damage stops immediately when the entity exits the hazard area, giving the player an easy out.
 
 ### Code
 
@@ -153,12 +152,11 @@ func _apply_continuous_damage() -> void:
 			super._on_hazard_area_body_entered(body)
 ```
 
-**Explanation:**
-Hold Hazard only applies damage while the entity is present, removing them from the active list on exit. This design rewards quick reactions and lets players minimize damage by leaving the hazard promptly. The interval-based approach makes the hazard's threat more manageable and fair, as players have control over how long they are exposed.
+[`Hold Hazard`](#hold-hazard) only applies damage while the entity is present, removing them from the active list on exit. This design rewards quick reactions and lets players minimize damage by leaving the hazard promptly. The interval-based approach makes the hazard's threat more manageable and fair, as players have control over how long they are exposed.
 
 ## Knock Hazard
 
-The `Knock Hazards` apply knockback and damage to entities that enter the hazard area. This can reposition players or enemies, potentially pushing them into other hazards or into the oponent. The knockback is calculated based on the direction from the hazard to the entity, with configurable force and limits for horizontal and vertical knockback.
+The [`Knock Hazard`](#knock-hazard) applies knockback and damage to entities that enter the hazard area. This can reposition players or enemies, potentially pushing them into other hazards or into the opponent. The knockback is calculated based on the direction from the hazard to the entity, with configurable force and limits for horizontal and vertical knockback.
 
 ### Code
 
@@ -208,7 +206,7 @@ func calculate_knockback(direction: Vector3) -> Vector3:
 ```
 
 **Explanation:**
-Knock Hazard calculates knockback based on the direction from the hazard to the entity, with configurable force and clamping to prevent excessive movement. This approach ensures knockback feels responsive and fair, while still being a significant threat. The modular calculation function allows for easy adjustment and reuse in other hazards or attacks.
+[`Knock Hazard`](#knock-hazard) calculates knockback based on the direction from the hazard to the entity, with configurable force and clamping to prevent excessive movement. This approach ensures knockback feels responsive and fair, while still being a significant threat. The modular calculation function allows for easy adjustment and reuse in other hazards or attacks.
 
 ---
 
@@ -235,8 +233,7 @@ func _spawn_hazard() -> void:
 		hazard.global_position = global_position
 ```
 
-**Explanation:**
-Hazard spawning uses random chance to add unpredictability and replayability to arena layouts. By instantiating hazards as children of a marker, the system keeps placement modular and easy to manage, supporting dynamic level design and quick iteration.
+Hazard spawning uses random chance to add unpredictability and replayability to arena layouts. By instantiating hazards as children of a marker, the system keeps placement modular and easy to manage..
 
 ---
 
@@ -244,7 +241,13 @@ Hazard spawning uses random chance to add unpredictability and replayability to 
 
 - **Area Denial:** Hazards create zones that are dangerous to enter, shaping the flow of combat and limiting safe movement options.
 - **Tactical Positioning:** Players must plan their routes and attacks to avoid hazards, while also using them to their advantage (e.g., luring enemies into hazards).
-- **Risk vs. Reward:** Sometimes, crossing a hazard may be necessary to reach a power-up or escape an enemy, forcing players to weigh the potential damage against the benefit.
-- **Dynamic Fights:** The presence of hazards ensures that no two fights play out the same way, as both players and AI must constantly adapt to the environment.
+- **Dynamic Fights:** The randomization of hazards ensures that no two fights play out the same way, as both players and AI must constantly adapt to the environment. This means the player cannot just memorize a single strategy, but must instead be flexible and responsive to the changing battlefield.
+- **Risk vs Reward:** Hazards can be used strategically to deal damage to enemies, but players must balance the risk of taking damage themselves. This adds depth to combat decisions and encourages players to think critically about their actions.
 
-Both players and enemies are affected by hazards, making them a core part of the arena's challenge and a key element in mastering combat strategy in Fowl Play.
+All hazards deal `True` damage, meaning they ignore the characters defense stats. This ensures that hazards are always a threat, regardless of the player's build or equipment. It also simplifies the damage calculation, as players can always expect a consistent level of danger from hazards.
+
+---
+
+## References
+
+For the visual implementation of the hazards, refer to the [3D Art section](/fowl-play/art/3d/hazards) for details on modeling, texturing, and shading techniques used in Fowl Play.

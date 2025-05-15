@@ -9,53 +9,58 @@ The `GraphicsSettingsPanel` is a Control node that provides an interface for adj
 
 It allows users to modify various graphics options such as resolution, display mode, V-Sync, anti-aliasing methods, and render scale. The settings are saved and loaded using the `SettingsManager`, ensuring that the user's preferences persist between game sessions.
 
-![Graphics Menu](../../../../../assets/fowl-play/gameplay/user-interface/settings-menu/settings-menu-graphics.png)
+![Graphics Menu](../../../../../../assets/fowl-play/gameplay/user-interface/settings-menu/settings-menu-graphics.png)
 
 ## Properties
+
 ### Constants
-| Name | Type | Description |
-|------|------|-------------|
-| RESOLUTIONS | Dictionary[String, Vector2i] | Available screen resolutions with labels |
-| DISPLAY_MODES | Dictionary[String, WindowMode] | Window display modes (Windowed, Fullscreen, etc.) |
-| V_SYNC | Dictionary[String, VSyncMode] | Vertical synchronization options |
-| FPS | Dictionary[String, int] | Framerate limit options |
-| MSAA | Dictionary[String, MSAA] | Multisample anti-aliasing quality levels |
-| FXAA | Dictionary[String, ScreenSpaceAA] | Fast approximate anti-aliasing options |
-| TAA | Dictionary[String, bool] | Temporal anti-aliasing toggle |
-| RENDER_SCALE | Dictionary[String, float] | 3D rendering resolution scaling factors |
-| RENDER_MODE | Dictionary[String, Scaling3DMode] | 3D scaling modes (FSR, Bilinear) |
+
+| Name          | Type                              | Description                                       |
+| ------------- | --------------------------------- | ------------------------------------------------- |
+| RESOLUTIONS   | Dictionary[String, Vector2i]      | Available screen resolutions with labels          |
+| DISPLAY_MODES | Dictionary[String, WindowMode]    | Window display modes (Windowed, Fullscreen, etc.) |
+| V_SYNC        | Dictionary[String, VSyncMode]     | Vertical synchronization options                  |
+| FPS           | Dictionary[String, int]           | Framerate limit options                           |
+| MSAA          | Dictionary[String, MSAA]          | Multisample anti-aliasing quality levels          |
+| FXAA          | Dictionary[String, ScreenSpaceAA] | Fast approximate anti-aliasing options            |
+| TAA           | Dictionary[String, bool]          | Temporal anti-aliasing toggle                     |
+| RENDER_SCALE  | Dictionary[String, float]         | 3D rendering resolution scaling factors           |
+| RENDER_MODE   | Dictionary[String, Scaling3DMode] | 3D scaling modes (FSR, Bilinear)                  |
 
 ### Configuration
-| Type | Name | Description |
-|------|------|-------------|
-| String | config_path | Path to configuration file ("user://settings.cfg") |
-| String | config_name | Section name for graphics settings ("graphics") |
-| Dictionary | graphics_settings | Stores current graphics settings |
+
+| Type       | Name              | Description                                        |
+| ---------- | ----------------- | -------------------------------------------------- |
+| String     | config_path       | Path to configuration file ("user://settings.cfg") |
+| String     | config_name       | Section name for graphics settings ("graphics")    |
+| Dictionary | graphics_settings | Stores current graphics settings                   |
 
 ### Node References
-| Type | Name | Description |
-|------|------|-------------|
-| ContentItemDropdown | resolution | Resolution selection dropdown |
-| ContentItemDropdown | display_mode | Window mode dropdown |
-| SettingsCheckButton | borderless | Borderless window toggle |
-| ContentItemDropdown | v_sync | VSync mode dropdown |
-| ContentItemDropdown | fps | FPS limit dropdown |
-| ContentItemDropdown | msaa | MSAA quality dropdown |
-| ContentItemDropdown | fxaa | FXAA toggle dropdown |
-| ContentItemDropdown | taa | TAA toggle |
-| ContentItemDropdown | render_scale | Render scale quality dropdown |
-| ContentItemDropdown | render_mode | 3D scaling mode dropdown |
 
+| Type                | Name         | Description                   |
+| ------------------- | ------------ | ----------------------------- |
+| ContentItemDropdown | resolution   | Resolution selection dropdown |
+| ContentItemDropdown | display_mode | Window mode dropdown          |
+| SettingsCheckButton | borderless   | Borderless window toggle      |
+| ContentItemDropdown | v_sync       | VSync mode dropdown           |
+| ContentItemDropdown | fps          | FPS limit dropdown            |
+| ContentItemDropdown | msaa         | MSAA quality dropdown         |
+| ContentItemDropdown | fxaa         | FXAA toggle dropdown          |
+| ContentItemDropdown | taa          | TAA toggle                    |
+| ContentItemDropdown | render_scale | Render scale quality dropdown |
+| ContentItemDropdown | render_mode  | 3D scaling mode dropdown      |
 
 ## Implementation
 
 The `_ready()` function initializes the graphics settings panel by calling `_load_graphics_items()` to populate the dropdowns and checkboxes with available options. It also sets the initial values for the graphics settings based on the current configuration.
+
 ```gdscript
 func _ready() -> void:
 	_load_graphics_items()
 ```
 
 The `_load_graphics_settings()` function loads the graphics settings from the configuration file using the `SettingsManager`. It retrieves the current graphics settings and updates the dropdowns and checkboxes accordingly.
+
 ```gdscript
 func _load_graphics_settings() -> void:
 	SettingsManager.load_settings(get_viewport(),get_window(),config_name)
@@ -64,6 +69,7 @@ func _load_graphics_settings() -> void:
 ```
 
 The `_save_graphics_settings()` function saves the current graphics settings to the configuration file. It iterates through the `graphics_settings` dictionary and updates the values in the configuration file.
+
 ```gdscript
 func _save_graphics_settings() -> void:
 	var config = ConfigFile.new()
@@ -76,6 +82,7 @@ func _save_graphics_settings() -> void:
 ```
 
 The following functions are connected to the respective signals from the UI elements. They handle the changes made by the user and update the graphics settings accordingly.
+
 ```gdscript
 func _set_resolution(index: int) -> void:
 	var value: Vector2i = RESOLUTIONS.values()[index]
@@ -114,9 +121,9 @@ func _set_borderless(value: bool) -> void:
 ## Vsync is enabled by default.
 ## Vertical synchronization locks framerate and makes screen tearing not visible
 ## at the cost of higher input latency and stuttering when the framerate target
-## is not met.Adaptive V-Sync automatically disables V-Sync when the framerate 
-## target is not met, and enables V-Sync otherwise. This prevents suttering and 
-## reduces input latency when the framerate target is not met, at the cost of 
+## is not met.Adaptive V-Sync automatically disables V-Sync when the framerate
+## target is not met, and enables V-Sync otherwise. This prevents suttering and
+## reduces input latency when the framerate target is not met, at the cost of
 ## visible tearing.
 func _set_vsync(index: int) -> void:
 	var value: DisplayServer.VSyncMode = V_SYNC.values()[index]
@@ -129,8 +136,8 @@ func _set_vsync(index: int) -> void:
 ```
 
 ```gdscript
-## The rendering FPS affects the appearance of TAA, as higher framerates allow 
-## it to converge faster. On high refresh rate monitors, TAA ghosting issues 
+## The rendering FPS affects the appearance of TAA, as higher framerates allow
+## it to converge faster. On high refresh rate monitors, TAA ghosting issues
 ## may appear less noticeable as a result (if the GPU can keep up).
 func _set_fps(index: int) -> void:
 	var value: int = FPS.values()[index]
@@ -143,7 +150,7 @@ func _set_fps(index: int) -> void:
 ```
 
 ```gdscript
-## Multi-sample anti-aliasing. High quality, but slow. It also does not smooth 
+## Multi-sample anti-aliasing. High quality, but slow. It also does not smooth
 ## out the edges of transparent (alpha scissor) textures.
 func _set_msaa(index: int) -> void:
 	var value: int = MSAA.values()[index]
@@ -156,7 +163,7 @@ func _set_msaa(index: int) -> void:
 ```
 
 ```gdscript
-## Fast approximate anti-aliasing. Much faster than MSAA (and works on alpha 
+## Fast approximate anti-aliasing. Much faster than MSAA (and works on alpha
 ## scissor edges), but blurs the whole scene rendering slightly.
 func _set_fxaa(index: int) -> void:
 	var value: int = FXAA.values()[index]
@@ -169,8 +176,8 @@ func _set_fxaa(index: int) -> void:
 ```
 
 ```gdscript
-## Temporal antialiasing. Smooths out everything including specular aliasing, 
-## but can introduce ghosting artifacts and blurring in motion. 
+## Temporal antialiasing. Smooths out everything including specular aliasing,
+## but can introduce ghosting artifacts and blurring in motion.
 ## Moderate performance cost.
 func _set_taa(index: int) -> void:
 	var value: int = TAA.values()[index]
@@ -205,6 +212,7 @@ func _set_render_mode(index: int) -> void:
 ```
 
 `load_graphics_items()` is responsible for populating the dropdowns and checkboxes with available options. It clears the existing options and adds new ones based on the defined constants.
+
 ```gdscript
 func _load_graphics_items() -> void:
 	resolution.options.clear()
@@ -247,6 +255,7 @@ func _load_graphics_items() -> void:
 ```
 
 `set_graphics_values()` sets the initial values for the graphics settings based on the current configuration. It selects the appropriate options in the dropdowns and checkboxes according to the loaded settings.
+
 ```gdscript
 func _set_graphics_values() -> void:
 	resolution.options.select(max(RESOLUTIONS.values().find(DisplayServer.window_get_size()), 0))
@@ -263,6 +272,7 @@ func _set_graphics_values() -> void:
 ```
 
 `restore_defaults()` is called when the "Restore Defaults" button is pressed. It removes the configuration file if it exists and reloads the graphics items to reset the settings to their default values.
+
 ```gdscript
 func _on_restore_defaults_button_up() -> void:
 	if FileAccess.file_exists(config_path):
@@ -274,17 +284,20 @@ func _on_restore_defaults_button_up() -> void:
 ## Technical Details
 
 ### Graphics Pipeline Control
+
 - Manages both window-level (resolution, mode) and rendering-level (AA, scaling) settings.
 - Uses Godot's DisplayServer for window configuration,
 - Modifies Viewport settings for rendering quality,
 - Controls Engine parameters for performance tuning,
 
 ### Anti-Aliasing Options
+
 - **MSAA**: Multisample anti-aliasing, high quality but performance intensive.
 - **FXAA**: Fast approximate anti-aliasing, blurs entire image.
 - **TAA**: Temporal anti-aliasing, smooths out everything but can introduce ghosting artifacts and blurring in motion.
 
 ### Performance Scaling
+
 - Includes FSR (FidelityFX Super Resolution) options for upscaling.
 - Provides multiple render scale presets for performance tuning.
 - Allows framerate limiting to control performance and power consumption.
@@ -292,12 +305,14 @@ func _on_restore_defaults_button_up() -> void:
 ### Configuration Persistence
 
 Settings are stored in a configuration file (`user://settings.cfg`) using the `ConfigFile` class. The stored values are:
+
 - **Section**: "graphics"
 - **Keys**: Graphics setting names (e.g., "resolution", "display_mode", "v_sync", "render_scale")
 - **Values**: Corresponding configuration values for each setting
-This allows the game to remember user preferences across sessions.
+  This allows the game to remember user preferences across sessions.
 
 ## Dependencies
+
 - `SettingsManager`: For loading and saving settings.
 - `DisplayUtils`: For centering the window.
 - `ContentItemDropdown`: Custom dropdown UI element.

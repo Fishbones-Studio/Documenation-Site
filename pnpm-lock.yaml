@@ -17,12 +17,18 @@ importers:
       '@astrojs/starlight':
         specifier: ^0.34.3
         version: 0.34.3(astro@5.7.12(@types/node@22.15.17)(rollup@4.40.2)(typescript@5.7.3))
+      '@lorenzo_lewis/starlight-utils':
+        specifier: ^0.3.2
+        version: 0.3.2(@astrojs/starlight@0.34.3(astro@5.7.12(@types/node@22.15.17)(rollup@4.40.2)(typescript@5.7.3)))(astro@5.7.12(@types/node@22.15.17)(rollup@4.40.2)(typescript@5.7.3))
       astro:
         specifier: ^5.7.12
         version: 5.7.12(@types/node@22.15.17)(rollup@4.40.2)(typescript@5.7.3)
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
+      starlight-auto-sidebar:
+        specifier: ^0.1.1
+        version: 0.1.1(@astrojs/starlight@0.34.3(astro@5.7.12(@types/node@22.15.17)(rollup@4.40.2)(typescript@5.7.3)))
       starlight-links-validator:
         specifier: ^0.16.0
         version: 0.16.0(@astrojs/starlight@0.34.3(astro@5.7.12(@types/node@22.15.17)(rollup@4.40.2)(typescript@5.7.3)))
@@ -364,6 +370,12 @@ packages:
   '@jridgewell/sourcemap-codec@1.5.0':
     resolution: {integrity: sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==}
 
+  '@lorenzo_lewis/starlight-utils@0.3.2':
+    resolution: {integrity: sha512-9GCZLyfIUTkXuE39jHjcCSwnOzm6hSGnC8DrHlo2imegiZmZSdG0eBMA/sTb/shLkvCzE2SGCaKM+EwIeO6oDw==}
+    peerDependencies:
+      '@astrojs/starlight': '>=0.32.0'
+      astro: '>=5'
+
   '@mdx-js/mdx@3.1.0':
     resolution: {integrity: sha512-/QxEhPAvGwbQmy1Px8F899L5Uc2KZ6JtXwlCgJmjSTBedwOZkByYcBG4GceIGPXRDsmfxhHazuS+hlOShRLeDw==}
 
@@ -624,6 +636,10 @@ packages:
   array-iterate@2.0.1:
     resolution: {integrity: sha512-I1jXZMjAgCMmxT4qxXfPXa6SthSoE8h6gkSI9BGGNv8mP8G/v0blc+qFnZu6K42vTOiuME596QaLO0TP3Lk0xg==}
 
+  ast-types@0.16.1:
+    resolution: {integrity: sha512-6t10qk83GOG8p0vKmaCr8eiilZwO171AvbROMtvvNiwrTly62t+7XkA8RdIIVbpMhCASAsxgAzdRSwh6nw/5Dg==}
+    engines: {node: '>=4'}
+
   astring@1.9.0:
     resolution: {integrity: sha512-LElXdjswlqjWrPpJFg1Fx4wpkOCxj1TDHlSV4PlaRxHGWko024xICaa97ZkMfs6DRKlCguiAI+rbXv5GWwXIkg==}
     hasBin: true
@@ -632,6 +648,11 @@ packages:
     resolution: {integrity: sha512-HN0jWTnhr7mIV/2e6uu4PPRNNo/k4UEgTLZqbp3MrHU+caCARveG2yZxaZVBmxyiVdYqW5Pd3u3n2zjnshixbw==}
     peerDependencies:
       astro: ^4.0.0-beta || ^5.0.0-beta || ^3.3.0
+
+  astro-integration-kit@0.18.0:
+    resolution: {integrity: sha512-Z0QW5IQjosuKQDEGYYkvUX6EhEtrmE4/oViqWz23QveV8U7AuyFsTdg00WRNPevWZl/5a4lLUeDpv4bCRynRRg==}
+    peerDependencies:
+      astro: ^4.12.0 || ^5.0.0
 
   astro@5.7.12:
     resolution: {integrity: sha512-UQOItiZz2hcv9PlHTQ6dNqFDIVNPnmwk6eyAjJqPE9O8EDHZK2JKtTRD0CBFN2Uqr0RE0TWP2gqDpLfsa5dJEA==}
@@ -842,6 +863,11 @@ packages:
   escape-string-regexp@5.0.0:
     resolution: {integrity: sha512-/veY75JbMK4j1yjvuUxuVsiS/hr/4iHs9FTT6cgTexxdE0Ly/glccBAkloH/DofkjRbZU3bnoj38mOmhkZ0lHw==}
     engines: {node: '>=12'}
+
+  esprima@4.0.1:
+    resolution: {integrity: sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==}
+    engines: {node: '>=4'}
+    hasBin: true
 
   estree-util-attach-comments@3.0.0:
     resolution: {integrity: sha512-cKUwm/HUcTDsYh/9FgnuFqpfquUbwIqwKM26BVCGDPVgvaCl/nDCCjUfiLlx6lsEZ3Z4RFxNbOQ60pkaEwFxGw==}
@@ -1321,6 +1347,9 @@ packages:
   parse5@7.3.0:
     resolution: {integrity: sha512-IInvU7fabl34qmi9gY8XOVxhYyMyuH2xUNpb2q8/Y+7552KlejkRvqvD19nMoUW/uQGGbqNpA6Tufu5FL5BZgw==}
 
+  pathe@1.1.2:
+    resolution: {integrity: sha512-whLdWMYL2TwI08hn8/ZqAbrVemu0LNaNNJZX73O6qaIdCTfXutsLhMkjdENX0qhsQ9uIimo4/aQOmXkoon2nDQ==}
+
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
@@ -1366,6 +1395,10 @@ packages:
   readdirp@4.1.2:
     resolution: {integrity: sha512-GDhwkLfywWL2s6vEjyhri+eXmfH6j1L7JE27WhqLeYzoh/A3DBaYGEj2H/HFZCn/kMfim73FXxEJTw06WtxQwg==}
     engines: {node: '>= 14.18.0'}
+
+  recast@0.23.11:
+    resolution: {integrity: sha512-YTUo+Flmw4ZXiWfQKGcwwc11KnoRAYgzAE2E7mXKCjSviTKShtxBsN6YUUBB2gtaBzKzeKunxhUwNHQuRryhWA==}
+    engines: {node: '>= 4'}
 
   recma-build-jsx@1.0.0:
     resolution: {integrity: sha512-8GtdyqaBcDfva+GUKDr3nev3VpKAhup1+RvkMvUxURHpW7QyIvk9F5wz7Vzo06CEMSilw6uArgRqhpiUcWp8ew==}
@@ -1485,12 +1518,22 @@ packages:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
     engines: {node: '>=0.10.0'}
 
+  source-map@0.6.1:
+    resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
+    engines: {node: '>=0.10.0'}
+
   source-map@0.7.4:
     resolution: {integrity: sha512-l3BikUxvPOcn5E74dZiq5BGsTb5yEwhaTSzccU6t4sDOH8NWJCstKO5QT2CvtFoK6F0saL7p9xHAqHOlCPJygA==}
     engines: {node: '>= 8'}
 
   space-separated-tokens@2.0.2:
     resolution: {integrity: sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q==}
+
+  starlight-auto-sidebar@0.1.1:
+    resolution: {integrity: sha512-5Sz+d+FTpxiVb2jOqHUFkO+/KPfUyTsJR4K/O13ilZE0MaxwRaUuPioz0tf33Izrqj1b7+dp4/vv9Pd4flLCcQ==}
+    engines: {node: '>=18.17.1'}
+    peerDependencies:
+      '@astrojs/starlight': '>=0.32.0'
 
   starlight-links-validator@0.16.0:
     resolution: {integrity: sha512-wInToor19C7UxhesPuxTBIhB1LH1wzNQHD4HaumfcB+yFhg5u80yQEnkZDrABHrUEEEwFm//NoZbWhnUj1m2ug==}
@@ -1528,6 +1571,9 @@ packages:
 
   tiny-inflate@1.0.3:
     resolution: {integrity: sha512-pkY1fj1cKHb2seWDy0B16HeWyczlJA9/WW3u3c4z/NiWDsO3DOU5D7nhTLE9CF0yXv/QZFY7sEJmj24dK+Rrqw==}
+
+  tiny-invariant@1.3.3:
+    resolution: {integrity: sha512-+FbBPE1o9QAYvviau/qC5SE3caw21q3xkvWKBtja5vgqOWIHHJ3ioaq1VPfn/Szqctz2bU/oYeKd9/z5BL+PVg==}
 
   tinyexec@0.3.2:
     resolution: {integrity: sha512-KQQR9yN7R5+OSwaK0XQoj22pwHoTlgYqmUscPYoknOoWCWfj/5/ABTMRi69FrKU5ffPVh5QcFikpWJI/P1ocHA==}
@@ -2110,6 +2156,12 @@ snapshots:
 
   '@jridgewell/sourcemap-codec@1.5.0': {}
 
+  '@lorenzo_lewis/starlight-utils@0.3.2(@astrojs/starlight@0.34.3(astro@5.7.12(@types/node@22.15.17)(rollup@4.40.2)(typescript@5.7.3)))(astro@5.7.12(@types/node@22.15.17)(rollup@4.40.2)(typescript@5.7.3))':
+    dependencies:
+      '@astrojs/starlight': 0.34.3(astro@5.7.12(@types/node@22.15.17)(rollup@4.40.2)(typescript@5.7.3))
+      astro: 5.7.12(@types/node@22.15.17)(rollup@4.40.2)(typescript@5.7.3)
+      astro-integration-kit: 0.18.0(astro@5.7.12(@types/node@22.15.17)(rollup@4.40.2)(typescript@5.7.3))
+
   '@mdx-js/mdx@3.1.0(acorn@8.14.1)':
     dependencies:
       '@types/estree': 1.0.7
@@ -2343,12 +2395,22 @@ snapshots:
 
   array-iterate@2.0.1: {}
 
+  ast-types@0.16.1:
+    dependencies:
+      tslib: 2.8.1
+
   astring@1.9.0: {}
 
   astro-expressive-code@0.41.2(astro@5.7.12(@types/node@22.15.17)(rollup@4.40.2)(typescript@5.7.3)):
     dependencies:
       astro: 5.7.12(@types/node@22.15.17)(rollup@4.40.2)(typescript@5.7.3)
       rehype-expressive-code: 0.41.2
+
+  astro-integration-kit@0.18.0(astro@5.7.12(@types/node@22.15.17)(rollup@4.40.2)(typescript@5.7.3)):
+    dependencies:
+      astro: 5.7.12(@types/node@22.15.17)(rollup@4.40.2)(typescript@5.7.3)
+      pathe: 1.1.2
+      recast: 0.23.11
 
   astro@5.7.12(@types/node@22.15.17)(rollup@4.40.2)(typescript@5.7.3):
     dependencies:
@@ -2642,6 +2704,8 @@ snapshots:
       '@esbuild/win32-x64': 0.25.4
 
   escape-string-regexp@5.0.0: {}
+
+  esprima@4.0.1: {}
 
   estree-util-attach-comments@3.0.0:
     dependencies:
@@ -3544,6 +3608,8 @@ snapshots:
     dependencies:
       entities: 6.0.0
 
+  pathe@1.1.2: {}
+
   picocolors@1.1.1: {}
 
   picomatch@2.3.1: {}
@@ -3580,6 +3646,14 @@ snapshots:
   radix3@1.1.2: {}
 
   readdirp@4.1.2: {}
+
+  recast@0.23.11:
+    dependencies:
+      ast-types: 0.16.1
+      esprima: 4.0.1
+      source-map: 0.6.1
+      tiny-invariant: 1.3.3
+      tslib: 2.8.1
 
   recma-build-jsx@1.0.0:
     dependencies:
@@ -3831,9 +3905,15 @@ snapshots:
 
   source-map-js@1.2.1: {}
 
+  source-map@0.6.1: {}
+
   source-map@0.7.4: {}
 
   space-separated-tokens@2.0.2: {}
+
+  starlight-auto-sidebar@0.1.1(@astrojs/starlight@0.34.3(astro@5.7.12(@types/node@22.15.17)(rollup@4.40.2)(typescript@5.7.3))):
+    dependencies:
+      '@astrojs/starlight': 0.34.3(astro@5.7.12(@types/node@22.15.17)(rollup@4.40.2)(typescript@5.7.3))
 
   starlight-links-validator@0.16.0(@astrojs/starlight@0.34.3(astro@5.7.12(@types/node@22.15.17)(rollup@4.40.2)(typescript@5.7.3))):
     dependencies:
@@ -3887,6 +3967,8 @@ snapshots:
       inline-style-parser: 0.2.4
 
   tiny-inflate@1.0.3: {}
+
+  tiny-invariant@1.3.3: {}
 
   tinyexec@0.3.2: {}
 

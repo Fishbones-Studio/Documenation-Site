@@ -1,0 +1,77 @@
+---
+title: Ground Saw
+description: Spike Hazard
+lastUpdated: 2025-05-15
+author: Tjorn
+---
+
+The Ground Saws are a hazard that can be placed on the ground to deal damage to players and enemies. They are a type of [bleed hazard](/fowl-play/gameplay/combat/hazards/base_hazards/#bleed-hazard), damaging characters for a set duration after touching the hazard. For visual documentation, see the [3D Hazard documentation](/fowl-play/art/3d/hazards/#ground-saw).
+
+## Stats
+
+| Stat            | Value |
+| --------------- | ----- |
+| Damage          | 10    |
+| Damage Interval | 1.0s  |
+| Damage Duration | 5.0s  |
+
+## Path Code
+
+```gdscript
+## Script for moving along a Path3D, attatch this to a PathFollow3D node
+## Requires a Path3D node as a parent, with a curve defined. All children of the PathFollow3D will be moved along the path
+
+extends PathFollow3D
+
+enum MovementMode { ONCE, LOOP, PING_PONG } ## Movement modes for the path, LOOP: loops the path, PING_PONG: moves back and forth, ONCE: moves once and stops
+@export var movement_speed: float = 3.0 ## Speed of movement along the path
+@export var movement_mode: MovementMode = MovementMode.LOOP ## Movement mode of the path
+
+var _current_direction: float = 1.0
+var moving: bool = true
+
+
+func _process(delta: float) -> void:
+	var path3d: Path3D = get_parent() as Path3D
+	if moving && path3d and path3d.curve:
+		# getting the baked length of the path, which is an aproximation of the length of the path (good enough for this)
+		_update_path_progress(delta, path3d.curve.get_baked_length())
+
+
+func _update_path_progress(delta: float, path_length: float) -> void:
+	var base_progress: float = progress
+	var new_progress: float = base_progress + delta * movement_speed * _current_direction
+
+	if new_progress > path_length:
+		handle_path_end(path_length, new_progress - path_length)
+	elif new_progress < 0:
+		handle_path_start(-new_progress)
+	else:
+		progress = new_progress
+
+
+func handle_path_end(path_length: float, overflow: float) -> void:
+	match movement_mode:
+		MovementMode.LOOP:
+			progress = overflow
+		MovementMode.PING_PONG:
+			_current_direction *= -1
+			progress = path_length - overflow
+		_:
+			moving = false
+
+
+# This exists to handle underflows, as path_lenght is an approximation of the length of the path
+# Also needed to handle wraparound correctly
+func handle_path_start(underflow: float) -> void:
+	match movement_mode:
+		MovementMode.LOOP:
+			progress = get_parent().curve.get_baked_length() - underflow
+		MovementMode.PING_PONG:
+			_current_direction *= -1
+			progress = underflow
+		_:
+			moving = false
+```
+
+While technically every `Node3D` can be moved along a path, with this script, within Fowl Play we only use it for the Ground Saw. The script is attached to a `PathFollow3D` node, which is a child of a `Path3D` node with a defined curve. The saw will move along the path at a specified speed and can loop, ping-pong, or move once based on the `movement_mode` variable. This causes the ground saw to move around, becomming an even bigger threath to the player.

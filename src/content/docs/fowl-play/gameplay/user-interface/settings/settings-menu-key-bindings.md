@@ -5,40 +5,42 @@ lastUpdated: 2025-05-13
 author: Sly
 ---
 
-The `KeyBindingsPanel` is a Control node that provides an interface for managing key bindings in the game. 
+The `KeyBindingsPanel` is a Control node that provides an interface for managing key bindings in the game.
 
 It allows users to view and modify the input mappings for various actions, including keyboard, mouse, and controller inputs. The panel is designed to be user-friendly, with clear labels and visual feedback for the current bindings.
 
-![Key Bindings Menu](../../../../../assets/fowl-play/gameplay/user-interface/settings-menu/settings-menu-key-bindings.png)
+![Key Bindings Menu](../../../../../../assets/fowl-play/gameplay/user-interface/settings-menu/settings-menu-key-bindings.png)
 
 ## Properties
+
 ### Configuration
 
-| Type | Name | Description |
-|------|------|-------------|
-| String | config_path | Path to the configuration file ("user://settings.cfg") |
-| String | config_name | Section name for key bindings in config ("key_bindings") |
-| Dictionary[String, float] | key_bindings | Stores key bindings for various actions |
+| Type                      | Name         | Description                                              |
+| ------------------------- | ------------ | -------------------------------------------------------- |
+| String                    | config_path  | Path to the configuration file ("user://settings.cfg")   |
+| String                    | config_name  | Section name for key bindings in config ("key_bindings") |
+| Dictionary[String, float] | key_bindings | Stores key bindings for various actions                  |
 
 ### Node References
 
-| Type | Name | Description |
-|------|------|-------------|
-| PackedScene | input_button_scene | Preloaded scene for input mapping rows |
-| Label | error_text_label | Displays input mapping errors |
-| Button | restore_defaults_button | Button to reset all bindings to defaults |
-| VBoxContainer | content_container | Container for input mapping rows |
+| Type          | Name                    | Description                              |
+| ------------- | ----------------------- | ---------------------------------------- |
+| PackedScene   | input_button_scene      | Preloaded scene for input mapping rows   |
+| Label         | error_text_label        | Displays input mapping errors            |
+| Button        | restore_defaults_button | Button to reset all bindings to defaults |
+| VBoxContainer | content_container       | Container for input mapping rows         |
 
 ### Navigation
 
-| Type | Name | Description |
-|------|------|-------------|
-| int | _current_focus_index | Tracks currently focused button index |
-| Array[Button] | _focusable_buttons | Array of all focusable buttons in UI |
+| Type          | Name                  | Description                           |
+| ------------- | --------------------- | ------------------------------------- |
+| int           | \_current_focus_index | Tracks currently focused button index |
+| Array[Button] | \_focusable_buttons   | Array of all focusable buttons in UI  |
 
 ## Implementation
 
 `ready()` initializes the key bindings panel by calling `_load_input_settings()` to load the current input settings. It sets the mouse filter to stop input events from propagating to lower layers and enables focus mode for all controls.
+
 ```gdscript
 func _ready():
 	# Make this block input to lower layers
@@ -50,6 +52,7 @@ func _ready():
 ```
 
 `_input()` handles remapping input events. It checks if the settings manager is in remapping mode and processes the input event accordingly. It validates the event type, checks for existing assignments, and updates the input mapping if valid. If not in remapping mode, it checks for the "ui_accept" action to activate the focused button.
+
 ```gdscript
 func _input(event: InputEvent) -> void:
 	if SettingsManager.is_remapping:
@@ -90,6 +93,7 @@ func _input(event: InputEvent) -> void:
 ```
 
 `_save_input_settings()` saves the current input settings to the configuration file. It iterates through all actions in the InputMap and saves their events, excluding built-in UI actions.
+
 ```gdscript
 func _save_input_settings():
 	var config = ConfigFile.new()
@@ -105,6 +109,7 @@ func _save_input_settings():
 ```
 
 `_load_input_settings()` loads the input settings from the configuration file. It first loads the default settings from the project settings and then overrides them with the saved configuration. It calls `_create_action_list()` to update the UI with the current bindings.
+
 ```gdscript
 func _load_input_settings():
 	# Load defaults first, then override with saved config
@@ -116,6 +121,7 @@ func _load_input_settings():
 ```
 
 `_create_action_list()` populates the UI with action rows. It clears existing children from the content container and iterates through all actions in the InputMap, creating a row for each action. It uses `_split_events_by_type()` to categorize events and `_set_label_text()` to update the labels for each panel.
+
 ```gdscript
 func _create_action_list():
 	error_text_label.text = ""
@@ -144,6 +150,7 @@ func _create_action_list():
 ```
 
 `_setup_navigation()` initializes the navigation system for the key bindings panel. It creates a grid of focusable buttons based on the remap buttons in the content container. It sets the initial focus to the first button in the grid.
+
 ```gdscript
 func _setup_navigation():
 	_focusable_buttons.clear()
@@ -160,6 +167,7 @@ func _setup_navigation():
 ```
 
 `_get_button_grid()` constructs a grid of focusable buttons based on the remap buttons in the content container. It iterates through each row and adds the buttons to the grid.
+
 ```gdscript
 func _get_button_grid() -> Array:
 	var grid: Array = []
@@ -184,6 +192,7 @@ func _get_button_grid() -> Array:
 ```
 
 `_activate_focused_button()` emits the "pressed" signal for the currently focused button.
+
 ```gdscript
 func _activate_focused_button():
 	var focused := get_viewport().gui_get_focus_owner() as Button
@@ -192,6 +201,7 @@ func _activate_focused_button():
 ```
 
 `trim_mapping_suffix()` cleans up the display text for input mappings by removing technical suffixes and simplifying controller input formatting. It extracts the button name from parentheses or uses the first word before a space.
+
 ```gdscript
 func _trim_mapping_suffix(mapping: String) -> String:
 	# Clean up display text by removing technical suffixes
@@ -212,6 +222,7 @@ func _trim_mapping_suffix(mapping: String) -> String:
 ```
 
 `is_valid_event_for_input_type()` checks if the input event is valid for the specified input type. It ensures that controller events are only accepted when the remap mode is set to controller.
+
 ```gdscript
 func _is_valid_event_for_input_type(event: InputEvent, input_type: int) -> bool:
 	# Validate controller vs keyboard/mouse input based on remap mode
@@ -223,6 +234,7 @@ func _is_valid_event_for_input_type(event: InputEvent, input_type: int) -> bool:
 ```
 
 `_split_events_by_type()` categorizes input events by type, prioritizing primary, secondary, and controller inputs. It returns a dictionary with the categorized events.
+
 ```gdscript
 func _split_events_by_type(events: Array[InputEvent]) -> Dictionary:
 	# Categorize inputs by type with priority: primary > secondary > controller
@@ -247,6 +259,7 @@ func _split_events_by_type(events: Array[InputEvent]) -> Dictionary:
 ```
 
 `_is_event_already_assigned()` checks if the input event is already assigned to another action. It iterates through all actions in the InputMap and compares the events.
+
 ```gdscript
 func _is_event_already_assigned(event: InputEvent, current_action: String) -> bool:
 	# Check all actions except current one for duplicate bindings. Also ignore built-in UI actions
@@ -262,6 +275,7 @@ func _is_event_already_assigned(event: InputEvent, current_action: String) -> bo
 ```
 
 `_get_event_to_replace()` retrieves the existing binding slot to replace based on the input type. It returns the corresponding event for primary, secondary, or controller inputs.
+
 ```gdscript
 func _get_event_to_replace(split_events: Dictionary, input_type: int) -> InputEvent:
 	# Get existing binding slot to replace based on input type
@@ -273,6 +287,7 @@ func _get_event_to_replace(split_events: Dictionary, input_type: int) -> InputEv
 ```
 
 `_finalize_remapping()` is called after a successful remapping. It updates the input settings and UI, resets the remapping state, and refreshes the action list.
+
 ```gdscript
 func _finalize_remapping():
 	# Update storage and UI after successful remapping
@@ -283,6 +298,7 @@ func _finalize_remapping():
 ```
 
 `_set_label_text()` is a helper function that safely sets the text on labels with a fallback. It updates the button text based on the event type and action to remap.
+
 ```gdscript
 func _set_label_text(row: Node, container_name: String, event: InputEvent, action_to_remap: String = ""):
 	# Helper to safely set text on labels with fallback
@@ -295,6 +311,7 @@ func _set_label_text(row: Node, container_name: String, event: InputEvent, actio
 ```
 
 `_on_restore_defaults_button_up()` is called when the restore defaults button is pressed. It resets all key bindings to their default values, removes the configuration file, and refreshes the action list.
+
 ```gdscript
 func _on_restore_defaults_button_up() -> void:
 	SettingsManager.is_remapping = false
@@ -311,7 +328,7 @@ func _on_restore_defaults_button_up() -> void:
 
 ## Technical Details
 
-The KeyBindingsPanel is designed to be modular and extensible. It allows for easy addition of new input actions and supports multiple input types (keyboard, mouse, controller). The UI is built using Godot's Control nodes, providing a responsive and user-friendly experience. 
+The KeyBindingsPanel is designed to be modular and extensible. It allows for easy addition of new input actions and supports multiple input types (keyboard, mouse, controller). The UI is built using Godot's Control nodes, providing a responsive and user-friendly experience.
 
 ### Keyboard/Controller Navigation
 
@@ -320,12 +337,14 @@ The navigation system is implemented using a grid layout, allowing users to easi
 ### Configuration Persistence
 
 Settings are stored in a configuration file (`user://settings.cfg`) using the `ConfigFile` class. The stored values are:
+
 - **Section**: "key_bindings"
 - **Keys**: Input action names (e.g., "MoveForward", "Jump", "Shoot")
 - **Values**: Input events (e.g., "W", "Space", "LeftMouseButton")
-This allows the game to remember user preferences across sessions.
+  This allows the game to remember user preferences across sessions.
 
 ## Dependencies
+
 - `SettingsManager`: Manages loading and saving settings.
 - `RemapPanel`: Custom panel for displaying input mappings.
 

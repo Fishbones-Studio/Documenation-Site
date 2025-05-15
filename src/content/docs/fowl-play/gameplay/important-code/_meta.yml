@@ -1,0 +1,4 @@
+label: Important Code
+badge:
+  text: Important
+  variant: danger

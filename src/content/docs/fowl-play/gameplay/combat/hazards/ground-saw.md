@@ -5,7 +5,7 @@ lastUpdated: 2025-05-15
 author: Tjorn
 ---
 
-The Ground Saws are a hazard that can be placed on the ground to deal damage to players and enemies. They are a type of [bleed hazard](/fowl-play/gameplay/combat/hazards/base_hazards/#bleed-hazard), damaging characters for a set duration after touching the hazard. For visual documentation, see the [3D Hazard documentation](/fowl-play/art/3d/hazards/#ground-saw).
+The Ground Saws are a hazard that can be placed on the ground to deal damage to players and enemies. They are a type of [bleed hazard](/fowl-play/gameplay/combat/hazards/base-hazards/#bleed-hazard), damaging characters for a set duration after touching the hazard. For visual documentation, see the [3D Hazard documentation](/fowl-play/art/3d/hazards/#ground-saw).
 
 ## Stats
 

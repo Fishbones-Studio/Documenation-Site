@@ -5,7 +5,7 @@ lastUpdated: 2025-05-15
 author: Tjorn
 ---
 
-The Fire Pool hazards are a temporary hazard spawned by the [slingshot](/fowl-play/gameplay/combat/ranged-weapons/weapons/slingshot). They are a type of [bleed hazard](/fowl-play/gameplay/combat/hazards/base_hazards/#bleed-hazard)
+The Fire Pool hazards are a temporary hazard spawned by the [slingshot](/fowl-play/gameplay/combat/ranged-combat/weapons/slingshot). They are a type of [bleed hazard](/fowl-play/gameplay/combat/hazards/base_hazards/#bleed-hazard)
 
 <!-- TODO: link visual shader docs once created -->
 

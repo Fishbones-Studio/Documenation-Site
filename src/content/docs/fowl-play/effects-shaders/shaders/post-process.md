@@ -164,5 +164,3 @@ void fragment() {
 - **Scaling & Border Mask**:
   - The `scale` uniform zooms the sampled screen content.
   - The `border_mask` uniform applies a mask that is stronger near the edges, subtly pulling the sampled UVs outward for a vignette-like effect.
-
-### YIQ

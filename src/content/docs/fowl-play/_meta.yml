@@ -1,0 +1,5 @@
+# Collapse the directory in the sidebar.
+collapsed: true
+# Cascade the `collapsed` property to all nested directories.
+cascade:
+  - collapsed

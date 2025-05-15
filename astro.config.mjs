@@ -5,6 +5,7 @@ import starlight from "@astrojs/starlight";
 import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
 import starlightLinksValidator from "starlight-links-validator";
+import starlightAutoSidebar from "starlight-auto-sidebar";
 
 import { loadEnv } from "vite";
 
@@ -18,7 +19,7 @@ const { SITE_URL, BASE_PATH } = loadEnv(
 export default defineConfig({
   integrations: [
     starlight({
-      plugins: [starlightLinksValidator()],
+      plugins: [starlightLinksValidator(), starlightAutoSidebar()],
       title: "Studio Fishbones",
       social: [
         {

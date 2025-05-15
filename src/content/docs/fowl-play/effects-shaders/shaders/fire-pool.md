@@ -5,7 +5,7 @@ lastUpdated: 2025-05-15
 author: Tjorn
 ---
 
-In the [Fire Pool Hazard](/fowl-play/gameplay/combat/hazards/fire-pool), a custom shader simulates animated fire and heat distortion. This shader is applied to a `MeshInstance3D` with a `BoxMesh` to create a dynamic, glowing pool of fire.
+In the [Fire Pool Hazard](/fowl-play/gameplay/combat/hazards/fire-pool), a shader simulates animated fire and heat distortion. This shader is applied to a `MeshInstance3D` with a `BoxMesh` to create a dynamic, glowing pool of fire.
 
 ## Effects
 

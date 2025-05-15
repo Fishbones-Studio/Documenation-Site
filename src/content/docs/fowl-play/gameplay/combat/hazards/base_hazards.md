@@ -100,6 +100,7 @@ func _apply_continuous_damage() -> void:
 			super._on_hazard_area_body_entered(body)
 ```
 
+**Explanation:**
 [`Bleed Hazard`](#bleed-hazard) tracks entry time for each body and applies damage at intervals, even after leaving the area. This is implemented to create a lingering threat and to encourage players to avoid hazards entirely, not just quickly pass through. The use of timers and periodic checks allows for tuning of how punishing the hazard is.
 
 ## Hold Hazard
@@ -152,6 +153,7 @@ func _apply_continuous_damage() -> void:
 			super._on_hazard_area_body_entered(body)
 ```
 
+**Explanation:**
 [`Hold Hazard`](#hold-hazard) only applies damage while the entity is present, removing them from the active list on exit. This design rewards quick reactions and lets players minimize damage by leaving the hazard promptly. The interval-based approach makes the hazard's threat more manageable and fair, as players have control over how long they are exposed.
 
 ## Knock Hazard
@@ -233,7 +235,7 @@ func _spawn_hazard() -> void:
 		hazard.global_position = global_position
 ```
 
-Hazard spawning uses random chance to add unpredictability and replayability to arena layouts. By instantiating hazards as children of a marker, the system keeps placement modular and easy to manage..
+Hazard spawning uses random chance to add unpredictability and replayability to arena layouts. By instantiating hazards as children of a marker, the system keeps placement modular and easy to manage.
 
 ---
 
@@ -244,7 +246,7 @@ Hazard spawning uses random chance to add unpredictability and replayability to 
 - **Dynamic Fights:** The randomization of hazards ensures that no two fights play out the same way, as both players and AI must constantly adapt to the environment. This means the player cannot just memorize a single strategy, but must instead be flexible and responsive to the changing battlefield.
 - **Risk vs Reward:** Hazards can be used strategically to deal damage to enemies, but players must balance the risk of taking damage themselves. This adds depth to combat decisions and encourages players to think critically about their actions.
 
-All hazards deal `True` damage, meaning they ignore the characters defense stats. This ensures that hazards are always a threat, regardless of the player's build or equipment. It also simplifies the damage calculation, as players can always expect a consistent level of danger from hazards.
+All hazards deal `True` damage, meaning they ignore the entities defense stats. This ensures that hazards are always a threat, regardless of the player's build or equipment. It also simplifies the damage calculation, as players can always expect a consistent level of danger from hazards.
 
 ---
 

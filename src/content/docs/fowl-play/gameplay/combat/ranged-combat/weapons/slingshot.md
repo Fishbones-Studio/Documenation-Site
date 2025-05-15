@@ -271,5 +271,5 @@ func _all_particles_finished() -> void:
 
 ## Hazard Effect
 
-When the projectile explodes (on impact or timeout), it spawns a [**fire pool**](/fowl-play/gameplay/combat/hazards/fire_pool) at the impact location.  
+When the projectile explodes (on impact or timeout), it spawns a [**fire pool**](/fowl-play/gameplay/combat/hazards/fire-pool) at the impact location.  
 The fire hazard deals damage over time to any entity that enters its area of effect, creating a zone of denial and area control.

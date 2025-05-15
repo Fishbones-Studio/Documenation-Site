@@ -1,7 +1,7 @@
 ---
 title: Slingshot
 description: Detailing the slingshot mechanics
-lastUpdated: 2025-05-13
+lastUpdated: 2025-05-15
 author: Tjorn
 ---
 

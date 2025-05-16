@@ -6,11 +6,14 @@ author: Bastiaan
 ---
 
 ## Description
+
 Added weapon instance to the enemy so the enemy has a weapon it holds. It uses the stats given in the weapon scene. This allows the enemy to deal damage. Current implementation is somewhat limited as seen in the enemy attack script.
 
 ## Implementation
-**Set current weapon:** 
+
+**Set current weapon:**
 This script is used to set the weapon of the enemy in a modular way so different enemies can have different weapons easily. This will allow us to quickly implement different enemies using the already created weapons when implemented completely
+
 ```gdscript
 @tool
 class_name CurrentWeapon
@@ -43,4 +46,3 @@ func _ready() -> void:
 
 	add_child(current_weapon)
 ```
-

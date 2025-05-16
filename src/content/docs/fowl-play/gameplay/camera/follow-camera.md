@@ -8,63 +8,67 @@ author: Sly
 The `FollowCamera` is a camera system designed to follow a target entity in a 3D environment. It provides smooth camera movement and collision avoidance, ensuring that the camera maintains a set distance from the target while avoiding obstacles in the environment.
 
 ## Properties
+
 ### Camera Configuration
 
-| Type	| Name	| Description |
-|-------|-------|-------------|
-| Camera3D	| camera_reference | Reference to the Camera3D node that will follow the target |
-| float	| camera_spring_length | The default distance the camera maintains from the target |
-| float	| camera_margin | Additional margin for collision detection with environment |
-| float	| camera_smoothness | Interpolation factor for camera movement smoothness |
+| Type     | Name                 | Description                                                |
+| -------- | -------------------- | ---------------------------------------------------------- |
+| Camera3D | camera_reference     | Reference to the Camera3D node that will follow the target |
+| float    | camera_spring_length | The default distance the camera maintains from the target  |
+| float    | camera_margin        | Additional margin for collision detection with environment |
+| float    | camera_smoothness    | Interpolation factor for camera movement smoothness        |
 
 ### Target Entity
 
-| Type	| Name	| Description |
-|-------|-------|-------------|
-| CharacterBody3D	| entity_to_follow | The target entity that the camera will follow |
-| float	| entity_follow_horizontal_offset | Horizontal offset from the target entity on the x-axis |
-| float	| entity_follow_height | Height offset from the target entity on the y-axis |
-| float	| entity_follow_distance | Distance offset from the target entity on the z-axis |
+| Type            | Name                            | Description                                            |
+| --------------- | ------------------------------- | ------------------------------------------------------ |
+| CharacterBody3D | entity_to_follow                | The target entity that the camera will follow          |
+| float           | entity_follow_horizontal_offset | Horizontal offset from the target entity on the x-axis |
+| float           | entity_follow_height            | Height offset from the target entity on the y-axis     |
+| float           | entity_follow_distance          | Distance offset from the target entity on the z-axis   |
 
 ### Screen Shake
 
-| Type	| Name	| Description |
-|-------|-------|-------------|
-| float	| shake_intensity | Current shake intensity |
-| float	| shake_intensity_limit | Maximum shake intensity |
+| Type  | Name                  | Description             |
+| ----- | --------------------- | ----------------------- |
+| float | shake_intensity       | Current shake intensity |
+| float | shake_intensity_limit | Maximum shake intensity |
 
 ### Camera Control
 
-| Type	| Name	| Description |
-|-------|-------|-------------|
-| float	| horizontal_sensitivity | Mouse horizontal sensitivity |
-| float	| vertical_sensitivity | Mouse vertical sensitivity |
-| float	| controller_sensitivity | Controller stick sensitivity |
-| float	| max_degrees | Maximum upward tilt angle |
-| float	| min_degrees | Maximum downward tilt angle |
-| bool	| invert_x_axis | Whether to invert X-axis controls |
-| bool	| invert_y_axis | Whether to invert Y-axis controls |
+| Type  | Name                   | Description                       |
+| ----- | ---------------------- | --------------------------------- |
+| float | horizontal_sensitivity | Mouse horizontal sensitivity      |
+| float | vertical_sensitivity   | Mouse vertical sensitivity        |
+| float | controller_sensitivity | Controller stick sensitivity      |
+| float | max_degrees            | Maximum upward tilt angle         |
+| float | min_degrees            | Maximum downward tilt angle       |
+| bool  | invert_x_axis          | Whether to invert X-axis controls |
+| bool  | invert_y_axis          | Whether to invert Y-axis controls |
 
 ### Node References
 
-| Type	| Name	| Description |
-|-------|-------|-------------|
-| SpringArm3D	| spring_arm_3d | Spring arm for collision handling |
-| RemoteTransform3D	| follow_camera_transformer | Handles camera positioning |
+| Type              | Name                      | Description                       |
+| ----------------- | ------------------------- | --------------------------------- |
+| SpringArm3D       | spring_arm_3d             | Spring arm for collision handling |
+| RemoteTransform3D | follow_camera_transformer | Handles camera positioning        |
 
 ## Implementation
 
 ### Hierarchy
+
 ```
 FollowCamera (Node3D)
 │ SpringArm3D (SpringArm3D)
 │   │ CameraPosition (Node3D)
-│ FollowCameraTransformer (RemoteTransform3D) 
+│ FollowCameraTransformer (RemoteTransform3D)
 
 ```
+
 ### Code
 
 `_ready()` initializes the camera settings and connects to the `controls_settings_changed` signal to update camera properties when controls settings change. It also sets the spring arm length, margin, and smoothness based on the property value. The camera's position is adjusted to follow the target entity with specified offsets.
+
 ```gdscript
 func _ready() -> void:
 	_load_camera_settings()
@@ -86,6 +90,7 @@ func _ready() -> void:
 ```
 
 `_input()` handles mouse and controller input for camera rotation. It applies inversion based on the `invert_x_axis` and `invert_y_axis` properties. The camera's rotation is adjusted based on the input values, and the `_apply_camera_clamp()` function is called to limit the camera's tilt angles.
+
 ```gdscript
 func _input(event) -> void:
 	if UIManager.game_input_blocked: return
@@ -101,6 +106,7 @@ func _input(event) -> void:
 ```
 
 `_process()` handles the camera's position and rotation based on the target entity's movement. It applies controller input for camera rotation and adjusts the camera's position to follow the target entity. The `_apply_camera_clamp()` function is called to limit the camera's tilt angles. If the shake intensity is greater than 0, it applies a random offset to create a shake effect.
+
 ```gdscript
 func _process(delta) -> void:
 	if UIManager.game_input_blocked: return
@@ -126,6 +132,7 @@ func _process(delta) -> void:
 ```
 
 `apply_shake()` sets the shake intensity to the specified trauma value, clamping it to the maximum shake intensity limit. The `_get_random_offset()` function generates a random offset for
+
 ```gdscript
 ## Set the shake intensity to the intensity limit at the start of the screen shake
 func apply_shake(trauma: float) -> void:
@@ -133,6 +140,7 @@ func apply_shake(trauma: float) -> void:
 ```
 
 `_get_random_offset()` generates a random offset for the camera shake effect. It uses the `rng` variable to create a random value between the negative and positive shake intensity on both the x and y axes.
+
 ```gdscript
 ## This calculates a random offset between -current_shake_intensity and +current_shake_intensity
 ## on both the x and y axis
@@ -145,6 +153,7 @@ func _get_random_offset() -> Vector2:
 ```
 
 `_apply_camera_clamp()` clamps the camera's rotation to prevent flipping and limits the tilt angles based on the `min_degrees` and `max_degrees` properties. It ensures that the camera's rotation on the z-axis is set to 0.
+
 ```gdscript
 func _apply_camera_clamp() -> void:
 	# Clamp the rotation to prevent flipping
@@ -153,6 +162,7 @@ func _apply_camera_clamp() -> void:
 ```
 
 `_load_camera_settings()` loads the camera settings from a configuration file. It uses the `ConfigFile` class to read the settings and updates the camera properties accordingly. The settings include horizontal and vertical sensitivity, controller sensitivity, tilt angles, and axis inversion.
+
 ```gdscript
 func _load_camera_settings() -> void:
 	var config: ConfigFile = ConfigFile.new()
@@ -179,6 +189,7 @@ func _load_camera_settings() -> void:
 ```
 
 ## Dependencies
+
 - `controls_settings`: The `FollowCamera` class relies on the `ControlsSetting` resource to provide default or custom values for camera settings such as sensitivity, tilt angles, and axis inversion.
 - `SignalManager`: The `FollowCamera` class uses the `SignalManager` to connect to the `controls_settings_changed` signal for updating camera properties when controls settings change.
 

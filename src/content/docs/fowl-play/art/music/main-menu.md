@@ -1,19 +1,21 @@
 ---
 title: Main Menu Theme
 description: Insights into the creation of the main menu theme
-lastUpdated: 2025-04-02
+lastUpdated: 2025-05-16
 author: Tjorn
 ---
 
 ## Technical Specifications
 
-| Specification | Details                            |
-| ------------- | ---------------------------------- |
-| Software      | FL Studio 24                       |
-| Plugins       | Stock plugins (with one exception) |
-| BPM           | 120                                |
-| Length        | 2:20 minutes                       |
-| Purpose       | Main menu track, relaxed tempo     |
+| Specification | Details                        |
+| ------------- | ------------------------------ |
+| Software      | FL Studio 24                   |
+| BPM           | 120                            |
+| Length        | 2:20 minutes                   |
+| Purpose       | Main menu track, relaxed tempo |
+| Diegetic      | No                             |
+
+The main menu is not diegetic, meaning it does not exist within the game world but serves as background music for the main menu.
 
 ## Philosophy
 
@@ -50,20 +52,27 @@ The three parts mirror the player's journey. Entering the arena for the first ti
 
 ### Arrangement
 
-Throughout the song, sounds and arrangements are used multiple times, in different ways. This creates a sense of cohesion and familiarity, while still being different. The transitions between the three parts are intentionally fairly harsh.
+![Main Menu Theme Arangement](../../../../../assets/fowl-play/art/music/main-menu/arangement.png)
+The transitions between the three parts are intentionally fairly harsh.
 
 ## Mixing and Mastering
 
-### Mixer Effects
+### Mixing
 
-- **Master**
-  - Fruity limiter, to ensure sound levels don't become too high and prevent clipping.
-- **Eight Voice Chords (track 1)**
+- **Sakura Ambient**: The inserts volume has been turned down to about 60% to make it less overpowering.
+
+#### Mixer Effects
+
+- **Eight Voice Chords (insert 1)**
   - Fruity blood overdrive, to make the chords distorted.
   - Fruity limiter, so the chords don't overpower within the song.
-- **Sakura Ambient (track 2)**
+- **Sakura Ambient (insert 2)**
   - Fruity Reeverb 2.
   - Soundgoodizer, makes it sound fuller.
-- **Gross Beat**: Used to create a stuttering effect by automating volume patterns. This effect causes the sound to rapidly alternate between higher and lower levels.
+  - Gross Beat: Used to create a stuttering effect by automating volume patterns. This effect causes the sound to rapidly alternate between higher and lower levels.
   - Fruity Multiband Compressor + Parametric EQ 2, to take out the lows and highs. The sound is supposed to be ambient.
   - Fruity limiter, to mix it better within the song.
+
+### Mastering
+
+- Fruity limiter, to ensure sound levels don't become too high and prevent clipping.

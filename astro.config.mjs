@@ -13,7 +13,7 @@ import { loadEnv } from "vite";
 const { SITE_URL, BASE_PATH } = loadEnv(
   process.env.NODE_ENV || "",
   process.cwd(),
-  ""
+  "",
 );
 
 // https://astro.build/config

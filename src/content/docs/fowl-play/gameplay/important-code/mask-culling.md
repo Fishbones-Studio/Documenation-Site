@@ -97,6 +97,7 @@ By attaching this script to the player model and setting `layer_to_add` to `2`, 
 This allows for effects such as animated player icons, damage/heal feedback, and custom shaders, without affecting the main game view.
 
 **Typical setup:**
+
 - Attach this script to the root node of the player model.
 - Set `layer_to_add` to `2`.
 - Enable `recursive` if the model has nested meshes.

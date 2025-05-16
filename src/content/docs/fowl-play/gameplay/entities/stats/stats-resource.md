@@ -6,9 +6,11 @@ author: Bastiaan
 ---
 
 ## Description
+
 This resource defines the base statistics for players and enemies. It also adds functions for healing and draining health and stamina. This resource allows quicker implementation of new enemies and editing statistics for the player. Displaying these statistics is for future implementation.
 
 ## Implementation
+
 ```gdscript
 class_name LivingEntityStats
 extends Resource
@@ -27,11 +29,11 @@ extends Resource
 @export var weight_factor: float = 0.07 # Controls slowdown strength
 
 var current_health: float:
-	set(value): 
+	set(value):
 		current_health = clamp(value, 0, max_health)
 
 var current_stamina: float:
-	set(value): 
+	set(value):
 		current_stamina = clamp(value, 0, max_stamina)
 
 
@@ -79,4 +81,3 @@ func regen_stamina(delta: float) -> float:
 	current_stamina = clamp(current_stamina + (stamina_regen * delta), 0, max_stamina)
 	return current_stamina
 ```
-

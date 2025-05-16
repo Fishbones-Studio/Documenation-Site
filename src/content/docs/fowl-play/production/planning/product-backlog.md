@@ -1013,7 +1013,7 @@ Acceptance Criteria
 
 As a player, I want to have a visible crosshair, so that I know where my attacks are aimed at.
 
-Acceptance Criteria 
+Acceptance Criteria
 
 1. The crosshair should be positioned at the center of the screen and move along the camera.
 
@@ -1021,7 +1021,7 @@ Acceptance Criteria
 
 As a player, I want weapons to have a windup, so that there is enough time to play the animations for the weapon.
 
-Acceptance Criteria 
+Acceptance Criteria
 
 1. Each weapon should have a windup property.
 2. While in the windup state, the startup animation for the weapon should be played.
@@ -1030,6 +1030,6 @@ Acceptance Criteria
 
 As a player, I want weapons to have a cooldown, so that the player can’t spam their attacks and the gameplay is more balanced.
 
-Acceptance Criteria 
+Acceptance Criteria
 
 1. Each weapon should have a cooldown property.

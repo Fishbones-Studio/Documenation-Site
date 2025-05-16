@@ -6,7 +6,9 @@ author: Tjorn
 ---
 
 ## Base State
+
 `base_state.gd` functions as the base for all states. It contains common functions, of which all states require at least one. As you can see, the `base_state.gd` is missing an `enter` and `setup` function. These functions will be implemented in the child classes, so that they can contain typed parameters. GDScript sadly has no concept of generics.
+
 ```gdscript
 ## Base class for all state implementations in a state machine pattern.
 ##
@@ -53,5 +55,6 @@ func exit() -> void:
 ```
 
 ### Movement
+
 Movement is added in the `physics_process` on a set tick rate, because the entities the states will apply too, extend from `PhysicsBody3D`, which is tied to the physics engine.
 Applying movement in the default `process`, which runs every frame, can cause issues such as missing collisions.

@@ -38,7 +38,7 @@ The armature follows an avian anatomical structure (_somewhat_), primarily based
 
 ## Animations
 
-All of the animations were created in Blender with the help of rigging. Due to the placement of several bones in the model, it was easy to move the woodpecker around and keyframe different poses to create believable movement while maintaining its characteristics during gameplay. 
+All of the animations were created in Blender with the help of rigging. Due to the placement of several bones in the model, it was easy to move the woodpecker around and keyframe different poses to create believable movement while maintaining its characteristics during gameplay.
 
 The animations are set to run at 30 FPS.
 

@@ -18,16 +18,18 @@ author: Tjorn
 The victory theme is not diegetic.
 
 ## Philosophy
+
 This song is supposed to be short and upbeat, to celebrate the victory of the player. This means major chords, fast tempo and a lot of energy.
 To be in line with the other songs, this song once again features old school synths and a lot of 80s inspired sounds. The song is short, but has a lot of energy and is very catchy.
 The drum and bass loop adds an additional layer of energy to the song, making it feel truly like a celebration.
 
 ### Connection to Game Themes
+
 This song is not really connected to the game themes, but it does fit the overall theme of the game. The song is upbeat and celebratory, which fits the theme of victory. Chicken sounds are used in the song, which is a sort of cheating way to connect it to the game.
 
 ## Musical Parts
 
-## Instruments and Sound 
+## Instruments and Sound
 
 ### Instruments
 
@@ -44,8 +46,10 @@ This song is not really connected to the game themes, but it does fit the overal
   - _Vital_: Text To Wavetable
   - _Mixer Track_: 2
 
-### Sounds 
+### Sounds
+
 The following sounds were sampled in the fight one song:
+
 - **Chicken Sounds**: Chicken sounds sourced from [youtube](https://www.youtube.com/watch?v=dZB7vWsb1Co)
   - _Mixer Track_: 3
 - **Swag dnb Loop**: Drum and bass loop

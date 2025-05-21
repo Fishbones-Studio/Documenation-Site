@@ -42,27 +42,27 @@ The Poultry Man Menu Theme is structured around a layering system:
 
 ### Instruments
 
-- **Chords 1-4**: Warm 80s inspired synth chords, with ethereal elements. Consisting of 3 instruments played at the same time:
-    - 1. _Kepler Expo_: Warmnest
-        - _Mixer Track_: 4
-    - 2. _UVI WorkStation_: Hyper Majestic
-        - _Mixer Track_: 4
-    - 3. _Vital_: Drake Pad
-        - _Mixer Track_: 5
+- **Chords 1-4**: Warm 80s inspired synth chords, with ethereal elements. Consisting of 3 instruments played at the time:
 
-- **Lead 1-4**: Plucky, ethereal keys
-    - _Vital_: Distant Majestic lead
+  - 1. _Kepler Expo_: Warmnest
+    - _Mixer Track_: 4
+  - 2. _UVI WorkStation_: Hyper Majestic
+    - _Mixer Track_: 4
+  - 3. _Vital_: Drake Pad
     - _Mixer Track_: 5
 
+- **Lead 1-4**: Plucky, ethereal keys
+
+  - _Vital_: Distant Majestic lead
+  - _Mixer Track_: 5
+
 - **Wind**: A continuous wind sound, emulating the desolate atmosphere of the underground sewer. Consists of 3 'instruments':
-    - 1. _Flex_: Wind
-        - _Mixer Track_: 1
-    - 2. _Flex_: Wind 2
-        - _Mixer Track_: 1
-    - 3. _Flex_: Flute
-        - _Mixer Track_: 3
-
-
+  - 1. _Flex_: Wind
+    - _Mixer Track_: 1
+  - 2. _Flex_: Wind 2
+    - _Mixer Track_: 1
+  - 3. _Flex_: Flute
+    - _Mixer Track_: 3
 
 ## Arrangement
 
@@ -75,6 +75,7 @@ The Poultry Man Menu Theme is structured around a layering system:
 - Automation is used for the sound level of the chords, to have them fade in and out.
 
 Note: Some other mixer tracks are used for sound effects, which play at randomized intervals.
+
 <!-- TODO: make sound effects docs and link here -->
 
 #### Mixer Effects
@@ -101,6 +102,7 @@ Note: Some other mixer tracks are used for sound effects, which play at randomiz
   - Vintage Chorus: Creates a warm analogue sound
   - Vintage Phaser: Phaser
   - Fruity Parametic EQ 2: Removing the highs, and some additional harsh frequencies
+
 ### Mastering
 
 - Fruity limiter: To ensure sound levels don't become too high and prevent clipping.

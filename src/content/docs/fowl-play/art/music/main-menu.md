@@ -62,11 +62,13 @@ The three parts mirror the player's journey. Entering the arena for the first ti
   - _Mixer Track_: 2
 
 ### Sounds
+
 - **Kid Urban Trans 2**: Car crash sound effect used to signify the change from **section 1** to **section 2**.
 - **White Noise**: Supporting **section 2** and at the end of the song, in **section 3**.
 - **Dubstep Crash 3**: Used as a _mysterious reoccuring sound_ throughout **section 1** and **section 3**.
 
 ### Automation
+
 - **Bass**: The filter cutoff of the `Pulse Blower` is automated to increase the intensity of the sound during **section 2**.
 - **Ambient Mid Section**: The volume of the `SFX Ice Cube the Great FG` is automated to have it slowly fade in during **section 2**.
 
@@ -78,7 +80,6 @@ The transitions between the three parts are intentionally fairly harsh.
 ## Mixing and Mastering
 
 ### Mixing
-
 
 #### Mixer Effects
 

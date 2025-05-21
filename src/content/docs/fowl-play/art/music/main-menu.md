@@ -1,7 +1,7 @@
 ---
 title: Main Menu Theme
 description: Insights into the creation of the main menu theme
-lastUpdated: 2025-05-16
+lastUpdated: 2025-05-21
 author: Tjorn
 ---
 
@@ -44,11 +44,31 @@ The three parts mirror the player's journey. Entering the arena for the first ti
 
 ### Key Instruments
 
-- **Eight Voice Chords**: Heavily distorted synthesizer chords. Distortion setups and envelope tweaks are used to shape the sound.
-- **Sakura Ambient**: Atmospheric pads providing eerie background noise. EQ adjustments remove unnecessary frequencies to maintain clarity and avoid clashing with the other instruments.
-- **Deep Bass**: Representing the underground setting and adding weight to the track. The bass is programmed with subtle modulation to enhance its presence.
-- **Pluck Synth**: Represents the chicken mutations and biological experiments. Envelope shaping and EQ are used to make the pluck sounds distinct yet cohesive.
-- **White Noise**: Creates tension during the mid-section, programmed with automation to gradually increase intensity.
+- **Chords & Chords #2**: Heavily distorted synthesizer chords.
+  - _Eight Voice_: Vintage Square
+  - _Mixer Track_: 1
+- **Support & Support #2**: High-pitched, clear synth
+  - _DCO-106_: Ambient Keys
+- **Pluck Thing**: A plucky banjo sound.
+  - _Sakura_: STR Mountain Man Banjo FG
+- **Piano Support**: High-pitched warm 80s inspired synth chords
+  - _Kepler Expo_: Lead 1
+- **Chords 2**: Warm Piano chords. Slightly detuned.
+  - _Kepler Expo_: Electric Piano
+- **Bass**: Deep rumbly bass sound
+  - _Flex_: Pulse Blower
+- **Ambient Mid Section**: Metallic, glitchy sound.
+  - _Sakura_: SFX Ice Cube the Great FG
+  - _Mixer Track_: 2
+
+### Sounds
+- **Kid Urban Trans 2**: Car crash sound effect used to signify the change from **section 1** to **section 2**.
+- **White Noise**: Supporting **section 2** and at the end of the song, in **section 3**.
+- **Dubstep Crash 3**: Used as a _mysterious reoccuring sound_ throughout **section 1** and **section 3**.
+
+### Automation
+- **Bass**: The filter cutoff of the `Pulse Blower` is automated to increase the intensity of the sound during **section 2**.
+- **Ambient Mid Section**: The volume of the `SFX Ice Cube the Great FG` is automated to have it slowly fade in during **section 2**.
 
 ### Arrangement
 
@@ -59,20 +79,20 @@ The transitions between the three parts are intentionally fairly harsh.
 
 ### Mixing
 
-- **Sakura Ambient**: The inserts volume has been turned down to about 60% to make it less overpowering.
 
 #### Mixer Effects
 
-- **Eight Voice Chords (insert 1)**
-  - Fruity blood overdrive, to make the chords distorted.
-  - Fruity limiter, so the chords don't overpower within the song.
-- **Sakura Ambient (insert 2)**
-  - Fruity Reeverb 2.
-  - Soundgoodizer, makes it sound fuller.
+- **Track 1**
+  - Fruity blood overdrive: To make the chords distorted.
+  - Fruity limiter: So the chords don't overpower within the song.
+- **Track 2**
+  - Fruity Reeverb 2: Reverb
+  - Soundgoodizer: makes it sound fuller.
   - Gross Beat: Used to create a stuttering effect by automating volume patterns. This effect causes the sound to rapidly alternate between higher and lower levels.
-  - Fruity Multiband Compressor + Parametric EQ 2, to take out the lows and highs. The sound is supposed to be ambient.
-  - Fruity limiter, to mix it better within the song.
+  - Fruity Multiband Compressor: Compression
+  - Parametric EQ 2: To take out the lows and highs.
+  - Fruity limiter: To mix it better within the song.
 
 ### Mastering
 
-- Fruity limiter, to ensure sound levels don't become too high and prevent clipping.
+- Fruity limiter: To ensure sound levels don't become too high and prevent clipping.

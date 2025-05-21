@@ -1,7 +1,7 @@
 ---
 title: Victory Theme
 description: Insights into the creation of the Victory theme
-lastUpdated: 2025-05-16
+lastUpdated: 2025-05-21
 author: Tjorn
 ---
 
@@ -18,60 +18,79 @@ author: Tjorn
 The victory theme is not diegetic.
 
 ## Philosophy
+This song is supposed to be short and upbeat, to celebrate the victory of the player. This means major chords, fast tempo and a lot of energy.
+To be in line with the other songs, this song once again features old school synths and a lot of 80s inspired sounds. The song is short, but has a lot of energy and is very catchy.
+The drum and bass loop adds an additional layer of energy to the song, making it feel truly like a celebration.
 
 ### Connection to Game Themes
+This song is not really connected to the game themes, but it does fit the overall theme of the game. The song is upbeat and celebratory, which fits the theme of victory. Chicken sounds are used in the song, which is a sort of cheating way to connect it to the game.
 
 ## Musical Parts
 
-## Instruments and Sound Design
+## Instruments and Sound 
 
 ### Instruments
 
-- **Kepler Expo Velvetric**: 80s inspired synth chords
-- **Kepler J106 SoftStrings**: Brass sound
-- **Vital VLT Future Gun**: Plucky sound used as bass
-- **Vital Text To Wavetable**: Oscelator using chicken sounds as wavetable. Creating a high pitched sound
+- **Chords**: 80s inspired synth chords
+  - _Kepler Expo_: Velvetric
+  - _Mixer Track_: 5
+- **Piano Support**: Bigg brass sound
+  - _Kepler J106_: SoftStrings
+  - _Mixer Track_: 4
+- **Bass**: Plucky sound used as bass
+  - _Vital_: VLT Future Gun
+  - _Mixer Track_: 2
+- **Lead**: Oscelator using chicken sounds as wavetable. Creating a high pitched sound
+  - _Vital_: Text To Wavetable
+  - _Mixer Track_: 2
+
+### Sounds 
+The following sounds were sampled in the fight one song:
 - **Chicken Sounds**: Chicken sounds sourced from [youtube](https://www.youtube.com/watch?v=dZB7vWsb1Co)
+  - _Mixer Track_: 3
+- **Swag dnb Loop**: Drum and bass loop
+  - _Mixer Track_: 6
 
 ### Arrangement
 
-![Victory Theme](../../../../../assets/fowl-play/art/music/victory-theme/arangement.png)
+![Victory Theme](../../../../../assets/fowl-play/art/music/victory/arangement.png)
 
 ## Mixing and Mastering
 
 ### Mixing
 
-- All mixer tracks, except the bass and chicken sounds, are sidechaned based on the drum pattern
+- All mixer tracks, except **Track 2 and 3** (the bass and chicken sounds), are sidechaned based on **Track 6** (the drum pattern), to give the drum pattern more weight.
 
 #### Mixer Effects
 
-- **Lead (Vital VLT Future Gun)**:
-  - Hardcode, distorting the sound and transforming it closer to an electric guitar.
-  - Parametic EQ 2, boosting lows, lowering highs
-  - Fruity Phaser
-  - Mirror, adding reversed delay
-  - Fruity limiter, to not let the lead overpower
-- **Bass (Vital Text To Wavetable)**:
-  - Distructor, adding distortion
-  - Fruity Phaser
-  - Fruity Multiband Compressor
-  - Spreader, enhancing stereo seperation
-  - Transient Processor, adding dynamic processing
-  - Gross Beat, adding time distortion'
-  - Fruity Limiter
-- **Chicken SFX (Chicken Sounds)**:
-  - Pitcher, autotune
-  - Fruity Reeverb 2
-- **Piano Support (Kepler J106 SoftStrings)**:
-  - Soundgoodizer, enhances sound saturation
-  - Maximus, a multiband compressor
-  - Fruity Love Philter, adding a phaser effect
-  - Fruity Compressor, additional compression
-- **Chords(Kepler Expo Velvetric)**:
-  - Hyper Chorus, simulates multiple different versions of the track playing. Adds variation.
-  - Luxeverb, adding reverb
-  - Spreader, enhancing stereo seperation
+- **Track 1**:
+  - Hardcode: Distorting the sound and transforming it closer to an electric guitar.
+  - Parametic EQ 2: Boosting lows, lowering highs
+  - Fruity Phaser: adding a phaser effect
+  - Mirror: Adding reversed delay
+  - Fruity limiter: To not let the lead overpower
+- **Track 2**:
+  - Distructor: Adding distortion
+  - Fruity Phaser: Adding a phaser effect
+  - Fruity Multiband Compressor: Compression
+  - Spreader: Enhancing stereo seperation
+  - Transient Processor: Adding dynamic processing
+  - Gross Beat: Adding time distortion
+  - Fruity Limiter: Limiting the sound to have it sit better in the mix
+- **Track 3**:
+  - Pitcher: Autotuning the chicken sounds
+  - Fruity Reeverb 2: Adding reverb
+- **Track 4**:
+  - Soundgoodizer: Enhances sound saturation
+  - Maximus: A multiband compressor
+  - Fruity Love Philter: Adding a phaser effect
+  - Fruity Compressor: Additional compression
+- **Track 5**:
+  - Hyper Chorus: Simulates multiple different versions of the track playing. Adds variation.
+  - Luxeverb: Adding reverb
+- **Track 6**:
+  - Fruity Limiter: Limits the sound to have it sit better in the mix
 
 ### Mastering
 
-- Fruity limiter, to ensure sound levels don't become too high and prevent clipping.
+- Fruity limiter: To ensure sound levels don't become too high and prevent clipping.

@@ -25,7 +25,7 @@ We wanted the music to figure as a sort of radio, like in real life sport events
 ### Connection to Game Themes
 
 - **Fast-Paced Combat:** The fast BPM and rhythm mirror the game's emphasis on quick reflexes and constant movement.
-- **Arena Spectacle:** By making the music diegetic, we reinforce the feeling of being in a public, competitive space—where every fight is a show and every player is a contender.
+- **Arena Spectacle:** By making the music diegetic, we reinforce the feeling of being in a public, competitive space, where every fight is a show and every player is a contender.
 
 
 ## Musical Parts
@@ -49,7 +49,7 @@ We wanted the music to figure as a sort of radio, like in real life sport events
 - **Support**: Distorded, growling phaser
     - _Flex_: Blasternoise
     - _Mixer Track_: 3
-- **Bass**: Distorted EDM bass, lifted from the [Main Menu Theme](fowl-play/art/music/main-menu)
+- **Bass**: Distorted EDM bass, lifted from the [Main Menu Theme](/fowl-play/art/music/main-menu)
     - _Flex_: Pulse Blower
     - _Mixer Track_: 4
 - **Bass 2**: Phaser EDM Bass
@@ -58,13 +58,13 @@ We wanted the music to figure as a sort of radio, like in real life sport events
 - **Bass 3**: Distorted low saw bass, reminicent of a ship horn blowing
     - _Flex_: Black Ashes
     - _Mixer Track_: 4
-- **Dance Break**: Chord pattern, same instrument and mixer track as [**Lead 4**](#lead-4)
+- **Dance Break**: Chord pattern, same instrument and mixer track as **Lead 4**
     - _Kepler Expo_: customized preset
     - _Mixer Track_: 4
 - **Keys**: Simple chord pattern
     - _FL Keys_: Grand Piano
     - _Mixer Track_: 6
-- **Key Arp**: Simple bass for over [**Keys**](#keys), using same as **lead 1**
+- **Key Arp**: Simple bass for over **Keys**, using same as **lead 1**
     - _Kepler Expo_: C64 Arp
     - _Mixer Track_: None
 
@@ -109,7 +109,7 @@ The following sounds were sampled in the fight one song:
 - **Track 3**
     - Fruity Stereo Shaper: Changes the stereo image of the sound
     - Gross Beat: Distorting the time of the sound
-    - Soundgoodizer: Enhances the sound saturation, makes it sound fuller and `better`
+    - Soundgoodizer: Enhances the sound saturation, makes it sound fuller and _better_
     - Fruity Blood Overdrive: Distorts the sound
     - Fruity Multiband Compressor: Compresses the sound
 - **Track 4**
@@ -118,11 +118,11 @@ The following sounds were sampled in the fight one song:
 - **Track 5**
     - Gross Beat: rapidly changing volume, phaser effect
 - **Track 6**
-    - Soundgoodizer: Enhances the sound saturation, makes it sound fuller and `better`
+    - Soundgoodizer: Enhances the sound saturation, makes it sound fuller and _better_
     - Fruity Delay 3: Adds delay to the sound
     - Fruity Reeverb 2: Adds reverb to the sound
     - Fruity Limiter: Compresses the sound
 
 ### Mastering
-- The Master track has a Fruity Limiter, to limit the overall volume of the song
-- The Master track has a Fruity Parametric EQ 2, to take out the high ends
+- Fruity Limiter: To limit the overall volume of the song
+- Fruity Parametric EQ 2: To take out the high ends

@@ -41,34 +41,28 @@ The Poultry Man Menu Theme is structured around a layering system:
 ## Instruments and Sound Design
 
 ### Instruments
-- **Chords 1-4**: Warm 80s inspired synth chords, with ethereal elements. Consisting of 3 instruments playd at the same time
-  1.
-    - _Kepler Expo_: Warmnest
-    - _Mixer Track_: 4
-  2.
-    - _UVI WorkStation_: Hyper Majestic
-    - _Mixer Track_: 4
-  3.
-   - _Vital_ : Drake Pad
-    - _Mixer Track_: 5
-- **Lead 1-4**: Plucky, ethereal keys
-  - _ Vital_: Distant Majestic lead
-  - _Mixer Track_: 5
-- **Wind**: A continuous wind sound, emulating the desolate atmosphere of the underground sewer. Consists of 3 'instruments'
-  1.
-    - _Flex_: Wind
-    - _Mixer Track_: 1
-  2.
-    - _Flex_: Wind 2
-    - _Mixer Track_: 1
-  3.
-    - _Flex_: Flute
-    - _Mixer Track_: 3
 
-### Drum Patterns
-This theme does not make use of drums or percussion. The only rhythm is created by the wind sound, which is a continuous sound, with chords and melodies layered on top. 
-Since this is an ambient theme, the focus is on creating a soundscape rather than a traditional rhythmic structure, which we felt would detract from the overall atmosphere.
-The lack of drums, percussion and even bass is thus an ommission by design, to create a more ethereal and atmospheric sound.
+- **Chords 1-4**: Warm 80s inspired synth chords, with ethereal elements. Consisting of 3 instruments played at the same time:
+    - 1. _Kepler Expo_: Warmnest
+        - _Mixer Track_: 4
+    - 2. _UVI WorkStation_: Hyper Majestic
+        - _Mixer Track_: 4
+    - 3. _Vital_: Drake Pad
+        - _Mixer Track_: 5
+
+- **Lead 1-4**: Plucky, ethereal keys
+    - _Vital_: Distant Majestic lead
+    - _Mixer Track_: 5
+
+- **Wind**: A continuous wind sound, emulating the desolate atmosphere of the underground sewer. Consists of 3 'instruments':
+    - 1. _Flex_: Wind
+        - _Mixer Track_: 1
+    - 2. _Flex_: Wind 2
+        - _Mixer Track_: 1
+    - 3. _Flex_: Flute
+        - _Mixer Track_: 3
+
+
 
 ## Arrangement
 
@@ -86,27 +80,27 @@ Note: Some other mixer tracks are used for sound effects, which play at randomiz
 #### Mixer Effects
 
 - **Track 1**:
-  - Fruity Stereo Shaper: creates variation between the left and right channels.
-  - Fruity Delay 3: adds delay
-  - Fruity Parametic EQ 2: to take out the highs and heavily boost the lows
+  - Fruity Stereo Shaper: Creates variation between the left and right channels.
+  - Fruity Delay 3: Adds delay
+  - Fruity Parametic EQ 2: To take out the highs and heavily boost the lows
 - **Track 2**:
-  - Mirror: adds reversed delay
-  - Fruity Reeverb 2: adding reverb
-  - Fruity Multiband Compressor: compression
-  - Fruity Parametic EQ 2: slightly boosting lows and mids and slightly lower highs
+  - Mirror: Adds reversed delay
+  - Fruity Reeverb 2: Adding reverb
+  - Fruity Multiband Compressor: Compression
+  - Fruity Parametic EQ 2: Slightly boosting lows and mids and slightly lower highs
 - **Track 3**:
-  - Fruity Reeverb 2: adding reverb
-  - Fruity Compressor: compression
+  - Fruity Reeverb 2: Adding reverb
+  - Fruity Compressor: Compression
   - Fruity Love Philter: Modulates the sound
   - Equo: Equalizer, boosting the medium-highs and lowering the highest frequencies. Also slightly boosting the lows.
-  - Spreader: stereo widener
+  - Spreader: Stereo widening
 - **Track 4**:
-  - Soundgoodizer: enhances the sound saturation, makes it sound fuller and `better`
-  - Izotope Vinyl: adds a vinyl effect
+  - Soundgoodizer: Enhances the sound saturation, makes it sound fuller and _better_
+  - Izotope Vinyl: Adds a vinyl effect
 - **Track 5**:
   - Vintage Chorus: Creates a warm analogue sound
   - Vintage Phaser: Phaser
-  - Fruity Parametic EQ 2: removing the highs, and some additional harsh frequencies
+  - Fruity Parametic EQ 2: Removing the highs, and some additional harsh frequencies
 ### Mastering
 
-- Fruity limiter: to ensure sound levels don't become too high and prevent clipping.
+- Fruity limiter: To ensure sound levels don't become too high and prevent clipping.

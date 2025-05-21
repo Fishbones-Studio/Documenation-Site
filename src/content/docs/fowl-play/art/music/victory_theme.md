@@ -25,7 +25,7 @@ The victory theme is not diegetic.
 
 ## Instruments and Sound Design
 
-### Key Instruments
+### Instruments
 
 - **Kepler Expo Velvetric**: 80s inspired synth chords
 - **Kepler J106 SoftStrings**: Brass sound

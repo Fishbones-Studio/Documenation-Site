@@ -18,13 +18,19 @@ author: Tjorn
 All fight music is diegetic and plays through `speakers` in the arena.
 
 ## Philosophy
-Todo
+The "Fight One Theme" was composed to embody the adrenaline and intensity of arena combat. Our goal was to create a soundscape that not only energizes the player but also immerses them in the spectacle of the fight. Drawing inspiration from real-world sports events, the music is intentionally diegetic and blares from arena speakers. Of course, our music keeps playing during the fight, unlike real life sport events, where the music stops when the fight starts.
+
+We wanted the music to figure as a sort of radio, like in real life sport events. This means themes are not coupled to specific opponents, but randomized. We feel this enhances the immersion and makes the player feel like they are in a real arena, where the music is not tailored to them, but rather a generic fight theme.
+
 ### Connection to Game Themes
-Todo
+
+- **Fast-Paced Combat:** The fast BPM and rhythm mirror the game's emphasis on quick reflexes and constant movement.
+- **Arena Spectacle:** By making the music diegetic, we reinforce the feeling of being in a public, competitive space—where every fight is a show and every player is a contender.
+
 
 ## Musical Parts
 ## Instruments and Sound Design
-### Key Instruments
+### Instruments
 - **Chords**: Warm 80s inspired synth chords
     - _Kepler Expo_: customized preset
     - _Mixer Track_: 1

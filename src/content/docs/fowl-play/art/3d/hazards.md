@@ -15,19 +15,19 @@ Since the arena in Fowl Play has a grim, bloody, sewer-like aesthetic, all envir
 
 Before starting with shading or texturing, it is important to unwrap the UVs of any models onto a new 2D image. This will later help in applying the correct material. UV unwrapping was done using Blender's **Smart UV Project**, which saved time compared to doing it manually. The following values were used while UV unwrapping:
 
-| Setting            | Value                          |
-|--------------------|--------------------------------|
-| Angle Limit        | 66 degrees                     |
-| Margin Method      | Scaled                         |
-| Rotation Method    | Axis-aligned (vertical)        |
-| Island Margin      | 0.050                          |
-| Area Weight        | 0.000                          |
-| Correct Aspect     | Checked                        |
-| Scale to Bounds    | Unchecked                      |
+| Setting         | Value                   |
+| --------------- | ----------------------- |
+| Angle Limit     | 66 degrees              |
+| Margin Method   | Scaled                  |
+| Rotation Method | Axis-aligned (vertical) |
+| Island Margin   | 0.050                   |
+| Area Weight     | 0.000                   |
+| Correct Aspect  | Checked                 |
+| Scale to Bounds | Unchecked               |
 
 ## Shading
 
-Majority of shading of environmental hazards were done using Blender's **Principled BSDF** shader, which allows for a realistic representation of materials. The reason for choosing this shader is that it combines different shading techniques into one, making it very flexible and easy to use. 
+Majority of shading of environmental hazards were done using Blender's **Principled BSDF** shader, which allows for a realistic representation of materials. The reason for choosing this shader is that it combines different shading techniques into one, making it very flexible and easy to use.
 
 ## Texturing
 
@@ -44,7 +44,6 @@ With this in mind, while modeling the spikes, we deliberately chose to keep them
 ### Array Modifier
 
 To maintain a non-destructive workflow, two **Array Modifiers** were used to duplicate the spikes along both the X and Y axes in Blender. This allowed for efficient placement by automatically filling the grid with a consistent relative offset, reducing the time needed to manually position each spike on the base.
-
 
 ## Ground Saw
 
@@ -67,7 +66,6 @@ We wanted to introduce another environmental hazard with a different impact on t
 For the design of the spike ball, we chose to create very sharp spikes attached to a ball held by chains. Typically, this environmental hazard is suspended from the ceiling, forcing the player to move carefully to avoid it. Getting hit by the spike ball's knockback can also reposition the player, adding an additional challenge to navigation.
 
 ![Spike ball model](../../../../../assets/fowl-play/art/3d/hazards/spike_ball.png)
-
 
 ### Subdivision Surface Modifier
 

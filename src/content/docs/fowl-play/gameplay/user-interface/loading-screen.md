@@ -15,17 +15,16 @@ Before implementing the loading screen, clicking on the arena would immediately 
 
 The loading screen solves this by:
 
-* Hiding the freeze with visual feedback
-* Providing a clear indication that loading is in progress
-* Giving us an opportunity to showcase artwork and in-game characters
-* Making the transition into gameplay feel smoother and more intentional
+- Hiding the freeze with visual feedback
+- Providing a clear indication that loading is in progress
+- Giving us an opportunity to showcase artwork and in-game characters
+- Making the transition into gameplay feel smoother and more intentional
 
-## Loading screen 
+## Loading screen
 
 Below is a preview of the loading screen shown while the arena is being prepared. It features dynamic progress feedback, our games concept art, and a fun chicken facts to keep players entertained during the transition.
 
 ![loading screen png](../../../../../assets/fowl-play/gameplay/user-interface/loading-screen/loading-screen.png)
-
 
 ## Scene Loading Code
 

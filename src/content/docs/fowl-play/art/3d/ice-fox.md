@@ -10,14 +10,14 @@ The Ice Fox is a common enemy in Fowl Play and is modeled, textured, rigged and 
 ### Add-ons
 
 During the creation process, Blender add-ons were used to smoothen the workflow:
+
 1. [Easy Weight Tool][1] – for symmetrical weight painting across mirrored bones
 2. [Rigify][2] – for manually adding armature structure
 3. [Node Wrangler][3] – to speed up material and shaders
 
-
 ## Model
 
-For most of the body parts, I used the Mirror Modifier. This allowed me to maintain symmetry throughout the modeling process, which made the workflow faster and more efficient. 
+For most of the body parts, I used the Mirror Modifier. This allowed me to maintain symmetry throughout the modeling process, which made the workflow faster and more efficient.
 
 The model of the Ice Fox can be divided into the following sections:
 
@@ -32,7 +32,6 @@ The model of the Ice Fox can be divided into the following sections:
 The reason for this seperation during modeling was to allow for more precision later on while texturing the model. Since each part was a seperate mesh, it became easier to assign and manage materials individually. It also allowed me to apply differnt UV maps to a specific part without interfering with another, giving me more control over the final structure layout of the Ice Fox.
 
 ![Ice Fox Model](../../../../../assets/fowl-play/art/3d/ice-fox/model.png)
-
 
 ## Texturing
 
@@ -60,28 +59,28 @@ The rigging for the Ice Fox was done manually. Since the model isn’t a humanoi
 
 ### Bone Hierachy
 
-| Level | Parent Bone               | Child Bones                                       |
-|-------|----------------------     |--------------------------------------             |
-| 0     | **Pelvis** (Root)         | Spine_1, Tail_1, Back_Hip_Left, Back_Hip_Right    |
-| 1     | **Spine_1**               | Spine_2                                           |
-| 2     | **Spine_2**               | Neck, Front_Shoulder_Left, Front_Shoulder_Right   |
-| 3     | **Neck**                  | Head                                              |
-| 3     | **Front_Shoulder_Left**   | Front_UpperArm_Left                               |
-| 4     | **Front_UpperArm_Left**   | Front_Forearm_Left                                |
-| 5     | **Front_Forearm_Left**    | Front_Wrist_Left                                  |
-| 6     | **Front_Wrist_Left**      | Front_Paw_Left                                    |
-| 3     | **Front_Shoulder_Right**  | Front_UpperArm_Right                              |
-| 4     | **Front_UpperArm_Right**  | Front_Forearm_Right                               |
-| 5     | **Front_Forearm_Right**   | Front_Wrist_Right                                 |
-| 6     | **Front_Wrist_Right**     | Front_Paw_Right                                   |
-| 1     | **Tail_1**                | Tail_2                                            |
-| 2     | **Tail_2**                | Tail_3                                            |
-| 1     | **Back_Hip_Left**         | Back_Thigh_Left                                   |
-| 2     | **Back_Thigh_Left**       | Back_Shank_Left                                   |
-| 3     | **Back_Shank_Left**       | Back_Paw_Left                                     |
-| 1     | **Back_Hip_Right**        | Back_Thigh_Right                                  |
-| 2     | **Back_Thigh_Right**      | Back_Shank_Right                                  |
-| 3     | **Back_Shank_Right**      | Back_Paw_Right                                    |
+| Level | Parent Bone              | Child Bones                                     |
+| ----- | ------------------------ | ----------------------------------------------- |
+| 0     | **Pelvis** (Root)        | Spine_1, Tail_1, Back_Hip_Left, Back_Hip_Right  |
+| 1     | **Spine_1**              | Spine_2                                         |
+| 2     | **Spine_2**              | Neck, Front_Shoulder_Left, Front_Shoulder_Right |
+| 3     | **Neck**                 | Head                                            |
+| 3     | **Front_Shoulder_Left**  | Front_UpperArm_Left                             |
+| 4     | **Front_UpperArm_Left**  | Front_Forearm_Left                              |
+| 5     | **Front_Forearm_Left**   | Front_Wrist_Left                                |
+| 6     | **Front_Wrist_Left**     | Front_Paw_Left                                  |
+| 3     | **Front_Shoulder_Right** | Front_UpperArm_Right                            |
+| 4     | **Front_UpperArm_Right** | Front_Forearm_Right                             |
+| 5     | **Front_Forearm_Right**  | Front_Wrist_Right                               |
+| 6     | **Front_Wrist_Right**    | Front_Paw_Right                                 |
+| 1     | **Tail_1**               | Tail_2                                          |
+| 2     | **Tail_2**               | Tail_3                                          |
+| 1     | **Back_Hip_Left**        | Back_Thigh_Left                                 |
+| 2     | **Back_Thigh_Left**      | Back_Shank_Left                                 |
+| 3     | **Back_Shank_Left**      | Back_Paw_Left                                   |
+| 1     | **Back_Hip_Right**       | Back_Thigh_Right                                |
+| 2     | **Back_Thigh_Right**     | Back_Shank_Right                                |
+| 3     | **Back_Shank_Right**     | Back_Paw_Right                                  |
 
 ### Anatomy
 
@@ -122,7 +121,6 @@ All animations are set to run at 30 FPS, with the exception of Walk and Sprint, 
 ### Sprint
 
 ![Ice Fox sprint animation](/ice-fox/sprint-animation.gif)
-
 
 [1]: https://extensions.blender.org/add-ons/easyweight/
 [2]: https://docs.blender.org/manual/en/latest/addons/rigging/rigify/index.html

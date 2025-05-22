@@ -1,7 +1,7 @@
 ---
 title: Poultry Man Menu Theme
 description: Insights into the creation of the Poultry Man Menu theme
-lastUpdated: 2025-04-07
+lastUpdated: 2025-05-21
 author: Tjorn
 ---
 
@@ -10,16 +10,18 @@ author: Tjorn
 | Specification | Details                                      |
 | ------------- | -------------------------------------------- |
 | Software      | FL Studio 24                                 |
-| Plugins       | Stock plugins, UVI Workstation               |
 | BPM           | 100                                          |
 | Length        | 5:49 minutes                                 |
 | Purpose       | Ambience, sense of loneliness and desolation |
+| Diegetic      | Partially                                    |
+
+The Poultry Man Menu Theme is partially diegetic. The ambient wind sound is diegetic, simulating wind in the underground sewer system, but the ambient tracks playing on top are not diegetic.
 
 ## Philosophy
 
-The Poultry Man Menu Theme is composed of several loosely connected musical fragments, all designed to evoke a sense of abandonment and isolation. At its core lies a continuous wind sound, establishing the desolate atmosphere of the underground sewer where the Poultry Man area is set.
+The Poultry Man Menu Theme is composed of several loosely connected musical fragments, all designed to evoke a sense of abandonment and isolation. At its core lies a continuous wind sound, emulating the desolate atmosphere of the underground sewer where the Poultry Man area is set.
 
-Additional ambient tracks are layered on top, at random intervals. These pieces are slow and ethereal, built around gentle chord progressions, which enhance the mood without feeling overly somber. Each segment lasts between 40 and 80 seconds. Once a track finishes, only the wind remains, reinforcing the feeling of emptiness until the next ambient track appears.
+Additional ambient tracks are layered on top, at random intervals. These pieces are slow and ethereal, built around chord progressions. Each segment lasts between 40 and 80 seconds. Once a track finishes, only the wind remains. In addition, sound effect play at random intervals, such as footsteps, to add to the atmosphere. Rivaling Poultry Men are also preparing for their next fight.
 
 ### Connection to Game Themes
 
@@ -34,21 +36,73 @@ The music’s sparse and minimal design fits with its area:
 The Poultry Man Menu Theme is structured around a layering system:
 
 1. **Base Layer**: A continuous wind sound forms the backdrop. Subtle variation in notes ensures the wind sound varies and doesn't become too tiring.
-2. **Ambient Tracks**: Currently, three distinct tracks are randomly triggered over the base layer. While they share similar instrumentation, each features unique chord progressions and arrangements to add variety and depth. The ambient tracks are designed to complement the base layer, enhancing the overall atmosphere and emotional impact of the theme.
+2. **Ambient Tracks**: Currently, four distinct tracks are randomly triggered over the base layer. While they share similar instrumentation, each features unique chord progressions and arrangements to add variety and depth. The ambient tracks are designed to complement the base layer, enhancing the overall atmosphere and emotional impact of the theme.
 
 ## Instruments and Sound Design
 
-### Key Instruments
+### Instruments
 
-- **Wind Sound**: A synthesized wind sound, combining `Wind` and `Wind 2` from the Flex General Midi Library. Wind plays a continuous note, while Wind 2 is a more dynamic sound that changes slowly throughout the track.
-- **Chord Synth**: A combination of Kepler Expo, for a warm sound, and UVI Workstation for a more high-pitched ethereal sound.
+- **Chords 1-4**: Warm 80s inspired synth chords, with ethereal elements. Consisting of 3 instruments played at the time:
+
+  - 1. _Kepler Expo_: Warmnest
+    - _Mixer Track_: 4
+  - 2. _UVI WorkStation_: Hyper Majestic
+    - _Mixer Track_: 4
+  - 3. _Vital_: Drake Pad
+    - _Mixer Track_: 5
+
+- **Lead 1-4**: Plucky, ethereal keys
+
+  - _Vital_: Distant Majestic lead
+  - _Mixer Track_: 5
+
+- **Wind**: A continuous wind sound, emulating the desolate atmosphere of the underground sewer. Consists of 3 'instruments':
+  - 1. _Flex_: Wind
+    - _Mixer Track_: 1
+  - 2. _Flex_: Wind 2
+    - _Mixer Track_: 1
+  - 3. _Flex_: Flute
+    - _Mixer Track_: 3
+
+## Arrangement
+
+![Poultry Man Menu Theme Arrangement](../../../../../assets/fowl-play/art/music/poultry-man-menu/arangement.png)
 
 ## Mixing and Mastering
 
-### Mixer Effects
+### Mixing
 
-- **Master**
-- **Wind Sound**:
-  - Fruity Stereo Shaper is used to create a slight offset in the stereo field, particularly making the right channel a bit delayed. This makes the sound more dynamic and interesting.
-  - Fruity Delay 3, to add additional delay with echoes.
-  - Parametric EQ 2, to remove the high frequencies and make the sound more muffled.
+- Automation is used for the sound level of the chords, to have them fade in and out.
+
+Note: Some other mixer tracks are used for sound effects, which play at randomized intervals.
+
+<!-- TODO: make sound effects docs and link here -->
+
+#### Mixer Effects
+
+- **Track 1**:
+  - Fruity Stereo Shaper: Creates variation between the left and right channels.
+  - Fruity Delay 3: Adds delay
+  - Fruity Parametic EQ 2: To take out the highs and heavily boost the lows
+- **Track 2**:
+  - Mirror: Adds reversed delay
+  - Fruity Reeverb 2: Adding reverb
+  - Fruity Multiband Compressor: Compression
+  - Fruity Parametic EQ 2: Slightly boosting lows and mids and slightly lower highs
+- **Track 3**:
+  - Fruity Reeverb 2: Adding reverb
+  - Fruity Compressor: Compression
+  - Fruity Love Philter: Modulates the sound
+  - Equo: Equalizer, boosting the medium-highs and lowering the highest frequencies. Also slightly boosting the lows.
+  - Spreader: Stereo widening
+- **Track 4**:
+  - Soundgoodizer: Enhances the sound saturation, makes it sound fuller and _better_
+  - Izotope Vinyl: Adds a vinyl effect
+- **Track 5**:
+  - Vintage Chorus: Creates a warm analogue sound
+  - Vintage Phaser: Phaser
+  - Fruity Parametic EQ 2: Removing the highs, and some additional harsh frequencies
+
+### Mastering
+
+- Fruity limiter: To ensure sound levels don't become too high and prevent clipping.

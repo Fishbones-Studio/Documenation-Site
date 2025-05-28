@@ -1,7 +1,7 @@
 ---
 title: Post Processing Shader
 description: Post Processing Shader for pixelation, dithering and color reduction
-lastUpdated: 2025-05-15
+lastUpdated: 2025-05-28
 author: Tjorn
 ---
 ![Post Processing Shader in action](../../../../../assets/fowl-play/effects-shaders/shaders/post-process/post_process_shader.gif)

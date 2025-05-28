@@ -1,9 +1,10 @@
 ---
 title: Post Processing Shader
 description: Post Processing Shader for pixelation, dithering and color reduction
-lastUpdated: 2025-05-15
+lastUpdated: 2025-05-28
 author: Tjorn
 ---
+![Post Processing Shader in action](../../../../../assets/fowl-play/effects-shaders/shaders/post-process/post_process_shader.gif)
 
 This Godot `canvas_item` shader applies a retro visual filter to the rendered scene, simulating the look of old horror games. It combines pixelation, color reduction, and dithering. The shader is used in Fowl Play to create a stylized, imperfect, and slightly unsettling visual atmosphere, while keeping the UI crisp and clear by excluding it from the effect.
 

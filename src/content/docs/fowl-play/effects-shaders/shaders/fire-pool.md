@@ -1,9 +1,11 @@
 ---
 title: Fire Pool Shader
 description: Shader used for the Fire Pool Hazard
-lastUpdated: 2025-05-15
+lastUpdated: 2025-05-28
 author: Tjorn
 ---
+
+![Fire Pool Shader in action](../../../../../assets/fowl-play/effects-shaders/shaders/fire-pool/fire_pool_shader.gif)
 
 In the [Fire Pool Hazard](/fowl-play/gameplay/combat/hazards/fire-pool), a shader simulates animated fire and heat distortion. This shader is applied to a `MeshInstance3D` with a `BoxMesh` to create a dynamic, glowing pool of fire.
 

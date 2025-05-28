@@ -5,6 +5,8 @@ lastUpdated: 2025-05-15
 author: Tjorn
 ---
 
+![Night Sky Shader in action](../../../../../assets/fowl-play/effects-shaders/shaders/night-sky/night_sky_shader.gif)
+
 The Night Sky, visible from the arena and intermission area, uses a sky shader to create a dynamic night sky with animated stars and drifting clouds. It is based on the [Godot Sky Shader tutorial](https://docs.godotengine.org/en/stable/tutorials/shaders/shader_reference/sky_shader.html#doc-sky-shader)
 
 - **Sky Gradient**: Blends between two dark blue colors from horizon to zenith for a deep night effect.

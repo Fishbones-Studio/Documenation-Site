@@ -49,7 +49,7 @@ export default defineConfig({
         {
           icon: "youtube",
           label: "YouTube",
-          href: "https://www.youtube.com/@studiofishbones",
+          href: "https://www.youtube.com/channel/UCHuoUuX4QLNywVWbs_sDbJQ",
         },
       ],
       sidebar: [

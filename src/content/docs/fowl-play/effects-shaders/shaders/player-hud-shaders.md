@@ -13,6 +13,7 @@ In the [player hud](/fowl-play/gameplay/user-interface/player-hud), shader effec
 In addition to the shaders, a background color is applied to the background `ColorRect` node, to further emphasize the effect. The color is set to a different color when the player is hurt or healed. All shader and color effects are changable via `@export` variables in the editor.
 
 ## Hurt Shader
+
 ![Hurt Shader in action](../../../../../assets/fowl-play/effects-shaders/shaders/player-hud/player_hud_hurt_shader.gif)
 
 ```gdshader
@@ -70,6 +71,7 @@ void fragment() {
   - The final color is a blend of the aberrated color and the specified hurt color, providing a clear visual indication of damage.
 
 ## Heal Shader
+
 ![Player Hud Heal in action](../../../../../assets/fowl-play/effects-shaders/shaders/premade-shaders/player_hud_heal_shader.gif)
 
 Based on the [gaussian blur shader](https://godotshaders.com/shader/web-safe-darkened-gaussian-blur/) by [`crisp_lad`](https://godotshaders.com/author/crisp_lad/).

@@ -1,0 +1,73 @@
+---
+title: Poultry Man Menu Sound Effects
+description: Insights into the creation of the Poultry Man Menu Sound Effects
+lastUpdated: 2025-30-05
+author: Tjorn
+---
+import AudioPlayer from "../../../../../components/AudioPlayer.astro";
+
+## Technical Specifications
+
+| Specification | Details                        |
+| ------------- | ------------------------------ |
+| Software      | Audacity, FL Studio 24         |
+| Purpose       | Ambience, the world around you |
+| Diegetic      | Yes                            |
+
+In addition to [music](/fowl-play/art/music/poultry-man-menu/), sound effects were created to further enhance the ambience of the Poultry Man Menu. The sound effects were recorded in Audacity, slightly processed, and then imported into FL Studio for further processing:
+
+- In Audacity, I recorded the sound effects using a microphone and objects in my room. The sounds were then cut and had some minimal effects, such as compression and noise level correction, applied to them.
+- The sound effects were then imported into FL Studio, where they were further processed.
+- The exported sound effects were then cut again in Audacity to remove any silence at the beginning and end of the sound effects, after which they were exported and imported into the game.
+
+## Philosophy
+
+The light switch sound effect is meant to be used in conjunction with the light flickering effect on the [Poultry Man Menu](/fowl-play/gameplay/user-interface/poultry-man).
+The other sound effects are meant to be ambient sounds, coming from other poultry men in the sewers. These other poultry men are never seen or interacted with, in order to create a sense of isolation. The sound effects thus sound distant, muffled and with high reverb, to create the illusion that they are coming from other parts of the sewers.
+
+## Created Sound Effects
+
+<AudioPlayer 
+	src="/sfx/poultry-man-menu/mouth_wind.mp3"
+	title="mouth_wind"
+	description="Breathing into the microphone, as additional air sounds."
+/>
+
+<AudioPlayer 
+	src="/sfx/poultry-man-menu/falling.mp3"
+	title="Falling"
+	description="Sound of a bottle falling on the table."
+/>
+
+<AudioPlayer 
+	src="/sfx/poultry-man-menu/typing.mp3"
+	title="Typing"
+	description="Sound of typing on a keyboard."
+/>
+
+<AudioPlayer 
+	src="/sfx/poultry-man-menu/cranckle.mp3"
+	title="Cranckle"
+	description="Sound of a plastic bag being crunched."
+/>
+
+<AudioPlayer 
+	src="/sfx/poultry-man-menu/snort.mp3"
+	title="Snort"
+	description="Sound of clearing a nose."
+/>
+
+<AudioPlayer 
+	src="/sfx/poultry-man-menu/light_switch.ogg"
+	title="Light switch on and off"
+	description="Sound of a light switch being turned on and off. Meant to be used in conjunction with the light flickering effect on the Poultry Man Menu."
+/>
+
+## Mixing and Mastering
+
+### Mixer Effects
+
+- **Mirror**: Adds a slight reversing effect to the sounds.
+- **Fruity Reeverb 2**: Used to add some reverb to the sound effects. The area is an abandoned sewer, so the sound effects should bounce around.
+- **Fruity Multiband Compressor**: Used to compress the sound effects, so they are not too loud or too quiet. The sound effects should be in the background, so they should not be too loud.
+- **Fruity Parametric EQ 2**: Used to muffle the sound effects, while boosting the `HIGH-MID` and `LOW` frequencies slightly.

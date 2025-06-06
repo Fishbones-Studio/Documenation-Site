@@ -10,13 +10,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.2.6",
-    "@astrojs/sitemap": "^3.4.0",
+    "@astrojs/mdx": "^4.3.0",
+    "@astrojs/sitemap": "^3.4.1",
     "@astrojs/starlight": "^0.34.3",
     "@lorenzo_lewis/starlight-utils": "^0.3.2",
-    "astro": "^5.7.14",
+    "astro": "^5.9.0",
     "sharp": "^0.33.5",
-    "starlight-auto-sidebar": "^0.1.1",
+    "starlight-auto-sidebar": "^0.1.2",
     "starlight-links-validator": "^0.16.0",
     "vite": "^6.3.5"
   },

@@ -5,7 +5,7 @@ lastUpdated: 2025-05-15
 author: Tjorn
 ---
 
-Environmental hazards in Fowl Play are designed to add dynamic challenges and strategic depth to combat encounters. Hazards are placed throughout the arena to force both players and enemies to carefully consider their movement, positioning, and timing during fights. Each hazard type has a unique gameplay effect, encouraging players to adapt their tactics and stay alert. Currently, there are four main types of hazards: [`Base Hazard`](#base-hazard), [`Bleed Hazard`](#bleed-hazard), [`Hold Hazard`](#hold-hazard), and [`Knock Hazard`](#knock-hazard).
+Environmental hazards in Fowl Play are designed to add dynamic challenges and depth to combat encounters. Hazards are placed throughout the arena to force both players and enemies to carefully consider their movement, positioning, and timing during fights. Each hazard type has a unique gameplay effect, encouraging players to adapt their tactics and stay alert. Currently, there are four main types of hazards: [`Base Hazard`](#base-hazard), [`Bleed Hazard`](#bleed-hazard), [`Hold Hazard`](#hold-hazard), and [`Knock Hazard`](#knock-hazard).
 
 ## Base Hazard
 
@@ -14,7 +14,7 @@ Environmental hazards in Fowl Play are designed to add dynamic challenges and st
 ### Code
 
 ```gdscript
-## BazeHazard serves as a base class for all hazards in the game.
+## BaseHazard serves as a base class for all hazards in the game.
 ##
 ## It handles the basic functionality of detecting when a body enters the hazard area
 ## and applying damage to the player or enemy. Child classes can extend this functionality

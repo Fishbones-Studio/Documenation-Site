@@ -1,15 +1,15 @@
 ---
 title: Random Audio Player
 description: Audio player that plays random audio files in a folder.
-lastUpdated: 2025-04-07
+lastUpdated: 2025-06-06
 author: Tjorn
 ---
 
-The Random Audio Player is a versatile audio playback system designed to play random audio files from a specified folder. It can be used for background music, sound effects, or any other audio that needs to be played at random intervals. The player is designed to be flexible and easy to use, making it suitable for various applications in the game. _The player is unsuitable for applications where songs need to be played in a specific order or need to loop._
+The Random Audio Player is a versatile audio playback system designed to play random audio files from a specified folder. It can be used for background music, sound effects, or any other audio that needs to be played at random intervals. _The player is unsuitable for applications where songs need to be played in a specific order or need to loop._
 
 ## The Core
 
-At the heart of everything is the `RandomAudioPlayer` class. This handles loading audio files, picking them at random, and scheduling playback. It also emits a signal when it's time to play a sound, allowing connection to actual `AudioStream` (and variant) nodes:
+At the heart of everything is the `RandomAudioPlayer` class. This handles loading audio files, picking them at random, and scheduling playback. It also emits a signal when it's time to play a sound.
 
 ```gdscript
 ## Base class for random audio playback functionality
@@ -105,14 +105,12 @@ func _schedule_next_playback(audio : AudioStream) -> void:
 
 ### How It Works
 
-What's great about this system is its simplicity. Point it to a folder with audio files, and it handles the rest. Here's what's happening under the hood:
-
-1. It scans a folder for audio files (ogg, wav, mp3).
-2. It loads them all into memory (so keep folder sizes reasonable).
-3. It picks files at random.
+1. Scanning a folder for audio files (ogg, wav, mp3).
+2. Loading them all into memory (so keep folder sizes reasonable).
+3. Picking files at random.
    - It avoids repetition if specified. This is done by keeping track of the last played file and ensuring the next one is different.
      - This means that if there are only two files in the folder, it will play them back to back.
-4. Between the sounds, it waits for a random interval (between `min_interval` and `max_interval` seconds) before playing the next one.
+4. Between playing sounds, it waits for a random interval (between `min_interval` and `max_interval` seconds) before playing the next one.
    - This is done by using a timer that adds the current sound's length to the randomly chosen interval. Effectively, this means that the next sound will be played after a random interval, plus the length of the current sound.
      - If the current sound is 5 seconds long, and the random interval is 10 seconds, the next sound will be played after 15 seconds.
 
@@ -120,7 +118,7 @@ The base class doesn't actually play audio itself. It emits a signal with the re
 
 ## Random Music Player
 
-This plays audio files from a specified folder at random intervals, using `AudioStreamPlayer`. This means the audio is coming from a fixed position, not a 2D or 3D space. This is perfect for music playback or sound effects that don't need to be spatialized:
+This plays audio files from a specified folder at random intervals, using `AudioStreamPlayer`. This means the audio is coming from a fixed position, not a 2D or 3D space.:
 
 ```gdscript
 ## Plays a random song from a specified folder at random intervals.
@@ -149,7 +147,7 @@ This is perfect for menu screens or ambient background music. Just tweak the int
 
 ## Random Sound Player
 
-This plays audio files from a specified folder at random intervals, using `AudioStreamPlayer3D`. This means the audio is coming from a 3D position in space. This is perfect for sound effects that need to be spatialized, but where the exact position doesn't matter, like ambient sounds:
+This plays audio files from a specified folder at random intervals, using `AudioStreamPlayer3D`. This means the audio is coming from a 3D position in space.
 
 ```gdscript
 ## Plays a random sound effect from a specified folder at random intervals.
@@ -183,7 +181,6 @@ func _on_play_sound(sound: AudioStream, sound_name: String) -> void:
 
 ## Tips for Best Results
 
-1. **Group similar sounds together** - Organize sounds by type or purpose to make them easier to manage and ensure consistent playback.
-2. **Keep file counts reasonable** - 5-10 variations are usually enough for most purposes. Adding too many variations worsens performance and can make it harder to find specific sounds later on.
-3. **Match volumes carefully** - Big volume differences between files can break immersion.
-4. **Use descriptive filenames** - This helps with debugging and makes it easier to find specific sounds later on.
+1. **Group similar sounds together** Organize sounds by type or purpose to make them easier to manage and ensure consistent playback.
+2. **Match volumes carefully** Big volume differences between files can break immersion.
+3. **Use descriptive filenames** This helps with debugging and makes it easier to find specific sounds later on.

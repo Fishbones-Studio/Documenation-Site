@@ -1,21 +1,21 @@
 ---
-title: Fire Pool Shader
+title: Lava Shader
 description: Shader used for the Fire Pool Hazard
-lastUpdated: 2025-05-28
+lastUpdated: 2025-06-06
 author: Tjorn
 ---
 
-![Fire Pool Shader in action](../../../../../assets/fowl-play/effects-shaders/shaders/fire-pool/fire_pool_shader.gif)
+![Lava Shader in action](../../../../../assets/fowl-play/effects-shaders/shaders/fire-pool/fire_pool_shader.gif)
 
-This shader, used in the [Fire Pool Hazard](/fowl-play/gameplay/combat/hazards/fire-pool), simulates animated fire and heat distortion. This shader is applied to a `MeshInstance3D` with a `BoxMesh` to create a dynamic, glowing pool of fire.
+This shader, used in the [Fire Pool Hazard](/fowl-play/gameplay/combat/hazards/fire-pool), simulates lava and heat distortion. This shader is applied to a `MeshInstance3D` with a `BoxMesh` to create a glowing box of lava.
 
 ## Effects
 
-- **Fire Animation**: Uses layered, scrolling noise textures to create flowing, animated fire patterns.
+- **Lava Animation**: Uses layered, scrolling noise textures to create an animated lava effect.
 - **Heat Distortion**: Distorts the surface UVs with animated noise, simulating heat shimmer.
-- **Color Blending**: Blends between cool, mid, and hot colors based on noise, creating a realistic fire gradient.
-- **Emission**: Boosts emission based on the 'hotness' of each pixel, making the fire appear to glow.
-- **Bubbling**: The surface geometry is displaced in the vertex shader to create a bubbling, lively effect.
+- **Color Blending**: Blends between cool, mid, and hot colors based on noise, creating a lava gradient.
+- **Emission**: Boosts emission based on the 'hotness' of each pixel, making the lava appear to glow.
+- **Bubbling**: The surface geometry is displaced in the vertex shader to create a bubbling effect.
 
 ## Shader Code
 
@@ -120,15 +120,15 @@ void fragment() {
 - `distortion_scale`, `distortion_speed`, `distortion_strength`: Control the scale, speed, and strength of the heat distortion effect.
 - `emission_boost`: Multiplier for the emission (glow) intensity.
 - `cool_thresh`, `mid_thresh`: Thresholds for color transitions between cool, mid, and hot.
-- `bubble_strength`, `bubble_scale`, `bubble_speed`: Control the strength, scale, and speed of the bubbling surface effect.
+- `bubble_strength`, `bubble_scale`, `bubble_speed`: Control the strength, scale, and speed of the bubbling effect.
 
 ## Shader Logic
 
 - **Vertex Shader**:
-  - Displaces vertices along their normals using animated noise, creating a bubbling surface.
+  - Displaces vertices along their normals using noise, creating a bubbling surface.
   - The bubbling is modulated by a sine wave for extra liveliness.
 - **Fragment Shader**:
-  - Distorts UVs with animated noise to simulate heat shimmer.
-  - Samples two scrolling noise layers for fire animation.
+  - Distorts UVs with noise to simulate heat shimmer.
+  - Samples two scrolling noise layers for lava animation.
   - Blends between cool, mid, and hot colors based on combined noise.
-  - Sets emission based on the 'hotness' of each pixel, making the fire glow more in hotter regions.
+  - Sets emission based on the 'hotness' of each pixel, making the lava glow more in hotter regions.

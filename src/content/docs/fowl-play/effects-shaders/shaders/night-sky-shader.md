@@ -1,18 +1,18 @@
 ---
 title: Night Sky Shader
 description: Shader used for the Night Sky, visible from the arena.
-lastUpdated: 2025-05-15
+lastUpdated: 2025-06-06
 author: Tjorn
 ---
 
 ![Night Sky Shader in action](../../../../../assets/fowl-play/effects-shaders/shaders/night-sky/night_sky_shader.gif)
 
-The Night Sky, visible from the arena and intermission area, uses a sky shader to create a dynamic night sky with animated stars and drifting clouds. It is based on the [Godot Sky Shader tutorial](https://docs.godotengine.org/en/stable/tutorials/shaders/shader_reference/sky_shader.html#doc-sky-shader)
+The sky box, visible from the arena and intermission area, uses a sky shader to create a night sky with animated stars and drifting clouds. It is based on the [Godot Sky Shader tutorial](https://docs.godotengine.org/en/stable/tutorials/shaders/shader_reference/sky_shader.html#doc-sky-shader)
 
-- **Sky Gradient**: Blends between two dark blue colors from horizon to zenith for a deep night effect.
-- **Stars**: Procedurally generated, twinkling stars with adjustable density, brightness, and scale.
+- **Sky Gradient**: Blends between two colors from horizon (where the sky meets the ground) to zenith (the point directly overhead).
+- **Stars**: Procedurally generated twinkling stars with adjustable density, brightness, and scale.
 - **Clouds**: Animated, semi-transparent clouds using a noise texture, moving slowly across the sky.
-- **Performance**: Clouds are rendered at half resolution for efficiency, then composited over the sky.
+  - **Performance**: Clouds are rendered at half resolution for efficiency, then composited over the sky.
 
 ## Shader Code
 
@@ -124,20 +124,20 @@ void sky() {
 
 ## Shader Parameters
 
-- `sky_color_a`, `sky_color_b`: Colors for the horizon and zenith of the night sky gradient.
-- `cloud_color`: Color of the night clouds.
+- `sky_color_a`, `sky_color_b`: Colors for the horizon and zenith.
+- `cloud_color`: Color of the clouds.
 - `cloud_min`, `cloud_max`: Thresholds for cloud density from the noise texture.
 - `cloud_speed`: Speed at which clouds move across the sky.
 - `cloud_noise`: Noise texture used to generate cloud shapes.
 - `star_density`: Controls how many stars appear in the sky.
 - `star_brightness`: Controls the overall brightness of the stars.
 - `twinkle_speed`: Speed of the star twinkling animation.
-- `star_scale`: Controls the apparent size and spacing of stars.
+- `star_scale`: Controls the size and spacing of stars.
 
 ## Shader Logic
 
 - **Sky Gradient**:
-  - Blends between two colors based on the vertical direction, simulating the transition from horizon to zenith.
+  - Blends between two colors based on the vertical direction, creating a transition from horizon to zenith.
 - **Stars**:
   - Uses a hash function to procedurally generate star positions and brightness.
   - Stars twinkle over time and have slight brightness variation for realism.
@@ -145,5 +145,3 @@ void sky() {
   - Uses a noise texture to create soft, semi-transparent clouds.
   - Clouds drift slowly by animating the UV coordinates over time.
   - Rendered at half resolution for performance, then composited over the sky.
-- **Compositing**:
-  - The shader first renders clouds at half resolution, then blends them over the base sky and stars for the final effect.

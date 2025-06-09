@@ -1,20 +1,20 @@
 ---
 title: Premade Shaders
 description: Overview of shaders used in Fowl Play, that are (slightly modified and) used as is.
-lastUpdated: 2025-05-28
+lastUpdated: 2025-06-06
 author: Tjorn
 ---
 
 ## Used as is
 
-- [Cressent Slash](https://godotshaders.com/shader/procedural-cyclic-slash/)
-  ![Cressent Slash in action](../../../../../assets/fowl-play/effects-shaders/shaders/premade-shaders/cresent_slash_shader.gif)
+- [Crescent Slash](https://godotshaders.com/shader/procedural-cyclic-slash/)
+  ![Crescent Slash in action](../../../../../assets/fowl-play/effects-shaders/shaders/premade-shaders/cresent_slash_shader.gif)
 - [Pause Menu Blur](https://godotshaders.com/shader/simple-blur-godot-4-1/)
   ![Pause Menu Blur in action](../../../../../assets/fowl-play/effects-shaders/shaders/premade-shaders/pause_menu_blur_shader.gif)
 
 ## Modified
 
-- [Earthquake](https://godotshaders.com/shader/distortion-bubble/): Reworked to use a 3D noise texture for both vertex and fragment distortion, added fresnel-based view effects, and enabled double-sided rendering.
+- [Earthquake](https://godotshaders.com/shader/distortion-bubble/): Reworked to use a 3D noise texture for both vertex and fragment distortion, added fresnel view effects, and enabled double-sided rendering.
   ![Earthquake in action](../../../../../assets/fowl-play/effects-shaders/shaders/premade-shaders/earthquake_shader.gif)
 - [Fire Ball](https://godotshaders.com/shader/energy-shield-with-impact-effect/): This shader has been modified to allow for gradient colors.
   ![Fire Ball in action](../../../../../assets/fowl-play/effects-shaders/shaders/premade-shaders/fire_ball_shader.gif)

@@ -5,11 +5,11 @@ lastUpdated: 2025-06-09
 author: Tjorn
 ---
 
-The Random Audio Player is a specialized audio playback class that extends AudioStreamPlayer3D to provide randomized audio selection from a folder of audio files. Unlike the [IntervalAudioPlayer](/fowl-play/gameplay/audio/interval-audio-player), which focuses on timing and delegation, this class directly handles 3D positional audio playback with built-in randomization logic.
+The Random Audio Player is a specialized audio playback class that extends AudioStreamPlayer3D to provide randomized audio selection from a folder of audio files. Unlike the [IntervalAudioPlayer](/fowl-play/gameplay/audio/interval-players/interval-audio-player), which focuses on timing and delegation, this class directly handles 3D positional audio playback with built-in randomization logic.
 
 ## Design Philosophy
 
-The BaseRandomAudioPlayer follows a different architectural approach compared to the [IntervalAudioPlayer](/fowl-play/gameplay/audio/interval-audio-player). Here are the key differences and design choices:
+The BaseRandomAudioPlayer follows a different architectural approach compared to the [IntervalAudioPlayer](/fowl-play/gameplay/audio/interval-players/interval-audio-player). Here are the key differences and design choices:
 
 1. **Direct Inheritance**: Extends AudioStreamPlayer3D directly to provide immediate 3D audio capabilities without requiring additional components or signal connections.
 
@@ -142,7 +142,7 @@ Audio files are loaded in `_ready()` rather than on-demand because:
 
 #### Resource Caching Consistency
 
-Uses `ResourceLoader.CACHE_MODE_REUSE` for the same reasons as [IntervalAudioPlayer](/fowl-play/gameplay/audio/interval-audio-player):
+Uses `ResourceLoader.CACHE_MODE_REUSE` for the same reasons as [IntervalAudioPlayer](/fowl-play/gameplay/audio/interval-players/interval-audio-player):
 
 1. **Memory Efficiency**: Prevents duplicate loading of the same audio files across multiple instances.
 2. **Consistency**: Ensures all instances use the same AudioStream objects for identical files.

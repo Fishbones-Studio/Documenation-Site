@@ -5,7 +5,7 @@ lastUpdated: 2025-06-09
 author: Tjorn
 ---
 
-The Interval Music Player demonstrates how to use the [IntervalAudioPlayer](/fowl-play/gameplay/audio/interval-players/interval-audio-player) as a composition component to create scheduled music playback. Unlike the [RandomMusicPlayer](/fowl-play/gameplay/audio/random-players/random-audio-player), which handles crossfading and complex state management, this player focuses on simple, interval-based music playback.
+The Interval Music Player demonstrates how to use the [IntervalAudioPlayer](/fowl-play/gameplay/audio/interval-players/interval-audio-player) as a composition component to create scheduled music playback. Unlike the [RandomMusicPlayer](/fowl-play/gameplay/audio/random-players/base-random-audio-player), which handles crossfading and complex state management, this player focuses on simple, interval-based music playback.
 This music player is used in the [Poultry Man Menu](/fowl-play/gameplay/user-interface/poultry-man) for the playback of the [ambient tracks](/fowl-play/art/music/poultry-man-menu/).
 
 ## Design Philosophy

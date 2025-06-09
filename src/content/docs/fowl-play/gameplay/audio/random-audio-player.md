@@ -1,189 +1,208 @@
 ---
 title: Random Audio Player
-description: Audio player that plays random audio files in a folder.
-lastUpdated: 2025-04-07
+description: Audio player that plays random audio files in a folder, in 3D space.
+lastUpdated: 2025-06-09
 author: Tjorn
 ---
 
-The Random Audio Player is a versatile audio playback system designed to play random audio files from a specified folder. It can be used for background music, sound effects, or any other audio that needs to be played at random intervals. The player is designed to be flexible and easy to use, making it suitable for various applications in the game. _The player is unsuitable for applications where songs need to be played in a specific order or need to loop._
+The Random Audio Player is a specialized audio playback class that extends AudioStreamPlayer3D to provide randomized audio selection from a folder of audio files. Unlike the [IntervalAudioPlayer](/fowl-play/gameplay/audio/interval-audio-player), which focuses on timing and delegation, this class directly handles 3D positional audio playback with built-in randomization logic.
 
-## The Core
+## Design Philosophy
 
-At the heart of everything is the `RandomAudioPlayer` class. This handles loading audio files, picking them at random, and scheduling playback. It also emits a signal when it's time to play a sound, allowing connection to actual `AudioStream` (and variant) nodes:
+The BaseRandomAudioPlayer follows a different architectural approach compared to the [IntervalAudioPlayer](/fowl-play/gameplay/audio/interval-audio-player). Here are the key differences and design choices:
 
-```gdscript
-## Base class for random audio playback functionality
-class_name RandomAudioPlayer
-extends Node
+1. **Direct Inheritance**: Extends AudioStreamPlayer3D directly to provide immediate 3D audio capabilities without requiring additional components or signal connections.
 
-## Signal to notify the player to start playing the audio
-signal play_audio(sound: AudioStream, sound_name: String)
+2. **Immediate Playback**: Designed for on-demand audio playback rather than scheduled intervals, making it ideal for event-driven sound effects, such as weapons, footsteps, or environmental sounds.
 
-var audio_folder: String
-var file_extensions: Array[String]
-var min_interval: float
-var max_interval: float
-var avoid_repeats: bool
-var start_playing: bool
+3. **Simplified Integration**: Can be dropped into any scene as a ready-to-use 3D audio source with randomization built-in.
 
-var available_audio: Array[AudioStream] = []
-var current_index: int = -1
-var _timer: Timer
+4. **Export Configuration**: Uses @export variables for easy configuration in the Godot editor, supporting rapid prototyping and iteration.
 
-func _init(_audio_folder : String, _file_extentions : Array[String] = ["ogg", "wav", "mp3"], _min_interval : float = 5.0, _max_interval: float = 15.0, _start_playing : bool = true,  _avoid_repeats : bool = true) -> void:
-    audio_folder = _audio_folder
-    file_extensions = _file_extentions
-    min_interval = _min_interval
-    max_interval = _max_interval
-    avoid_repeats = _avoid_repeats
-    start_playing = _start_playing
-
-    _load_audio_files()
-
-func _ready() -> void:
-    _setup_timer()
-    if available_audio.size() > 0:
-        # Start playing immediately if start_playing is true
-        if start_playing:
-            _play_random_audio()
-        else:
-            # Start the timer without playing immediately
-            _timer.start(randf_range(min_interval, max_interval))
-    else:
-        push_warning("No audio files found in: %s" % audio_folder)
-
-func get_current_audio_name() -> String:
-    if current_index >= 0 and current_index < available_audio.size():
-        return available_audio[current_index].resource_path.get_file().get_basename()
-    return ""
-
-func _load_audio_files() -> void:
-    var dir := DirAccess.open(audio_folder)
-    if dir:
-        dir.list_dir_begin()
-        var file_name: String = dir.get_next()
-        while file_name != "":
-            if not dir.current_is_dir() and file_name.get_extension() in file_extensions:
-                var audio = load(audio_folder.path_join(file_name))
-                if audio is AudioStream:
-                    available_audio.append(audio)
-            file_name = dir.get_next()
-    else:
-        push_error("Could not open audio directory: %s" % audio_folder)
-
-func _setup_timer() -> void:
-    _timer = Timer.new()
-    add_child(_timer)
-    _timer.timeout.connect(_play_random_audio)
-
-func _play_random_audio() -> void:
-    if available_audio.size() == 0:
-        return
-
-    print("Playing random audio")
-
-    # Select next audio ensuring no immediate repeats if avoid_repeats is true
-    var next_index := current_index
-    if available_audio.size() > 1 and avoid_repeats:
-        while next_index == current_index:
-            next_index = randi() % available_audio.size()
-
-    current_index = next_index
-    var audio := available_audio[current_index]
-
-    # Custom playback implementation in child classes
-    play_audio.emit(audio, get_current_audio_name())
-
-    # Schedule next playback
-    _schedule_next_playback(audio)
-
-
-func _schedule_next_playback(audio : AudioStream) -> void:
-    var interval := randf_range(min_interval, max_interval)
-    _timer.start(interval + audio.get_length()) # Wait until current audio ends + random interval
-```
-
-### How It Works
-
-What's great about this system is its simplicity. Point it to a folder with audio files, and it handles the rest. Here's what's happening under the hood:
-
-1. It scans a folder for audio files (ogg, wav, mp3).
-2. It loads them all into memory (so keep folder sizes reasonable).
-3. It picks files at random.
-   - It avoids repetition if specified. This is done by keeping track of the last played file and ensuring the next one is different.
-     - This means that if there are only two files in the folder, it will play them back to back.
-4. Between the sounds, it waits for a random interval (between `min_interval` and `max_interval` seconds) before playing the next one.
-   - This is done by using a timer that adds the current sound's length to the randomly chosen interval. Effectively, this means that the next sound will be played after a random interval, plus the length of the current sound.
-     - If the current sound is 5 seconds long, and the random interval is 10 seconds, the next sound will be played after 15 seconds.
-
-The base class doesn't actually play audio itself. It emits a signal with the required information, which can be connected to any `AudioStream` or `AudioStreamPlayer` node. This uses composition instead of inheritance, since the different audio players have different parents.
-
-## Random Music Player
-
-This plays audio files from a specified folder at random intervals, using `AudioStreamPlayer`. This means the audio is coming from a fixed position, not a 2D or 3D space. This is perfect for music playback or sound effects that don't need to be spatialized:
+## The code
 
 ```gdscript
-## Plays a random song from a specified folder at random intervals.
-extends AudioStreamPlayer
-
-@export var music_folder: String = "res://ui/game_menu/art/random_music/" ## Folder containing music files
-@export var file_extensions: Array[String] = ["ogg", "wav", "mp3"] ## Supported audio formats
-@export var min_interval: float = 30.0  ## Minimum time between songs in seconds
-@export var max_interval: float = 60.0 ## Maximum time between songs in seconds
-@export var avoid_repeats: bool = true ## Avoid playing the same song consecutively
-
-
-func _ready() -> void:
-    var _random_player := RandomAudioPlayer.new(music_folder, file_extensions, min_interval, max_interval, false, avoid_repeats)
-    _random_player.play_audio.connect(_on_play_sound)
-    add_child(_random_player)
-
-
-func _on_play_sound(sound: AudioStream, sound_name: String) -> void:
-    print("Playing music: ", sound_name)
-    stream = sound
-    play()
-```
-
-This is perfect for menu screens or ambient background music. Just tweak the intervals to your liking - longer breaks work well for background music, shorter ones for more continuous play.
-
-## Random Sound Player
-
-This plays audio files from a specified folder at random intervals, using `AudioStreamPlayer3D`. This means the audio is coming from a 3D position in space. This is perfect for sound effects that need to be spatialized, but where the exact position doesn't matter, like ambient sounds:
-
-```gdscript
-## Plays a random sound effect from a specified folder at random intervals.
+## Base class for AudioStreamPlayer3Ds that play random streams from a folder.
+class_name BaseRandomAudioPlayer
 extends AudioStreamPlayer3D
-@export var sounds_folder: String = "res://ui/game_menu/art/random_sounds/" ## Folder containing sound effect files
-@export var min_random_distance: float = 2.0 ## Minimum distance from the player in 3D space
-@export var max_random_distance: float = 10.0 ## Maximum distance from the player in 3D space
+
+@export var audio_folder: String = "res://sounds/" ## Folder containing audio files
 @export var file_extensions: Array[String] = ["ogg", "wav", "mp3"] ## Supported audio formats
-@export var min_interval: float = 5.0 ## Minimum time between sound effects in seconds
-@export var max_interval: float = 15.0 ## Maximum time between sound effects in seconds
-@export var avoid_repeats: bool = true ## Avoid playing the same sound consecutively
+@export var avoid_repeats: bool = true ## Avoid playing the same audio consecutively, if possible
+
+var _available_streams: Array[AudioStream] = []
+var _current_stream_index: int = -1
+
 
 func _ready() -> void:
-    var _random_player := RandomAudioPlayer.new(sounds_folder, file_extensions, min_interval, max_interval, true, avoid_repeats)
-    _random_player.play_audio.connect(_on_play_sound)
-    add_child(_random_player)
+	_load_audio_streams()
 
-func _on_play_sound(sound: AudioStream, sound_name: String) -> void:
-	print("Playing sound: ", sound_name)
-	stream = sound
-	# Set random position in 3D space
-	var random_angle := randf_range(0, 2 * PI)
-	var random_distance := randf_range(min_random_distance, max_random_distance)
-	position = Vector3(
-		cos(random_angle) * random_distance,
-		cos(random_angle) * random_distance,
-		sin(random_angle) * random_distance
+
+func _load_audio_streams() -> void:
+	_available_streams.clear()
+
+	if not DirAccess.dir_exists_absolute(audio_folder):
+		push_error(
+			"Audio directory does not exist or is not accessible: %s"
+			% audio_folder
+		)
+		return
+
+	var file_names_in_folder: PackedStringArray = ResourceLoader.list_directory(
+		audio_folder
 	)
-	play()
+
+	if file_names_in_folder.is_empty():
+		push_warning(
+			"Audio directory '%s' is empty or contains no files recognized by ResourceLoader."
+			% audio_folder
+		)
+
+	for file_name in file_names_in_folder:
+		var extension: String = file_name.get_extension().to_lower()
+		if extension in file_extensions:
+			var resource_path: String = audio_folder.path_join(file_name)
+			var audio: AudioStream = ResourceLoader.load(
+				resource_path,
+				"AudioStream",
+				ResourceLoader.CACHE_MODE_REUSE
+			)
+
+			if audio != null:
+				_available_streams.append(audio)
+			else:
+				push_warning(
+					"Could not load '%s' as AudioStream, even though it was listed and matched extension."
+					% resource_path
+				)
+
+	if _available_streams.is_empty():
+		if not file_names_in_folder.is_empty():
+			push_warning(
+				"No loadable audio files with extensions %s found in '%s', despite files being present."
+				% [str(file_extensions), audio_folder]
+			)
+		else:
+			# This covers the case where the directory was empty or no matching/loadable files were found.
+			push_warning(
+				"No audio streams loaded from directory: %s. Check folder contents and file extensions."
+				% audio_folder
+			)
+
+
+## Selects and returns the next AudioStream based on the configuration.
+## Returns null if no streams are available.
+func _get_next_random_stream() -> AudioStream:
+	if _available_streams.is_empty():
+		return null
+
+	var next_index := _current_stream_index
+	if _available_streams.size() > 1 and avoid_repeats:
+		while next_index == _current_stream_index:
+			next_index = randi() % _available_streams.size()
+	elif not _available_streams.is_empty(): # Handles single item or repeats allowed
+		next_index = randi() % _available_streams.size()
+	else: # Should not happen if initial check passes, but as a fallback
+		return null
+
+	_current_stream_index = next_index
+	return _available_streams[_current_stream_index]
 ```
+
+### Architectural Differences from IntervalAudioPlayer
+
+#### Direct Inheritance
+
+The BaseRandomAudioPlayer extends `AudioStreamPlayer3D` directly, which is fundamentally different from the IntervalAudioPlayer's approach:
+
+1. **Immediate Functionality**: By inheriting from AudioStreamPlayer3D, this class becomes a drop-in replacement for any 3D audio source. No additional components or signal connections are needed.
+
+2. **Performance**: Direct inheritance eliminates the overhead of signal emission and reception, making it more suitable for frequently triggered sound effects.
+
+3. **Simplicity**: For use cases that only need 3D audio, this approach reduces complexity by combining audio selection and playback in a single component.
+
+#### When to Choose Each Approach
+
+- **Use BaseRandomAudioPlayer when**: You need immediate 3D sound effects, working with event-driven audio (footsteps, weapons, etc.), or want minimal setup complexity.
+- **Use IntervalAudioPlayer when**: You need scheduled/timed audio, want to support multiple audio player types, or require complex audio routing.
+
+### Audio Loading Strategy
+
+#### Immediate Loading in \_ready()
+
+Audio files are loaded in `_ready()` rather than on-demand because:
+
+1. **Predictable Performance**: Loading happens once during scene initialization, avoiding hitches during gameplay.
+
+2. **Error Discovery**: File loading issues are discovered early, when they're easier to debug and fix.
+
+3. **Memory Planning**: All audio memory is allocated upfront, making memory usage predictable.
+
+4. **Fail State**: If audio files are missing or corrupted, the problem is detected immediately rather than during gameplay.
+
+#### Resource Caching Consistency
+
+Uses `ResourceLoader.CACHE_MODE_REUSE` for the same reasons as [IntervalAudioPlayer](/fowl-play/gameplay/audio/interval-audio-player):
+
+1. **Memory Efficiency**: Prevents duplicate loading of the same audio files across multiple instances.
+2. **Consistency**: Ensures all instances use the same AudioStream objects for identical files.
+3. **Godot Integration**: Leverages Godot's built-in resource management system.
+
+### Randomization Logic
+
+#### Repeat Prevention
+
+The `_get_next_random_stream()` function implements intelligent randomization:
+
+```gdscript
+var next_index := _current_stream_index
+if _available_streams.size() > 1 and avoid_repeats:
+    while next_index == _current_stream_index:
+        next_index = randi() % _available_streams.size()
+```
+
+This approach provides:
+
+1. **Natural Feel**: Prevents the jarring experience of the same sound playing twice in immediate succession.
+
+2. **True Randomness When Appropriate**: When only one audio file exists or repeats are explicitly allowed, pure randomness is used.
+
+#### Return Value Strategy
+
+The method returns `null` when no streams are available rather than throwing an error because:
+
+1. **Caller Control**: Allows the calling code to decide how to handle missing audio (play nothing, use fallback, etc.).
+
+2. **Graceful Degradation**: Missing audio won't crash the game, maintaining stability in production.
+
+3. **Optional Audio**: Supports scenarios where audio is nice-to-have but not essential for functionality.
+
+### Error Handling
+
+#### Progressive Warning System
+
+The class uses a layered warning approach:
+
+1. **Directory Issues**: Errors for missing directories (fundamental problem).
+2. **Content Issues**: Warnings for empty directories or failed loads (partial problems).
+3. **Graceful Continuation**: System continues to work with whatever audio is available.
+
+This ensures that:
+
+- Critical issues (missing directories) are flagged as errors
+- Non-critical issues (some files missing) generate warnings but don't stop execution
+- The system provides maximum functionality even with incomplete audio sets
 
 ## Tips for Best Results
 
-1. **Group similar sounds together** - Organize sounds by type or purpose to make them easier to manage and ensure consistent playback.
-2. **Keep file counts reasonable** - 5-10 variations are usually enough for most purposes. Adding too many variations worsens performance and can make it harder to find specific sounds later on.
-3. **Match volumes carefully** - Big volume differences between files can break immersion.
-4. **Use descriptive filenames** - This helps with debugging and makes it easier to find specific sounds later on.
+1. **Position carefully in 3D space** - Since this extends AudioStreamPlayer3D, the transform position determines where the sound originates from. Place it at the exact location where the sound should appear to come from.
+
+2. **Configure attenuation settings** - Use the AudioStreamPlayer3D's built-in attenuation properties to control how the sound fades with distance. This is crucial for realistic 3D audio.
+
+3. **Group related sounds** - Keep variations of the same sound effect (like different footstep sounds) in the same folder for easy management and consistent behavior.
+
+4. **Test repeat avoidance** - With `avoid_repeats` enabled, make sure you have at least 2-3 variations of each sound to prevent noticeable patterns.
+
+5. **Use descriptive folder names** - Since the audio folder is exported, clear naming helps designers understand what sounds belong where.
+
+6. **Consider memory usage** - All audio files are loaded at once, so avoid putting too many large files in a single folder. For music or long ambient tracks, consider using IntervalAudioPlayer instead.

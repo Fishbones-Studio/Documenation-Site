@@ -5,7 +5,7 @@ lastUpdated: 2025-06-09
 author: Tjorn
 ---
 
-The Interval SFX Player demonstrates how to combine IntervalAudioPlayer with 3D spatial audio to create ambient sound effects that play at random intervals from random positions. This is perfect for environmental audio like distant bird calls, wind effects, or background activity sounds.
+The Interval SFX Player demonstrates how to combine [IntervalAudioPlayer](/fowl-play/gameplay/audio/interval-players/interval-audio-player) with 3D spatial audio to create ambient sound effects that play at random intervals from random positions. This is perfect for environmental audio like distant bird calls, wind effects, or background activity sounds.
 This music player is used in the [Poultry Man Menu](/fowl-play/gameplay/user-interface/poultry-man) for the playback of the [ambient sound effects](/fowl-play/art/sound/poultry-man-menu/)
 
 ## Design Philosophy
@@ -14,7 +14,7 @@ The Interval SFX Player combines scheduled audio with spatial positioning:
 
 1. **Spatial Immersion**: Uses 3D positioning to create believable environmental audio that seems to come from the world around the player.
 
-2. **Composition Pattern**: Leverages IntervalAudioPlayer for timing while adding 3D spatial logic on top.
+2. **Composition Pattern**: Leverages [IntervalAudioPlayer](/fowl-play/gameplay/audio/interval-players/interval-audio-player) for timing while adding 3D spatial logic on top.
 
 3. **Dynamic Positioning**: Each sound plays from a different random position, creating variety and realism.
 
@@ -54,13 +54,7 @@ func _on_play_sound(sound: AudioStream, _sound_name: String) -> void:
 	play()
 ```
 
-## Code Explanation
-
-This section explains how the composition pattern creates immersive 3D environmental audio.
-
-### Spatial Audio Implementation
-
-#### Why 3D Positioning Matters
+### Spatial Positioning
 
 The class uses AudioStreamPlayer3D to create spatial audio:
 
@@ -68,7 +62,7 @@ The class uses AudioStreamPlayer3D to create spatial audio:
 extends AudioStreamPlayer3D
 ```
 
-**Spatial audio benefits:**
+#### Benefits of 3D Audio
 
 1. **Immersion**: Sounds appear to come from specific locations in the world, enhancing believability.
 
@@ -76,33 +70,30 @@ extends AudioStreamPlayer3D
 
 3. **Directional Audio**: Players can hear which direction sounds are coming from, adding spatial awareness.
 
-4. **Performance**: Godot's 3D audio system efficiently handles positioning and attenuation calculations.
+### Randomized positioning
 
-### Dynamic Position Generation
-
-#### Random Positioning Algorithm
-
-Each sound gets a new random position around the player:
+Each sound gets a new random position:
 
 ```gdscript
 var random_angle := randf_range(0, 2 * PI)
 var random_distance := randf_range(min_random_distance, max_random_distance)
 position = Vector3(
     cos(random_angle) * random_distance,
-    cos(random_angle) * random_distance,  # Note: This might be intentional for specific behavior
+    cos(random_angle) * random_distance,
     sin(random_angle) * random_distance
 )
 ```
 
-**Position calculation breakdown:**
+#### Position Calculation
 
-1. **Angle**: Random direction around the player (0 to 2π radians = full circle)
+This calculation uses polar coordinates to determine a random position in 3D space relative to the player:
+
+1. **Angle**: Random direction
 2. **Distance**: Random distance within the specified range
-3. **Coordinates**: Converts polar coordinates to 3D Cartesian coordinates
 
-**Note**: The Y-coordinate uses `cos(random_angle)` instead of a separate calculation, which creates specific vertical positioning behavior.
+**Note**: The Y-coordinate uses `cos(random_angle)` instead of a separate calculation, which means all audio will come from the same height level as the player.
 
-#### Distance Range Configuration
+#### Distance Range
 
 The configurable distance range provides control over audio placement:
 
@@ -143,67 +134,7 @@ The class splits responsibilities clearly:
 3. **Testing**: Each component can be tested independently
 4. **Flexibility**: Easy to modify positioning logic without affecting timing
 
-### Configuration Strategy
-
-#### Export-Driven Setup
-
-All key parameters are exposed for designer control:
-
-```gdscript
-@export var sounds_folder: String = "res://ui/game_menu/art/random_sounds/"
-@export var min_random_distance: float = 2.0
-@export var max_random_distance: float = 10.0
-@export var min_interval: float = 5.0
-@export var max_interval: float = 15.0
-```
-
-**Designer-friendly benefits:**
-
-1. **Visual Configuration**: Settings are adjustable in the Godot editor
-2. **Rapid Iteration**: No code changes needed to test different configurations
-3. **Per-Scene Customization**: Different areas can have different ambient audio settings
-4. **Clear Documentation**: Export annotations provide built-in documentation
-
-### Integration Patterns
-
-#### Environmental Ambience
-
-```gdscript
-# In a forest scene
-extends Node3D
-
-@onready var bird_sounds = $BirdSFXPlayer
-@onready var wind_sounds = $WindSFXPlayer
-
-func _ready():
-    # Birds play more frequently, closer to the player
-    bird_sounds.min_interval = 3.0
-    bird_sounds.max_interval = 8.0
-    bird_sounds.min_random_distance = 5.0
-    bird_sounds.max_random_distance = 15.0
-
-    # Wind plays less frequently, from farther away
-    wind_sounds.min_interval = 10.0
-    wind_sounds.max_interval = 30.0
-    wind_sounds.min_random_distance = 10.0
-    wind_sounds.max_random_distance = 25.0
-```
-
-#### Player-Relative Positioning
-
-Since the position is set each time, the class assumes it's placed relative to the player or camera:
-
-```gdscript
-# Typical scene structure:
-# Player
-# ├── Camera3D
-# ├── IntervalSFXPlayer (child of player for relative positioning)
-# └── Other player components
-```
-
 ### Attenuation Considerations
-
-#### AudioStreamPlayer3D Properties
 
 The class inherits all spatial audio properties:
 
@@ -211,44 +142,8 @@ The class inherits all spatial audio properties:
 - **Max Distance**: Beyond this distance, sound becomes inaudible
 - **Unit DB**: Volume at unit distance (1 meter)
 
-**Important for setup:**
+### Important notes on Attenuation
 
 1. **Max Distance**: Should be larger than `max_random_distance` to ensure sounds are audible
 2. **Attenuation Curve**: Linear, inverse, or logarithmic falloff affects realism
 3. **Unit Volume**: Affects how loud sounds are at close range
-
-### Performance Considerations
-
-#### Position Updates
-
-The class updates position only when playing new audio:
-
-```gdscript
-# Position is set per sound, not per frame
-position = Vector3(...)
-play()
-```
-
-**Performance benefits:**
-
-1. **Minimal CPU**: No continuous position updates
-2. **Efficient Memory**: Only stores one position per instance
-3. **Godot Optimization**: Leverages Godot's optimized 3D audio system
-
-## Tips for Best Results
-
-1. **Configure attenuation carefully** - Set max_distance higher than max_random_distance to ensure all sounds are audible.
-
-2. **Choose appropriate intervals** - Frequent sounds (every 5-15 seconds) work well for active environments, longer intervals for sparse ambience.
-
-3. **Match sound content to distances** - Closer sounds should be more intimate (footsteps, small animals), distant sounds more atmospheric (wind, distant calls).
-
-4. **Test in 3D** - Walk around your scene to ensure the positioning feels natural and immersive.
-
-5. **Consider multiple players** - Use separate players for different types of ambient audio (animals, weather, mechanical sounds).
-
-6. **Group related sounds** - Keep similar ambient sounds in the same folder (all bird sounds together, all wind sounds together).
-
-7. **Test audio falloff** - Ensure the volume curve feels natural as players move around the environment.
-
-8. **Consider player movement** - If the player moves quickly, shorter intervals might be needed to maintain consistent ambience.

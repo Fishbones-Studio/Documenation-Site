@@ -1,18 +1,18 @@
 ---
 title: Post Processing Shader
 description: Post Processing Shader for pixelation, dithering and color reduction
-lastUpdated: 2025-05-28
+lastUpdated: 2025-06-06
 author: Tjorn
 ---
 
 ![Post Processing Shader in action](../../../../../assets/fowl-play/effects-shaders/shaders/post-process/post_process_shader.gif)
 
-This Godot `canvas_item` shader applies a retro visual filter to the rendered scene, simulating the look of old horror games. It combines pixelation, color reduction, and dithering. The shader is used in Fowl Play to create a stylized, imperfect, and slightly unsettling visual atmosphere, while keeping the UI crisp and clear by excluding it from the effect.
+This Godot `canvas_item` shader applies a retro visual filter to the rendered scene, based on the look of old horror games. It combines pixelation, color reduction, and dithering. The shader is used to create a stylized, imperfect, and slightly unsettling visual atmosphere. The UI is exempt from the shader, and thus stays crisp and clear.
 
 - **Pixelation:** Samples the screen texture at a lower resolution, creating a blocky, pixelated look.
-- **Color Reduction:** Quantizes each color channel to a limited number of discrete steps, reducing the color palette.
-- **Ordered Dithering:** Uses a 4x4 Bayer matrix to distribute quantization errors, simulating intermediate colors and reducing banding.
-- **Scaling & Border Mask:** Optional scaling and a subtle border mask can be used for additional stylization or vignette effects.
+- **Color Reduction:** Reduces the amount of unique colors in the image.
+- **Dithering:** Uses a 4x4 Bayer matrix to create intermediate colors, reducing color banding.
+- **Scaling & Border Mask:** Optional scaling and a border mask to be used for additional stylization and vignette effects.
 
 ## Shader Code
 
@@ -139,11 +139,10 @@ void fragment() {
 
 ## Shader Parameters
 
-- `SCREEN_TEXTURE`: The screen texture to which the effect is applied.
-- `screen_size`: The resolution of the viewport (should be set by code).
+- `screen_size`: The resolution of the viewport, **must be set through code and updated each time the viewport size changes** (for example, a different resolution gets chosen).
 - `colors`: Number of color steps per channel (palette size).
 - `dither_size`: Scale of the dithering pattern.
-- `dither_shift`, `dither_hue_shift`: Artistic controls for shifting the dithering pattern and rotating its hue.
+- `dither_shift`, `dither_hue_shift`: Shifting the dithering pattern and rotating its hue.
 - `dither_strength`: Strength of the dithering effect.
 - `alpha`: Final alpha of the effect.
 - `scale`: Zooms the sampled screen content in or out.
@@ -155,14 +154,14 @@ void fragment() {
 - **Pixelation**:
   - Snaps the sampling coordinates to a grid defined by `pixel_size`, so each block of pixels samples the same color from the screen texture.
 - **Color Reduction**:
-  - The `reduce_color` function quantizes each color channel to a limited number of steps, set by `colors`.
+  - The `reduce_color` function limits each color channel to a fixed number of values, as specified by the `colors` parameter. This reduces the overall color depth, by mapping each channel to the nearest available palette step.
 - **Hue Shifting**:
-  - The `hue_shift` function rotates the hue of the dithering pattern, allowing for creative color variations.
+  - The `hue_shift` function rotates the hue of the dithering pattern.
     - This is done by converting RGB to YIQ, rotating the I and Q components, and converting back to RGB. YIQ is a way of representing colors that separates how bright a color is (luminance) from the actual color information (chrominance). The “Y” stands for brightness, while “I” and “Q” describe the color’s tint and shade. This makes it easier to adjust things like hue or brightness separately, which is useful for effects like hue shifting in shaders.
 - **Dithering**:
-  - The `dithering_pattern` function generates a threshold from a 4x4 Bayer matrix, varying across the screen.
+  - The `dithering_pattern` function is based on a 4x4 Bayer matrix, which is used to apply dithering across the screen. This creates a visually pleasing pattern by varying dithering intensity in a controlled, repeating manner.
   - The dither value is used in `reduce_color` to decide whether to round a color channel up or down, creating a dot pattern that simulates more colors.
-  - `dither_shift` and `dither_hue_shift` allow for creative control over the dithering pattern and its color.
+  - `dither_shift` and `dither_hue_shift` allow for control over the dithering pattern and its color.
 - **Scaling & Border Mask**:
-  - The `scale` uniform zooms the sampled screen content.
-  - The `border_mask` uniform applies a mask that is stronger near the edges, subtly pulling the sampled UVs outward for a vignette-like effect.
+  - The `scale` zooms the sampled screen content.
+  - The `border_mask` uniform applies a mask that is stronger near the edges, creating a vignette-like effect.

@@ -1,16 +1,16 @@
 ---
 title: Player Hud Shaders
 description: Shaders used in the player HUD
-lastUpdated: 2025-05-28
+lastUpdated: 2025-06-06
 author: Tjorn
 ---
 
 In the [player hud](/fowl-play/gameplay/user-interface/player-hud), shader effects are used to provide immediate feedback when the player is hurt or healed. These effects are applied to a `ColorRect` node overlaying the player icon.
 
-- **Hurt Shader**: Uses chromatic aberration and color blending to create a red-tinted, distorted effect, signaling damage.
-- **Heal Shader**: Applies a colored blur and glow, signaling recovery. The shader is based on a Gaussian blur, adapted for performance and visual clarity.
+- **Hurt Shader**: Uses chromatic aberration and color blending to create a red-tinted, distorted effect, to signal damage.
+- **Heal Shader**: Applies a colored blur and glow to signal recovery. The shader uses a Gaussian blur, which is a smoothing filter that averages neighboring pixels with weights from a Gaussian distribution, meaning pixels closer to the center have a higher influence on the final color. Together, these create a soft, glowing effect on the player icon when they are healed.
 
-In addition to the shaders, a background color is applied to the background `ColorRect` node, to further emphasize the effect. The color is set to a different color when the player is hurt or healed. All shader and color effects are changable via `@export` variables in the editor.
+In addition to the shaders, a background color is applied to the background `ColorRect` node. The color is set to a different color when the player is hurt or healed. All shader and color effects are changeable via `@export` variables in the editor.
 
 ## Hurt Shader
 
@@ -30,7 +30,7 @@ uniform float time;
 void fragment() {
     vec2 uv = SCREEN_UV;
 
-    // Add a subtle displacement. Higer weight for uv, but make it slightly different
+    // Add a subtle displacement. Higher weight for uv, but make it slightly different
     uv += vec2(
         sin(uv.y * 50.0 + time * 5.0),
         cos(uv.x * 50.0 + time * 5.0)
@@ -58,7 +58,6 @@ void fragment() {
 
 - **Shader Parameters**:
 
-  - `screen_texture`: The screen texture to which the effect is applied.
   - `hurt_color`: The color used for the hurt effect.
   - `overlay_alpha`: The alpha value for the overlay, controlling its transparency.
   - `aberration_strength`: Controls the strength of the chromatic aberration effect.
@@ -68,7 +67,7 @@ void fragment() {
 
 - **Shader Logic**:
   - The shader samples the screen texture and applies chromatic aberration and displacement effects to create a distorted, red-tinted effect.
-  - The final color is a blend of the aberrated color and the specified hurt color, providing a clear visual indication of damage.
+  - The final color is a blend of the aberration color and the specified hurt color.
 
 ## Heal Shader
 
@@ -131,12 +130,11 @@ void fragment() {
 
 - **Shader Parameters**:
 
-  - `screen_texture`: The screen texture to which the effect is applied.
   - `blur_strength`: Controls the strength of the blur effect.
   - `glow_intensity`: Controls the intensity of the glow effect.
   - `heal_color`: The color used for the heal effect.
   - `overlay_alpha`: The alpha value for the overlay, controlling its transparency.
 
 - **Shader Logic**:
-  - The shader samples the screen texture and applies a Gaussian blur effect to create a glowing effect.
-  - The final color is a blend of the blurred color and the specified heal color, providing a clear visual indication of healing.
+  - The shader samples the screen texture and applies a Gaussian blur to create a glowing effect.
+  - The final color is a blend of the blurred color and the specified heal color.

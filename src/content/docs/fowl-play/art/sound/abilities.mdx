@@ -1,0 +1,156 @@
+---
+title: Ability Sound Effects
+description: Comprehensive guide to the creation and design of sound effects for abilities in Fowl Play
+lastUpdated: 2025-06-11
+author: Tjorn, Cenker
+---
+
+import AudioPlayer from "../../../../../components/AudioPlayer.astro";
+/* TODO: link to ability docs (once written) */
+
+Sound effects for abilities in Fowl Play are designed to enhance gameplay feedback and create an immersive combat experience. Each ability sound is designed to match the visual effects, gameplay mechanics, and thematic elements of the game while providing clear audio cues to players.
+
+## Technical Specifications
+
+| Specification | Details                |
+| ------------- | ---------------------- |
+| Software      | Audacity, FL Studio 24 |
+| File Format   | OGG Vorbis             |
+| Purpose       | Event-driven feedback  |
+| Diegetic      | Yes                    |
+
+## Sound Design Principles
+
+Our ability sound effects follow these core design principles:
+
+- **Clarity**: Each sound must be distinct and recognizable
+- **Impact**: Sounds should feel powerful and satisfying
+- **Thematic Consistency**: Audio must match visual and mechanical themes
+- **Gameplay Feedback**: Clear audio cues for timing and effects
+- **Dynamic Range**: Appropriate volume levels for different ability types
+
+## Ground Pound
+
+Ground Pound is an ability that creates seismic impact. The player slams down forcefully, causing rocky debris to erupt from the ground in a circular area, dealing significant damage and applying knockback to all enemies within range.
+
+### Design Philosophy
+
+The sound design focuses on creating a visceral impact that emphasizes the raw power and earth-shaking nature of the ability. We aimed for a sound that would be:
+
+- **Immediate and punchy**: Short duration with maximum impact
+- **Satisfying feedback**: Rewarding players with a powerful audio response
+
+### Technical Implementation
+
+- **Base recording**: Physical impact sound created by slamming on a wooden desk
+- **Processing**: Heavy distortion and reverb to enhance impact and depth
+- **Frequency emphasis**: Low-mid frequency boost to emphasize the "weight" of the impact
+
+### Created Sound Effect
+
+<AudioPlayer
+  src="/sfx/abilities/ground_pound.ogg"
+  title="Ground Pound"
+  description="Distorted heavy impact sound, created by slamming on a desk."
+/>
+
+## Earthquake
+
+Earthquake is an area-of-effect ability that generates multiple seismic shock waves radiating outward from the player. Each wave damages enemies in an expanding circular pattern.
+
+### Design Philosophy
+
+The sound needed to convey the progressive nature of the earthquake while maintaining the powerful impact of each individual shock wave. Our approach focused on:
+
+- **Rhythmic decay**: Multiple impacts that gradually diminish in intensity
+- **Harmonic progression**: Decreasing pitch and lowering the volume of subsequent waves to represent energy dissipation
+
+### Technical Implementation
+
+- **Base source**: Ground Pound sound effect as foundation
+- **Processing chain**: Delay effects synchronized with visual shock wave timing
+- **Pitch modulation**: Gradual pitch shift downward with each wave
+
+### Created Sound Effect
+
+<AudioPlayer
+  src="/sfx/abilities/earth_quake.ogg"
+  title="Earthquake"
+  description="Distorted heavy impact sound, repeated while gradually decreasing in pitch and volume. Created by taking the ground pound sound effect and adding a delay, corresponding to the amount of shock waves, and pitch shift to it."
+/>
+
+## Crescent Slash
+
+The Crescent Slash ability executes two rapid slashes in front of the player, creating energy waves that damage enemies in a medium-range arc.
+
+### Design Philosophy
+
+We wanted this sound effect to convey both the sharpness of a blade and its mystical nature. The sound needed to be:
+
+- **Sharp and precise**: Reflecting the cutting nature of the attack
+- **Futuristic**: Matching the ability's more futuristic nature
+
+### Technical Implementation
+
+- **Base source**: Sword swing sound effect
+- **Processing chain**: Dual playback (one reversed) for the two-slash effect
+- **Effects applied**: EQ adjustments, phaser for the futuristic quality, heavy reverb
+- **Software**: Processed in FL Studio 24
+
+### Created Sound Effect
+
+<AudioPlayer
+  src="/sfx/abilities/crescent_slash.ogg"
+  title="Crescent Slash"
+  description="A sharp futuristic sound effect, created by taking the sword swing sound effect, playing it twice (once reversed) and applying effects. The sound has been altered using EQ, a Phaser, and drowned in reverb. This effect was processed in FL Studio 24."
+/>
+
+## Sanctuary of Firebloom
+
+Sanctuary of Firebloom is a lightning-based ability where multiple electrical strikes descend from the sky to target the nearest enemy.
+
+### Design Philosophy
+
+To create the sound effect for this ability, we wanted something dramatic and impactful that matched both the visual spectacle and the powerful nature of the ability. The sound design focuses on:
+
+- **Dramatic buildup**: Mimicking the approach of a storm
+- **Divine power**: Conveying the sense of a celestial force striking down
+
+### Technical Implementation
+
+- **Base source**: [Thunder sound effect](https://pixabay.com/sound-effects/loud-thunder-192165/) by Universfield
+- **Processing**: Light distortion
+- **Spatial effects**: Reverb applied to give more impact to each lightning strike
+
+### Created Sound Effect
+
+<AudioPlayer
+  src="/sfx/abilities/sanctuary_of_firebloom_sfx.ogg"
+  title="Sanctuary of Firebloom"
+  description="Sounds like a firework going off, after which a thunder sound effect plays. Sound has been slightly distorted, and some reverb has been applied."
+/>
+
+## Glacial Prism
+
+Glacial Prism is an ice-based ability where crystalline shards emerge from the ground in a circular pattern, dealing damage to enemies while applying a slowing debuff that impairs their movement speed.
+
+### Design Philosophy
+
+The sound effect for this ability should capture the nature of ice formation. Our design focused on:
+
+- **Sharpness**: Sharp, crackling sounds representing ice formation
+- **Environmental atmosphere**: Cold wind effects to fit with the frosting theme
+
+### Technical Implementation
+
+- **Base source**: Plastic crackling
+- **Atmospheric layer**: Wind sounds created by blowing into a microphone
+- **Processing**: Light EQ and reverb for spatial enhancement
+
+### Created Sound Effect
+
+<AudioPlayer
+  src="/sfx/abilities/glacial_prism_sfx.ogg"
+  title="Glacial Prism"
+  description="A crackling sound effect, with ice wind blowing in the background. Standard minimal sound effects were applied, like some light eq and reverb."
+/>

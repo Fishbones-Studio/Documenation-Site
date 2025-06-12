@@ -43,7 +43,7 @@ For the Poultry Men and their chickens, every fight represents:
 
 - **Survival** - Losing means death for the chicken, and financial setback for the handler
 - **Glory** - Victory brings fame within the underground community
-- **Profit** - Successful fighters earn enormous prices
+- **Profit** - Successful fighters earn enormous prizes
 
 ### A Controversial Delicacy
 

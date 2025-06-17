@@ -157,19 +157,24 @@ The sound effect for this ability should capture the nature of ice formation. Ou
 />
 
 ## Fireball
-Fireball is an ability that launches a fiery projectile forward, which will move and change in size as it travels. 
+
+Fireball is an ability that launches a fiery projectile forward, which will move and change in size as it travels.
 
 ### Design Philosophy
+
 The fireball stays traveling in the game world for a relatively long time, around six seconds, so the sound effect needed to be dynamic and engaging throughout its travel. It should not just loop the same 1 second audio clip.
 The sound design focused on:
+
 - **Dynamic travel**: The sound should change as the fireball moves
 - **Clear**: The sound should be distinct and recognizable, even in a busy combat environment
 
 ### Technical Implementation
+
 - **Base source**: Screaming into the mic, mixed with the sound of an egg cooking in a pan.
 - **Processing**: Heavy distortion, phaser and audio mixing to smoothly transition between the two sounds.
 
 ### Created Sound Effect
+
 <AudioPlayer
   src="/sfx/abilities/fireball.ogg"
   title="Fireball"

@@ -1,11 +1,11 @@
 ---
-title: Ice Fox
-description: Creation process of the Ice Fox enemy
+title: Boreass
+description: Creation process of Boreass as a common enemy
 lastUpdated: 2025-06-17
 author: Jun Yi
 ---
 
-The Ice Fox is a common enemy in Fowl Play and is modeled, textured, rigged and animated in Blender 4.4.0.
+Boreass is a common enemy in Fowl Play and is modeled, textured, rigged and animated in Blender 4.4.0.
 
 ### Add-ons
 
@@ -19,7 +19,7 @@ During the creation process, Blender add-ons were used to smoothen the workflow:
 
 For most of the body parts, the Mirror Modifier was used, allowing symmetry to be maintained throughout the modeling process, which helped make the workflow both faster and more efficient.
 
-The model of the Ice Fox can be divided into the following sections:
+The model of Boreass can be divided into the following sections:
 
 - Body
 - Head
@@ -29,15 +29,15 @@ The model of the Ice Fox can be divided into the following sections:
 - Eyes
 - Ears
 
-The reason for this seperation during modeling was to allow for more precision later on while texturing the model. Since each part was a seperate mesh, it became easier to assign and manage materials individually. It also allowed different UV maps to be applied to specific parts without interfering with others, providing greater control over the final structure layout of the Ice Fox.
+The reason for this seperation during modeling was to allow for more precision later on while texturing the model. Since each part was a seperate mesh, it became easier to assign and manage materials individually. It also allowed different UV maps to be applied to specific parts without interfering with others, providing greater control over the final structure layout of Boreass.
 
-![Ice Fox Model](../../../../../assets/fowl-play/art/3d/ice-fox/model.png)
+![Boreass Model](../../../../../assets/fowl-play/art/3d/boreass/model.png)
 
 ## Texturing
 
-The overall vision for the Ice Fox was to give it a snow-like, icy appearance with a mix of white and azure to create that frosty aesthetic. A custom color palette was created as a reference, which proved helpful during the texturing process.
+The overall vision for Boreass was to give it a snow-like, icy appearance with a mix of white and azure to create that frosty aesthetic. A custom color palette was created as a reference, which proved helpful during the texturing process.
 
-![Color palette of the Ice Fox Model](../../../../../assets/fowl-play/art/3d/ice-fox/color_palette.png)
+![Color palette of Boreass Model](../../../../../assets/fowl-play/art/3d/boreass/color_palette.png)
 
 ### UVs
 
@@ -47,7 +47,7 @@ For each individual mesh, a UV map was created. This provided greater control du
 
 Instead of manually texture painting the look of the model, shaders were used to generate the base colors and visual details. This method allowed for a more procedural approach, offering flexibility to adjust the appearance of each part of the model quickly and non-destructively.
 
-![Example of the shaders used for the eyes](../../../../../assets/fowl-play/art/3d/ice-fox/eyes_shaders_example.png)
+![Example of the shaders used for the eyes](../../../../../assets/fowl-play/art/3d/boreass/eyes_shaders_example.png)
 
 ### Baking
 
@@ -55,7 +55,7 @@ Since the shaders were only visible inside Blender, they were baked onto a new i
 
 ## Rigging
 
-The rigging for the Ice Fox was done manually. Since the model isn’t a humanoid character, automatic rigging tools like Mixamo weren’t suitable. The armature bones were added individually, aligning them with the reference image.
+The rigging for Boreass was done manually. Since the model isn’t a humanoid character, automatic rigging tools like Mixamo weren’t suitable. The armature bones were added individually, aligning them with the reference image.
 
 ### Bone Hierachy
 
@@ -84,7 +84,7 @@ The rigging for the Ice Fox was done manually. Since the model isn’t a humanoi
 
 ### Anatomy
 
-Since the Ice Fox is a fast-moving enemy in the game, its rig was designed to match the anatomy of a real fox. This was important for creating smooth and natural animations — especially since the character would be extremely agile, with fluid running and attacking motions.
+Since Boreass is a fast-moving enemy in the game, its rig was designed to match the anatomy of a real fox. This was important for creating smooth and natural animations — especially since the character would be extremely agile, with fluid running and attacking motions.
 
 ### Inverse Kinematics
 
@@ -92,7 +92,7 @@ During the rigging process, while testing how the rig behaved, there were a coup
 
 To further refine the rig, a Pole Target was added, which acts as a guide to control the rotation of the limbs, ensuring they remained properly oriented as the character moved.
 
-![Example of Inverse Kinematics applied with Pole Target](../../../../../assets/fowl-play/art/3d/ice-fox/inverse_kinematics.png)
+![Example of Inverse Kinematics applied with Pole Target](../../../../../assets/fowl-play/art/3d/boreass/inverse_kinematics.png)
 
 ## Animations
 
@@ -100,27 +100,27 @@ All animations are set to run at 30 FPS, with the exception of Walk and Sprint, 
 
 ### Idle
 
-![Ice Fox idle animation](/animations/ice-fox/idle-animation.gif)
+![Boreass idle animation](/animations/boreass/idle-animation.gif)
 
 ### Jump
 
-![Ice Fox jump animation](/animations/ice-fox/jump-animation.gif)
+![Boreass jump animation](/animations/boreass/jump-animation.gif)
 
 ### Fall
 
-![Ice Fox fall animation](/animations/ice-fox/fall-animation.gif)
+![Boreass fall animation](/animations/boreass/fall-animation.gif)
 
 ### Dash
 
-![Ice Fox dash animation](/animations/ice-fox/dash-animation.gif)
+![Boreass dash animation](/animations/boreass/dash-animation.gif)
 
 ### Walk
 
-![Ice Fox walk animation](/animations/ice-fox/walk-animation.gif)
+![Boreass walk animation](/animations/boreass/walk-animation.gif)
 
 ### Sprint
 
-![Ice Fox sprint animation](/animations/ice-fox/sprint-animation.gif)
+![Boreass sprint animation](/animations/boreass/sprint-animation.gif)
 
 [1]: https://extensions.blender.org/add-ons/easyweight/
 [2]: https://docs.blender.org/manual/en/latest/addons/rigging/rigify/index.html

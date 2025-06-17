@@ -1,7 +1,7 @@
 ---
 title: Ice Fox
 description: Creation process of the Ice Fox enemy
-lastUpdated: 2025-04-09
+lastUpdated: 2025-06-17
 author: Jun Yi
 ---
 
@@ -17,7 +17,7 @@ During the creation process, Blender add-ons were used to smoothen the workflow:
 
 ## Model
 
-For most of the body parts, I used the Mirror Modifier. This allowed me to maintain symmetry throughout the modeling process, which made the workflow faster and more efficient.
+For most of the body parts, the Mirror Modifier was used, allowing symmetry to be maintained throughout the modeling process, which helped make the workflow both faster and more efficient.
 
 The model of the Ice Fox can be divided into the following sections:
 
@@ -29,33 +29,33 @@ The model of the Ice Fox can be divided into the following sections:
 - Eyes
 - Ears
 
-The reason for this seperation during modeling was to allow for more precision later on while texturing the model. Since each part was a seperate mesh, it became easier to assign and manage materials individually. It also allowed me to apply differnt UV maps to a specific part without interfering with another, giving me more control over the final structure layout of the Ice Fox.
+The reason for this seperation during modeling was to allow for more precision later on while texturing the model. Since each part was a seperate mesh, it became easier to assign and manage materials individually. It also allowed different UV maps to be applied to specific parts without interfering with others, providing greater control over the final structure layout of the Ice Fox.
 
 ![Ice Fox Model](../../../../../assets/fowl-play/art/3d/ice-fox/model.png)
 
 ## Texturing
 
-My overall vision for the Ice Fox was to give it a snow-like, icy appereance with a mix of white and azure to create that frosty aestethic. To achieve this, I created a custom color palette as a reference, which helped during the texturing process.
+The overall vision for the Ice Fox was to give it a snow-like, icy appearance with a mix of white and azure to create that frosty aesthetic. A custom color palette was created as a reference, which proved helpful during the texturing process.
 
 ![Color palette of the Ice Fox Model](../../../../../assets/fowl-play/art/3d/ice-fox/color_palette.png)
 
 ### UVs
 
-For each individual mesh, I created a UV map. This gave me more control while texturing, allowing materials and shaders to align properly with the model's geometry.
+For each individual mesh, a UV map was created. This provided greater control during texturing, allowing materials and shaders to align properly with the model's geometry.
 
 ### Shaders
 
-Instead of manually texture painting the look of the model, I used shaders to generate the base colors and visual details. This method allowed for a more procedural approach, giving me flexibility to adjust the look of each part of the model quickly and non-destructively.
+Instead of manually texture painting the look of the model, shaders were used to generate the base colors and visual details. This method allowed for a more procedural approach, offering flexibility to adjust the appearance of each part of the model quickly and non-destructively.
 
 ![Example of the shaders used for the eyes](../../../../../assets/fowl-play/art/3d/ice-fox/eyes_shaders_example.png)
 
 ### Baking
 
-Since the shaders were only visible inside Blender, I had to bake them onto a new image texture. This allowed me to preserve the visual look of the shaders and export them as a standard textures. The baked image was then used as a material and applied to the UVs I had unwrapped, making it possible to retain the shader details even outside of Blender.
+Since the shaders were only visible inside Blender, they were baked onto a new image texture. This process preserved the visual look of the shaders and enabled exporting them as standard textures. The baked image was then used as a material and applied to the previously unwrapped UVs, allowing the shader details to be retained even outside of Blender.
 
 ## Rigging
 
-The rigging for the Ice Fox was done manually. Since the model isn’t a humanoid character, automatic rigging tools like Mixamo weren’t suitable. I added the armature bones individually, aligning them with the reference image.
+The rigging for the Ice Fox was done manually. Since the model isn’t a humanoid character, automatic rigging tools like Mixamo weren’t suitable. The armature bones were added individually, aligning them with the reference image.
 
 ### Bone Hierachy
 
@@ -84,13 +84,13 @@ The rigging for the Ice Fox was done manually. Since the model isn’t a humanoi
 
 ### Anatomy
 
-Since the Ice Fox is a fast-moving enemy in Fowl Play, I needed to ensure its rig matched the anatomy of a real fox. This was important for creating smooth, natural animations — especially since the character would be extremely agile, with fluid running and attacking motions.
+Since the Ice Fox is a fast-moving enemy in the game, its rig was designed to match the anatomy of a real fox. This was important for creating smooth and natural animations — especially since the character would be extremely agile, with fluid running and attacking motions.
 
 ### Inverse Kinematics
 
-During the rigging process, when I was testing how the rig behaved, I ran into a problem with the limbs not aligning properly. To fix this, I used Inverse Kinematics, as it allowed me to control the position and rotation of the bones more efficiently. This technique was essential for the particular model I was creating, as it ensures smooth and natural movement.
+During the rigging process, while testing how the rig behaved, there were a couple problems with the limbs not aligning properly. To fix this problem, Inverse Kinematics were used, as it allowed for more control of the position and rotation of the bones more efficiently. This technique was essential for the particular model that was being creating, as it ensures smooth and natural movement.
 
-To further refine the rig, I added a Pole Target, which acts as a guide to control the rotation of the limbs, ensuring they remained properly oriented as the character moved.
+To further refine the rig, a Pole Target was added, which acts as a guide to control the rotation of the limbs, ensuring they remained properly oriented as the character moved.
 
 ![Example of Inverse Kinematics applied with Pole Target](../../../../../assets/fowl-play/art/3d/ice-fox/inverse_kinematics.png)
 

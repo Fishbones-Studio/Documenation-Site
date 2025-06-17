@@ -16,4 +16,4 @@ The Spike Balls are a swinging hazard that hang in the air. They are a type of [
 | Minimum Vertical Knockback   | 7.0   |
 | Maximum Horizontal Knockback | 3.0   |
 | Maximum Vertical Knockback   | 10.0  |
-| Damge                        | 50    |
+| Damage                       | 50    |

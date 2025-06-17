@@ -61,7 +61,7 @@ func handle_path_end(path_length: float, overflow: float) -> void:
 			moving = false
 
 
-# This exists to handle underflows, as path_lenght is an approximation of the length of the path
+# This exists to handle underflows, as path_length is an approximation of the length of the path
 # Also needed to handle wraparound correctly
 func handle_path_start(underflow: float) -> void:
 	match movement_mode:
@@ -74,4 +74,4 @@ func handle_path_start(underflow: float) -> void:
 			moving = false
 ```
 
-While technically every `Node3D` can be moved along a path, with this script, within Fowl Play we only use it for the Ground Saw. The script is attached to a `PathFollow3D` node, which is a child of a `Path3D` node with a defined curve. The saw will move along the path at a specified speed and can loop, ping-pong, or move once based on the `movement_mode` variable. This causes the ground saw to move around, becomming an even bigger threath to the player.
+While technically every `Node3D` can be moved along a path, with this script, within Fowl Play we only use it for the Ground Saw. The script is attached to a `PathFollow3D` node, which is a child of a `Path3D` node with a defined curve. The saw will move along the path at a specified speed and can loop, ping-pong, or move once based on the `movement_mode` variable. This causes the ground saw to move around, becoming an even bigger threat to the player.

@@ -14,15 +14,15 @@ The woodpecker model is built using modified primitive meshes - primarily cubes,
 To maintain efficiency and preserve the ability to make non-destructive adjustments, the following modifiers were used:
 
 1. **Mirror Modifier:** Ensures perfect symmetrical construction of the woodpecker and significantly reduced modeling time by only requiring one side to be sculpted
-2. **Subdivision Surface Modifier:** Helped in creating smoother contours and higher detail while maintaing a low-poly base mesh.
+2. **Subdivision Surface Modifier:** Helped in creating smoother contours and higher detail while maintaining a low-poly base mesh.
 
-![Woodpecker in Blender](../../../../../assets/fowl-play/art/3d/woodpecker/woodpecker.png)
+![Woodpecker in Blender](../../../../../../assets/fowl-play/art/3d/woodpecker/woodpecker.png)
 
 ### Texturing
 
 The texturing process began with **UV unwrapping** the model to create a 2D representation of its surfaces. To efficiently generate UV maps, Blender's **Smart UV Project** tool was utilized. This automated approach provided a balanced distribution of UV islands while significantly reducing manual layout time.
 
-The textures were painted by hand using a restrained color selection, with soft smearing effects added to enhance the horror-like artistic direction. The following color pallete was used:
+The textures were painted by hand using a restrained color selection, with soft smearing effects added to enhance the horror-like artistic direction. The following color pallet was used:
 
 1. **Legs:** #98916C
 2. **Skin:** #DCCACA

@@ -31,13 +31,13 @@ The model of Boreass can be divided into the following sections:
 
 The reason for this seperation during modeling was to allow for more precision later on while texturing the model. Since each part was a seperate mesh, it became easier to assign and manage materials individually. It also allowed different UV maps to be applied to specific parts without interfering with others, providing greater control over the final structure layout of Boreass.
 
-![Boreass Model](../../../../../assets/fowl-play/art/3d/boreass/model.png)
+![Boreass Model](../../../../../../assets/fowl-play/art/3d/boreass/model.png)
 
 ## Texturing
 
 The overall vision for Boreass was to give it a snow-like, icy appearance with a mix of white and azure to create that frosty aesthetic. A custom color palette was created as a reference, which proved helpful during the texturing process.
 
-![Color palette of Boreass Model](../../../../../assets/fowl-play/art/3d/boreass/color_palette.png)
+![Color palette of Boreass Model](../../../../../../assets/fowl-play/art/3d/boreass/color_palette.png)
 
 ### UVs
 
@@ -47,7 +47,7 @@ For each individual mesh, a UV map was created. This provided greater control du
 
 Instead of manually texture painting the look of the model, shaders were used to generate the base colors and visual details. This method allowed for a more procedural approach, offering flexibility to adjust the appearance of each part of the model quickly and non-destructively.
 
-![Example of the shaders used for the eyes](../../../../../assets/fowl-play/art/3d/boreass/eyes_shaders_example.png)
+![Example of the shaders used for the eyes](../../../../../../assets/fowl-play/art/3d/boreass/eyes_shaders_example.png)
 
 ### Baking
 
@@ -57,7 +57,7 @@ Since the shaders were only visible inside Blender, they were baked onto a new i
 
 The rigging for Boreass was done manually. Since the model isn’t a humanoid character, automatic rigging tools like Mixamo weren’t suitable. The armature bones were added individually, aligning them with the reference image.
 
-### Bone Hierachy
+### Bone Hierarchy
 
 | Level | Parent Bone              | Child Bones                                     |
 | ----- | ------------------------ | ----------------------------------------------- |
@@ -92,7 +92,7 @@ During the rigging process, while testing how the rig behaved, there were a coup
 
 To further refine the rig, a Pole Target was added, which acts as a guide to control the rotation of the limbs, ensuring they remained properly oriented as the character moved.
 
-![Example of Inverse Kinematics applied with Pole Target](../../../../../assets/fowl-play/art/3d/boreass/inverse_kinematics.png)
+![Example of Inverse Kinematics applied with Pole Target](../../../../../../assets/fowl-play/art/3d/boreass/inverse_kinematics.png)
 
 ## Animations
 

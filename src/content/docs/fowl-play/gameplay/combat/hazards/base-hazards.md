@@ -250,4 +250,4 @@ All hazards deal `True` damage, meaning they ignore the entities defense stats. 
 
 ## References
 
-For the visual implementation of the hazards, refer to the [3D Art section](/fowl-play/art/3d/hazards) for details on modeling, texturing, and shading techniques used in Fowl Play.
+For the visual implementation of the hazards, refer to the [3D Art section](/fowl-play/art/3d/arena/hazards) for details on modeling, texturing, and shading techniques used in Fowl Play.

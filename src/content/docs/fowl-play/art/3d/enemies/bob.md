@@ -11,7 +11,7 @@ Bob is the first boss enemy that was created for Fowl Play. It is heavily inspir
 
 The model of Bob is rather straightforward. Its main body is a ball, which was created using an UV Sphere. Additionally, the spikes ontop of it are primarily cones which the array mesh modifier was used on to duplicate the amount it has.
 
-![Bob Model](../../../../../assets/fowl-play/art/3d/bob/bob.png)
+![Bob Model](../../../../../../assets/fowl-play/art/3d/bob/bob.png)
 
 ## Texturing
 
@@ -19,14 +19,13 @@ The textures for Bob focused on highlighting its unique mutated features while k
 
 ## Animations
 
-In the game Bob has two animations, an Idle and a Rolling animation. Both of these animations were aimed to make Bob stand out and feel more alive. 
+In the game Bob has two animations, an Idle and a Rolling animation. Both of these animations were aimed to make Bob stand out and feel more alive.
 
 ### Idle
 
 The Idle animation depicts Bob in a resting state, featuring subtle movements in its eyes and limbs that bring it to life. These motions also convey a sense of constant pain, reflecting Bob’s tortured nature.
 
 ![Bob idle animation](/animations/bob/idle-animation.gif)
-
 
 ### Rolling
 

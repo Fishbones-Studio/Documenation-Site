@@ -46,34 +46,34 @@ The animations are set to run at 30 FPS.
 
 The woodpecker idle animation is straightforward, it remains still, only occasionally moving its tail and wiggling its head.
 
-![Woodpecker idle animation](/woodpecker/idle-animation.gif)
+![Woodpecker idle animation](/animations/woodpecker/idle-animation.gif)
 
 ### Walk
 
 For this animation, the woodpecker combines multiple movement styles. The goal was to make its walk resemble that of a humanoid character while retaining some bird-like traits—such as slight wing flapping during movement.
 
-![Woodpecker walk animation](/woodpecker/walk-animation.gif)
+![Woodpecker walk animation](/animations/woodpecker/walk-animation.gif)
 
 ### Attack
 
 The inspiration for this animation mainly comes from how a real woodpecker behaves, where it continuously pecks at a tree. This animation mimics its behavior but with a more bizarre movement pattern, as it only utilizes the neck and head bones, unlike the real bird, which also involves its upper body.
 
-![Woodpecker attack animation](/woodpecker/attack-animation.gif)
+![Woodpecker attack animation](/animations/woodpecker/attack-animation.gif)
 
 ### Fall
 
 When falling from a jump or glide, the woodpecker flaps once (but not hard) to show it's not trying to fly. At the same time, its legs slowly move into landing position to make the fall look realistic.
 
-![Woodpecker fall animation](/woodpecker/fall-animation.gif)
+![Woodpecker fall animation](/animations/woodpecker/fall-animation.gif)
 
 ### Glide
 
 The woodpecker's gliding motion takes inspiration from chickens, which continuously flap their wings to maintain airspeed and slow their descent. In this animation, the woodpecker flaps its wings more vigorously than normal, showing how hard it's working to stay airborne.
 
-![Woodpecker glide animation](/woodpecker/glide-animation.gif)
+![Woodpecker glide animation](/animations/woodpecker/glide-animation.gif)
 
 ### Jump
 
 The woodpecker jumps like a mix between a humanoid and a chicken. Its legs stay close together while it flaps its wings hard, making it look like it's really pushing upward.
 
-![Woodpecker jump animation](/woodpecker/jump-animation.gif)
+![Woodpecker jump animation](/animations/woodpecker/jump-animation.gif)

@@ -100,27 +100,27 @@ All animations are set to run at 30 FPS, with the exception of Walk and Sprint, 
 
 ### Idle
 
-![Ice Fox idle animation](/ice-fox/idle-animation.gif)
+![Ice Fox idle animation](/animations/ice-fox/idle-animation.gif)
 
 ### Jump
 
-![Ice Fox jump animation](/ice-fox/jump-animation.gif)
+![Ice Fox jump animation](/animations/ice-fox/jump-animation.gif)
 
 ### Fall
 
-![Ice Fox fall animation](/ice-fox/fall-animation.gif)
+![Ice Fox fall animation](/animations/ice-fox/fall-animation.gif)
 
 ### Dash
 
-![Ice Fox dash animation](/ice-fox/dash-animation.gif)
+![Ice Fox dash animation](/animations/ice-fox/dash-animation.gif)
 
 ### Walk
 
-![Ice Fox walk animation](/ice-fox/walk-animation.gif)
+![Ice Fox walk animation](/animations/ice-fox/walk-animation.gif)
 
 ### Sprint
 
-![Ice Fox sprint animation](/ice-fox/sprint-animation.gif)
+![Ice Fox sprint animation](/animations/ice-fox/sprint-animation.gif)
 
 [1]: https://extensions.blender.org/add-ons/easyweight/
 [2]: https://docs.blender.org/manual/en/latest/addons/rigging/rigify/index.html

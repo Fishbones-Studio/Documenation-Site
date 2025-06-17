@@ -21,7 +21,12 @@
       "extensions": [
         "GitHub.copilot-chat",
         "GitHub.copilot",
-        "astro-build.astro-vscode"
+        "astro-build.astro-vscode",
+        "unifiedjs.vscode-mdx",
+        "christian-kohler.path-intellisense",
+        "esbenp.prettier-vscode",
+        "rvest.vs-code-prettier-eslint",
+        "streetsidesoftware.code-spell-checker"
       ]
     }
   }

@@ -5,7 +5,7 @@ lastUpdated: 2025-05-15
 author: Tjorn
 ---
 
-The Spike Balls are a swinging hazard that hang in the air. They are a type of [knockback hazard](/fowl-play/gameplay/combat/hazards/base-hazards/#knock-hazard), applying damage and knockback to the character. For visual documentation, see the [3D Hazard documentation](/fowl-play/art/3d/hazards/#spike-ball).
+The Spike Balls are a swinging hazard that hang in the air. They are a type of [knockback hazard](/fowl-play/gameplay/combat/hazards/base-hazards/#knock-hazard), applying damage and knockback to the character. For visual documentation, see the [3D Hazard documentation](/fowl-play/art/3d/arena/hazards/#spike-ball).
 
 ## Stats
 
@@ -16,4 +16,4 @@ The Spike Balls are a swinging hazard that hang in the air. They are a type of [
 | Minimum Vertical Knockback   | 7.0   |
 | Maximum Horizontal Knockback | 3.0   |
 | Maximum Vertical Knockback   | 10.0  |
-| Damge                        | 50    |
+| Damage                       | 50    |

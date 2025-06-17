@@ -12,9 +12,9 @@
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",
     "@astrojs/sitemap": "^3.4.1",
-    "@astrojs/starlight": "^0.34.3",
+    "@astrojs/starlight": "^0.34.4",
     "@lorenzo_lewis/starlight-utils": "^0.3.2",
-    "astro": "^5.9.0",
+    "astro": "^5.9.4",
     "sharp": "^0.33.5",
     "starlight-auto-sidebar": "^0.1.2",
     "starlight-links-validator": "^0.16.0",

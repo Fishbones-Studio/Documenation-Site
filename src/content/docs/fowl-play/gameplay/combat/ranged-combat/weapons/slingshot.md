@@ -78,12 +78,6 @@ Upon exploding, the egg leaves behind a [color=orange]temporary fire pool[/color
 
 After firing, the slingshot requires %s to recover before it can be used again.  
 
-This weapon %s and %s."
-short_description = "The user aims and launches an explosive egg that deals [color=yellow]moderate[/color] damage on impact and creates a [color=yellow]Fire Pool[/color] damaging all nearby targets."
-icon = ExtResource("1_26unw")
-model_uid = "uid://dp3a4dva535bj"
-metadata/_custom_type_script = "uid://dm0sr7j8y5j30"
-
 ```
 
 ## Attack State Mechanics

@@ -1,6 +1,6 @@
 ---
 title: Peck
-lastUpdated: 2025-05-13
+lastUpdated: 2025-06-18
 description: The peck is the default melee weapon in Fowl Play, used by the player.
 author: Tjorn
 ---
@@ -38,9 +38,28 @@ short_description = "The user performs a quick [color=yellow]peck attack[/color]
 "
 icon = ExtResource("1_gp07i")
 model_uid = "uid://cyabnta5e4ldb"
-metadata/_custom_type_script = "uid://bflt4m3fx7gmv"
-
+metadata/_custom_type_script = "uid://bflt4m3fx7gmv"c
 ```
+
+## Weapon Stats
+
+| Stat                | Value                |
+|---------------------|---------------------|
+| Base Damage         | 10                  |
+| Windup Time         | 0.2s                |
+| Attack Duration     | 0.4s                |
+| Cooldown Time       | 0.3s                |
+| Stun Time           | 0.2s                |
+| Loop Animation      | No                  |
+| Purchasable         | No                  |
+| Cost                | 0                   |
+| Drop Chance         | 0%                  |
+| Currency Type       | 0                   |
+
+**Description:**
+[color=orange]Default weapon:[/color] The fearsome PECK! 
+
+Your trusty beak unleashes %s Base Damage after a %s windup. The pecking lasts %s, after which your beak needs a breather for %s — Wouldn't want to break it, right? Targets hit are stunned for %s.
 
 ## Gameplay considerations
 

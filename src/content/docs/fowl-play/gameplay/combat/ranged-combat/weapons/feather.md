@@ -1,7 +1,7 @@
 ---
 title: Feather
 description: Detailing the feather mechanics
-lastUpdated: 2025-05-13
+lastUpdated: 2025-06-18
 author: Tjorn
 ---
 
@@ -48,8 +48,35 @@ short_description = "The user throws its feather with [color=yellow]high velocit
 icon = ExtResource("1_j6iuc")
 model_uid = "uid://qj6ygx6ak84a"
 metadata/_custom_type_script = "uid://dm0sr7j8y5j30"
-
 ```
+
+## Weapon Stats
+
+| Stat                | Value                |
+|---------------------|---------------------|
+| Base Damage         | 20                  |
+| Windup Time         | 0.0s                |
+| Attack Duration     | 0.5s                |
+| Cooldown Time       | 0.5s                |
+| Continuous Fire     | No                  |
+| Early Release       | No                  |
+| Fire Rate           | 0.0 (single shot)   |
+| Max Range           | 200.0               |
+| Purchasable         | Yes                 |
+| Cost                | 50                  |
+| Drop Chance         | 70%                 |
+| Currency Type       | 0                   |
+
+**Description:**
+A stolen feather, still burning with its owner's wrath, its color now faded by sorrow. 
+
+This weapon has %s Base Damage. The attack starts instantly, and takes %s, with a max range of %s, then enters a cooldown state for %s.
+
+This weapon deals [color=orange]True Damage, ignoring targets Defense[/color].
+
+This weapon %s and %s.
+
+---
 
 ## Attack State Mechanics
 

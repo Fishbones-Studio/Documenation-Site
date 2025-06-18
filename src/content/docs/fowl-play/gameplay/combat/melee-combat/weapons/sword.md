@@ -1,6 +1,6 @@
 ---
 title: Sword
-lastUpdated: 2025-05-13
+lastUpdated: 2025-06-18
 description: Sword
 author: Tjorn
 ---
@@ -34,8 +34,25 @@ description = "Deals %s Base Damage with a broad slash after winding up for %s. 
 short_description = "The user [color=yellow]winds up briefly[/color], then delivers a broad slash dealing [color=yellow]great[/color] damage and stunning targets [color=yellow]significantly[/color]."
 icon = ExtResource("1_djghw")
 model_uid = "uid://co3ix5krmh3qr"
-
 ```
+
+## Weapon Stats
+
+| Stat                | Value                |
+|---------------------|---------------------|
+| Base Damage         | 50                  |
+| Windup Time         | 0.3s                |
+| Attack Duration     | 0.5s                |
+| Cooldown Time       | 0.4s                |
+| Stun Time           | 1.5s                |
+| Loop Animation      | No                  |
+| Purchasable         | Yes                 |
+| Cost                | 150                 |
+| Drop Chance         | 50%                 |
+| Currency Type       | 0                   |
+
+**Description:**
+Deals %s Base Damage with a broad slash after winding up for %s. The attack lasts %s, then enters a cooldown state for %s, and stuns targets hit for %s.
 
 ## Gameplay Considerations
 

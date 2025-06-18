@@ -1,6 +1,6 @@
 ---
 title: Leek
-lastUpdated: 2025-05-13
+lastUpdated: 2025-06-18
 description: Leek is a slower weapon, with decent range
 author: Tjorn
 ---
@@ -36,8 +36,25 @@ short_description = "The user swing a [color=yellow]sharp leek[/color], dealing 
 icon = ExtResource("1_16jp6")
 model_uid = "uid://bymaeu4dtl7ex"
 metadata/_custom_type_script = "uid://bflt4m3fx7gmv"
-
 ```
+
+## Weapon Stats
+
+| Stat                | Value                |
+|---------------------|---------------------|
+| Base Damage         | 25                  |
+| Windup Time         | 0.2s                |
+| Attack Duration     | 0.4s                |
+| Cooldown Time       | 0.8s                |
+| Stun Time           | 0.8s                |
+| Loop Animation      | No                  |
+| Purchasable         | Yes                 |
+| Cost                | 50                  |
+| Drop Chance         | 90%                 |
+| Currency Type       | 0                   |
+
+**Description:**
+Deals %s Base Damage with a sharp leek after winding up for %s. The attack lasts %s, then enters a cooldown state for %s, and stuns targets hit for %s.
 
 ## Gameplay considerations
 

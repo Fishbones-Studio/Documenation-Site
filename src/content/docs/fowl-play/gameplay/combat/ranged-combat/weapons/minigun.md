@@ -1,7 +1,7 @@
 ---
 title: Minigun
 description: Detailing the minigun mechanics
-lastUpdated: 2025-05-13
+lastUpdated: 2025-06-18
 author: Tjorn
 ---
 
@@ -13,38 +13,67 @@ The minigun is a powerful ranged weapon that fires a high volume of bullets in q
 ## Weapon Resource
 
 ```gdscript
-[gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://csmfpbrekf78u"]
+[gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://e28hxersxled"]
 
-[ext_resource type="Script" uid="uid://dm0sr7j8y5j30" path="res://entities/weapons/ranged_weapons/ranged_weapon_resource.gd" id="1_dlpss"]
-[ext_resource type="Texture2D" uid="uid://mc0qe47pebkh" path="res://entities/weapons/ranged_weapons/ranged_weapon_models/minigun/art/minigun.png" id="1_f0db6"]
+[ext_resource type="Texture2D" uid="uid://66h4iajbhhw1" path="res://entities/weapons/ranged_weapons/ranged_weapon_models/slingshot/art/slingshot.png" id="1_26unw"]
+[ext_resource type="Script" uid="uid://dm0sr7j8y5j30" path="res://entities/weapons/ranged_weapons/ranged_weapon_resource.gd" id="1_g1vt4"]
 
 [resource]
-script = ExtResource("1_dlpss")
-damage = 5
-windup_time = 1.0
-attack_duration = 5.0
+script = ExtResource("1_g1vt4")
+damage = 40
+windup_time = 0.5
+attack_duration = 0.0
 cooldown_time = 2.5
 allow_continuous_fire = true
 allow_early_release = true
-fire_rate_per_second = 0.2
-max_range = 45.0
+fire_rate_per_second = 0.0
+max_range = 0.0
 handle_attack_end_by_state = false
-loop_animation = true
-name = "Minigun"
+loop_animation = false
+name = "Slingshot"
 purchasable = true
 is_free = false
-drop_chance = 25
-cost = 150
+drop_chance = 15
+cost = 100
 currency_type = 0
-description = "Deals %s Base Damage per bullet, with a fire rate of %s after a windup of %s. The attack lasts %s, with a max range of %s, then enters a cooldown state for %s.
+description = "Hold the attack button to line up the perfect shot. Take as much time as you need!
+
+Release to launch a powerful explosive egg that deals %s [color=yellow]Base Damage[/color] on impact after a brief windup of %s.
+
+Upon exploding, the egg leaves behind a [color=orange]temporary fire pool[/color]. Watch out, as it [color=orange]hurts both you and enemies[/color]!  
+
+After firing, the slingshot requires %s to recover before it can be used again.  
 
 This weapon %s and %s."
-short_description = "The user fires bursts of bullets rapidly, hitting targets continuously and dealing [color=yellow]minor[/color] damage over a [color=yellow]great distance[/color]."
-icon = ExtResource("1_f0db6")
-model_uid = "uid://8owdwg4pu4ht"
+short_description = "The user aims and launches an explosive egg that deals [color=yellow]moderate[/color] damage on impact and creates a [color=yellow]Fire Pool[/color] damaging all nearby targets."
+icon = ExtResource("1_26unw")
+model_uid = "uid://dp3a4dva535bj"
 metadata/_custom_type_script = "uid://dm0sr7j8y5j30"
-
 ```
+
+## Weapon Stats
+
+| Stat                | Value                |
+|---------------------|---------------------|
+| Base Damage         | 5                   |
+| Windup Time         | 1.0s                |
+| Attack Duration     | 5.0s                |
+| Cooldown Time       | 2.5s                |
+| Continuous Fire     | Yes                 |
+| Early Release       | Yes                 |
+| Fire Rate           | 0.2                 |
+| Max Range           | 45.0                |
+| Purchasable         | Yes                 |
+| Cost                | 150                 |
+| Drop Chance         | 25%                 |
+| Currency Type       | 0                   |
+
+**Description:**
+Deals %s Base Damage per bullet, with a fire rate of %s after a windup of %s. The attack lasts %s, with a max range of %s, then enters a cooldown state for %s.
+
+This weapon %s and %s.
+
+---
 
 ## Attack State Mechanics
 

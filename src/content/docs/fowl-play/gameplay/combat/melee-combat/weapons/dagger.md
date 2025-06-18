@@ -1,6 +1,6 @@
 ---
 title: Dagger
-lastUpdated: 2025-05-13
+lastUpdated: 2025-06-18
 description: Dagger is a slower paced weapon, with high range
 author: Tjorn
 ---
@@ -37,8 +37,27 @@ Allows for [color=orange]multiple hits per attack[/color]."
 short_description = "The user hurls their dagger, hitting targets [color=yellow]multiple times[/color] as it travels forward, dealing [color=yellow]minor[/color] damage and stunning targets [color=yellow]slightly[/color]."
 icon = ExtResource("1_8lwf8")
 model_uid = "uid://dldj0suybdnhl"
-
 ```
+
+## Weapon Stats
+
+| Stat                | Value                |
+|---------------------|---------------------|
+| Base Damage         | 8                   |
+| Windup Time         | 0.5s                |
+| Attack Duration     | 2.0s                |
+| Cooldown Time       | 2.5s                |
+| Stun Time           | 0.1s                |
+| Loop Animation      | No                  |
+| Purchasable         | Yes                 |
+| Cost                | 100                 |
+| Drop Chance         | 12%                 |
+| Currency Type       | 0                   |
+
+**Description:**
+Deals %s Base Damage per hit after winding up for %s. The attack lasts %s, then enters a cooldown state for %s, and stuns targets hit for %s.
+
+Allows for [color=orange]multiple hits per attack[/color].
 
 ## Gameplay Considerations
 

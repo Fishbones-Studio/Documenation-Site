@@ -1,6 +1,6 @@
 ---
 title: Butter Knife
-lastUpdated: 2025-05-13
+lastUpdated: 2025-06-18
 description: Butter Knife is a fast, spammable melee weapon with low damage
 author: Tjorn
 ---
@@ -35,8 +35,25 @@ description = "Deals %s Base Damage with a quick stab after winding up for %s. T
 short_description = "The user delivers [color=yellow]quick stabs[/color] in rapid succession, dealing [color=yellow]minor[/color] damage and applying a [color=yellow]light[/color] stun to targets."
 icon = ExtResource("1_m3duu")
 model_uid = "uid://db68ojqri7xqs"
-
 ```
+
+## Weapon Stats
+
+| Stat                | Value                |
+|---------------------|---------------------|
+| Base Damage         | 10                  |
+| Windup Time         | 0.05s               |
+| Attack Duration     | 0.2s                |
+| Cooldown Time       | 0.1s                |
+| Stun Time           | 0.05s               |
+| Loop Animation      | No                  |
+| Purchasable         | Yes                 |
+| Cost                | 100                 |
+| Drop Chance         | 40%                 |
+| Currency Type       | 0                   |
+
+**Description:**
+Deals %s Base Damage with a quick stab after winding up for %s. The attack lasts %s, then enters a cooldown state for %s, and stuns targets hit for %s.
 
 ## Gameplay considerations
 

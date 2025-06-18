@@ -1,7 +1,7 @@
 ---
 title: Slingshot
 description: Detailing the slingshot mechanics
-lastUpdated: 2025-05-15
+lastUpdated: 2025-06-18
 author: Tjorn
 ---
 
@@ -38,6 +38,39 @@ drop_chance = 15
 cost = 100
 currency_type = 0
 description = "Hold the attack button to line up the perfect shot. Take as much time as you need!
+
+Release to launch a powerful explosive egg that deals %s [color=yellow]Base Damage[/color] on impact after a brief windup of %s.
+
+Upon exploding, the egg leaves behind a [color=orange]temporary fire pool[/color]. Watch out, as it [color=orange]hurts both you and enemies[/color]!  
+
+After firing, the slingshot requires %s to recover before it can be used again.  
+
+This weapon %s and %s."
+short_description = "The user aims and launches an explosive egg that deals [color=yellow]moderate[/color] damage on impact and creates a [color=yellow]Fire Pool[/color] damaging all nearby targets."
+icon = ExtResource("1_26unw")
+model_uid = "uid://dp3a4dva535bj"
+metadata/_custom_type_script = "uid://dm0sr7j8y5j30"
+```
+
+## Weapon Stats
+
+| Stat                | Value                |
+|---------------------|---------------------|
+| Base Damage         | 40                  |
+| Windup Time         | 0.5s                |
+| Attack Duration     | 0.0s                |
+| Cooldown Time       | 2.5s                |
+| Continuous Fire     | Yes                 |
+| Early Release       | Yes                 |
+| Fire Rate           | 0.0 (single shot)   |
+| Max Range           | Unlimited           |
+| Purchasable         | Yes                 |
+| Cost                | 100                 |
+| Drop Chance         | 15%                 |
+| Currency Type       | 0                   |
+
+**Description:**
+Hold the attack button to line up the perfect shot. Take as much time as you need!
 
 Release to launch a powerful explosive egg that deals %s [color=yellow]Base Damage[/color] on impact after a brief windup of %s.
 

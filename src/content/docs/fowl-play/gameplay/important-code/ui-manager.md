@@ -1,4 +1,3 @@
-<!-- filepath: /workspaces/Documenation-Site/src/content/docs/fowl-play/gameplay/important-code/ui_manager.md -->
 ---
 title: UI Manager
 description: Global UI Management System
@@ -6,81 +5,24 @@ lastUpdated: 2025-06-18
 author: Tjorn
 ---
 
-The UI Manager is a global autoload singleton responsible for managing all UI scenes in the game. It handles dynamic loading, switching, and visibility of UI elements, as well as game pausing and input management related to the UI.
+The **UI Manager** is a global autoload singleton responsible for managing all UI scenes in the game. It handles dynamic loading, switching, and visibility of UI elements, as well as game pausing and input management related to the UI.
 
-## Overview
+## In Short
 
-The `UIManager` is a `CanvasLayer` node, ensuring that all UI it manages is drawn on top of the game world. It operates in `PROCESS_MODE_ALWAYS` so it can function even when the game is paused, which is crucial for handling the pause menu itself.
+The `UIManager` is a `CanvasLayer` node, ensuring all UI it manages is drawn on top of the game world. It operates in `PROCESS_MODE_ALWAYS` so it can function even when the game is paused (crucial for handling the pause menu).
 
-Key responsibilities include:
--   Loading and instantiating UI scenes from their paths.
--   Maintaining a list of active UI scenes.
--   Switching between different UI scenes (e.g., from Main Menu to Player HUD).
--   Toggling overlay UIs (e.g., Inventory, Map).
--   Handling the pause state of the game.
--   Managing mouse visibility and input blocking based on the active UI.
+**Key responsibilities:**
 
-## Properties
+- Loading and instantiating UI scenes from their paths.
+- Maintaining a list of active UI scenes.
+- Switching between different UI scenes (e.g., Main Menu, Player HUD).
+- Toggling overlay UIs (e.g., Inventory, Map).
+- Handling the pause state of the game.
+- Managing mouse visibility and input blocking based on the active UI.
 
-The UI Manager uses several properties to track the state of the UI.
+---
 
-| Property             | Type                               | Description                                                                                                                                 |
-| -------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `current_ui`         | `Control`                          | The currently active UI control. When set, it automatically updates input blocking and mouse mode.                                          |
-| `previous_ui`        | `Control`                          | Stores the previously active UI, used for navigating back (e.g., closing a menu).                                                           |
-| `ui_list`            | `Dictionary[UIEnums.UI, Control]` | A dictionary that maps UI enums from `UIEnums` to their instantiated `Control` nodes. This is the central registry of all managed UIs. |
-| `paused`             | `bool`                             | The game's pause state. Setting this to `true` pauses the entire scene tree, and `false` resumes it.                                        |
-| `game_input_blocked` | `bool`                             | A flag that indicates whether game input (e.g., player movement) should be blocked, based on which UI is currently active.                  |
-
-## Methods
-
-Here are the main methods available on the `UIManager`.
-
-### `load_game_with_loading_screen(game_scene_enum: SceneEnums.Scenes, next_ui: UIEnums.UI = UIEnums.UI.PLAYER_HUD, ...)`
-
-This function orchestrates the transition to a new game scene. It first shows a loading screen, emits a signal to switch the main game scene, and then transitions to the specified `next_ui` (usually the `PLAYER_HUD`).
-
-### `remove_ui_by_enum(ui_enum: UIEnums.UI)`
-
-Removes a UI from the manager using its `UIEnums.UI` identifier. It's a convenience wrapper around `remove_ui`.
-
-### `remove_ui(ui: Control)`
-
-Removes a specific UI `Control` node from the manager. It handles cleaning up references, freeing the node, and updating the UI state (e.g., unpausing if the pause menu is removed).
-
-### `clear_ui()`
-
-Removes all UI elements from the manager, effectively resetting the UI state. This is used when making a major scene change, like returning to the main menu.
-
-### `swap_ui(prev_ui: Control, curr_ui: Control)`
-
-A utility function to safely swap the `previous_ui` and `current_ui` references.
-
-### `toggle_ui(ui_enum: UIEnums.UI)`
-
-Toggles the visibility of a specific UI, typically for overlays like an inventory or map. It manages which UI is considered `current` and brings the toggled UI to the front.
-
-### `handle_pause()`
-
-Manages the game's pause state. It shows or hides the pause menu and ensures that pausing/unpausing is handled correctly in relation to other visible UI elements.
-
-## Signal Connections
-
-The `UIManager` is highly event-driven and relies on signals for communication.
-
-In `_ready()`, it connects to the following global signals from `SignalManager`:
-
--   `SignalManager.switch_ui_scene`: When this signal is emitted, the `_on_switch_ui` method is called, which completely clears the current UI and switches to a new one.
--   `SignalManager.add_ui_scene`: When this signal is emitted, `_on_add_ui_scene` is called to add a new UI to the manager without clearing others.
-
-## Internal Logic
-
-The `UIManager` also contains internal logic to handle input and state changes automatically.
-
--   **`_input()`**: Listens for the "pause" action to call `handle_pause()`.
--   **`_unhandled_input()`**: Listens for the "ui_cancel" action (e.g., Escape key) to back out of menus.
--   **`_update_game_input_blocked()`**: Automatically called when `current_ui` changes to determine if player input should be disabled.
--   **`_update_game_mouse_mode()`**: Automatically called to show/hide/capture the mouse cursor based on the active UI. For example, the mouse is visible in menus but captured for the player HUD during gameplay.
+## The Code
 
 ```gdscript
 ################################################################################
@@ -126,7 +68,7 @@ func _ready() -> void:
 
 	# Initialize with main menu
 	_on_add_ui_scene(UIEnums.UI.MAIN_MENU)
-	
+
 	layer = 3
 
 
@@ -400,7 +342,7 @@ func _is_any_visible() -> bool:
 		var node = ui_list[ui_enum]
 		if is_instance_valid(node) and node.visible:
 			return true
-		
+
 	return false
 
 
@@ -423,7 +365,7 @@ func _on_add_ui_scene(new_ui_enum: UIEnums.UI, params: Dictionary = {}, make_vis
 	if new_ui_enum == UIEnums.UI.NULL:
 		print("Ui enum null passed, skipping")
 		return
-	
+
 	if ui_list.has(new_ui_enum) and is_instance_valid(ui_list[new_ui_enum]):
 		push_warning("Attempted to add UI '", UIEnums.ui_to_string(new_ui_enum), "' which already exists.")
 		if make_visible and not ui_list[new_ui_enum].visible:
@@ -474,7 +416,7 @@ func _on_add_ui_scene(new_ui_enum: UIEnums.UI, params: Dictionary = {}, make_vis
 ## Updates the game_input_blocked state based on the current UI
 ## This function checks if any UI that blocks game input is currently active.
 func _update_game_input_blocked() -> void:
-	if not current_ui: 
+	if not current_ui:
 		game_input_blocked = false
 		return
 	var ui_enum : UIEnums.UI = ui_list.find_key(current_ui)
@@ -520,3 +462,123 @@ func _update_game_mouse_mode() -> void:
 			if desired_mode == Input.MOUSE_MODE_CAPTURED
 			else "VISIBLE"
 		)
+```
+
+## Properties
+
+| Property             | Type                              | Description                                                                                                          |
+| -------------------- | --------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `current_ui`         | `Control`                         | The currently active UI control. When set, it automatically updates input blocking and mouse mode.                   |
+| `previous_ui`        | `Control`                         | Stores the previously active UI, used for navigating back (e.g., closing a menu).                                    |
+| `ui_list`            | `Dictionary[UIEnums.UI, Control]` | Maps UI enums from `UIEnums` to their instantiated `Control` nodes. This is the central registry of all managed UIs. |
+| `paused`             | `bool`                            | The game's pause state. Setting this to `true` pauses the entire scene tree, and `false` resumes it.                 |
+| `game_input_blocked` | `bool`                            | Indicates whether game input (e.g., player movement) should be blocked, based on which UI is currently active.       |
+
+## Methods
+
+### Loading a Game Scene with a Loading Screen
+
+```gdscript
+load_game_with_loading_screen(
+    game_scene_enum: SceneEnums.Scenes,
+    next_ui: UIEnums.UI = UIEnums.UI.PLAYER_HUD,
+    next_ui_params: Dictionary = {},
+    game_params: Dictionary = {}
+) -> void
+```
+
+- Shows a loading screen, emits a signal to switch the main game scene, and then transitions to the specified `next_ui` (usually the `PLAYER_HUD`).
+
+### Removing a UI by Enum
+
+```gdscript
+remove_ui_by_enum(ui_enum: UIEnums.UI) -> void
+```
+
+- Removes a UI from the manager using its `UIEnums.UI` identifier.
+
+### Removing a UI by Node
+
+```gdscript
+remove_ui(ui: Control) -> void
+```
+
+- Removes a specific UI `Control` node from the manager. Handles cleaning up references, freeing the node, and updating the UI state.
+
+### Clearing All UI
+
+```gdscript
+clear_ui() -> void
+```
+
+- Removes all UI elements from the manager, effectively resetting the UI state. Used for major scene changes (e.g., returning to the main menu).
+
+### Swapping Current and Previous UI
+
+```gdscript
+swap_ui(prev_ui: Control, curr_ui: Control) -> void
+```
+
+- Safely swaps the `previous_ui` and `current_ui` references.
+
+### Toggling a UI Overlay
+
+```gdscript
+toggle_ui(ui_enum: UIEnums.UI) -> void
+```
+
+- Toggles the visibility of a specific UI, typically for overlays like inventory or map. Manages which UI is considered `current` and brings the toggled UI to the front.
+
+### Handling Pause State
+
+```gdscript
+handle_pause() -> void
+```
+
+- Manages the game's pause state. Shows or hides the pause menu and ensures that pausing/unpausing is handled correctly in relation to other visible UI elements.
+
+## Signal Connections
+
+The `UIManager` is highly event-driven and relies on signals for communication.
+
+- **`SignalManager.switch_ui_scene`**: Calls `_on_switch_ui` to clear the current UI and switch to a new one.
+- **`SignalManager.add_ui_scene`**: Calls `_on_add_ui_scene` to add a new UI to the manager without clearing others.
+
+## Internal Logic
+
+- **Input Handling**:
+
+  - `_input()`: Listens for the "pause" action to call `handle_pause()`.
+  - `_unhandled_input()`: Listens for the "ui_cancel" action (e.g., Escape key) to back out of menus.
+
+- **State Updates**:
+  - `_update_game_input_blocked()`: Called when `current_ui` changes to determine if player input should be disabled.
+  - `_update_game_mouse_mode()`: Shows/hides/captures the mouse cursor based on the active UI (e.g., mouse is visible in menus, captured for the player HUD).
+
+## Utility/Internal Methods
+
+- **`_handle_ui_cancel_action()`**: Handles the "ui_cancel" input action, used to back out of UI screens like inventory, map, or pause menu.
+- **`_is_any_visible_besides_list(ui_exceptions: Array[UIEnums.UI]) -> bool`**: Checks if any UI, besides those in the exception list, is currently visible.
+- **`_is_any_visible() -> bool`**: Checks if any UI (excluding Player HUD) is currently visible.
+- **`_on_switch_ui(new_ui_enum: UIEnums.UI, params: Dictionary = {}) -> void`**: Completely switches to a new UI scene.
+- **`_on_add_ui_scene(new_ui_enum: UIEnums.UI, params: Dictionary = {}, make_visible: bool = true) -> void`**: Adds and initializes a new UI scene instance.
+- **`_update_game_input_blocked() -> void`**: Updates the `game_input_blocked` state based on the current UI.
+- **`_update_game_mouse_mode() -> void`**: Sets the mouse mode based on the currently active UI.
+
+## Example Usage
+
+```gdscript
+# Switch to the inventory UI overlay
+UIManager.toggle_ui(UIEnums.UI.INVENTORY)
+
+# Remove the pause menu UI
+UIManager.remove_ui_by_enum(UIEnums.UI.PAUSE_MENU)
+
+# Load a new game scene with a loading screen
+UIManager.load_game_with_loading_screen(SceneEnums.Scenes.SEWER_ARENA)
+```
+
+## Notes
+
+- The UI Manager is designed to be robust and safe: it checks for valid nodes, prevents duplicate UI instances, and manages focus and input automatically.
+- Always use `handle_pause()` to toggle the pause menu, not `toggle_ui()`.

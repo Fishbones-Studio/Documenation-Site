@@ -13,6 +13,11 @@ The minigun is a powerful ranged weapon that fires a high volume of bullets in q
 ## Weapon Resource
 
 ```gdscript
+[gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://csmfpbrekf78u"]
+
+[ext_resource type="Script" uid="uid://dm0sr7j8y5j30" path="res://entities/weapons/ranged_weapons/ranged_weapon_resource.gd" id="1_dlpss"]
+[ext_resource type="Texture2D" uid="uid://mc0qe47pebkh" path="res://entities/weapons/ranged_weapons/ranged_weapon_models/minigun/art/minigun.png" id="1_f0db6"]
+
 [resource]
 script = ExtResource("1_dlpss")
 damage = 5
@@ -22,18 +27,23 @@ cooldown_time = 2.5
 allow_continuous_fire = true
 allow_early_release = true
 fire_rate_per_second = 0.2
-max_range = 30.0
+max_range = 45.0
+handle_attack_end_by_state = false
 loop_animation = true
 name = "Minigun"
 purchasable = true
+is_free = false
 drop_chance = 25
 cost = 150
 currency_type = 0
 description = "Deals %s Base Damage per bullet, with a fire rate of %s after a windup of %s. The attack lasts %s, with a max range of %s, then enters a cooldown state for %s.
 
 This weapon %s and %s."
+short_description = "The user fires bursts of bullets rapidly, hitting targets continuously and dealing [color=yellow]minor[/color] damage over a [color=yellow]great distance[/color]."
 icon = ExtResource("1_f0db6")
 model_uid = "uid://8owdwg4pu4ht"
+metadata/_custom_type_script = "uid://dm0sr7j8y5j30"
+
 ```
 
 ## Attack State Mechanics

@@ -1,6 +1,6 @@
 ---
 title: Butter Knife
-lastUpdated: 2025-05-13
+lastUpdated: 2025-06-18
 description: Butter Knife is a fast, spammable melee weapon with low damage
 author: Tjorn
 ---
@@ -12,22 +12,48 @@ The Butter Knife is a fast, spammable melee weapon. While it deals low damage pe
 ## Resource Overview
 
 ```gdscript
+[gd_resource type="Resource" script_class="MeleeWeaponResource" load_steps=3 format=3 uid="uid://b8aw1r4xls2u4"]
+
+[ext_resource type="Texture2D" uid="uid://cjh4s3ohpa3fu" path="res://entities/weapons/melee_weapons/melee_weapon_models/butter_knife/art/butter_knife.png" id="1_m3duu"]
+[ext_resource type="Script" uid="uid://bflt4m3fx7gmv" path="res://entities/weapons/melee_weapons/melee_weapon_resource.gd" id="1_ry0ng"]
+
 [resource]
 script = ExtResource("1_ry0ng")
-damage = 8
-windup_time = 0.0
+damage = 10
+windup_time = 0.05
 attack_duration = 0.2
 cooldown_time = 0.1
+stun_time = 0.05
 loop_animation = false
 name = "Butter Knife"
 purchasable = true
+is_free = false
 drop_chance = 40
-cost = 110
+cost = 100
 currency_type = 0
-description = "Deals %s Base Damage with a quick stab. The attack lasts %s, then enters a cooldown state for %s."
+description = "Deals %s Base Damage with a quick stab after winding up for %s. The attack lasts %s, then enters a cooldown state for %s, and stuns targets hit for %s."
+short_description = "The user delivers [color=yellow]quick stabs[/color] in rapid succession, dealing [color=yellow]minor[/color] damage and applying a [color=yellow]light[/color] stun to targets."
 icon = ExtResource("1_m3duu")
 model_uid = "uid://db68ojqri7xqs"
 ```
+
+## Weapon Stats
+
+| Stat                | Value                |
+|---------------------|---------------------|
+| Base Damage         | 10                  |
+| Windup Time         | 0.05s               |
+| Attack Duration     | 0.2s                |
+| Cooldown Time       | 0.1s                |
+| Stun Time           | 0.05s               |
+| Loop Animation      | No                  |
+| Purchasable         | Yes                 |
+| Cost                | 100                 |
+| Drop Chance         | 40%                 |
+| Currency Type       | 0                   |
+
+**Description:**
+Deals %s Base Damage with a quick stab after winding up for %s. The attack lasts %s, then enters a cooldown state for %s, and stuns targets hit for %s.
 
 ## Gameplay considerations
 

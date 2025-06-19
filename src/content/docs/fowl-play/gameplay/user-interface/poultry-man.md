@@ -5,17 +5,15 @@ lastUpdated: 2025-06-19
 author: Cenker, Tjorn
 ---
 
-## Poultry Man Menu
-
 The Poultry Man menu serves as an in-game interface where players can interact with various functionalities. It essentially serves as a hub for players to access different game features, such as upgrading their character, buying weapons and abilities and choosing an arena to fight in.
 
-### Version One
+## Version One
 
 ![Poultry Man Menu Version One](../../../../../assets/fowl-play/gameplay/user-interface/poultry-man-menu/poultryman_v1.png)
 
 The older version of the Poultry Man menu was set in a world-like scene with an open sky, which felt out of place for the dark and unsettling theme we wanted to achieve. Instead of creating an immersive and fitting environment, it felt too bright and unstructured, failing to capture the eerie, scientific horror aesthetic. The lighting was flat, and the setting did not contribute to the intended vibe.
 
-### Version Two
+## Version Two
 
 ![Poultry Man Menu Version Two](../../../../../assets/fowl-play/gameplay/user-interface/poultry-man-menu/poultryman_v2.png)
 
@@ -28,7 +26,7 @@ To improve the menu and align it with the game's dark and gritty theme, several 
 - **Hover Effects**: When players hover over an item, the label changes color and the node increases in size, making it more visually distinct and responsive.
 - **Keyboard & Controller Navigation**: Players can now navigate the menu using both a keyboard and a controller, improving accessibility and ease of use.
 
-### Version Three
+## Version Three
 
 ![Poultry Man Menu Version Three](../../../../../assets/fowl-play/gameplay/user-interface/poultry-man-menu/poultryman_v3.png)
 
@@ -42,7 +40,7 @@ In this version, the Poultry Man menu underwent significant visual and audio imp
 
 These changes made the menu more engaging, visually appealing, and consistent with the game's dark, experimental theme.
 
-### Version Four (Finalized)
+## Version Four (Finalized)
 
 ![Poultry Man Menu Version Four](../../../../../assets/fowl-play/gameplay/user-interface/poultry-man-menu/poultryman_v4.png)
 
@@ -52,7 +50,7 @@ For the final delivery, the Poultry Man menu received a complete overhaul:
 - **Detailed Environment**: The background and props were redesigned to create a more immersive, story-driven setting, including thematic objects and environmental storytelling elements.
 - **Polished Animations**: Menu transitions, hover effects, and model animations were refined.
 
-## Submenu Preloading
+### Submenu Preloading
 
 This new version of the Poultry Man Menu also preloads all submenus during the initial load, which is covered by the loading screen between the main menu and the poultry man menu. This ensures all submenus are immediately available once the player can click on them, improving the user experience.
 Before this change, we noticed that, especially the shop, would hang for a couple of seconds when the player first clicked on it, which was not ideal.

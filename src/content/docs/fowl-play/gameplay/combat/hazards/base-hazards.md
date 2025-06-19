@@ -1,7 +1,7 @@
 ---
 title: Base Hazards
 description: Creation of environmental hazards
-lastUpdated: 2025-06-09
+lastUpdated: 2025-06-19
 author: Tjorn
 ---
 
@@ -251,3 +251,7 @@ All hazards deal `True` damage, meaning they ignore the entities defense stats. 
 ## References
 
 For the visual implementation of the hazards, refer to the [3D Art section](/fowl-play/art/3d/arena/hazards) for details on modeling, texturing, and shading techniques used in Fowl Play.
+
+## Note
+
+> Boss enemies don't take damage from hazards. This is an intentional design choice to ensure that boss fights remain focused on the boss mechanics and player skill, rather than relying on environmental hazards. Hazards are primarily used in regular enemy encounters to add variety and challenge.

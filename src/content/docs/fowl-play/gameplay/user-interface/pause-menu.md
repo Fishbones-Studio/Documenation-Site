@@ -1,8 +1,8 @@
 ---
 title: Pause Menu
 description: A menu when the game is paused.
-lastUpdated: 2025-04-03
-author: Sly
+lastUpdated: 2025-06-19
+author: Sly, Tjorn
 ---
 
 Handles game pausing/unpausing and features an animated 3D chicken character, dynamic button visibility, smooth transitions, and focus handling.
@@ -12,7 +12,7 @@ Handles game pausing/unpausing and features an animated 3D chicken character, dy
 - `PauseMenu.gd`: Main controller script
 - `pause_menu.tscn`: Scene container
 
-### Properties
+## Properties
 
 | Property            | Type            | Description                                             |
 | ------------------- | --------------- | ------------------------------------------------------- |
@@ -23,16 +23,23 @@ Handles game pausing/unpausing and features an animated 3D chicken character, dy
 | paused              | bool            | Controls pause state with setter logic                  |
 | prev_mouse_mode     | Input.MouseMode | Stores previous mouse mode before pausing               |
 
-### UI Elements
+## UI Elements
 
 ![pause menu](/ui/pause-menu.gif)
 
-| Node     | Type   | Description                                       |
-| -------- | ------ | ------------------------------------------------- |
-| Resume   | Button | Unpauses the game                                 |
-| Settings | Button | Opens the settings ui                             |
-| Quit     | Button | Returns to main menu                              |
-| Forfeit  | Button | Forfeits the fight and returns to poultryman menu |
+| Node                 | Type   | Description                                       |
+| -------------------- | ------ | ------------------------------------------------- |
+| Resume               | Button | Unpauses the game                                 |
+| Settings             | Button | Opens the settings ui                             |
+| Quit                 | Button | Returns to main menu                              |
+| Forfeit              | Button | Forfeits the fight and returns to poultryman menu |
+| Return to Poultryman | Button | Returns to the Poultryman menu without forfeiting |
+| Overview             | Button | Opens the Chicken Stat menu                       |
+
+Depending on the game location, the pause menu will contain different buttons:
+![Pause Menu from the Poultry Man Menu](../../../../../assets/fowl-play/gameplay/user-interface/pause-menu/poultry-man.png)
+![Pause Menu from the Training Area](../../../../../assets/fowl-play/gameplay/user-interface/pause-menu/training-area.png)
+![Pause Menu from the Arena](../../../../../assets/fowl-play/gameplay/user-interface/pause-menu/arena.png)
 
 ## Core Mechanics
 

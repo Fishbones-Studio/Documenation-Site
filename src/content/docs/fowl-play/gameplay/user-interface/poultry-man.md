@@ -51,3 +51,35 @@ For the final delivery, the Poultry Man menu received a complete overhaul:
 - **Fully Stylized Visuals**: The menu art style was finalized to match the game's unique aesthetic, with custom fonts, color grading, and visual effects that reinforce the unsettling laboratory vibe.
 - **Detailed Environment**: The background and props were redesigned to create a more immersive, story-driven setting, including thematic objects and environmental storytelling elements.
 - **Polished Animations**: Menu transitions, hover effects, and model animations were refined.
+
+### Submenu Preloading
+
+This new version of the Poultry Man Menu also preloads all submenus during the initial load, which is covered by the loading screen between the main menu and the poultry man menu. This ensures all submenus are immediately available once the player can click on them, improving the user experience.
+Before this change, we noticed that, especially the shop, would hang for a couple of seconds when the player first clicked on it, which was not ideal.
+
+```gdscript
+var menu_actions: Dictionary[StringName, UIEnums.UI] = {
+	&"Arenas": UIEnums.UI.ARENAS,
+	&"EquipmentShop": UIEnums.UI.POULTRYMAN_SHOP,
+	&"Equipment": UIEnums.UI.CHICKEN_INVENTORY,
+	&"Sacrifice": UIEnums.UI.CHICKEN_SACRIFICE,
+	&"RebirthShop": UIEnums.UI.REBIRTH_SHOP
+}
+
+func _ready() -> void:
+	UIManager.remove_ui_by_enum(UIEnums.UI.PLAYER_HUD)
+	_initialize_focusable_items()
+	_connect_input_signals()
+	_set_initial_focus() # Handles initial highlight and focus
+	_preload_items()
+
+func _preload_items() -> void:
+	print("Adding UI menu items in poultry man menu...")
+	# For all menu_actions, call SignalManager.add_ui_scene
+	for scene_enum_value in menu_actions.values():
+		if scene_enum_value == UIEnums.UI.CHICKEN_SACRIFICE: continue # TODO: Crack
+		SignalManager.add_ui_scene.emit(scene_enum_value, {}, false)
+	print("UI loaded for poultry man menu")
+```
+
+The loading is very simple, not using any fancy multithreading as the amount of data to load is relatively small in the current state of Fowl Play. Multithreading is something to keep in mind if Fowl Play were to ever expand significantly, but for now, this simple approach works well.

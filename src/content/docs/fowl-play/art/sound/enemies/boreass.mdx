@@ -1,0 +1,92 @@
+---
+title: BoreAss Sound Effects
+description: Insights into the creation and design of sound effects for BoreAss in Fowl Play
+lastUpdated: 2025-06-19
+author: Tjorn
+---
+
+import AudioPlayer from "../../../../../components/AudioPlayer.astro";
+
+Sound effects for BoreAss, a mutated fox with ice abilities in Fowl Play, were created using our own voice recordings with heavy processing.
+
+## Technical Specifications
+
+| Specification | Details                 |
+| ------------- | ----------------------- |
+| Software      | Audacity, FL Studio 24  |
+| File Format   | OGG Vorbis              |
+| Purpose       | Telegraphing, immersion |
+| Diegetic      | Yes                     |
+
+The audio was cleaned up in Audacity, with noise reduction to remove background sounds. EQ, amplification, and compression were applied to enhance quality. FL Studio was used for additional effects such as reverb, pitch shifting, distortion, and autotune. Final sound effects are exported in OGG Vorbis format, suitable for the game engine.
+
+## Sound Design Principles
+
+BoreAss is a mutated fox with ice abilities. His sounds are more wolf-like than fox-like, with heavy processing to make him sound menacing. This choice was due to time constraints and the lack of access to real fox recordings. We referenced fox clips online, but the results ended up closer to wolf sounds, which is acceptable due to the overlap between the two animals and the unrealistic nature of our game. Each sound should make it immediately clear which ability or action BoreAss will perform.
+
+## Created Sound Effects
+
+BoreAss's sound effects fall into two main categories: idle sounds and telegraphing sounds.
+
+### Idle Sounds
+
+These play when BoreAss is not performing actions, giving him a lifelike presence in the game world.
+
+<AudioPlayer
+  src="/sfx/enemies/boreass/random/boreass1.ogg"
+  title="BoreAss Idle Sound 1"
+  description="Short sound of a woof."
+/>
+<AudioPlayer
+  src="/sfx/enemies/boreass/random/boreass2.ogg"
+  title="BoreAss Idle Sound 2"
+  description="Short sound of a woof."
+/>
+<AudioPlayer
+  src="/sfx/enemies/boreass/random/boreass4.ogg"
+  title="BoreAss Idle Sound 3"
+  description="Short, lower-pitched woof."
+/>
+<AudioPlayer
+  src="/sfx/enemies/boreass/random/boreass5.ogg"
+  title="BoreAss Idle Sound 4"
+  description="Distorted, punchy woof."
+/>
+<AudioPlayer
+  src="/sfx/enemies/boreass/random/boreass6.ogg"
+  title="BoreAss Idle Sound 5"
+  description="Same base as Idle Sound 4, but with another layer. More distorted and growly."
+/>
+<AudioPlayer
+  src="/sfx/enemies/boreass/random/wolf-breath.ogg"
+  title="BoreAss Idle Sound 6"
+  description="Longer sound of heavy fox breathing."
+/>
+
+### Telegraphing Sounds
+
+<AudioPlayer
+  src="/sfx/enemies/boreass/boreass_before_dash.ogg"
+  title="BoreAss Telegraphing Dash Sound"
+  description="Fox howling, used before BoreAss dashes. Heavily processed with autotune and pitch shifting for a menacing effect."
+/>
+<AudioPlayer
+  src="/sfx/enemies/boreass/boreass_dash.ogg"
+  title="BoreAss Telegraphing Dash Sound"
+  description="Fox growling followed by a distorted wind effect. Used while BoreAss dashes."
+/>
+<AudioPlayer
+  src="/sfx/enemies/boreass/boreass_dash_continued.ogg"
+  title="BoreAss Telegraphing Dash Sound"
+  description="Wind effect loop for BoreAss's dash, so the sound doesn't cut off before the dash is finished."
+/>
+<AudioPlayer
+  src="/sfx/enemies/boreass/boreass_pounce.ogg"
+  title="BoreAss Telegraphing Pounce Sound"
+  description="Fox growling, used before BoreAss performs his ground pound at the end of his pounce."
+/>
+<AudioPlayer
+  src="/sfx/enemies/boreass/boreass_pounce_rev.ogg"
+  title="BoreAss Telegraphing Pounce Sound"
+  description="Reversed version of the pounce sound, used before BoreAss jumps at the start of the pounce."
+/>

@@ -1,0 +1,89 @@
+---
+title: Bob Sound Effects
+description: Insights into the creation and design of sound effects for Bob in Fowl Play
+lastUpdated: 2025-06-19
+author: Tjorn
+---
+
+Bob is an extremely mutated chicken ball boss in Fowl Play. His sound effects are based on original vocal recordings and a sheep bleating sound, with heavy processing to create a unique and menacing effect. Bob is in a lot of pain. A glass bottle rolling on the ground was also used for his movement sound.
+
+## Technical Specifications
+
+| Specification | Details                 |
+| ------------- | ----------------------- |
+| Software      | Audacity, FL Studio 24  |
+| File Format   | OGG Vorbis              |
+| Purpose       | Telegraphing, immersion |
+| Diegetic      | Yes                     |
+
+The audio was cleaned up in Audacity, with noise reduction to remove background sounds. EQ, amplification, and compression were applied to enhance quality.
+FL Studio was used for additional effects such as reverb, distortion, and phaser.
+Final sound effects are exported in OGG Vorbis format, suitable for the game engine.
+
+## Sound Design Principles
+
+Bob is extremely mutated, so his sounds should be very different from normal chicken sounds. As a boss, his sounds are louder, more aggressive, and more distorted. Each sound should make it immediately clear which ability or action Bob will perform. The sounds are designed to be menacing and aggressive, reflecting his severe mutation.
+
+## Created Sound Effects
+
+Bob's sound effects fall into four main categories: idle sounds, telegraphing sounds, movement sound, and death sound.
+
+### Idle Sounds
+
+These play when Bob is not performing actions, giving him a lifelike presence in the game world.
+
+<AudioPlayer
+  src="/sfx/enemies/bob/random/bob1.ogg"
+  title="Bob Idle Sound 1"
+  description="Short sound."
+/>
+<AudioPlayer
+  src="/sfx/enemies/bob/random/bob2.ogg"
+  title="Bob Idle Sound 2"
+  description="Short sound."
+/>
+<AudioPlayer
+  src="/sfx/enemies/bob/random/bob3.ogg"
+  title="Bob Idle Sound 3"
+  description="Short sound."
+/>
+
+### Telegraphing Sounds
+
+These play to indicate Bob is about to perform a specific action or ability.
+
+<AudioPlayer
+  src="/sfx/enemies/bob/bob_charge.ogg"
+  title="Bob Charge Sound"
+  description="Bob screaming, with the movement sound layered on top. Used when Bob starts charging and bouncing around the arena."
+/>
+<AudioPlayer
+  src="/sfx/enemies/bob/bob_charge_continuation.ogg"
+  title="Bob Charge Continuation Sound"
+  description="Same as the charge sound, minus the scream at the beginning. Loops while Bob is bouncing, so the sound doesn't cut off before he's done."
+/>
+<AudioPlayer
+  src="/sfx/enemies/bob/bob_jump.ogg"
+  title="Bob Charge Jump Sound"
+  description="Bob screaming, using the sheep bleating sound. Used before Bob jumps into the air to slam down."
+/>
+
+### Movement Sound
+
+This sound plays when Bob is moving, giving him a lifelike presence and ensuring the player always knows where he is.
+
+<AudioPlayer
+  src="/sfx/enemies/bob/bob_roll.ogg"
+  title="Bob Movement Sound"
+  description="Glass bottle rolling on the ground, with a phaser effect. Used when Bob moves around the arena."
+/>
+
+### Death Sound
+
+This sound plays when Bob dies.
+
+<AudioPlayer
+  src="/sfx/enemies/bob/bob_death.ogg"
+  title="Bob Death Sound"
+  description="Bob screaming, with heavy reverb. Used when Bob dies."
+/>

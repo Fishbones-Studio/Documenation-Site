@@ -1,0 +1,67 @@
+---
+title: Hennifer Sound Effects
+description: Insights into the creation and design of sound effects for Hennifer in Fowl Play
+lastUpdated: 2025-06-19
+author: Tjorn
+---
+
+import AudioPlayer from "../../../../../../components/AudioPlayer.astro";
+
+Sound effects for Hennifer, a tsundere chicken enemy in Fowl Play, are based on original recordings of real chickens.
+
+## Technical Specifications
+
+| Specification | Details                 |
+| ------------- | ----------------------- |
+| Software      | Audacity                |
+| File Format   | OGG Vorbis              |
+| Purpose       | Telegraphing, immersion |
+| Diegetic      | Yes                     |
+
+The audio was cleaned up in Audacity, with noise reduction to remove background sounds. Light EQ, amplification, and compression were applied to enhance quality. Final sound effects are exported in OGG Vorbis format, suitable for use in the game engine.
+
+## Sound Design Principles
+
+Hennifer is not severely mutated, so her sounds should be clearly recognizable as chicken sounds, with minimal effects applied. Each sound should make it immediately clear which ability or action Hennifer will perform.
+
+## Created Sound Effects
+
+Hennifer's sound effects fall into two main categories: idle sounds and telegraphing sounds.
+
+### Idle Sounds
+
+These play when Hennifer is not performing actions, giving her a lifelike presence in the game world.
+
+<AudioPlayer
+  src="/sfx/enemies/hennifer/random/chicken1.ogg"
+  title="Hennifer Idle Sound 1"
+  description="Short sound of a broody chicken."
+/>
+
+<AudioPlayer
+  src="/sfx/enemies/hennifer/random/chicken4.ogg"
+  title="Hennifer Idle Sound 2"
+  description="Short sound of a chicken talking."
+/>
+
+<AudioPlayer
+  src="/sfx/enemies/hennifer/random/chicken7.ogg"
+  title="Hennifer Idle Sound 3"
+  description="Short sound of a chicken talking."
+/>
+
+### Telegraphing Sounds
+
+These play to indicate Hennifer is about to perform a specific action or ability.
+
+<AudioPlayer
+  src="/sfx/enemies/hennifer/retreat.ogg"
+  title="Hennifer Telegraphing Retreat Sound"
+  description="Sound of a chicken screaming. Used when Hennifer runs away from the player and lays her exploding eggs."
+/>
+
+<AudioPlayer
+  src="/sfx/enemies/hennifer/teleport.ogg"
+  title="Hennifer Telegraphing Teleport Sound"
+  description="Sound of a chicken screaming. Used right before Hennifer teleports to the player and starts attacking."
+/>

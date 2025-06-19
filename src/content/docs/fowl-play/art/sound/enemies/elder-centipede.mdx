@@ -1,0 +1,82 @@
+---
+title: Elder Centipede Sound Effects
+description: Insights into the creation and design of sound effects for the Elder Centipede in Fowl Play
+lastUpdated: 2025-06-19
+author: Tjorn
+---
+
+import AudioPlayer from "../../../../../../components/AudioPlayer.astro";
+
+The Elder Centipede is an extremely mutated boss in Fowl Play, made up of multiple chickens fused together human-centipede style. Its sound effects are based on original vocal and chicken recordings, with desk tapping used for movement sounds. All sounds were heavily processed to create a unique and menacing effect. The Elder Centipede is cocky, often sounding happy or laughing.
+
+## Technical Specifications
+
+| Specification | Details                 |
+| ------------- | ----------------------- |
+| Software      | Audacity, FL Studio 24  |
+| File Format   | OGG Vorbis              |
+| Purpose       | Telegraphing, immersion |
+| Diegetic      | Yes                     |
+
+The audio was cleaned up in Audacity, with noise reduction to remove background sounds. EQ, amplification, and compression were applied to enhance quality. FL Studio was used for additional effects such as reverb, distortion, phaser, and pitch shifting. Final sound effects are exported in OGG Vorbis format, suitable for the game engine.
+
+## Sound Design Principles
+
+Elder Centipede is extremely mutated, so its sounds should be very different from normal chicken sounds. As a boss, its sounds are louder, more aggressive, and more distorted. Each sound should make it immediately clear which ability or action Elder Centipede will perform. The Elder Centipede is cocky, so its sounds should be happy, laughing, and playful.
+
+## Created Sound Effects
+
+Elder Centipede's sound effects fall into four main categories: idle sounds, telegraphing sounds, movement sound, and death sound.
+
+### Idle Sounds
+
+These play when Elder Centipede is not performing actions, giving it a lifelike presence in the game world.
+
+<AudioPlayer
+  src="/sfx/enemies/elder-centipede/random/centipede1.ogg"
+  title="Elder Centipede Idle Sound 1"
+  description="Short chicken cluck, processed to sound like the centipede is laughing."
+/>
+<AudioPlayer
+  src="/sfx/enemies/elder-centipede/random/centipede2.ogg"
+  title="Elder Centipede Idle Sound 2"
+  description="Short chicken cluck, processed to sound like the centipede is laughing."
+/>
+
+### Telegraphing Sounds
+
+<AudioPlayer
+  src="/sfx/enemies/elder-centipede/centipede_jump.ogg"
+  title="Elder Centipede Jump Sound"
+  description="Low-pitched growl, played before the centipede leaps into the air."
+/>
+<AudioPlayer
+  src="/sfx/enemies/elder-centipede/centipede_landing.ogg"
+  title="Elder Centipede Landing Sound"
+  description="Low-pitched screech, played when the centipede lands and performs a ground pound-like ability."
+/>
+<AudioPlayer
+  src="/sfx/enemies/elder-centipede/centipede_laugh.ogg"
+  title="Elder Centipede Judge Sound"
+  description="High-pitched laugh, played before the centipede summons lightning strikes on the player."
+/>
+
+### Movement Sound
+
+This sound plays when Elder Centipede is moving, giving it a lifelike presence and ensuring the player always knows where it is.
+
+<AudioPlayer
+  src="/sfx/enemies/elder-centipede/centipede_walking.ogg"
+  title="Elder Centipede Walking Sound"
+  description="Low-pitched rumble, played when the centipede moves. Made by tapping on a desk, with distortion and delay to reflect its many legs."
+/>
+
+### Death Sound
+
+This sound plays when Elder Centipede dies.
+
+<AudioPlayer
+  src="/sfx/enemies/elder-centipede/centipede_death.ogg"
+  title="Elder Centipede Death Sound"
+  description="Alarm-like sound, played when the centipede dies."
+/>

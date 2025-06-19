@@ -1,0 +1,71 @@
+---
+title: Timmy Sound Effects
+description: Insights into the creation and design of sound effects for Timmy in Fowl Play
+lastUpdated: 2025-06-19
+author: Tjorn
+---
+
+import AudioPlayer from "../../../../../../components/AudioPlayer.astro";
+
+Timmy is a young, mutated goose enemy in Fowl Play. His sound effects are based on original cockatiel recordings, with light processing to keep them natural.
+
+## Technical Specifications
+
+| Specification | Details                 |
+| ------------- | ----------------------- |
+| Software      | Audacity                |
+| File Format   | OGG Vorbis              |
+| Purpose       | Telegraphing, immersion |
+| Diegetic      | Yes                     |
+
+The audio was cleaned up in Audacity, with noise reduction to remove background sounds. Light EQ, amplification, and compression were applied to enhance quality. Final sound effects are exported in OGG Vorbis format, suitable for the game engine.
+
+## Sound Design Principles
+
+Timmy is not severely mutated, so his sounds should be clearly recognizable. Each sound should make it immediately clear which ability or action Timmy will perform. Cockatiel sounds were chosen for their high-pitched, cute quality, fitting Timmy's character. The sounds are designed to be light and playful, reflecting his young age.
+
+## Created Sound Effects
+
+Timmy's sound effects fall into two main categories: idle sounds and telegraphing sounds.
+
+### Idle Sounds
+
+These play when Timmy is not performing actions, giving him a lifelike presence in the game world.
+
+<AudioPlayer
+  src="/sfx/enemies/timmy/random/flute.ogg"
+  title="Timmy Idle Sound 1"
+  description="Short sound of a cockatiel chirping a melody."
+/>
+<AudioPlayer
+  src="/sfx/enemies/timmy/random/flute1.ogg"
+  title="Timmy Idle Sound 2"
+  description="Short sound of a cockatiel chirping a melody."
+/>
+<AudioPlayer
+  src="/sfx/enemies/timmy/random/flute2.ogg"
+  title="Timmy Idle Sound 3"
+  description="Short sound of a cockatiel chirping a melody."
+/>
+
+### Telegraphing Sounds
+
+These play to indicate Timmy is about to perform a specific action or ability.
+
+<AudioPlayer
+  src="/sfx/enemies/timmy/kamikaze.ogg"
+  title="Timmy Kamikaze Sound"
+  description="Cockatiel chirping a melody. Used when Timmy chases the player and spams his crescent slash ability."
+/>
+
+<AudioPlayer
+  src="/sfx/enemies/timmy/minigun.ogg"
+  title="Timmy Minigun Sound"
+  description="Cockatiel chirping a melody, mixing normal and reversed versions. Loops while Timmy shoots his minigun at the player."
+/>
+
+<AudioPlayer
+  src="/sfx/enemies/timmy/retreat.ogg"
+  title="Timmy Retreat Sound"
+  description="Cockatiel chirping a melody. Used when Timmy flies away from the player."
+/>

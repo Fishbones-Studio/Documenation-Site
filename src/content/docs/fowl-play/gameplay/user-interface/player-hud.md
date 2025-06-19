@@ -1,7 +1,7 @@
 ---
 title: Player Hud
 description: The player hud
-lastUpdated: 2025-05-15
+lastUpdated: 2025-06-19
 author: Tjorn
 ---
 
@@ -309,3 +309,9 @@ func _init_item_slots(items: Array) -> void:
 			push_error("Failed to instantiate or cast ITEM_SLOT scene.")
 			continue # Skip if instantiation fails
 ```
+
+### Keybindings
+
+![Item Slot Keybinds](../../../../../assets/fowl-play/gameplay/user-interface/player-hud/item-slot-keybinds.png)
+
+The item slots show the assigned keybindings for each item, using [an addon](https://github.com/rsubtil/controller_icons/) to handle different icons and updates on input change.

@@ -1,7 +1,7 @@
 ---
 title: Splash and Splatter Shaders
 description: Shaders used for dynamic splash and splatter effects
-lastUpdated: 2025-06-20
+lastUpdated: 2025-06-21
 author: Sly
 ---
 

@@ -7,7 +7,7 @@ author: Sly
 
 ![Egg Bomb](../../../../../../assets/fowl-play/art/3d/hazards/egg_explosion.gif)
 
-Egg Bombs are a type of hazard that explodes on impact (when an entity gets close) or when the timer runs out, dealing damage to entities. For visualization, this Hazard uses a [premade shader](/fowl-play/effects-shaders/shaders/premade-shaders) applied to a `SphereMesh` and a `GPUParticles3D` for the explosion effect. The explosion is accompanied by a sound effect.
+Egg Bombs are a type of hazard that explodes on impact (when an entity gets close) or when the timer runs out, dealing damage to entities. For visualization, this Hazard uses the `explosion shader` in [premade shader](/fowl-play/effects-shaders/shaders/premade-shaders) applied to a `SphereMesh` and a `GPUParticles3D` for the explosion effect. The explosion is accompanied by a sound effect.
 
 ## Stats
 

@@ -5,7 +5,7 @@ lastUpdated: 2025-04-03
 author: Jun Yi
 ---
 
-Environmental Hazards are designed to increase the strategtic depth of combat encounters in Fowl Play. Their purpose is to encourage players to navigate the arena carefully, avoiding hazards while simultaneously engaging in combat with the enemy.
+Environmental Hazards are designed to increase the strategic depth of combat encounters in Fowl Play. Their purpose is to encourage players to navigate the arena carefully, avoiding hazards while simultaneously engaging in combat with the enemy.
 
 Since the arena in Fowl Play has a grim, bloody, sewer-like aesthetic, all environmental hazards are textured with rusted metal, dark colors, and splashes of blood to reinforce this atmosphere during gameplay.
 

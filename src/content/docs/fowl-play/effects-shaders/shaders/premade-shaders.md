@@ -1,8 +1,8 @@
 ---
 title: Premade Shaders
 description: Overview of shaders used in Fowl Play, that are (slightly modified and) used as is.
-lastUpdated: 2025-06-06
-author: Tjorn
+lastUpdated: 2025-06-21
+author: Tjorn & Sly
 ---
 
 ## Used as is
@@ -11,6 +11,8 @@ author: Tjorn
   ![Crescent Slash in action](../../../../../assets/fowl-play/effects-shaders/shaders/premade-shaders/cresent_slash_shader.gif)
 - [Pause Menu Blur](https://godotshaders.com/shader/simple-blur-godot-4-1/)
   ![Pause Menu Blur in action](../../../../../assets/fowl-play/effects-shaders/shaders/premade-shaders/pause_menu_blur_shader.gif)
+- [Explosion](https://github.com/Bonkahe/BasicParticleEffects/blob/main/Shaders/SmokeShader.gdshader)
+  ![Explosion in action](../../../../../assets/fowl-play/effects-shaders/shaders/premade-shaders/explosion_shader.gif)
 
 ## Modified
 

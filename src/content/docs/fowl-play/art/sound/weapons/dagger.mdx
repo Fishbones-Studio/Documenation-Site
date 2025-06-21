@@ -1,0 +1,62 @@
+---
+title: Dagger Sound Effect  
+description: Insights into the creation of the dagger sound effects  
+lastUpdated: 2025-06-21
+author: Cenker  
+---
+
+import AudioPlayer from "../../../../../../components/AudioPlayer.astro";
+
+## Technical Specifications
+
+| Specification | Details               |
+| ------------- | --------------------- |
+| Software      | Audacity              |
+| Purpose       | Indication of actions |
+| Diegetic      | Yes                   |
+
+The [dagger](/fowl-play/gameplay/combat/melee-combat/weapons/dagger) sounds were processed, cut, and combined in Audacity  
+before being exported and imported into the game to enhance the player's experience.
+
+## Philosophy
+
+The dagger was made to sound fast, sharp, and clean. It is a thin and quick weapon, so the sound needed to reflect that feeling. For the slicing part of the attack, two kitchen knives were recorded while being sharpened against each other. This gave a real metallic and slicing sound that fit the weapon.
+
+For the throw effect, a stick was swung through the air and recorded to capture a natural whoosh. To make it feel like the dagger was spinning, the same whoosh sound was used multiple times. The second and fourth versions were inverted, which gave a back-and-forth spinning feeling. EQ was adjusted to make the sound clearer and more focused. A fade-out was also added at the end to make the throw feel more natural and complete.
+
+EQ tuning was also applied to the other sounds to bring out the sharpness and reduce any unwanted noise.
+
+## Created Sound Effects
+
+### Cutting SFX
+
+<AudioPlayer  
+  src="/sfx/dagger/knife_sharpen.ogg"  
+  description="This sound was made by sharpening two kitchen knives against each other. It gives a real and sharp cutting effect."  
+  title="Knife Sharpen"  
+/>
+
+### Woosh SFX
+
+<AudioPlayer  
+  src="/sfx/dagger/woosh.ogg"  
+  description="Recorded by swinging a stick through the air. It gives a natural wind whoosh that matches the motion of a throw."  
+  title="Woosh"  
+/>
+
+### Edited Throw SFX
+
+<AudioPlayer  
+  src="/sfx/dagger/swing_woosh.ogg"  
+  description="Made by layering stick swing sounds with some versions inverted to give a spinning feel. EQ was tuned, the tempo was increased to make it feel faster, and a fade-out was added at the end."  
+  title="Dagger Throw"  
+/>
+
+
+### Edited Dagger Attack SFX
+
+<AudioPlayer  
+  src="/sfx/dagger/dagger_slash.ogg"  
+  description="Made by using the knife sharpening sound and adding an inverted version of it. This gave more variation between the two hits. EQ was also adjusted for clarity."  
+  title="Dagger Slash"  
+/>

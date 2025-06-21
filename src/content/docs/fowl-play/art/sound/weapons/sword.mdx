@@ -1,0 +1,33 @@
+---
+title: Sword Sound Effect  
+description: Insights into the creation of the sword sound effects  
+lastUpdated: 2025-06-20  
+author: Cenker  
+---
+
+import AudioPlayer from "../../../../../../components/AudioPlayer.astro";
+
+## Technical Specifications
+
+| Specification | Details               |
+| ------------- | --------------------- |
+| Software      | Audacity, Uppbeat.io  |
+| Purpose       | Indication of actions |
+| Diegetic      | Yes                   |
+
+The [sword](/fowl-play/gameplay/combat/melee-combat/weapons/sword) sounds were processed, cut, and combined in Audacity  
+before being exported and imported into the game to enhance the player's experience.
+
+## Philosophy
+
+The sword is crafted to be a visceral, high-impact melee weapon that emphasizes weight, control, and brutal feedback over speed. Each swing is designed to feel heavy and deliberate, landing with a sense of finality. To bring this sensation to life, the weapon's sounds were built using assets from Uppbeat.io, such as metallic clashes and slash sounds. These elements were layered together to form a dense, aggressive audio profile.
+
+The raw sounds were edited and shaped in Audacity using EQ and compression to emphasize low-end power and sharp high-end clarity. This helped create the impression of a heavy, forceful impact. A wind woosh sound, also sourced from Uppbeat.io, was added to convey motion and momentum, making the sword feel more dynamic and physically present. The result is a powerful, cinematic sound that captures the full force of every swing.
+
+## Created Sound Effect
+
+<AudioPlayer  
+  src="/sfx/sword/sword_swing.ogg"  
+  description="Sound created using Uppbeat.io assets including metal clash and slash sounds, enhanced with EQ and compression to add weight and presence"  
+  title="Sword Swing"  
+/>

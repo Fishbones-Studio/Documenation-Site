@@ -1,0 +1,35 @@
+---
+title: Enemy Hit Sound Effect
+description: Insights into the creation and design of the enemy hit sound effect
+lastUpdated: 2025-06-22
+author: Cenker
+---
+
+import AudioPlayer from "../../../../../../components/AudioPlayer.astro";
+
+The enemy hit sound effect is used whenever any enemy in Fowl Play takes damage. It is designed to be impactful and satisfying, providing clear feedback to the player.
+
+## Technical Specifications
+
+| Specification | Details                 |
+| ------------- | ----------------------- |
+| Software      | Audacity                |
+| File Format   | OGG Vorbis              |
+| Purpose       | Hit feedback, immersion |
+| Diegetic      | Yes                     |
+
+The sound was created by recording a watermelon being stabbed with a knife, combined with the sound of a small ball (like a marble) dropping on a table. Both recordings were brought into Audacity for editing. The marble sound was layered to amplify the sense of impact, with its volume slightly reduced to avoid overpowering the watermelon stab. A fade-out was applied to the watermelon sound to remove the crunch of the knife exiting, focusing on the initial impact.
+
+EQ adjustments were made: bass was added to make the hit feel deeper and more forceful, while treble was boosted to bring out the sharper details, making the sound more intense and realistic. The final sound effect was exported in OGG Vorbis format for use in the game engine.
+
+## Sound Design Principles
+
+The enemy hit sound effect should be clear, punchy, and satisfying. It must be distinct enough to stand out during combat, but not so loud or sharp that it becomes unpleasant. The sound is designed to work for all enemy types, providing consistent feedback regardless of which enemy is hit.
+
+## Created Sound Effect
+
+<AudioPlayer
+  src="/sfx/enemies/enemy-hurt.ogg"
+  title="Enemy Hit Sound"
+  description="A punchy, impactful sound used whenever any enemy takes damage. Created from a watermelon stab and marble drop."
+/>

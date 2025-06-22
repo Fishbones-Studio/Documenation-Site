@@ -1,0 +1,99 @@
+---
+title: Player Sound Effects
+description: Insights into the creation of the Player Sound Effects
+lastUpdated: 2025-06-22
+author: Tjorn
+---
+
+import AudioPlayer from "../../../../../components/AudioPlayer.astro";
+
+The player in Fowl Play is a slightly mutated chicken. His sound effects are based on our own vocal performances and original recordings of chickens and lovebirds.
+
+## Technical Specifications
+
+| Specification | Details                 |
+| ------------- | ----------------------- |
+| Software      | Audacity                |
+| File Format   | OGG Vorbis              |
+| Purpose       | Telegraphing, immersion |
+| Diegetic      | Yes                     |
+
+The audio was first cleaned up in Audacity, with noise reduction to remove background sounds. EQ, amplification, and compression were applied to enhance quality.
+The player movement sound effects make heavy use of pitch shifting and speed changes to the audio clips.
+The final sound effects are exported in OGG Vorbis format, suitable for the game engine.
+
+## Sound Design Principles
+
+In order to make the player sounds feel more real, bird sounds were mainly used as a base.
+Lovebirds were chosen for additional sound effects due to ease of access.
+
+Player walking and running sounds are intentionally softer and less impactfull, to not take away from important sound cues.
+
+## Created Sound Effects
+
+The player sound effects fall into three main categories: idle sounds, movement sounds, and death sound.
+
+### Idle Sounds
+
+This sound effects plays at the end of the Idle animation.
+
+<AudioPlayer
+  src="/sfx/player/call.ogg"
+  title="Idle Sound"
+  description="Sound of a rooster crowing, used at the end of the Idle animation."
+/>
+
+### Movement Sounds
+
+These play when the player is moving, providing feedback on the specific type of movement being performed.
+
+<AudioPlayer
+  src="/sfx/player/movement/walking.ogg"
+  title="Walking Sound"
+  description="Slowed down sound of a bird moving around in its cage. A reversed section is played in the middle, to artificially lengthen the loop."
+/>
+<AudioPlayer
+  src="/sfx/player/movement/running.ogg"
+  title="Running Sound"
+  description="Sped up version of the walking sound, with a wind effect in the background. Wind effect was created by blowing into a mic, and adding a phaser effect on top of it. Together, these create the illusion of the wind blowing past the chickens wings."
+/>
+<AudioPlayer
+  src="/sfx/player/movement/jump.ogg"
+  title="Jumping Sound"
+  description="Sound of a lovebird jumping and flapping its wings. This sound has minimal effects, in order for it to be clear."
+/>
+<AudioPlayer
+  src="/sfx/player/movement/glide.ogg"
+  title="Gliding Sound"
+  description="Heavily slowed down version of the jumping sound. In real life, when a chicken 'glides', it flaps its wings slightly. We wanted to incorporate this into the sound effect."
+/>
+<AudioPlayer
+  src="/sfx/player/movement/fall.ogg"
+  title="Falling Sound"
+  description="Wind effect with a reversed sound playing on top. More ominous than the other movement sounds, to indicate that the player is falling down."
+/>
+<AudioPlayer
+  src="/sfx/player/movement/dash.ogg"
+  title="Dashing Sound"
+  description="Created by mouth, with some slight reverb and pitch shifting applied. Used when the player dashes in any direction."
+/>
+
+### Death Sound
+
+This sound effect plays when the player dies, and is triggered by the death animation.
+
+<AudioPlayer
+  src="/sfx/player/death.ogg"
+  title="Death Sound"
+  description="Chicken scream sound, with a delay and phaser effect. Each echo is slightly pitch shifted down and has a lower volume."
+/>
+
+### Hit Sound
+
+This sound effect plays when the player takes damage, providing feedback on being hit.
+
+<AudioPlayer
+  src="/sfx/player/player-hurt.ogg"
+  title="Hit Sound"
+  description="Sound of a chicken screaming, with some slight reverb."
+/>

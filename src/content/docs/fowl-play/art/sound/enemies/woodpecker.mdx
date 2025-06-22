@@ -1,13 +1,13 @@
 ---
 title: Woodpecker Sound Effects
 description: Insights into the creation and design of sound effects for Woodpecker in Fowl Play
-lastUpdated: 2025-06-19
+lastUpdated: 2025-06-22
 author: Tjorn
 ---
 
 import AudioPlayer from "../../../../../../components/AudioPlayer.astro";
 
-Woodpecker is a heavily mutated enemy in Fowl Play. His sound effects are based on original macaw recordings, with heavy processing, mainly reverb, to create a unique and menacing sound.
+Woodpecker is a heavily mutated enemy in Fowl Play. Its telegraphing sound effects are based on original macaw recordings, with heavy processing, mainly reverb, to create a unique and menacing sound. Its movement sound effects are based on original desk tap recordings.
 
 ## Technical Specifications
 
@@ -22,13 +22,16 @@ The audio was cleaned up in Audacity, with noise reduction to remove background 
 
 ## Sound Design Principles
 
-Woodpecker's sounds are designed to be sharp and aggressive, reflecting his mutated nature. Using a macaw as the base gives him a unique screeching quality, matching his severe mutation. Each sound should make it immediately clear which action Woodpecker will perform.
+Woodpecker's sounds are designed to be sharp and aggressive, reflecting its mutated nature. Using a macaw as the base gives him a unique screeching quality, matching its severe mutation. Each sound should make it immediately clear which action Woodpecker will perform.
 
 ## Created Sound Effects
 
-Woodpecker only has idle sounds, which play when he is not performing actions, giving him a lifelike presence in the game world. This is because Woodpecker only uses standard [abilities](/fowl-play/art/sound/abilities) and weapons, without unique flair.
+Woodpecker has no telegraphing sounds. This is because Woodpecker only uses standard [abilities](/fowl-play/art/sound/abilities) and weapons, without unique flair.
+This means Woodpecker's sounds can be categorized in two categories: idle and movement
 
 ### Idle Sounds
+
+These sounds play when Woodpecker is not performing actions, giving him an extra presence in the game world.
 
 <AudioPlayer
   src="/sfx/enemies/woodpecker/random/woodpecker1.ogg"
@@ -49,4 +52,14 @@ Woodpecker only has idle sounds, which play when he is not performing actions, g
   src="/sfx/enemies/woodpecker/random/woodpecker4.ogg"
   title="Idle Sound 4"
   description="Short sound of a macaw screeching."
+/>
+
+### Movement Sounds
+
+These sounds play when Woodpecker is moving, providing feedback on its movement.
+
+<AudioPlayer
+  src="/sfx/enemies/woodpecker/walking.ogg"
+  title="Walking Sound"
+  description="Modified version of the Elder Centipede Walking Sound. Has been slowed down, since Woodpecker has to legs. Bass has been turned down, since the Woodpecker is smaller than the Elder Centipede."
 />

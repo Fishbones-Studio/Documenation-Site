@@ -7,7 +7,7 @@ author: Tjorn
 
 import AudioPlayer from "../../../../../../components/AudioPlayer.astro";
 
-Timmy is a young, mutated goose enemy in Fowl Play. His sound effects are based on original cockatiel recordings, with light processing to keep them natural.
+Timmy is a young, mutated goose enemy in Fowl Play. His sound effects are based on original cockatiel recordings, with light processing to keep them natural. His movement sound effects are based on LoveBirds.
 
 ## Technical Specifications
 
@@ -26,7 +26,7 @@ Timmy is not severely mutated, so his sounds should be clearly recognizable. Eac
 
 ## Created Sound Effects
 
-Timmy's sound effects fall into two main categories: idle sounds and telegraphing sounds.
+Timmy's sound effects fall into three categories: idle sounds, telegraphing sounds and movement sounds.
 
 ### Idle Sounds
 
@@ -68,4 +68,19 @@ These play to indicate Timmy is about to perform a specific action or ability.
   src="/sfx/enemies/timmy/retreat.ogg"
   title="Retreat Sound"
   description="Cockatiel chirping a melody. Used when Timmy flies away from the player."
+/>
+
+### Movement Sounds
+
+These play when Timmy is moving, providing feedback on his specific type of movement.
+
+<AudioPlayer
+  src="/sfx/enemies/timmy/flying-still.ogg"
+  title="Flying Still Sound"
+  description="Sound of a lovebird flying in its cage. Pitched up and partially looped, to create a slightly longer sound effect before it completely loops. Used when Timmy is flying in place."
+/>
+<AudioPlayer
+  src="/sfx/enemies/timmy/flying.ogg"
+  title="Flying Sound"
+  description="Sound of a lovebird flying in its cage, pitched up. Used when Timmy flies while moving."
 />

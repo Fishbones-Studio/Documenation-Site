@@ -17,7 +17,14 @@ The Poultry Man menu serves as an in-game interface where players can interact w
 ### New Version
 
 ![New Poultry Man Menu](../../../../../assets/fowl-play/production/pitches/week-10-progress/new_poultry_man_menu.png)
-To improve the menu and align it with the game’s dark and griddy theme, several enhancements were made: - **Darkened the World**: Instead of an open-sky background, the environment is now much darker, reinforcing the eerie and unsettling atmosphere. - **Added a Wall**: A wall was introduced to enclose the menu area, making it feel more like a confined, eerie laboratory where unethical experiments take place. - **Dynamic Lighting**: A flashing light effect was added to create a more unsettling atmosphere, making the environment feel more alive and foreboding. - **Added Labels**: Labels were introduced to indicate what each item does, providing players with clear information about where each item leads. - **Hover Effects**: When players hover over an item, the label changes color and the node increases in size, making it more visually distinct and responsive. - **Keyboard & Controller Navigation**: Players can now navigate the menu using both a keyboard and a controller.
+To improve the menu and align it with the game’s dark and griddy theme, several enhancements were made:
+
+- **Darkened the World**: Instead of an open-sky background, the environment is now much darker, reinforcing the eerie and unsettling atmosphere.
+- **Added a Wall**: A wall was introduced to enclose the menu area, making it feel more like a confined, eerie laboratory where unethical experiments take place.
+- **Dynamic Lighting**: A flashing light effect was added to create a more unsettling atmosphere, making the environment feel more alive and foreboding.
+- **Added Labels**: Labels were introduced to indicate what each item does, providing players with clear information about where each item leads.
+- **Hover Effects**: When players hover over an item, the label changes color and the node increases in size, making it more visually distinct and responsive.
+- **Keyboard & Controller Navigation**: Players can now navigate the menu using both a keyboard and a controller.
 
 ## Shop System
 

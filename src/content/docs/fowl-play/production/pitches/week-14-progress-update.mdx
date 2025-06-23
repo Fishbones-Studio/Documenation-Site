@@ -1,0 +1,156 @@
+---
+title: Week 14 Progress Update
+description: Progress update on Fowl Play, for week 14/ playtest 2
+lastUpdated: 2025-06-23
+author: Cenker
+---
+
+import ImageGrid from "../../../../../components/ImageGrid.astro";
+import playerHudV3Image from "../../../../../assets/fowl-play/production/pitches/week-14-progress/player-hud-v3.png";
+import equipmentShopImage from "../../../../../assets/fowl-play/production/pitches/week-14-progress/equipment-shop.png";
+import upgradeShopImage from "../../../../../assets/fowl-play/production/pitches/week-14-progress/upgrade-shop.png";
+import rebirthShopImage from "../../../../../assets/fowl-play/production/pitches/week-14-progress/rebirth-shop.png";
+import loadingScreenImage from "../../../../../assets/fowl-play/production/pitches/week-14-progress/loading-screen.png";
+import poultryManMenuImage from "../../../../../assets/fowl-play/production/pitches/week-14-progress/poultry-man-menu.png";
+import confirmationScreenImage from "../../../../../assets/fowl-play/production/pitches/week-14-progress/confirmation-screen.png";
+
+## Player HUD v3
+
+<ImageGrid
+  images={[
+    {
+      src: playerHudV3Image,
+      alt: "Player HUD v3",
+      title: "Player HUD v3",
+      width: 600,
+      height: 400,
+    },
+  ]}
+  columns={1}
+  imageWidth={600}
+  imageHeight={400}
+/>
+We've removed the rounds timer and moved the player HUD to the bottom-left
+corner and added a large red health bar with the enemy's name at the top-center
+of the screen to create a classic boss fight feel. Every enemy now uses this
+health bar since arena fights are always a 1v1. This change also makes it easier
+to track the enemy's health without having to look at a small bar above their
+head.
+
+### Control Icons
+
+You may have already noticed that the items in the bottom-right corner now have control icons. We added these so players can easily see which buttons perform actions for each item, without needing to check the settings. The icon pack comes from [rsubtil’s controller pack](github.com/rsubtil/controller_icons/), which is widely used in games like The Outer Worlds. We chose this pack not only for its familiar and consistent style, but also because it's easy to implement in Godot.
+
+## Updated Shops
+
+<ImageGrid
+  images={[
+    {
+      src: equipmentShopImage,
+      alt: "Updated Equipment Shop",
+      title: "Updated Equipment Shop",
+      width: 400,
+      height: 300,
+    },
+    {
+      src: upgradeShopImage,
+      alt: "Updated Upgrade Shop",
+      title: "Updated Upgrade Shop",
+      width: 400,
+      height: 300,
+    },
+  ]}
+  columns={2}
+  imageWidth={400}
+  imageHeight={300}
+/>
+We updated the main shop and the upgrade shop design by placing the item list on
+the left side and displaying the selected (hovered) item on the right, along
+with a clear description of what it does. Additionally, we've moved the currency
+display to the top right corner, each with its respective icon for better
+clarity.
+
+### Added Rebirth Shop
+
+<ImageGrid
+  images={[
+    {
+      src: rebirthShopImage,
+      alt: "Rebirth Shop",
+      title: "Rebirth Shop",
+      width: 600,
+      height: 400,
+    },
+  ]}
+  columns={1}
+  imageWidth={600}
+  imageHeight={400}
+/>
+We also finally added the Rebirth Shop! Players can now purchase permanent
+upgrades for their stats, including damage, max health, speed, defense, and
+stamina. Each upgrade becomes more expensive as the level increases, so you’ll
+need to spend your Rebirth Feathers wisely.
+
+## Loading Screen
+
+<ImageGrid
+  images={[
+    {
+      src: loadingScreenImage,
+      alt: "Loading Screen",
+      title: "Loading Screen",
+      width: 600,
+      height: 400,
+    },
+  ]}
+  columns={1}
+  imageWidth={600}
+  imageHeight={400}
+/>
+We observed a noticeable freeze when entering the arena. This occurred because
+the game was loading a large scene all at once, without any indication to the
+player that something was happening. The result was a jarring pause that gave
+the impression the game was unresponsive.
+
+To resolve this and improve the user experience, we introduced a loading screen. This screen masks the loading time and adds personality by displaying concept art, a progress-bar, and random chicken facts to keep the player engaged.
+
+## Improved Poultry Man Menu
+
+<ImageGrid
+  images={[
+    {
+      src: poultryManMenuImage,
+      alt: "Improved Poultry man Menu",
+      title: "Improved Poultry man Menu",
+      width: 600,
+      height: 400,
+    },
+  ]}
+  columns={1}
+  imageWidth={600}
+  imageHeight={400}
+/>
+We’ve also refreshed the look of our Poultry Man menu by replacing the block
+nodes with actual items, giving it a more appealing and polished appearance.
+
+## Confirmation Screens
+
+<ImageGrid
+  images={[
+    {
+      src: confirmationScreenImage,
+      alt: "Confirmation Screen",
+      title: "Confirmation Screen",
+      width: 600,
+      height: 400,
+    },
+  ]}
+  columns={1}
+  imageWidth={600}
+  imageHeight={400}
+/>
+We have added a general confirmation screen to all important sections of the
+game where mis click can occur. This is used to prevent the player from
+accidentally buying equipment or sacrificing their chicken. Additionally, the
+confirmation screen also serves as a popup of information, as it helps inform
+the player of what the certain action will have for impact.

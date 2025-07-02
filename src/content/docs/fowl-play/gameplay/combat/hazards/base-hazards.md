@@ -235,7 +235,7 @@ func _spawn_hazard() -> void:
 		hazard.global_position = global_position
 ```
 
-## Hazard spawning uses random chance to add unpredictability and replayability to arena layouts. Hazards are spawned at specific markers in the arena, which can be placed in the level editor. The chance of spawning a hazard is configurable, allowing designers to control how often hazards appear in a given area.
+Hazard spawning uses random chance to add unpredictability and replayability to arena layouts. Hazards are spawned at specific markers in the arena, which can be placed in the level editor. The chance of spawning a hazard is configurable, allowing designers to control how often hazards appear in a given area.
 
 ## Gameplay Impact
 
